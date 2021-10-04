@@ -1,6 +1,4 @@
-## Replace this README.md!
+A music player
 
-This is a standard README.md file for you to replace. You'll want to include your own content here!
-
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+Below is the link to the program's specifications. It is still in progress so we are not yet finalizing and pushing them to our GitHub repo.
+https://docs.google.com/presentation/d/1QKMBIuBjEbPtI_h6-BE-bvggyYGVCaTF_5yebY8CqA0/edit#slide=id.p
