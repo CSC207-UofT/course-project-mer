@@ -1,42 +1,44 @@
 package com.mer.plamer.controller;
 
-import android.content.Context;
-import android.media.MediaPlayer;
 
+import android.app.Activity;
+import android.media.MediaPlayer;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
+
+import com.mer.plamer.R;
 import com.mer.plamer.userAction.PlayAction;
 
 
 public class PlayControl {
-    PlayAction playaction;
-    private final Context ctx;
+    PlayAction player;
+    private final Activity ctx;
     private final MediaPlayer mediaPlayer;
+    ImageButton playButton;
+    ImageButton pauseButton;
+    SeekBar progressBar;
 
-    public PlayControl(Context ctx) {
+    // PlayControl takes in the activity context and audio file location
+    public PlayControl(Activity ctx, int location) {
         this.ctx = ctx;
+        this.player = new PlayAction(ctx.getResources().openRawResourceFd(location));
         this.mediaPlayer = new MediaPlayer();
     }
 
-    public void load(int resourceID){
-        try{
-            mediaPlayer.setDataSource(ctx.getResources().openRawResourceFd(resourceID));
-            mediaPlayer.prepare();
-        }
-        catch (Exception ignored){
-            // To be implemented later
-        }
-    }
+    // Designate buttons to PlayControl view
+    public void view(){
+        playButton = ctx.findViewById(R.id.playButton);
+        pauseButton = ctx.findViewById(R.id.pauseButton);
+        progressBar = ctx.findViewById(R.id.seekBar);
 
-    public void play(){
-        if(!this.mediaPlayer.isPlaying()){
-            this.mediaPlayer.start();
-        }
-
-    }
-
-    public void pause(){
-        if(this.mediaPlayer.isPlaying()){
-            this.mediaPlayer.pause();
-        }
+        // When play button is clicked, tell PlayAction to play the audio
+        playButton.setOnClickListener(v -> {
+            player.play();
+        });
+        // When pause button is clicked, tell PlayAction to pause the audio
+        pauseButton.setOnClickListener(v -> {
+            player.pause();
+        });
     }
 
     public void seek () {}

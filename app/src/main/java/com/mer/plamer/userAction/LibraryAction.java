@@ -2,16 +2,10 @@ package com.mer.plamer.userAction;
 
 public abstract class LibraryAction {
 
-    void delete() {
+    abstract void delete();
 
-    }
+    abstract void search();
 
-    void search() {
-
-    }
-
-    void add() {
-
-    }
+    abstract void add();
 
 }
