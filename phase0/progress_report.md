@@ -71,7 +71,6 @@ October 15th
 
 Works done by each member and plans:
 
-
 <table>
   <tr>
    <td>Name
@@ -95,14 +94,18 @@ Polished and reorganized CRC card into categories on github.
    <td>Jaden
    </td>
    <td>Optimized code for PlayAction and PlayControl necessary for the walkthrough scenario demo.
+<p>
+Optimized the responsibility and dependency for CRC cards.
    </td>
-   <td>
+   <td>Implement user cases and controllers.
+<p>
+Fine tone the relationship and dependency of each class.
    </td>
   </tr>
   <tr>
    <td>Joseph
    </td>
-   <td>Wrote progress report, initial walkthrough scenario design
+   <td>Wrote progress report, initial walkthrough scenario design.
    </td>
    <td>Implement assigned classes based on group communication. 
    </td>
@@ -131,6 +134,8 @@ Edited scenario walk-through according to implementation details
    <td>Work on the apps communication to Android (e.g. FileIO, saving contents to local files)
 <p>
 Work on implementing more features outlined in specs
+<p>
+Add documentation (JavaDoc) to methods
    </td>
   </tr>
   <tr>
@@ -138,7 +143,7 @@ Work on implementing more features outlined in specs
    </td>
    <td>Wrote majority of entity classes (Michael fixed various parts)
    </td>
-   <td>
+   <td>Implement assigned classes based on group communication. 
    </td>
   </tr>
   <tr>
@@ -146,7 +151,7 @@ Work on implementing more features outlined in specs
    </td>
    <td>Wrote unittest for PlayAction, and helped edited progress report.
    </td>
-   <td>
+   <td>Implement assigned classes based on group communication. 
    </td>
   </tr>
 </table>
