@@ -8,7 +8,7 @@ public class Track {
 //    private final double length;
 //    private String genre;
 //    private final ArrayList<String> comments;
-    private final String fileLocation;
+    private final File mediaFile;
 
     public Track(String location){
 //        this.artist = artist;
@@ -16,6 +16,6 @@ public class Track {
 //        this.length = length;
 //        this.genre = genre;
 //        this.comments = new ArrayList<String>();
-        this.fileLocation = location;
+        this.mediaFile = new File(location);
     }
 }
