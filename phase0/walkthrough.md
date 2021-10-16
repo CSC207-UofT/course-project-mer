@@ -1,4 +1,4 @@
-For the scenario walk through, we will implementing the base play feature of the music player.
+For the scenario walk through, we will be implementing the base play feature of the music player.
 We will be providing a locally saved mp3 file for demonstration purpose.
 When the program is being compiled and ran, mainactivity will access the mp3 file in through res/raw
 as well as other ui elements such as the play and pause buttons.
