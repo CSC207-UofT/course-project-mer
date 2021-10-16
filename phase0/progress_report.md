@@ -1,7 +1,7 @@
 # Plamer Progress Report - Phase 0
 
 # Specifications
-A music player that will have the following feature:
+Plamer will be providing a set of features of a music player:
 
 - Can import an audio file and play it
 - Can pause/change a Track when User prompts
