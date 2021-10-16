@@ -112,7 +112,7 @@ Polished and reorganized CRC card into categories on github.
    </td>
    <td>Drawn and implemented user interface of the program
    </td>
-   <td>
+   <td>Design and implement user interface. Work on the UI intereaction code.
    </td>
   </tr>
   <tr>
