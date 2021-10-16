@@ -1,13 +1,13 @@
-#Playlist
+# Playlist
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Store the name of a Playlist, Store Tracks, Store numbers of total Tracks(length of the Playlist).
 
-##Collaborators:
+## Collaborators:
 Track, User, Admin, PlaylistActions, PlaylistLibrary, Search.

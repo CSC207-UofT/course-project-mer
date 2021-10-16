@@ -1,13 +1,13 @@
-#UserControl
+# UserControl
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Takes in User request to modify their user profiles. Remove a user(Admin Only).
 
-##Collaborators:
+## Collaborators:
 UserAction, UserLibrary(Admin Only).

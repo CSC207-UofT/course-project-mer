@@ -1,13 +1,13 @@
-#PlaylistActions
+# PlaylistActions
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Add/delete Track from Playlist, sort a playlist, change play-through method.
 
-##Collaborators:
+## Collaborators:
 Playlist, Track, PlaylistControl.

@@ -1,13 +1,13 @@
-#TrackLibraryActions
+# TrackLibraryActions
 
-##Parent Class:
+## Parent Class:
 LibraryActions
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Search Track, add/delete Tracks.
 
-##Collaborators:
+## Collaborators:
 Track, TrackLibrary, SearchControl, LibraryControl.

@@ -1,13 +1,13 @@
-#PlaylistLibraryActions
+# PlaylistLibraryActions
 
-##Parent Class:
+## Parent Class:
 LibraryActions
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Search Playlist, add/delete Playlists.
 
-##Collaborators:
+## Collaborators:
 Playlist, PlaylistLibrary, SearchControl, LibraryControl.

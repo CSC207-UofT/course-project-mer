@@ -1,13 +1,13 @@
-#LibraryActions
+# LibraryActions
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 UserLibraryActions, TrackLibraryActions, PlaylistLibraryActions.
 
-##Responsibilities:
+## Responsibilities:
 Search Library, Modify Library.
 
-##Collaborators:
+## Collaborators:
 Library, SearchControl, LibraryControl.

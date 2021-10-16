@@ -1,13 +1,13 @@
-#PlayControl
+# PlayControl
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Takes in User input to play/pause/end a Track, or seek to a timestamp of a Track.
 
-##Collaborators:
+## Collaborators:
 PlayAction.

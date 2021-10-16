@@ -1,13 +1,13 @@
-#LibraryControl
+# LibraryControl
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Takes in User input to modify Library of one of the three categories: Track, Playlist, User.
 
-##Collaborators:
+## Collaborators:
 LibraryActions.

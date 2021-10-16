@@ -1,13 +1,13 @@
-#User
+# User
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Stores username, password, user's Playlists,user's Tracks, user's comments to a Track.
 
-##Collaborators:
+## Collaborators:
 Search, Track, Playlist, UserActions, Userlibrary.

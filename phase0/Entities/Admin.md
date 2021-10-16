@@ -1,14 +1,14 @@
-#Admin
+# Admin
 
-##Parent Class:
+## Parent Class:
 User
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Everything user can do.
 
-##Collaborators:
+## Collaborators:
 Search
 Track, Playlist, UserActions, UserLibrary.

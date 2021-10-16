@@ -1,13 +1,13 @@
-#UserActions
+# UserActions
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Create User, Change User's information.
 
-##Collaborators:
+## Collaborators:
 User, Admin, UserLibrary, UserControl.

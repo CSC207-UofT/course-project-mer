@@ -1,13 +1,13 @@
-#PlaylistLibrary
+# PlaylistLibrary
 
-##Parent Class:
+## Parent Class:
 Library
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Store all Playlists created by all Users.
 
-##Collaborators:
+## Collaborators:
 Playlist, PlaylistActions, Search.

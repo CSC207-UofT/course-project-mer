@@ -1,13 +1,13 @@
-#PlaylistControl
+# PlaylistControl
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Takes User input to create/delete, sort, modify a Playlist.
 
-##Collaborators:
+## Collaborators:
 PlaylistActions.

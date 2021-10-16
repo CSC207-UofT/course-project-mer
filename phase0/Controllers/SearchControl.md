@@ -1,13 +1,13 @@
-#SearchControl
+# SearchControl
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Takes in User input to search one of the three categories: Track, Playlist, User.
 
-##Collaborators:
+## Collaborators:
 Search.

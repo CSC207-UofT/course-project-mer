@@ -1,13 +1,13 @@
-#Library
+# Library
 
-##Parent Class:
+## Parent Class:
 None
 
-##Subclasses:
+## Subclasses:
 TrackLibrary, PlaylistLibrary, UserLibrary
 
-##Responsibilities:
+## Responsibilities:
 Store all items <T >uploaded by users.
 
-##Collaborators:
+## Collaborators:
 TrackLibrary, PlaylistLibrary, UserLibrary.

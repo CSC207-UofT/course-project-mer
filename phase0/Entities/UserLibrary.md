@@ -1,13 +1,13 @@
-#UserLibrary
+# UserLibrary
 
-##Parent Class:
+## Parent Class:
 Library
 
-##Subclasses:
+## Subclasses:
 None
 
-##Responsibilities:
+## Responsibilities:
 Stores all Users created in the app.
 
-##Collaborators:
+## Collaborators:
 User, Admin, UserLibraryActions, UserActions.
