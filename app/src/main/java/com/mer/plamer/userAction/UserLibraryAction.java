@@ -1,6 +1,6 @@
 package com.mer.plamer.userAction;
 
-public class UserAction extends LibraryAction {
+public class UserLibraryAction extends LibraryAction {
 
     @Override
     public void delete() {
