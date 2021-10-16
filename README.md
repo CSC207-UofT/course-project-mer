@@ -11,7 +11,7 @@ Allows register/log in as a user \
 Allows user to create a playlist and stores it\
 Can store a user’s play history \
 Can create a playlist by user \
-Can switch play modes between repeat on/off, shuffle \
+Can switch play modes between repeat on/off, shuffle
 
 Linked below is our CRC cards \
 https://docs.google.com/presentation/d/1QKMBIuBjEbPtI_h6-BE-bvggyYGVCaTF_5yebY8CqA0/edit#slide=id.p
