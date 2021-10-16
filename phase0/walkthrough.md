@@ -6,4 +6,4 @@ as well as other ui elements such as the play and pause buttons.
 After the mp3 file is loaded. The user may press the play button to start playing the track.
 This is done through the button under PlayControl class, when pressed, it will call upon
 the corresponding play method in PlayAction class. The same will apply with the pause button, when
-the music is playing, pressing the pause button will also call the pause method.
+the music is playing, pressing the pause button will call the pause method.
