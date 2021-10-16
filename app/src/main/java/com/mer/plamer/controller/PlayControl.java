@@ -2,7 +2,6 @@ package com.mer.plamer.controller;
 
 
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
