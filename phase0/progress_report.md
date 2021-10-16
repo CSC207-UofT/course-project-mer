@@ -31,12 +31,12 @@ Plamer will present a set of features of a music player:
 * Came up with a few examples of entities (Library), use cases (UserAction, TrackAction), and controller classes (UserControll, TrackControll).
 * Started on creating CRC cards for previously mentioned classes
 
-### October 11th
+October 11th
 
 
 
 * Completed majority of the CRC cards.
-* Reviewed feedback, restructured classes ,and redistributed responsibilities.
+* Reviewed feedback and restructured classes, and redistributed responsibilities.
 * Discussions on whether interfaces or abstract classes should be used for certain classes.
 * Prepared questions to ask in the upcoming meeting on Tuesday.
     1. Suggestions on one of the two features to add:
@@ -44,7 +44,7 @@ Plamer will present a set of features of a music player:
         2. Song recommendation
     2. Inquiries on design decision-making. How many responsibilities are “too many” responsibilities for a class?
 
-### October 12th(After TA meeting)
+October 12th(After TA meeting)
 
 
 
@@ -55,7 +55,7 @@ Plamer will present a set of features of a music player:
 * Discussions on interactions between controller and use cases. How many use cases should a controller depend on.
 * Decide to use a GUI rather than CLI.
 
-### October 15th
+October 15th
 
 
 
@@ -67,4 +67,85 @@ Plamer will present a set of features of a music player:
     5. Added new presenter class
 * Designed a rough user interface
 * Implemented basic play function
-* Created classes structures according to CRC cards (including ones that will not be presented in the skeletal program)
+* Created classes for everything in the project that will not be presented in the skeletal program
+
+Works done by each member and plans:
+
+
+<table>
+  <tr>
+   <td>Name
+   </td>
+   <td>Work Done
+   </td>
+   <td>Future Plan
+   </td>
+  </tr>
+  <tr>
+   <td>Alex
+   </td>
+   <td>Structured Controller classes for future implementation.
+<p>
+Polished and reorganized CRC card into categories on github.
+   </td>
+   <td>Implement track storage system and other classes based on group decisions.
+   </td>
+  </tr>
+  <tr>
+   <td>Jaden
+   </td>
+   <td>Optimized code for PlayAction and PlayControl necessary for the walkthrough scenario demo.
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>Joseph
+   </td>
+   <td>Wrote progress report, initial walkthrough scenario design
+   </td>
+   <td>Implement assigned classes based on group communication. 
+   </td>
+  </tr>
+  <tr>
+   <td>Kaibo
+   </td>
+   <td>Drawn and implemented user interface of the program
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>Michael
+   </td>
+   <td>Created project specifications
+<p>
+Implemented the audio playback feature for skeleton program 
+<p>
+Fine-tuned structures of entity classes
+<p>
+Edited scenario walk-through according to implementation details
+   </td>
+   <td>Work on the apps communication to Android (e.g. FileIO, saving contents to local files)
+<p>
+Work on implementing more features outlined in specs
+   </td>
+  </tr>
+  <tr>
+   <td>Nigel
+   </td>
+   <td>Wrote majority of entity classes (Michael fixed various parts)
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>Victor
+   </td>
+   <td>Wrote unittest for PlayAction, and helped edited progress report.
+   </td>
+   <td>
+   </td>
+  </tr>
+</table>
+
