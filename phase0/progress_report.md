@@ -23,7 +23,7 @@ October 11th
 
 
 * Completed majority of the CRC cards.
-* Reviewed feedback and restructured classes and redistributed responsibilities.
+* Reviewed feedback, restructured classes ,and redistributed responsibilities.
 * Discussions on whether interfaces or abstract classes should be used for certain classes.
 * Prepared questions to ask in the upcoming meeting on Tuesday.
     1. Suggestions on one of the two features to add:
@@ -40,7 +40,7 @@ October 12th(After TA meeting)
 * Considered adding abstract class/interfaces, but didn’t
 * Started skeleton program
 * Discussions on interactions between controller and use cases. How many use cases should a controller depend on.
-* Decide to use a GUI rather than CLI
+* Decide to use a GUI rather than CLI.
 
 October 15th
 
