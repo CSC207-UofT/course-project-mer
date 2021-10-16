@@ -3,6 +3,9 @@
 ## Parent Class:
 None
 
+## Implements
+Searchable
+
 ## Subclasses:
 TrackLibrary, PlaylistLibrary, UserLibrary
 

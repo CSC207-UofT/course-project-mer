@@ -3,6 +3,9 @@
 ## Parent Class:
 Library
 
+## Implements
+Searchable
+
 ## Subclasses:
 None
 
