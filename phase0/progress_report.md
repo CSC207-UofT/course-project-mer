@@ -31,7 +31,7 @@ Plamer will present a set of features of a music player:
 * Came up with a few examples of entities (Library), use cases (UserAction, TrackAction), and controller classes (UserControll, TrackControll).
 * Started on creating CRC cards for previously mentioned classes
 
-October 11th
+### October 11th
 
 
 
@@ -44,7 +44,7 @@ October 11th
         2. Song recommendation
     2. Inquiries on design decision-making. How many responsibilities are “too many” responsibilities for a class?
 
-October 12th(After TA meeting)
+### October 12th(After TA meeting)
 
 
 
@@ -55,7 +55,7 @@ October 12th(After TA meeting)
 * Discussions on interactions between controller and use cases. How many use cases should a controller depend on.
 * Decide to use a GUI rather than CLI.
 
-October 15th
+### October 15th
 
 
 
@@ -69,7 +69,7 @@ October 15th
 * Implemented basic play function
 * Created classes for everything in the project that will not be presented in the skeletal program
 
-Works done by each member and plans:
+## Works done by each member and plans:
 
 <table>
   <tr>
