@@ -8,7 +8,7 @@ import android.widget.SeekBar;
 import com.mer.plamer.R;
 import com.mer.plamer.usecases.PlayAction;
 
-
+// Class for initializing and managing view of music playing
 public class PlayControl {
     PlayAction player;
     private final Activity ctx;
@@ -16,12 +16,16 @@ public class PlayControl {
     ImageButton pauseButton;
     SeekBar progressBar;
 
+
     // PlayControl takes in the activity context and audio file location
     public PlayControl(Activity ctx, int location) {
         this.ctx = ctx;
         this.player = new PlayAction(ctx.getResources().openRawResourceFd(location));
     }
 
+    /**
+     * Initializes player view and defines buttons' actions
+     */
     // Designate buttons to PlayControl view
     public void view(){
         playButton = ctx.findViewById(R.id.playButton);
