@@ -1,9 +1,8 @@
-For the scenario walk through, we will be implementing the base play feature of the music player.
-We will be providing a locally saved mp3 file for demonstration purpose.
-When the program is being compiled and ran, mainactivity will access the mp3 file through res/raw directory
-as well as other ui elements such as the play and pause buttons.
+This program can be compiled with Android Studio and, as test, works on API version 30. \
 
-After the mp3 file is loaded. The user may press the play button to start playing the track.
-This is done through the button under PlayControl class, when pressed, it will call upon
-the corresponding play method in PlayAction class. The same will apply with the pause button, when
-the music is playing, pressing the pause button will call the pause method.
+For the scenario walk through, we will be implementing the basic playing feature of the music player. \
+The program will be packed with a mp3 file for demonstration purpose. \
+When the program is compiled and ran, MainActivity will call PlayControl to initialize button controls, and also tell PlayAction to prepare audio playback. \
+After initialization, PlayAction will load the audio file and playback will be ready. \
+User of the app will be able to play/pause the audio through click of a button. \
+We have packed our audio file in res/raw so, when presented, the program can be run with one click. \
