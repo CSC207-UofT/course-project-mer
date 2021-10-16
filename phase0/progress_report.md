@@ -69,7 +69,7 @@ October 15th
 * Implemented basic play function
 * Created classes for everything in the project that will not be presented in the skeletal program
 
-## Works Done/Future Plans:
+Works done by each member and plans:
 
 
 <table>
@@ -110,9 +110,11 @@ Polished and reorganized CRC card into categories on github.
   <tr>
    <td>Kaibo
    </td>
-   <td>Drawn and implemented user interface of the program
+   <td>Drawn user interface for both Play and unimplemented features.
+<p>
+Implemented UI for walkthrough scenario.
    </td>
-   <td>Design and implement user interface. Work on the UI intereaction code.
+   <td>Design and implement user interface. Work on the UI interaction code.
    </td>
   </tr>
   <tr>
