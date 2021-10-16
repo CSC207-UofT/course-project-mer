@@ -3,7 +3,7 @@
 ## Parent Class:
 Library
 
-## Implements
+## Implements:
 Searchable
 
 ## Subclasses:

@@ -1,13 +1,13 @@
-#Searchable (Interface)
+# Searchable (Interface)
 
-##Parent Class:
+## Parent Class:
 None
 
-##Implemented by:
+## Implemented by:
 Library, TrackLibrary, PlaylistLibrary, UserLibrary
 
-##Responsibilities:
+## Responsibilities:
 Specify methods needed to search for an item in those libraries.
 
-##Collaborators:
+## Collaborators:
 Library, TrackLibrary, PlaylistLibrary, UserLibrary.

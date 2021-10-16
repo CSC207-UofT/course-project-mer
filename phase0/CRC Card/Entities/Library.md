@@ -3,7 +3,7 @@
 ## Parent Class:
 None
 
-## Implements
+## Implements:
 Searchable
 
 ## Subclasses:
