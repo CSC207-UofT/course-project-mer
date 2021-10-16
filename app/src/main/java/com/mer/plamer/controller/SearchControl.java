@@ -1,9 +1,9 @@
 package com.mer.plamer.controller;
 
-import com.mer.plamer.userAction.LibraryAction;
+import com.mer.plamer.usecases.LibraryAction;
 
 public class SearchControl {
-    LibraryAction libraryaction;
+    LibraryAction libraryAction;
 
     public SearchControl() {
     }

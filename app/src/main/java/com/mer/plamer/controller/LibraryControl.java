@@ -1,6 +1,6 @@
 package com.mer.plamer.controller;
 
-import com.mer.plamer.userAction.LibraryAction;
+import com.mer.plamer.usecases.LibraryAction;
 
 public class LibraryControl {
     LibraryAction libraryaction;

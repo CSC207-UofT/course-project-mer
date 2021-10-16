@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 
 import com.mer.plamer.R;
-import com.mer.plamer.userAction.PlayAction;
+import com.mer.plamer.usecases.PlayAction;
 
 
 public class PlayControl {

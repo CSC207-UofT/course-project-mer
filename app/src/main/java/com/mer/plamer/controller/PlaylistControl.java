@@ -1,12 +1,12 @@
 package com.mer.plamer.controller;
 
-import com.mer.plamer.userAction.PlaylistAction;
+import com.mer.plamer.usecases.PlaylistAction;
 
 public class PlaylistControl {
-    PlaylistAction playlistaction;
+    PlaylistAction playlistAction;
 
-    public PlaylistControl(PlaylistAction playlistact) {
-        this.playlistaction = playlistact;
+    public PlaylistControl(PlaylistAction playlistAction) {
+        this.playlistAction = playlistAction;
     }
 
     public void create() {

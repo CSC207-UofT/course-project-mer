@@ -7,7 +7,7 @@ public class Playlist {
 
     public Playlist(String name){
         this.name = name;
-        this.tracks = new ArrayList<Track>();
+        this.tracks = new ArrayList<>();
     }
 
     public int getLength(){

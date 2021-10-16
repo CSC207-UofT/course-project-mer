@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String password;
-    private ArrayList<Playlist> playlist;
-    private ArrayList<Track> uploadedTracks;
+    private final ArrayList<Playlist> playlist;
+    private final ArrayList<Track> uploadedTracks;
 
     public User(String name, String password){
         this.username = name;
         this.password = password;
-        this.playlist = new ArrayList<Playlist>();
-        this.uploadedTracks = new ArrayList<Track>();
+        this.playlist = new ArrayList<>();
+        this.uploadedTracks = new ArrayList<>();
     }
 
     public String getUsername() {

@@ -1,17 +1,17 @@
 package com.mer.plamer.controller;
 
-import com.mer.plamer.userAction.UserAction;
+import com.mer.plamer.usecases.UserAction;
 
 public class UserControl {
 
-    UserAction useraction;
+    UserAction userAction;
 
-    public UserControl(UserAction useract) {
-        this.useraction = useract;
+    public UserControl(UserAction userAction) {
+        this.userAction = userAction;
     }
 
-    public void getAccountInfo(String username, String password) {
-//        this.useraction.createAccount();
+    public void getAccountInfo() {
+
     }
 
     public void userDeletion() {
