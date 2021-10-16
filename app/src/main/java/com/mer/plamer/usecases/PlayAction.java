@@ -1,4 +1,4 @@
-package com.mer.plamer.userAction;
+package com.mer.plamer.usecases;
 
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
