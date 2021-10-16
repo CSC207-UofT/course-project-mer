@@ -2,9 +2,6 @@ package com.mer.plamer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.AudioManager;
-import android.media.Image;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.view.View;
@@ -18,16 +15,22 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int EXAMPLE_MEDIA_ID = R.raw.oyasumi;
 
-    private MediaPlyayerHolder
     ImageButton playButton;
-    Button pauseButton;
+    ImageButton pauseButton;
     SeekBar progressBar;
+    private PlayControl player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        player = new PlayControl(this);
         setContentView(R.layout.activity_main);
 
+        // Load media
+        player.load(EXAMPLE_MEDIA_ID);
+
+        // Initialize button features
+        view();
     }
 
     private void view(){
@@ -36,23 +39,12 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.seekBar);
 
         playButton.setOnClickListener(v -> {
-            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), EXAMPLE_MEDIA_ID);
-            mediaPlayer.start();
+            player.play();
         });
         pauseButton.setOnClickListener(v -> {
-            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), EXAMPLE_MEDIA_ID);
-            mediaPlayer.start();
+            player.pause();
         });
 
-
-    }
-
-    void play(){
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), EXAMPLE_MEDIA_ID);
-        mediaPlayer.start();
-    }
-
-    void pause(){
 
     }
 
