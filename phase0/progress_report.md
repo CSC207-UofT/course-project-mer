@@ -69,7 +69,7 @@ October 15th
 * Implemented basic play function
 * Created classes for everything in the project that will not be presented in the skeletal program
 
-Works done by each member and plans:
+## Works Done/Future Plans:
 
 
 <table>
