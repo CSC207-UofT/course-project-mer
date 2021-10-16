@@ -2,7 +2,7 @@ package com.mer.plamer.entities;
 
 import java.util.ArrayList;
 
-public class TrackLibrary implements Storable {
+public class TrackLibrary implements Storable, Searchable {
     private ArrayList<Track> tracksList;
 
     public TrackLibrary(){
@@ -18,5 +18,9 @@ public class TrackLibrary implements Storable {
     }
 
     public void read() {
+    }
+
+    public void locate(){
+        
     }
 }
