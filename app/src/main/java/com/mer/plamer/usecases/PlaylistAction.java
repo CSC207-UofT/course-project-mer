@@ -1,18 +1,15 @@
 package com.mer.plamer.usecases;
 
-public class PlaylistAction extends LibraryAction {
+public class PlaylistAction{
 
-    @Override
     public void delete() {
 
     }
 
-    @Override
     public void search() {
 
     }
 
-    @Override
     public void add() {
 
     }
