@@ -6,3 +6,5 @@ When the program is compiled and ran, MainActivity will call PlayControl to init
 After initialization, PlayAction will load the audio file and playback will be ready. \
 User of the app will be able to play/pause the audio through click of a button. \
 We have packed our audio file in res/raw so, when presented, the program can be run with one click.
+
+A set of unittests are also included in app/src/androidTest/java/com/plamer/PlayActionTest for testing basic functionality of PlayAction (play/pause)
