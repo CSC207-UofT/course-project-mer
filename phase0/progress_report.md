@@ -44,7 +44,7 @@ Plamer will present a set of features of a music player:
         2. Song recommendation
     2. Inquiries on design decision-making. How many responsibilities are “too many” responsibilities for a class?
 
-### October 12th(After TA meeting)
+### October 12th (After TA meeting)
 
 
 
