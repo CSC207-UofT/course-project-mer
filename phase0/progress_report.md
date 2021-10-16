@@ -1,11 +1,4 @@
 Progress Report
-October 4th (1st group meeting)
-Brainstorming ideas for the project
-Replicate a board game
-Rejected, too common and lacks creativity
-
-
-Progress Report
 
 October 4th (1st group meeting)
 
