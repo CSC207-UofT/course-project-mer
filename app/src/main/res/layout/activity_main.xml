@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="400dp"
         android:layout_height="28dp"
-        android:text="TITTLE"
+        android:text="ARTIST"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
