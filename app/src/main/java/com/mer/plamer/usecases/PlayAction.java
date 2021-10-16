@@ -1,4 +1,4 @@
-package com.mer.plamer.usecases;
+package com.mer.plamer.userAction;
 
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
@@ -10,7 +10,7 @@ public class PlayAction {
     public PlayAction(AssetFileDescriptor src) {
         this.location = src;
         this.mediaPlayer = new MediaPlayer();
-        try{
+        try {
             mediaPlayer.setDataSource(src);
             mediaPlayer.prepare();
         }
@@ -19,15 +19,18 @@ public class PlayAction {
         }
     }
 
+    public boolean isPlaying() {
+        return this.mediaPlayer.isPlaying();
+    }
 
-    public void play(){
-        if(!this.mediaPlayer.isPlaying()){
+    public void play() {
+        if (!this.isPlaying()) {
             this.mediaPlayer.start();
         }
     }
 
     public void pause(){
-        if(this.mediaPlayer.isPlaying()){
+        if (this.isPlaying()) {
             this.mediaPlayer.pause();
         }
     }
