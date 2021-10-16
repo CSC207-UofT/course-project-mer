@@ -1,7 +1,7 @@
-Progress Report
+# Plamer Progress Report - Phase 0
 
+## Progress by date
 October 4th (1st group meeting)
-
 
 
 * Brainstorming ideas for the project
