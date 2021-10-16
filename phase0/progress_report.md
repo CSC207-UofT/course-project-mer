@@ -14,7 +14,7 @@ October 4th (1st group meeting)
 * Brainstorming ideas for the project
     1. Replicate a board game
 
-        Rejected, too common and lacks creativity
+        Rejected, too common and lacks depth
 
     2. Tower defence game
 
