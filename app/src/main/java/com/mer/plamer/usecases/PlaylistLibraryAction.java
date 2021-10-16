@@ -1,6 +1,6 @@
 package com.mer.plamer.usecases;
 
-public class TrackLibraryAction extends LibraryAction{
+public class PlaylistLibraryAction extends LibraryAction{
 
     @Override
     public void delete() {
@@ -16,4 +16,5 @@ public class TrackLibraryAction extends LibraryAction{
     public void add() {
 
     }
+
 }
