@@ -13,7 +13,6 @@ import com.mer.plamer.userAction.PlayAction;
 public class PlayControl {
     PlayAction player;
     private final Activity ctx;
-    private final MediaPlayer mediaPlayer;
     ImageButton playButton;
     ImageButton pauseButton;
     SeekBar progressBar;
@@ -22,7 +21,6 @@ public class PlayControl {
     public PlayControl(Activity ctx, int location) {
         this.ctx = ctx;
         this.player = new PlayAction(ctx.getResources().openRawResourceFd(location));
-        this.mediaPlayer = new MediaPlayer();
     }
 
     // Designate buttons to PlayControl view
