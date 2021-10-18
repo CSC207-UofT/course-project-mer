@@ -69,6 +69,21 @@ Plamer will present a set of features of a music player:
 * Implemented basic play function
 * Created classes for everything in the project that will not be presented in the skeletal program
 
+
+## Open questions we are struggling with / Difficulties we have faced: 
+
+* Maintaining clean architecture
+    * A lot of classes, difficult to figure out what classes control what, and the overall hierarchy
+    * Difficult to make use of all said classes in our scenario walkthrough 
+    * Figuring out whether we have enough controllers for our use cases and input/output
+* Following the SOLID principles
+    * Had trouble figuring out whether our controllers were controlling our use cases, which used our entity classes
+    * Struggled mostly with the single responsibility principle (whether our various classes were actually responsible for one single thing)
+    * Ongoing process where we will discover more areas of improvement as we code
+* Wondering the appropriate place to implement abstract classes and interfaces
+    * A lot of entity and use case classes, so we want to implement abstract classes and interfaces to demonstrate clean designing 
+    * Difficulties figuring out where to implement such abstract classes/interfaces as many of our classes share similar design approaches but function very differently.
+
 ## Works done by each member and plans:
 
 <table>
