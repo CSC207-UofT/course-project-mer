@@ -1,7 +1,7 @@
 package com.mer.plamer.entities;
 import java.util.ArrayList;
 
-public class Playlist implements Searchable {
+public class Playlist {
     private String name;
     private final ArrayList<Track> tracks;
 
@@ -24,8 +24,5 @@ public class Playlist implements Searchable {
 
     public void addTrack(Track item){
         this.tracks.add(item);
-    }
-
-    public void locate() {
     }
 }

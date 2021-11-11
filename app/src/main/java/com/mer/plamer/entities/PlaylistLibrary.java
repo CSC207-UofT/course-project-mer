@@ -2,25 +2,29 @@ package com.mer.plamer.entities;
 
 import java.util.ArrayList;
 
-public class PlaylistLibrary implements Storable,Searchable {
+public class PlaylistLibrary implements Storable<Playlist> {
     private ArrayList<Playlist> playlistList;
 
     public PlaylistLibrary(){
     }
 
-
-    public void add() {
+    @Override
+    public void add(Playlist new_playlist) {
     }
 
-    public void remove() {
+    @Override
+    public boolean remove(String name) {
+        return true;
     }
 
-    public void isEmpty() {
+    @Override
+    public boolean isEmpty() {
+        return true;
     }
 
-    public void read() {
+    @Override
+    public Playlist contain(String obj) {
+        return null;
     }
 
-    public void locate() {
-    }
 }
