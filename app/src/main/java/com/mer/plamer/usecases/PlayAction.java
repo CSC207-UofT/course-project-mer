@@ -3,41 +3,38 @@ package com.mer.plamer.usecases;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 
-public class PlayAction {
-    private final AssetFileDescriptor location;
-    private final MediaPlayer mediaPlayer;
+import java.io.IOException;
 
-    public PlayAction(AssetFileDescriptor src) {
-        this.location = src;
-        this.mediaPlayer = new MediaPlayer();
-        try {
-            mediaPlayer.setDataSource(src);
+public class PlayAction {
+    private static String location;
+    private static MediaPlayer mediaPlayer = new MediaPlayer();
+
+    public static void prepare() {
+        try{
+            mediaPlayer.setDataSource(TrackLibraryAction.trackLibrary.get(0).getPath());
             mediaPlayer.prepare();
         }
-        catch (Exception ignored){
+        catch(Exception ignored){
             // To be implemented later
         }
     }
 
-    public boolean isPlaying() {
-        return this.mediaPlayer.isPlaying();
+    public static boolean isPlaying() {
+        return mediaPlayer.isPlaying();
     }
 
-    public void play() {
-        if (!this.isPlaying()) {
-            this.mediaPlayer.start();
+    public static void playPause() {
+        if (!isPlaying()) {
+            mediaPlayer.start();
+        }
+        else {
+            mediaPlayer.pause();
         }
     }
 
-    public void pause(){
-        if (this.isPlaying()) {
-            this.mediaPlayer.pause();
-        }
-    }
+    public static void seek () {}
 
-    public void seek () {}
+    public static void playback () {}
 
-    public void playback () {}
-
-    public void end () {}
+    public static void end () {}
 }
