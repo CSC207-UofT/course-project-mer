@@ -2,27 +2,25 @@ package com.mer.plamer.entities;
 
 import java.util.ArrayList;
 
-public class TrackLibrary implements Storable<Track> {
+public class TrackLibrary implements Storable, Searchable {
     private ArrayList<Track> tracksList;
 
     public TrackLibrary(){
     }
 
-    @Override
-    public void add(Track new_track) {
-
+    public void add() {
     }
 
-    public boolean remove(String name) {
-        return true;
+    public void remove() {
     }
 
-    public boolean isEmpty() {
-        return true;
+    public void isEmpty() {
     }
 
-    @Override
-    public Track contain(String obj) {
-        return null;
+    public void read() {
+    }
+
+    public void locate(){
+        
     }
 }
