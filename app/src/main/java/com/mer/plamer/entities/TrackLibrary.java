@@ -3,14 +3,19 @@ package com.mer.plamer.entities;
 import java.util.ArrayList;
 
 public class TrackLibrary implements Storable<Track> {
-    private ArrayList<Track> tracksList;
+    private final ArrayList<Track> tracksList;
 
     public TrackLibrary(){
+        tracksList = new ArrayList<>();
     }
 
     @Override
-    public void add(Track new_track) {
-
+    public void add(Track track) {
+        tracksList.add(track);
+    }
+    
+    public Track get(int Int){
+        return tracksList.get(Int);
     }
 
     @Override

@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plamer">
         <activity
+            android:name=".controller.PlayerActivity"
+            android:exported="true" />
+        <activity android:name=".controller.PlayControl" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -19,5 +23,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
 </manifest>
