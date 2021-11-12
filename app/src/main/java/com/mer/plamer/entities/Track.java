@@ -9,17 +9,17 @@ public class Track {
     private final String length;
     private final String genre;
     private final ArrayList<String> comments;
-    private final File mediaFile;
+    private final String path;
 
-    public Track(String location){
+    public Track(String path){
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-        mmr.setDataSource(location);
+        mmr.setDataSource(path);
         this.artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
         this.title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
         this.length = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
         this.genre = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
         this.comments = new ArrayList<>();
-        this.mediaFile = new File(location);
+        this.path = path;
     }
 
     public String getArtist(){
@@ -37,4 +37,6 @@ public class Track {
     public String getGenre(){
         return this.genre;
     }
+
+    public String getPath() { return this.path; }
 }
