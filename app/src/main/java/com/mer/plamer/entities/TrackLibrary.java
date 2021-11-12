@@ -9,24 +9,27 @@ public class TrackLibrary implements Storable<Track> {
         tracksList = new ArrayList<>();
     }
 
+    @Override
     public void add(Track track) {
         tracksList.add(track);
     }
-
+    
     public Track get(int Int){
         return tracksList.get(Int);
     }
 
-    public void remove() {
+    @Override
+    public boolean remove(String name) {
+        return true;
     }
 
-    public void isEmpty() {
+    @Override
+    public boolean isEmpty() {
+        return true;
     }
 
-    public void read() {
-    }
-
-    public void locate(){
-        
+    @Override
+    public Track contain(String obj) {
+        return null;
     }
 }
