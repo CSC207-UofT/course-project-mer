@@ -24,9 +24,9 @@ public class PlaylistLibrary implements Storable<Playlist> {
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * Remove playlist from this playlist library if the playlist is in this playlist library
+     * @param name the name of the playlist wanted to remove from
+     * @return whether the playlist has been successfully removed.
      */
     @Override
     public boolean remove(String name) {
@@ -39,11 +39,19 @@ public class PlaylistLibrary implements Storable<Playlist> {
         return false;
     }
 
+    /**
+     * @return whether the playlist library is empty or not
+     */
     @Override
     public boolean isEmpty() {
         return this.playlists.size() == 0;
     }
 
+    /**
+     * Check if the library contains certain playlist.
+     * @param name the name of the playlist we wanted to check
+     * @return the playlist with name name.
+     */
     @Override
     public Playlist contain(String name) {
         for (Playlist p : this.playlists) {
