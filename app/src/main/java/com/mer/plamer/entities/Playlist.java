@@ -22,7 +22,20 @@ public class Playlist {
         this.name = name;
     }
 
-    public void addTrack(Track item){
-        this.tracks.add(item);
+    public boolean addTrack(Track track) {
+        if (this.tracks.contains(track)) {
+            return false;
+        } else {
+            this.tracks.add(track);
+            return true;
+        }
+    }
+    public boolean delTrack(Track track) {
+        if (this.tracks.contains(track)) {
+            this.tracks.remove(track);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
