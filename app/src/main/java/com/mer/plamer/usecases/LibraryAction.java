@@ -1,11 +1,8 @@
 package com.mer.plamer.usecases;
 
-public abstract class LibraryAction {
-
-    abstract void delete();
-
-    abstract void search();
-
-    abstract void add();
+public interface LibraryAction<T> {
+    boolean delete(String id);
+    T search(String id);
+    void add(T name);
 
 }
