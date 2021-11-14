@@ -7,12 +7,12 @@ import java.util.ArrayList;
  */
 public class PlaylistLibrary implements Storable<Playlist> {
 
-    private ArrayList<Playlist> playlists;
+    private final ArrayList<Playlist> playlists;
 
     /**
      * Constructor for PlaylistLibrary.
      */
-    public PlaylistLibrary() {}
+    public PlaylistLibrary() {playlists = new ArrayList<>();}
 
     /**
      * Add playlist to this playlist library.
@@ -25,18 +25,18 @@ public class PlaylistLibrary implements Storable<Playlist> {
 
     /**
      * Remove playlist from this playlist library if the playlist is in this playlist library
-     * @param name the name of the playlist wanted to remove from
+     * @param id name of the playlist wanted to remove from
      * @return whether the playlist has been successfully removed.
      */
     @Override
-    public boolean remove(String name) {
-        for (Playlist p : this.playlists) {
-            if (p.getName().equals(name)) {
-                this.playlists.remove(p);
-                return true;
-            }
+    public boolean remove(String id) {
+        if (this.contain(id) != null) {
+            this.playlists.remove(this.contain(id));
+            return true;
+        } else {
+            return false;
         }
-        return false;
+
     }
 
     /**
@@ -49,14 +49,14 @@ public class PlaylistLibrary implements Storable<Playlist> {
 
     /**
      * Check if the library contains certain playlist.
-     * @param name the name of the playlist we wanted to check
+     * @param id the name of the playlist we wanted to check
      * @return the playlist with name name.
      */
     @Override
-    public Playlist contain(String name) {
-        for (Playlist p : this.playlists) {
-            if (p.getName().equals(name)) {
-                return p;
+    public Playlist contain(String id) {
+        for (int i = 0; i < playlists.size(); i++) {
+            if (playlists.get(i).getId().equals(id)) {
+                return playlists.get(i);
             }
         }
         return null;

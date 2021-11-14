@@ -14,6 +14,8 @@ public class Playlist {
     private String name;
     private String status;
     private final ArrayList<Track> tracks;
+    private final String playlist_id;
+    private static int id = 0;
 
     /**
      * Constructor for Playlist. The initial status for the playlist is REPEAT.
@@ -23,6 +25,8 @@ public class Playlist {
         this.name = name;
         this.tracks = new ArrayList<>();
         this.status = "REPEAT";
+        this.playlist_id = String.valueOf(id);
+        id ++;
     }
 
     /**
@@ -38,6 +42,11 @@ public class Playlist {
     public String getName() {
         return this.name;
     }
+
+    /**
+     * @return the id of the playlist.
+     */
+    public String getId() { return this.playlist_id;}
 
     /**
      * @return the status of the playlist.
