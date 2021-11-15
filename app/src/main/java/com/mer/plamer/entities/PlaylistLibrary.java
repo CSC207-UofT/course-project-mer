@@ -71,4 +71,12 @@ public class PlaylistLibrary implements Storable<Playlist> {
         return null;
     }
 
+    /**
+     * Get the playlists in the library
+     * @return ArrayList<Playlist>
+     */
+    public ArrayList<Playlist> getPlaylists() {
+        return this.playlists;
+    }
 }
+

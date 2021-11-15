@@ -1,8 +1,10 @@
 package com.mer.plamer.usecases;
 
+import java.util.ArrayList;
+
 public interface LibraryAction<T> {
     boolean delete(String id);
-    T search(String id);
+    ArrayList<T> search(String keyword);
     void add(String name);
 
 }

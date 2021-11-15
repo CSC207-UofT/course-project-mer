@@ -112,4 +112,13 @@ public class Playlist {
     public void sort(Comparator<Track> comparator) {
         this.tracks.sort(comparator);
     }
+
+    /**
+     * Get the tracks in this playlist
+     * @return ArrayList<Track>
+     */
+    public ArrayList<Track> getTracks() {
+        return this.tracks;
+    }
 }
+
