@@ -33,7 +33,10 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_login"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.353"
+        android:inputType="textPassword"
+        android:lines="1"
+        android:maxLength="20"/>
 
     <EditText
         android:id="@+id/login_username"
@@ -50,7 +53,10 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_login"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.218"
+        android:lines="1"
+        android:maxLength="20"
+        android:inputType="text"/>
 
     <ImageButton
         android:id="@+id/login_go"
