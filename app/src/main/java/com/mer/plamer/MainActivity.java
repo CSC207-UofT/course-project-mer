@@ -13,7 +13,9 @@ import com.mer.plamer.controller.*;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
-
+/**
+ * Startup activity and view of Plamer
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     Button mPreviousButtonSmall;
     Button mPlayPauseButtonSmall;
 
+    /**
+     * Constructs view and defines actions of the main view.
+     * @param savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

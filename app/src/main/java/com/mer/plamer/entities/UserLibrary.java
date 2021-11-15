@@ -9,25 +9,43 @@ public class UserLibrary implements Storable<User> {
         this.usersList = new ArrayList<User>();
     }
 
-    // Add a new user to the user library.
+    /**
+     * Add a new user to the user library.
+     * @param new_user the new user
+     */
     @Override
     public void add(User new_user) {
         this.usersList.add(new_user);
     }
 
-    // Permanently delete a specific user by their username
+    /**
+     * Permanently delete a specific user by their username
+     * @param username the name of the user
+     */
     @Override
     public boolean remove(String username) {
-        return true;
+        if (this.contain(username) != null) {
+            this.usersList.remove(this.contain(username));
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    // Check if the list is empty
+    /**
+     * Check if the list is empty
+     * @return true if the list is empty and false if not
+     */
     @Override
     public boolean isEmpty() {
         return this.usersList.isEmpty();
     }
 
-    // Return a specific user by their username, return null if no matching user name is found.
+    /**
+     * Check if user is part of this UserLibrary
+     * @param id the id of the user
+     * @return username of user
+     */
     @Override
     public User contain(String id) {
         for (User user : this.usersList) {
@@ -38,7 +56,12 @@ public class UserLibrary implements Storable<User> {
         return null;
     }
 
-    // Check the log in username and password, return true when they match.
+    /**
+     * Check the log in username and password
+     * @param id the id of the user
+     * @param pass the password of ths user
+     * @return true if username matches password
+     */
     public boolean check_login(String id, String pass) {
         User target = this.contain(id);
         if (target != null) {
