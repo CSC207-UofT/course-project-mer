@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainpage_background">
+    android:background="@drawable/main_page_background">
 
     <ImageButton
         android:id="@+id/main_track_list"
@@ -13,7 +13,7 @@
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/main_tracks"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_bottom_bar"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +26,13 @@
         android:layout_height="29dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/main_playlist"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_bottom_bar"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+        app:layout_constraintVertical_bias="0.338"
+        app:srcCompat="@drawable/main_playlist" />
 
     <ImageButton
         android:id="@+id/main_users"
@@ -40,13 +40,13 @@
         android:layout_height="31dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/main_users"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_bottom_bar"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.535"
+        app:srcCompat="@drawable/main_users" />
 
     <ImageButton
         android:id="@+id/main_settings"
@@ -54,16 +54,16 @@
         android:layout_height="40dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/main_setting"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_bottom_bar"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.724"
+        app:srcCompat="@drawable/main_setting" />
 
     <RelativeLayout
-        android:id="@+id/playlist_bottom_bar"
+        android:id="@+id/main_bottom_bar"
         android:layout_width="398dp"
         android:layout_height="70dp"
         android:background="#00FFFFFF"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.995">
 
         <ImageButton
-            android:id="@+id/playlist_playing"
+            android:id="@+id/main_playing"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -93,7 +93,7 @@
             app:srcCompat="@drawable/playing" />
 
         <ImageButton
-            android:id="@+id/playlist_repeat_list"
+            android:id="@+id/main_repeat_list"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -110,7 +110,7 @@
             app:srcCompat="@drawable/repeat_list" />
 
         <ImageButton
-            android:id="@+id/playlist_next"
+            android:id="@+id/main_next"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -127,7 +127,7 @@
             app:srcCompat="@drawable/next" />
 
         <ImageButton
-            android:id="@+id/playlist_prev"
+            android:id="@+id/main_prev"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -144,7 +144,7 @@
             app:srcCompat="@drawable/prev" />
 
         <ImageButton
-            android:id="@+id/playlist_play"
+            android:id="@+id/main_play"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.homepage_layout);
 
+
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignupActivity.class);
                 startActivity(intent);
-
             }
         });
 

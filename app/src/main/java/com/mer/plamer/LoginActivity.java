@@ -2,10 +2,12 @@ package com.mer.plamer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +27,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+
+            }
+        });
+
+        ImageButton login_go = (ImageButton) findViewById(R.id.login_go);
+        login_go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "Incorrect username or password.",
+                        Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(LoginActivity.this, MainPage.class);
+                startActivity(intent);
 
             }
         });

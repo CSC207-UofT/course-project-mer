@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -30,5 +31,19 @@ public class SignupActivity extends AppCompatActivity {
 
             }
         });
+
+        ImageButton signup_go = (ImageButton) findViewById(R.id.signup_go);
+        signup_go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignupActivity.this, "This username has been taken.",
+                        Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 }
