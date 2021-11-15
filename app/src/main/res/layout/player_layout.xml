@@ -82,7 +82,7 @@
             android:fontFamily="@font/aldrich"
             android:textAlignment="center"
             android:textColor="@color/pink"
-            android:textSize="20sp"
+            android:textSize="24sp"
             tools:text="Track Name" />
 
         <SeekBar
@@ -213,22 +213,22 @@
         android:scaleType="centerInside"
         app:srcCompat="@drawable/prev" />
 
-    <ImageButton
-        android:id="@+id/playlist_play"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="169dp"
-        android:layout_marginBottom="10dp"
-        android:adjustViewBounds="false"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/play" />
+        <ImageButton
+            android:id="@+id/playlist_play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="169dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="169dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="false"
+            android:background="#00FFFFFF"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/play" />
 
     </RelativeLayout>
 
