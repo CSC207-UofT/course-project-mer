@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.mer.plamer.controller.UserControl;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,11 +37,17 @@ public class LoginActivity extends AppCompatActivity {
                 EditText login_password = (EditText)findViewById(R.id.login_password);
                 String l_password = login_password.getText().toString();
 
-                Toast.makeText(LoginActivity.this, "Incorrect username or password.",
-                        Toast.LENGTH_LONG).show();
+                UserControl userControl = new UserControl();
 
-                Intent intent = new Intent(LoginActivity.this, MainPage.class);
-                startActivity(intent);
+                if (userControl.login_check(l_name, l_password)) {
+                    Intent intent = new Intent(LoginActivity.this, MainPage.class);
+                    startActivity(intent);
+                }
+
+                else {
+                    Toast.makeText(LoginActivity.this, "Incorrect username or password.",
+                            Toast.LENGTH_LONG).show();
+                }
 
             }
         });

@@ -21,6 +21,14 @@ public class UserControl {
         return false;
     }
 
+    public boolean login_check(String username, String password) {
+        if (userLibraryAction.User_login(username, password) != null) {
+            this.userAction.SetUser(userLibraryAction.User_login(username, password));
+            return true;
+        }
+        return false;
+    }
+
     public void getAccountInfo() {
 
     }
