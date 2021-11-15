@@ -7,9 +7,10 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
-import com.mer.plamer.controller.*;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
@@ -18,12 +19,10 @@ import com.mer.plamer.usecases.TrackLibraryAction;
  */
 public class MainActivity extends AppCompatActivity {
 
-
-    Button mOpenPlayerButton;
-    Button mNextButtonSmall;
-    Button mPreviousButtonSmall;
-    Button mPlayPauseButtonSmall;
-
+    /**
+     * Constructs view and defines actions of the main view.
+     * @param savedInstanceState the previously saved state of this activity
+     */
     /**
      * Constructs view and defines actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
@@ -31,31 +30,30 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TrackLibraryAction.scanLocal();
-        PlayAction.prepare();
 
-        setContentView(R.layout.activity_main);
-        initializeViews();
-        defineActions();
+        setContentView(R.layout.homepage_layout);
 
-    }
 
-    private void initializeViews(){
-        mOpenPlayerButton = findViewById(R.id.openPlayerButton);
-        mNextButtonSmall = findViewById(R.id.nextButtonSmall);
-        mPreviousButtonSmall = findViewById(R.id.previousButtonSmall);
-        mPlayPauseButtonSmall = findViewById(R.id.playPauseButtonSmall);
-    }
+        ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
+        log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
 
-    private void defineActions(){
-        mOpenPlayerButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
-            startActivity(intent);
+            }
+
         });
 
-        mPlayPauseButtonSmall.setOnClickListener(v -> {
-            PlayAction.playPause();
+        ImageButton sign_up = (ImageButton) findViewById(R.id.home_signup);
+        sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
         });
+
     }
 
 
