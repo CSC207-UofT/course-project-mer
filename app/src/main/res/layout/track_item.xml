@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/track_item_background"
+        android:layout_width="393dp"
+        android:layout_height="77dp"
+        android:baselineAlignBottom="false"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        tools:background="@drawable/list_item" />
+
+    <TextView
+        android:id="@+id/track_item_name"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/aldrich"
+        android:textAlignment="viewStart"
+        android:textColor="@color/pink"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/track_item_background"
+        app:layout_constraintEnd_toEndOf="@+id/track_item_background"
+
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="@+id/track_item_background"
+        app:layout_constraintTop_toTopOf="@+id/track_item_background"
+        app:layout_constraintVertical_bias="0.404"
+        tools:text="track name" />
+
+    <TextView
+        android:id="@+id/track_item_artist"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/aldrich"
+        android:textAlignment="viewStart"
+        android:textColor="@color/pink"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/track_item_background"
+        app:layout_constraintEnd_toEndOf="@+id/track_item_background"
+
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="@+id/track_item_background"
+        app:layout_constraintTop_toTopOf="@+id/track_item_background"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="artist" />
+
+    <TextView
+        android:id="@+id/track_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:textAlignment="viewStart"
+        android:textColor="@color/pink"
+        app:layout_constraintBottom_toBottomOf="@+id/track_item_background"
+        app:layout_constraintEnd_toEndOf="@+id/track_item_background"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="@+id/track_item_background"
+        app:layout_constraintTop_toTopOf="@+id/track_item_background"
+        app:layout_constraintVertical_bias="0.859"
+        tools:text="00:00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
