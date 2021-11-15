@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import com.mer.plamer.controller.UserControl;
 
 public class SignupActivity extends AppCompatActivity {
@@ -32,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         signup_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 EditText signup_username = (EditText) findViewById(R.id.signup_username);
                 String s_name = signup_username.getText().toString();
 
@@ -40,7 +40,8 @@ public class SignupActivity extends AppCompatActivity {
 
                 UserControl userControl = new UserControl();
                 if (userControl.registration(s_name, s_password)) {
-                    finish();
+                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                    startActivity(intent);;
                 }
                 else {
                     Toast.makeText(SignupActivity.this, "This username has been taken.",
