@@ -52,12 +52,12 @@ public class PlayerActivity extends AppCompatActivity {
         mBackButton = findViewById(R.id.player_back_last_page);
         mSeekBar = findViewById(R.id.seekBar);
         mLoopButton = findViewById(R.id.playlist_repeat_list);
-        mSeekBar.setMax(PlayAction.getTrackLength()/1000);
         mCurrentTrackName = findViewById(R.id.track_name);
         mCurrentTrackArtist = findViewById(R.id.artist_name);
         mCurrentTrackPosition = findViewById(R.id.current_time);
         mCurrentTrackDuration = findViewById(R.id.total_length);
         mSeekBarHandler = new Handler();
+        mSeekBar.setMax(PlayAction.getTrackLength()/1000);
         mCurrentTrackName.setText(PlayAction.getTitle());
         mCurrentTrackArtist.setText(PlayAction.getArtist());
         int duration = PlayAction.getTrackLength();
