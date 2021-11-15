@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.io.File;
 import android.media.MediaMetadataRetriever;
 
+/**
+ * Track class stores information of a music track
+ */
 public class Track {
     private final String artist;
     private final String title;
