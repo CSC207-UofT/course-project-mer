@@ -67,8 +67,8 @@ Our group currently is going through a difficult learning process trying to both
 
 We have implemented and have some other design patterns planned for phase 2 as we continue to round out our features.  We are also keeping the consistency of our classes with the by-layer packaging strategy.
 
-Works done by each member and plans:
-
+# Works done by each member and plans:
+<table>
   <tr>
    <td>Name
 
@@ -154,3 +154,4 @@ Works done by each member and plans:
    <td>
    </td>
   </tr>
+ </table>
