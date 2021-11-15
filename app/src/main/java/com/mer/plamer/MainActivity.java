@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 
-import com.mer.plamer.controller.*;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
@@ -19,7 +19,10 @@ import com.mer.plamer.usecases.TrackLibraryAction;
  */
 public class MainActivity extends AppCompatActivity {
 
-
+    /**
+     * Constructs view and defines actions of the main view.
+     * @param savedInstanceState the previously saved state of this activity
+     */
     /**
      * Constructs view and defines actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
@@ -54,4 +57,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    }
+}

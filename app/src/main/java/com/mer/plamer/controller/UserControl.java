@@ -3,10 +3,11 @@ package com.mer.plamer.controller;
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
 
+
 public class UserControl {
 
     UserAction userAction;
-    private static UserLibraryAction userLibraryAction;
+    public static UserLibraryAction userLibraryAction = new UserLibraryAction();
 
     public UserControl() {
         this.userAction = new UserAction();
@@ -30,4 +31,6 @@ public class UserControl {
 
     public void modifyUserInformation() {
     }
+
 }
+

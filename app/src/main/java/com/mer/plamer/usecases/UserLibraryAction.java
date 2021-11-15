@@ -35,7 +35,7 @@ public class UserLibraryAction implements LibraryAction<User> {
      */
     @Override
     public void add(User user) {
-       this.add(user);
+       userLibrary.add(user);
     }
 
     public User User_register(String userid, String password) {
