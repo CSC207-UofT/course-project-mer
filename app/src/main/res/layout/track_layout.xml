@@ -22,7 +22,7 @@
         android:id="@+id/playlist_top_bar"
         android:layout_width="398dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_list"
+        app:layout_constraintBottom_toTopOf="@+id/track_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
