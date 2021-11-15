@@ -1,4 +1,4 @@
-# Design Documents
+# Design Document
 
 ## Major Design Decisions:
 
