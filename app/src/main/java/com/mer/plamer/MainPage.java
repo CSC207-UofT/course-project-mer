@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import com.mer.plamer.controller.PlayerActivity;
+
 public class MainPage extends AppCompatActivity {
 
     @Override
@@ -38,6 +40,15 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainPage.this, PlaylistActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton playing = (ImageButton) findViewById(R.id.main_playing);
+        playing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainPage.this, PlayerActivity.class);
                 startActivity(intent);
             }
         });
