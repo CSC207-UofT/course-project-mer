@@ -60,7 +60,7 @@ public class UserLibrary implements Storable<User> {
      * Check the log in username and password
      * @param id the id of the user
      * @param pass the password of ths user
-     * @return true if username matches password
+     * @return true if username matches password and false otherwise
      */
     public boolean check_login(String id, String pass) {
         User target = this.contain(id);
