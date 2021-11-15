@@ -12,4 +12,5 @@
     <string name="search_your_playlist">Search your playlist...</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="logo">LOGO</string>
 </resources>

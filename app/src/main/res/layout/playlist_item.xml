@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
-        tools:background="@drawable/list_item" />
+        app:srcCompat="@drawable/list_item"
+        android:background="#00FFFFFF"/>
 
     <TextView
         android:id="@+id/playlist_item_name"
