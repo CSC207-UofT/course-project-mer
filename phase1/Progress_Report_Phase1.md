@@ -7,7 +7,6 @@
 * Distributed work throughout the group
 * Plan on adding activities for each feature.
 
- \
 ## Nov 9th
 
 
