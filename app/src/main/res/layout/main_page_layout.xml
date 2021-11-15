@@ -1,87 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
-
-    <ListView
-        android:id="@+id/playlist_list"
-        android:layout_width="386dp"
-        android:layout_height="492dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443"
-        tools:listitem="@layout/playlist_item" />
-
-    <RelativeLayout
-        android:id="@+id/playlist_top_bar"
-        android:layout_width="398dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_list"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <ImageButton
-            android:id="@+id/playlist_back_last_page"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="368dp"
-            android:layout_marginBottom="5dp"
-            android:adjustViewBounds="false"
-            android:background="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/back" />
-
-        <ImageButton
-            android:id="@+id/playlist_add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="368dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="5dp"
-            android:adjustViewBounds="false"
-            android:background="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/add" />
-
-        <EditText
-            android:id="@+id/playlist_search_bar"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="98dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/aldrich"
-            android:hint="@string/search_your_playlist"
-            android:textAlignment="viewStart"
-            android:textColor="@color/pink"
-            android:textColorHint="@color/half_pink"
-            android:textSize="20dp" />
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/playlist_bottom_bar"
@@ -89,10 +11,10 @@
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlist_list"
-        app:layout_constraintVertical_bias="0.529">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.995">
 
         <ImageButton
             android:id="@+id/playlist_playing"
@@ -179,6 +101,8 @@
             android:scaleType="centerInside"
             app:srcCompat="@drawable/play" />
 
+
     </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
