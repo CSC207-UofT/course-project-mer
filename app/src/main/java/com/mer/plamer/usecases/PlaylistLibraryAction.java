@@ -5,6 +5,8 @@ import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 
+import java.util.ArrayList;
+
 public class PlaylistLibraryAction implements LibraryAction<Playlist> {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();
@@ -20,15 +22,26 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist> {
     }
 
     /**
-     * Search the required playlist.
-     *
-     * @param playlist_id the id of the required playlist.
-     * @return the required playlist.
+     * Search the required playlists.
+     * @param keyword the provided keyword by the user
+     * @return the required playlists.
      */
-    public Playlist search(String playlist_id) {
-        return playlistLibrary.contain(playlist_id);
+    public ArrayList<Playlist> search(String keyword) {
+        ArrayList<Playlist> searchPlaylist = new ArrayList<>();
+        for (Playlist p : playlistLibrary.getPlaylists()){
+            if (p.getName().contains(keyword)){
+                searchPlaylist.add(p);
+            }
+            for (Track t : p.getTracks()){
+                if ((t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
+                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p))){
+                    searchPlaylist.add(p);
+                } else
+                    break;
+            }
+        }
+        return searchPlaylist;
     }
-
     /**
      * add a playlist to the playlist library.
      *

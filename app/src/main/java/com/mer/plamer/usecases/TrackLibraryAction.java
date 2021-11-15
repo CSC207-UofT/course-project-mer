@@ -25,13 +25,19 @@ public class TrackLibraryAction implements LibraryAction<Track>{
 
     /**
      * Search the required track.
-     * @param track_id the id of the required track.
-     * @return the required track.
+     * @param keyword user provided keyword.
+     * @return a arrayelist the required tracks.
      */
-    public Track search(String track_id) {
-        return trackLibrary.contain(track_id);
+    public ArrayList<Track> search(String keyword) {
+        ArrayList<Track> searchTrack = new ArrayList<>();
+        for (Track t : trackLibrary.getTrackList()){
+            if (t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
+                    || t.getGenre().contains(keyword)){
+                searchTrack.add(t);
+            }
+        }
+        return searchTrack;
     }
-
 
     /**
      * add a track to the track library.

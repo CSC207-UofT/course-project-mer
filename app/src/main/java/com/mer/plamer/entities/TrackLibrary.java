@@ -76,4 +76,10 @@ public class TrackLibrary implements Storable<Track> {
         }
         return null;
     }
+
+    /**
+     * Get the list of track in the library
+     * @return ArrayList<Track>
+     */
+    public ArrayList<Track> getTrackList() { return this.tracksList; }
 }

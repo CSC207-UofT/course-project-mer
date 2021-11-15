@@ -6,7 +6,7 @@ public class UserLibrary implements Storable<User> {
     private final ArrayList<User> usersList;
 
     public UserLibrary() {
-        this.usersList = new ArrayList<User>();
+        this.usersList = new ArrayList<>();
     }
 
     /**
@@ -69,5 +69,9 @@ public class UserLibrary implements Storable<User> {
         }
         return false;
     }
-
+    /**
+     * Get the list of users in the library
+     * @return ArrayList<User>
+     */
+    public ArrayList<User> getusersList() { return this.usersList; }
 }
