@@ -23,6 +23,14 @@ public class TrackLibrary implements Storable<Track> {
     }
 
     /**
+     * create a new track.
+     * @param name the name of the track.
+     * @return the created track.
+     */
+    public Track create(String name) {
+        return new Track(name);
+    }
+    /**
      * Get the track at index Int.
      * @param Int the index of the track we want to get.
      * @return the track at the index.

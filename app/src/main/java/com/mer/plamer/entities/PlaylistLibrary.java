@@ -24,6 +24,15 @@ public class PlaylistLibrary implements Storable<Playlist> {
     }
 
     /**
+     * Create a new playlist of the name name.
+     * @param name the name of the playlist.
+     * @return the created playlist.
+     */
+    public Playlist create(String name) {
+        return new Playlist(name);
+    }
+
+    /**
      * Remove playlist from this playlist library if the playlist is in this playlist library
      * @param id name of the playlist wanted to remove from
      * @return whether the playlist has been successfully removed.
