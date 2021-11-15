@@ -40,8 +40,10 @@ public class SignupActivity extends AppCompatActivity {
 
                 UserControl userControl = new UserControl();
                 if (userControl.registration(s_name, s_password)) {
-                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                    startActivity(intent);;
+                    Toast.makeText(SignupActivity.this, "Successfully registered.",
+                            Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(SignupActivity.this,
+                            LoginActivity.class);startActivity(intent);;
                 }
                 else {
                     Toast.makeText(SignupActivity.this, "This username has been taken.",
