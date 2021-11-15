@@ -43,49 +43,32 @@ public class PlaylistAction {
      * Sort the playlist by title.
      */
     public void sortByTitle() {
-        this.playlist.sort(new Comparator<Track>() {
-            @Override
-            public int compare(Track o1, Track o2) {
-                return o1.getTitle().compareTo(o2.getTitle());
-            }
-        });
+        this.playlist.sort(Comparator.comparing(Track::getTitle));
     }
 
     /**
      * Sort the playlist by artist.
      */
     public void sortByArtist() {
-        this.playlist.sort(new Comparator<Track>() {
-            @Override
-            public int compare(Track o1, Track o2) {
-                return o1.getArtist().compareTo(o2.getArtist());
-            }
-        });
+        this.playlist.sort(Comparator.comparing(Track::getArtist));
     }
 
     /**
      * Sort the playlist by length.
      */
     public void sortByLength() {
-        this.playlist.sort(new Comparator<Track>() {
-            @Override
-            public int compare(Track o1, Track o2) {
-                return o1.getLength().compareTo(o2.getLength());
-            }
-        });
+        this.playlist.sort(Comparator.comparing(Track::getLength));
     }
 
+    // TODO: Reimplement sortByRandom to solve code warning
     /**
      * Sort the playlist randomly.
      */
     public void sortByRandom() {
-        this.playlist.sort(new Comparator<Track>() {
-            @Override
-            public int compare(Track o1, Track o2) {
-                Random rnd = ThreadLocalRandom.current();
-                if (rnd.nextInt(2) == 0) return -1;
-                return 1;
-            }
+        this.playlist.sort((o1, o2) -> {
+            Random rnd = ThreadLocalRandom.current();
+            if (rnd.nextInt(2) == 0) return -1;
+            return 1;
         });
     }
 

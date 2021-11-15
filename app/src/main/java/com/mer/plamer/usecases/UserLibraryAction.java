@@ -1,9 +1,7 @@
 package com.mer.plamer.usecases;
 
-import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
-import com.mer.plamer.usecases.UserAction;
 
 import java.util.ArrayList;
 
@@ -51,7 +49,7 @@ public class UserLibraryAction implements LibraryAction<User> {
        userLibrary.add(user);
     }
 
-    public User User_register(String userid, String password) {
+    public User userRegister(String userid, String password) {
         if (userLibrary.contain(userid) != null) {
             return null;
         }
