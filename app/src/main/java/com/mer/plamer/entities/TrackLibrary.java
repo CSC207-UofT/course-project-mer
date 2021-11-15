@@ -22,6 +22,11 @@ public class TrackLibrary implements Storable<Track> {
         tracksList.add(track);
     }
 
+    /**
+     * create a new track.
+     * @param name the name of the track.
+     * @return the created track.
+     */
     public Track create(String name) {
         return new Track(name);
     }
