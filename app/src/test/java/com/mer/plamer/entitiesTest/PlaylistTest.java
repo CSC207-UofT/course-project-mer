@@ -11,6 +11,15 @@ import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.Track;
 
 public class PlaylistTest {
+
+    @Test(timeout = 50)
+    public void  testGetID(){
+        Playlist pl = new Playlist("test");
+        assertEquals("0", pl.getId());
+        Playlist pl1 = new Playlist("test1");
+        assertEquals("1", pl1.getId());
+    }
+
     @Test(timeout = 50)
     public void testGetLength(){
         Playlist pl = new Playlist("test");
@@ -27,12 +36,6 @@ public class PlaylistTest {
     public void testGetName(){
         Playlist pl = new Playlist("test");
         assertEquals("test", pl.getName());
-    }
-
-    @Test(timeout = 50)
-    public void  testGetID(){
-        Playlist pl = new Playlist("test");
-        assertEquals("0", pl.getId());
     }
 
     @Test(timeout = 50)
