@@ -24,7 +24,7 @@ public class UserTest {
 
     @Test(timeout = 50)
     public void testSetUsername() {
-        u.setPassword("testing123");
+        u.setUsername("testUser123");
         assertEquals("testUser123", u.getUsername());
     }
 
