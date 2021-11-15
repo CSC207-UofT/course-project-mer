@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.17" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/signup_password"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:background="@drawable/rec_background"
@@ -34,10 +34,12 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_signup"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.353"
+        android:lines="1"
+        android:inputType="textPassword"/>
 
     <EditText
-        android:id="@+id/login_username"
+        android:id="@+id/signup_username"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:background="@drawable/rec_background"
@@ -57,7 +59,7 @@
         android:id="@+id/signup_go"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/GO"
+        android:layout_marginBottom="160dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +67,22 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.345"
+        app:srcCompat="@drawable/go" />
+
+    <ImageButton
+        android:id="@+id/signup_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963"
+        app:srcCompat="@drawable/back" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
