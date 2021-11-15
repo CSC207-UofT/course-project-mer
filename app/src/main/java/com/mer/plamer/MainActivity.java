@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.homepage_layout);
-
+        TrackLibraryAction.scanLocal();
+        PlayAction.prepare();
 
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
         log_in.setOnClickListener(new View.OnClickListener() {

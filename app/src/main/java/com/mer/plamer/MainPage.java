@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import com.mer.plamer.controller.PlayerActivity;
+import com.mer.plamer.usecases.PlayAction;
 
 public class MainPage extends AppCompatActivity {
 
@@ -50,6 +51,22 @@ public class MainPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainPage.this, PlayerActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        ImageButton playButton = (ImageButton) findViewById(R.id.main_play);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayAction.playPause();
+            }
+        });
+
+        ImageButton repeatButton = (ImageButton) findViewById(R.id.main_repeat_list);
+        repeatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayAction.loop();
             }
         });
 

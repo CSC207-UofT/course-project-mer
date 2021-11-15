@@ -16,9 +16,11 @@ public class PlayAction {
      */
     public static void prepare() {
         try{
-            mediaPlayer.setDataSource(TrackLibraryAction.trackLibrary.get(0).getPath());
-            currentTrackID = TrackLibraryAction.trackLibrary.get(0).getId();
-            mediaPlayer.prepare();
+            if(!TrackLibraryAction.trackLibrary.isEmpty()){
+                mediaPlayer.setDataSource(TrackLibraryAction.trackLibrary.get(0).getPath());
+                currentTrackID = TrackLibraryAction.trackLibrary.get(0).getId();
+                mediaPlayer.prepare();
+            }
         }
         catch(Exception ignored){
             // To be implemented later

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.mer.plamer.controller.PlayerActivity;
+import com.mer.plamer.usecases.PlayAction;
 
 public class PlaylistActivity extends AppCompatActivity {
 
@@ -31,6 +32,23 @@ public class PlaylistActivity extends AppCompatActivity {
                 Intent intent = new Intent(PlaylistActivity.this,
                         PlayerActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        ImageButton playButton = (ImageButton) findViewById(R.id.playlist_play);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayAction.playPause();
+            }
+        });
+
+        ImageButton repeatButton = (ImageButton) findViewById(R.id.playlist_repeat_list);
+        repeatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayAction.loop();
             }
         });
     }
