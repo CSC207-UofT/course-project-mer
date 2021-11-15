@@ -44,6 +44,15 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        ImageButton universe_users = (ImageButton) findViewById(R.id.main_users);
+        universe_users.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainPage.this, UniverseUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
         ImageButton playing = (ImageButton) findViewById(R.id.main_playing);
         playing.setOnClickListener(new View.OnClickListener() {
             @Override
