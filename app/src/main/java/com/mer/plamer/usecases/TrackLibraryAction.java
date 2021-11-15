@@ -35,10 +35,10 @@ public class TrackLibraryAction implements LibraryAction<Track>{
 
     /**
      * add a track to the track library.
-     * @param track the track we want to add.
+     * @param name the track we want to add.
      */
-    public void add(Track track) {
-        trackLibrary.add(track);
+    public void add(String name) {
+        trackLibrary.add(trackLibrary.create(name));
     }
 
     /**

@@ -5,12 +5,13 @@ import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 
-public class PlaylistLibraryAction implements LibraryAction<Playlist>{
+public class PlaylistLibraryAction implements LibraryAction<Playlist> {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();
 
     /**
      * Delete the playlist in the playlist library.
+     *
      * @param playlist_id the id of the playlist.
      * @return Whether the playlist is successfully removed or not.
      */
@@ -20,6 +21,7 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist>{
 
     /**
      * Search the required playlist.
+     *
      * @param playlist_id the id of the required playlist.
      * @return the required playlist.
      */
@@ -29,11 +31,11 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist>{
 
     /**
      * add a playlist to the playlist library.
-     * @param playlist the playlist we want to add.
+     *
+     * @param name the playlist we want to add.
      */
-    public void add(Playlist playlist) {
-        playlistLibrary.add(playlist);
+    public void add(String name) {
+        playlistLibrary.add(playlistLibrary.create(name));
+
     }
-
-
 }
