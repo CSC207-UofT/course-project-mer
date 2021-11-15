@@ -81,11 +81,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85" />
 
-    <Button
+    <ImageButton
         android:id="@+id/previousButtonFull"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prev"
+        android:background="@drawable/prev"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playPauseButtonFull"
         app:layout_constraintStart_toStartOf="parent"
