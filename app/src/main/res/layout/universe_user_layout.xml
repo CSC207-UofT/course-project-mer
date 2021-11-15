@@ -43,7 +43,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/back"
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/universe_user_search_bar"
@@ -57,12 +58,15 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="98dp"
             android:layout_marginBottom="5dp"
+            android:autofillHints="search user"
             android:fontFamily="@font/aldrich"
-            android:hint="Search user..."
+            android:hint="@string/search_user"
+            android:inputType="text"
             android:textAlignment="viewStart"
             android:textColor="@color/pink"
             android:textColorHint="@color/half_pink"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="TextContrastCheck" />
 
     </RelativeLayout>
 
@@ -92,7 +96,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/playing" />
+            app:srcCompat="@drawable/playing"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/universe_user_repeat_list"
@@ -109,7 +114,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/repeat_list" />
+            app:srcCompat="@drawable/repeat_list"
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/universe_user_next"
@@ -126,7 +132,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/next" />
+            app:srcCompat="@drawable/next"
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/universe_user_prev"
@@ -143,7 +150,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/prev" />
+            app:srcCompat="@drawable/prev"
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/universe_user_play"
@@ -160,7 +168,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/play" />
+            app:srcCompat="@drawable/play"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 

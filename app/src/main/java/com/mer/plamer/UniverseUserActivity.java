@@ -1,10 +1,9 @@
 package com.mer.plamer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UniverseUserActivity extends AppCompatActivity {
 
@@ -13,12 +12,7 @@ public class UniverseUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universe_user_layout);
 
-        ImageButton back = (ImageButton) findViewById(R.id.universe_user_back_last_page);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        ImageButton back = findViewById(R.id.universe_user_back_last_page);
+        back.setOnClickListener(v -> finish());
     }
 }

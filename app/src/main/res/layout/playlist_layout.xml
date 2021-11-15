@@ -43,7 +43,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/back"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
             android:id="@+id/playlist_add"
@@ -60,7 +61,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/add" />
+            app:srcCompat="@drawable/add"
+            tools:ignore="ContentDescription"/>
 
         <EditText
             android:id="@+id/playlist_search_bar"
@@ -79,7 +81,9 @@
             android:textAlignment="viewStart"
             android:textColor="@color/pink"
             android:textColorHint="@color/half_pink"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:autofillHints="search item"
+            android:inputType="text"/>
 
     </RelativeLayout>
 
@@ -109,7 +113,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/playing" />
+            app:srcCompat="@drawable/playing"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
             android:id="@+id/playlist_repeat_list"
@@ -126,7 +131,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/repeat_list" />
+            app:srcCompat="@drawable/repeat_list"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
             android:id="@+id/playlist_next"
@@ -143,7 +149,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/next" />
+            app:srcCompat="@drawable/next"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
             android:id="@+id/playlist_prev"
@@ -160,7 +167,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/prev" />
+            app:srcCompat="@drawable/prev"
+            tools:ignore="ContentDescription"/>
 
         <ImageButton
             android:id="@+id/playlist_play"
@@ -177,7 +185,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/play" />
+            app:srcCompat="@drawable/play"
+            tools:ignore="ContentDescription"/>
 
     </RelativeLayout>
 

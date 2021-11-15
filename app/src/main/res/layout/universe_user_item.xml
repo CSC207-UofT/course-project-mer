@@ -10,6 +10,7 @@
         android:id="@+id/universe_user_item_background"
         android:layout_width="393dp"
         android:layout_height="77dp"
+        android:background="#00FFFFFF"
         android:baselineAlignBottom="false"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/list_item"
-        android:background="#00FFFFFF"/>
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/universe_user_username"
@@ -35,6 +36,7 @@
         app:layout_constraintStart_toStartOf="@+id/universe_user_item_background"
         app:layout_constraintTop_toTopOf="@+id/universe_user_item_background"
         app:layout_constraintVertical_bias="0.574"
+        tools:ignore="TextContrastCheck"
         tools:text="Username" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
