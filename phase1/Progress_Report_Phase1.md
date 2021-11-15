@@ -128,10 +128,10 @@ We have implemented and have some other design patterns planned for phase 2 as w
    <td>Michael
 
    </td>
-   <td>Worked on Improving Player related activities and documentation.
+   <td>Worked on improving Player related activities and documentation, including music import from local Music directory and UI prototyping.
 
    </td>
-   <td>
+   <td>Continue to implement player activities and usecases, such as different repeat modes and optimize linking activities.
    </td>
   </tr>
   <tr>
