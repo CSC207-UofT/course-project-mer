@@ -3,15 +3,12 @@ package com.mer.plamer.controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.mer.plamer.MainActivity;
 import com.mer.plamer.R;
 import com.mer.plamer.usecases.PlayAction;
 
@@ -72,17 +69,11 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> {
-            PlayAction.playPause();
-        });
+        mPlayPauseButton.setOnClickListener(v -> PlayAction.playPause());
 
-        mBackButton.setOnClickListener(v -> {
-            finish();
-        });
+        mBackButton.setOnClickListener(v -> finish());
 
-        mLoopButton.setOnClickListener(v -> {
-            PlayAction.loop();
-        });
+        mLoopButton.setOnClickListener(v -> PlayAction.loop());
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

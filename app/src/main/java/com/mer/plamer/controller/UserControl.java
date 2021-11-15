@@ -14,8 +14,8 @@ public class UserControl {
     }
 
     public boolean registration(String username, String password) {
-        if (userLibraryAction.User_register(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.User_register(username, password));
+        if (userLibraryAction.userRegister(username, password) != null) {
+            this.userAction.SetUser(userLibraryAction.userRegister(username, password));
             return true;
         }
         return false;
@@ -29,14 +29,17 @@ public class UserControl {
         return false;
     }
 
+    // TODO: Implement getAccountInfo
     public void getAccountInfo() {
 
     }
 
+    // TODO: Implement userDeletion
     public void userDeletion() {
 
     }
 
+    // TODO: modifyUserInformation
     public void modifyUserInformation() {
     }
 
