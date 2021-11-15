@@ -91,4 +91,11 @@ public class PlayAction {
     public static void end() {
         mediaPlayer.reset();
     }
+
+    /**
+     * Change loop mode of music player
+     */
+    public static void loop() {
+        mediaPlayer.setLooping(!mediaPlayer.isLooping());
+    }
 }
