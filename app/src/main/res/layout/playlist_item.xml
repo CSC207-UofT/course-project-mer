@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
-        tools:background="@drawable/list_item" />
+        app:srcCompat="@drawable/list_item"
+        android:background="#00FFFFFF"/>
 
     <TextView
         android:id="@+id/playlist_item_name"
@@ -25,8 +26,8 @@
         android:layout_height="30dp"
         android:fontFamily="@font/aldrich"
         android:textAlignment="viewStart"
-        android:textColor="#D381F9"
-        android:textSize="18dp"
+        android:textColor="@color/pink"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_background"
         app:layout_constraintEnd_toEndOf="@+id/item_background"
 
@@ -37,11 +38,12 @@
         tools:text="playlist name" />
 
     <TextView
+        android:id="@+id/playlist_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
         android:textAlignment="viewStart"
-        android:textColor="#D381F9"
+        android:textColor="@color/pink"
         app:layout_constraintBottom_toBottomOf="@+id/item_background"
         app:layout_constraintEnd_toEndOf="@+id/item_background"
         app:layout_constraintHorizontal_bias="0.941"

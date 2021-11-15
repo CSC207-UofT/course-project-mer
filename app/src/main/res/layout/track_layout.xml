@@ -7,7 +7,7 @@
     android:background="@drawable/background">
 
     <ListView
-        android:id="@+id/playlist_list"
+        android:id="@+id/track_list"
         android:layout_width="386dp"
         android:layout_height="492dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,20 +16,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.443"
-        tools:listitem="@layout/playlist_item" />
+        tools:listitem="@layout/track_item" />
 
     <RelativeLayout
         android:id="@+id/playlist_top_bar"
         android:layout_width="398dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_list"
+        app:layout_constraintBottom_toTopOf="@+id/track_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/playlist_back_last_page"
+            android:id="@+id/track_back_last_page"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
@@ -46,7 +46,7 @@
             app:srcCompat="@drawable/back" />
 
         <ImageButton
-            android:id="@+id/playlist_add"
+            android:id="@+id/track_add"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
@@ -63,7 +63,7 @@
             app:srcCompat="@drawable/add" />
 
         <EditText
-            android:id="@+id/playlist_search_bar"
+            android:id="@+id/track_search_bar"
             android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
@@ -75,7 +75,7 @@
             android:layout_marginEnd="98dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/aldrich"
-            android:hint="@string/search_your_playlist"
+            android:hint="Search your track..."
             android:textAlignment="viewStart"
             android:textColor="@color/pink"
             android:textColorHint="@color/half_pink"
@@ -84,18 +84,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/playlist_bottom_bar"
+        android:id="@+id/track_bottom_bar"
         android:layout_width="398dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlist_list"
+        app:layout_constraintTop_toBottomOf="@+id/track_list"
         app:layout_constraintVertical_bias="0.529">
 
         <ImageButton
-            android:id="@+id/playlist_playing"
+            android:id="@+id/track_playing"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -112,7 +112,7 @@
             app:srcCompat="@drawable/playing" />
 
         <ImageButton
-            android:id="@+id/playlist_repeat_list"
+            android:id="@+id/track_repeat_list"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -129,7 +129,7 @@
             app:srcCompat="@drawable/repeat_list" />
 
         <ImageButton
-            android:id="@+id/playlist_next"
+            android:id="@+id/track_next"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -146,7 +146,7 @@
             app:srcCompat="@drawable/next" />
 
         <ImageButton
-            android:id="@+id/playlist_prev"
+            android:id="@+id/track_prev"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -163,7 +163,7 @@
             app:srcCompat="@drawable/prev" />
 
         <ImageButton
-            android:id="@+id/playlist_play"
+            android:id="@+id/track_play"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"

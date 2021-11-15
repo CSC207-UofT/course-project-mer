@@ -26,7 +26,7 @@ public class PlaylistLibraryTest {
         PlaylistLibrary pl = new PlaylistLibrary();
         Playlist p = new Playlist("test");
         pl.add(p);
-        pl.remove("test");
+        pl.remove("1");
         assertTrue(pl.isEmpty());
     }
 }
