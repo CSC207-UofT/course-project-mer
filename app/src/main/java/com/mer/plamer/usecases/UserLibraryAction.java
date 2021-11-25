@@ -27,7 +27,7 @@ public class UserLibraryAction implements LibraryAction<User> {
     @Override
     public ArrayList<User> search(String keyword) {
         ArrayList<User> searchUser = new ArrayList<>();
-        for (User u : userLibrary.getusersList()){
+        for (User u : userLibrary.getUsersList()){
             if (u.getUsername().contains(keyword)){
                 searchUser.add(u);
             }
@@ -38,6 +38,10 @@ public class UserLibraryAction implements LibraryAction<User> {
     @Override
     public void add(String name) {
 
+    }
+
+    public UserLibrary getUserLibrary() {
+        return userLibrary;
     }
 
     /**

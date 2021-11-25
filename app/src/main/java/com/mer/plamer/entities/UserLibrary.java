@@ -24,8 +24,9 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public boolean remove(String username) {
-        if (this.contain(username) != null) {
-            this.usersList.remove(this.contain(username));
+        User target = this.contain(username);
+        if (target != null) {
+            this.usersList.remove(target);
             return true;
         } else {
             return false;
@@ -73,5 +74,5 @@ public class UserLibrary implements Storable<User> {
      * Get the list of users in the library
      * @return ArrayList<User>
      */
-    public ArrayList<User> getusersList() { return this.usersList; }
+    public ArrayList<User> getUsersList() { return this.usersList; }
 }
