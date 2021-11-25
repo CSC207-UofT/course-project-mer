@@ -40,7 +40,7 @@
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:fontFamily="@font/aldrich"
-        android:text="@string/username"
+        android:text=""
         android:textColor="@color/pink"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/setting_username"

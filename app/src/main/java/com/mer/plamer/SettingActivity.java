@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,10 @@ public class SettingActivity extends AppCompatActivity {
             Intent intent = new Intent(SettingActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
+        TextView setting_current_username = findViewById(R.id.setting_current_username);
+        String current_username = "hello world";
+        setting_current_username.setText(current_username);
 
         ImageButton back = findViewById(R.id.setting_back);
         back.setOnClickListener(v -> finish());
