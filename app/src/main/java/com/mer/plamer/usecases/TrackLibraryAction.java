@@ -7,7 +7,6 @@ import com.mer.plamer.entities.TrackLibrary;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class TrackLibraryAction implements LibraryAction<Track>{
@@ -25,20 +24,26 @@ public class TrackLibraryAction implements LibraryAction<Track>{
 
     /**
      * Search the required track.
-     * @param track_id the id of the required track.
-     * @return the required track.
+     * @param keyword user provided keyword.
+     * @return a arrayelist the required tracks.
      */
-    public Track search(String track_id) {
-        return trackLibrary.contain(track_id);
+    public ArrayList<Track> search(String keyword) {
+        ArrayList<Track> searchTrack = new ArrayList<>();
+        for (Track t : trackLibrary.getTrackList()){
+            if (t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
+                    || t.getGenre().contains(keyword)){
+                searchTrack.add(t);
+            }
+        }
+        return searchTrack;
     }
-
 
     /**
      * add a track to the track library.
-     * @param track the track we want to add.
+     * @param name the track we want to add.
      */
-    public void add(Track track) {
-        trackLibrary.add(track);
+    public void add(String name) {
+        trackLibrary.add(trackLibrary.create(name));
     }
 
     /**

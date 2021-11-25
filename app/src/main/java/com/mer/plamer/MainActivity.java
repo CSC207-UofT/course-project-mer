@@ -5,12 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 
-import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
@@ -28,26 +25,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.homepage_layout);
-
+        TrackLibraryAction.scanLocal();
+        PlayAction.prepare();
 
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
-        log_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-
-            }
+        log_in.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
 
         });
 
         ImageButton sign_up = (ImageButton) findViewById(R.id.home_signup);
-        sign_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
+        sign_up.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+            startActivity(intent);
         });
 
     }

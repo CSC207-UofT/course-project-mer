@@ -1,9 +1,9 @@
 package com.mer.plamer.usecases;
 
-import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
-import com.mer.plamer.usecases.UserAction;
+
+import java.util.ArrayList;
 
 public class UserLibraryAction implements LibraryAction<User> {
 
@@ -21,24 +21,39 @@ public class UserLibraryAction implements LibraryAction<User> {
 
     /**
      * Search the required user.
-     * @param username the username of the required user.
+     * @param keyword provided by the user.
      * @return the required user or null if no result found.
      */
     @Override
-    public User search(String username) {
-       return userLibrary.contain(username);
+    public ArrayList<User> search(String keyword) {
+        ArrayList<User> searchUser = new ArrayList<>();
+        for (User u : userLibrary.getUsersList()){
+            if (u.getUsername().contains(keyword)){
+                searchUser.add(u);
+            }
+        }
+        return searchUser;
+    }
+
+    @Override
+    public void add(String name) {
+
+    }
+
+    public UserLibrary getUserLibrary() {
+        return userLibrary;
     }
 
     /**
      * add a user to the user library.
      * @param user the user we want to add.
      */
-    @Override
+
     public void add(User user) {
        userLibrary.add(user);
     }
 
-    public User User_register(String userid, String password) {
+    public User userRegister(String userid, String password) {
         if (userLibrary.contain(userid) != null) {
             return null;
         }

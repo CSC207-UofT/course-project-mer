@@ -24,6 +24,10 @@ public class UserAction {
         this.user = user;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
     public boolean IsNull() {
         return this.user == null;
     }

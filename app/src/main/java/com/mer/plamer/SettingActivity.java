@@ -16,16 +16,19 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.setting_layout);
 
         Button setting_logout = findViewById(R.id.log_out);
+      
         setting_logout.setOnClickListener(v -> {
             Intent intent = new Intent(SettingActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
 
         TextView setting_current_username = findViewById(R.id.setting_current_username);
         String current_username = "hello world";
         setting_current_username.setText(current_username);
 
         ImageButton back = findViewById(R.id.setting_back);
+
         back.setOnClickListener(v -> finish());
     }
 }

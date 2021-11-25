@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayerActivity;
+import com.mer.plamer.usecases.PlayAction;
 
 public class MainPage extends AppCompatActivity {
 
@@ -14,6 +15,7 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
+
 
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
@@ -40,10 +42,17 @@ public class MainPage extends AppCompatActivity {
         });
 
         ImageButton playing = findViewById(R.id.main_playing);
+
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, PlayerActivity.class);
             startActivity(intent);
         });
+
+        ImageButton playButton = (ImageButton) findViewById(R.id.main_play);
+        playButton.setOnClickListener(v -> PlayAction.playPause());
+
+        ImageButton repeatButton = (ImageButton) findViewById(R.id.main_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
 
     }
 }

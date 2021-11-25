@@ -1,8 +1,8 @@
 package com.mer.plamer.entities;
 import java.util.ArrayList;
-import java.io.File;
 import android.media.MediaMetadataRetriever;
 
+// TODO: Implement features around comments
 /**
  * Track class stores information of a music track
  */

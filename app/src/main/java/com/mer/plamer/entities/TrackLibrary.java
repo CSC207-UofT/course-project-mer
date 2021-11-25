@@ -1,7 +1,6 @@
 package com.mer.plamer.entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
@@ -22,6 +21,14 @@ public class TrackLibrary implements Storable<Track> {
         tracksList.add(track);
     }
 
+    /**
+     * create a new track.
+     * @param name the name of the track.
+     * @return the created track.
+     */
+    public Track create(String name) {
+        return new Track(name);
+    }
     /**
      * Get the track at index Int.
      * @param Int the index of the track we want to get.
@@ -68,4 +75,10 @@ public class TrackLibrary implements Storable<Track> {
         }
         return null;
     }
+
+    /**
+     * Get the list of track in the library
+     * @return ArrayList<Track>
+     */
+    public ArrayList<Track> getTrackList() { return this.tracksList; }
 }

@@ -27,9 +27,11 @@ public class SignupActivity extends AppCompatActivity {
             String s_name = signup_username.getText().toString();
 
             EditText signup_password = findViewById(R.id.signup_password);
+
             String s_password = signup_password.getText().toString();
 
             UserControl userControl = new UserControl();
+          
             if (userControl.registration(s_name, s_password)) {
                 Toast.makeText(SignupActivity.this, "Successfully registered.",
                         Toast.LENGTH_LONG).show();

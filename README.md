@@ -15,4 +15,6 @@ Plamer will present a set of features of a music player:
 
 ## Build Instructions
 
-This app can be built and run on a AVD (Android Virtual Device) in Android Studio. Compiling this app requires minimum version 24 of Android SDK and we also suggest JDK version 1.8.
+This app can be built and run on a AVD (Android Virtual Device) in Android Studio. Compiling this app requires minimum version 24 of Android SDK and we also suggest JDK version 1.8. \
+\
+In our current demo, the app can only be run with at least one .mp3 file placed in Android's default Music folder. The app will crash if no .mp3 file exists.

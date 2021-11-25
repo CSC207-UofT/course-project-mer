@@ -3,15 +3,12 @@ package com.mer.plamer.controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.mer.plamer.MainActivity;
 import com.mer.plamer.R;
 import com.mer.plamer.usecases.PlayAction;
 
@@ -52,12 +49,12 @@ public class PlayerActivity extends AppCompatActivity {
         mBackButton = findViewById(R.id.player_back_last_page);
         mSeekBar = findViewById(R.id.seekBar);
         mLoopButton = findViewById(R.id.playlist_repeat_list);
-        mSeekBar.setMax(PlayAction.getTrackLength()/1000);
         mCurrentTrackName = findViewById(R.id.track_name);
         mCurrentTrackArtist = findViewById(R.id.artist_name);
         mCurrentTrackPosition = findViewById(R.id.current_time);
         mCurrentTrackDuration = findViewById(R.id.total_length);
         mSeekBarHandler = new Handler();
+        mSeekBar.setMax(PlayAction.getTrackLength()/1000);
         mCurrentTrackName.setText(PlayAction.getTitle());
         mCurrentTrackArtist.setText(PlayAction.getArtist());
         int duration = PlayAction.getTrackLength();
@@ -72,17 +69,11 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> {
-            PlayAction.playPause();
-        });
+        mPlayPauseButton.setOnClickListener(v -> PlayAction.playPause());
 
-        mBackButton.setOnClickListener(v -> {
-            finish();
-        });
+        mBackButton.setOnClickListener(v -> finish());
 
-        mLoopButton.setOnClickListener(v -> {
-            PlayAction.loop();
-        });
+        mLoopButton.setOnClickListener(v -> PlayAction.loop());
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

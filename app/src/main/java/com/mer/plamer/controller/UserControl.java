@@ -14,8 +14,8 @@ public class UserControl {
     }
 
     public boolean registration(String username, String password) {
-        if (userLibraryAction.User_register(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.User_register(username, password));
+        if (userLibraryAction.userRegister(username, password) != null) {
+            this.userAction.SetUser(userLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
@@ -23,20 +23,22 @@ public class UserControl {
 
     public boolean login_check(String username, String password) {
         if (userLibraryAction.User_login(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.User_login(username, password));
+            this.userAction.SetUser(userLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
     }
 
-    public void getAccountInfo() {
-
+    public String getAccountInfo() {
+        return this.userAction.getUser().getUsername();
     }
 
+    // TODO: Implement userDeletion
     public void userDeletion() {
 
     }
 
+    // TODO: modifyUserInformation
     public void modifyUserInformation() {
     }
 
