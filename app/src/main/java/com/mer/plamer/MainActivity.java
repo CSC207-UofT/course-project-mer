@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
      * Constructs view and defines actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
      */
-    /**
-     * Constructs view and defines actions of the main view.
-     * @param savedInstanceState the previously saved state of this activity
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
