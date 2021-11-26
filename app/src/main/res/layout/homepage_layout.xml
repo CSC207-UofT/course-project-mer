@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.208"
-        app:srcCompat="@drawable/main_logo" />
+        app:srcCompat="@drawable/main_logo"
+        tools:ignore="ContentDescription"/>
 
     <ImageButton
         android:id="@+id/home_signup"
@@ -32,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
         app:layout_constraintVertical_bias="0.556"
         app:srcCompat="@drawable/home_signup"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="ContentDescription"/>
 
     <ImageButton
         android:id="@+id/home_login"
@@ -47,6 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
         app:layout_constraintVertical_bias="0.351"
         app:srcCompat="@drawable/home_login"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="ContentDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
