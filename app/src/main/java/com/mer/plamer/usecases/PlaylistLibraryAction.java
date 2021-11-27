@@ -1,14 +1,20 @@
 package com.mer.plamer.usecases;
 
+import android.annotation.SuppressLint;
+
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 
 public class PlaylistLibraryAction implements LibraryAction<Playlist> {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();
+    @SuppressLint("StaticFieldLeak")
+    private static final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete the playlist in the playlist library.
@@ -49,5 +55,21 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist> {
     public void add(String name) {
         playlistLibrary.add(playlistLibrary.create(name));
 
+
+    }
+
+    /**
+     * Scan and add the local playlists on every launch.
+     */
+    public static void scanLocal() {
+        int i = 0;
+        int current_id = tinydb.getInt("playlist_static_id");
+        while ( i < current_id) {
+            if (tinydb.objectExists(String.valueOf(i)+"p")) {
+                playlistLibrary.add(tinydb.getObject(String.valueOf(i) + "p", Playlist.class));
+            }
+            i++;
+        }
+        Playlist.changeId(current_id);
     }
 }

@@ -79,6 +79,12 @@ public class Playlist {
     }
 
     /**
+     * Set the static id of the Playlist to its saved value on every launch.
+     * @param saved_id the saved static id of the Playlist class.
+     */
+    public static void changeId(int saved_id) { id = saved_id; }
+
+    /**
      * Add new track to the playlist if the track is not already in the playlist.
      * @param track the track that we wanted to add to the playlist
      * @return whether the track has been successfully added
