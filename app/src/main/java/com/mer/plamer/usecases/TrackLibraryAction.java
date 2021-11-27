@@ -70,8 +70,8 @@ public class TrackLibraryAction implements LibraryAction<Track>{
 //    }
 
     public static void scanLocal() {
-        Context context = MyApp.getContext();
-        File dir = context.getExternalFilesDir(null);
+        trackLibrary.emptyTheLibrary();
+        File dir = Environment.getExternalStorageDirectory();
         int i = 0;
         int current_id = tinydb.getInt("track_static_id");
         while ( i < current_id) {
@@ -84,13 +84,14 @@ public class TrackLibraryAction implements LibraryAction<Track>{
         recursiveSongSearch(dir);
     }
 
-    public static void recursiveSongSearch(File dir) {
+    private static void recursiveSongSearch(File dir) {
         if (!dir.isDirectory()) {
             if (dir.getName().endsWith(".mp3")) {
                 if (!trackLibrary.getTrackPathList().contains(dir.getAbsolutePath())) {
                     Track new_track = new Track(dir.getAbsolutePath());
                     trackLibrary.add(new_track);
                     tinydb.putObject(new_track.getId() + "t", new_track);
+                    System.out.println(dir.getAbsolutePath());
                 }
             }
         }

@@ -103,4 +103,11 @@ public class TrackLibrary implements Storable<Track> {
         }
         return list;
     }
+
+    /**
+     * Empty the Track Library.
+     */
+    public void emptyTheLibrary() {
+        tracksList.clear();
+    }
 }
