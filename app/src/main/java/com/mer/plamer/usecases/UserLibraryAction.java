@@ -1,5 +1,10 @@
 package com.mer.plamer.usecases;
 
+import android.annotation.SuppressLint;
+
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
+import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
 
@@ -8,6 +13,8 @@ import java.util.ArrayList;
 public class UserLibraryAction {
 
     public static UserLibrary userLibrary = new UserLibrary();
+    @SuppressLint("StaticFieldLeak")
+    private static final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete user in the user library completely, only admin can perform this method.
@@ -43,6 +50,10 @@ public class UserLibraryAction {
         userLibrary.add(userLibrary.create(name, password));
     }
 
+    /**
+     * Get the user library.
+     * @return the user library.
+     */
     public static UserLibrary getUserLibrary() {
         return userLibrary;
     }
@@ -67,5 +78,20 @@ public class UserLibraryAction {
             return null;
         }
         return userLibrary.contain(userid);
+    }
+
+    /**
+     * Scan the local created users on every launch.
+     */
+    public static void scanLocal() {
+        int i = 0;
+        int current_id = tinydb.getInt("user_static_id");
+        while ( i <= current_id) {
+            if (tinydb.objectExists(String.valueOf(i)+"u")) {
+                userLibrary.add(tinydb.getObject(String.valueOf(i) + "u", User.class));
+            }
+            i++;
+        }
+        Playlist.changeId(current_id);
     }
 }
