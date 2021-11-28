@@ -92,6 +92,6 @@ public class UserLibraryAction {
             }
             i++;
         }
-        Playlist.changeId(current_id);
+        User.changeId(current_id);
     }
 }
