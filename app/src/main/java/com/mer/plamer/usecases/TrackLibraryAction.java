@@ -74,7 +74,7 @@ public class TrackLibraryAction {
         File dir = Environment.getExternalStorageDirectory();
         int i = 0;
         int current_id = tinydb.getInt("track_static_id");
-        while ( i < current_id) {
+        while ( i <= current_id) {
             if (tinydb.objectExists(String.valueOf(i)+"t")) {
                 trackLibrary.add(tinydb.getObject(String.valueOf(i) + "t", Track.class));
             }
