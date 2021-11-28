@@ -38,11 +38,12 @@ public class PlaylistLibrary implements Storable<Playlist> {
     public Playlist create(String name) {
         Playlist new_playlist = new Playlist(name);
         tinydb.putInt("playlist_static_id", Integer.parseInt(new_playlist.getId()));
+        this.add(new_playlist); // newly created playlist should be added to the library
         return new_playlist;
     }
 
     /**
-     * Remove playlist from this playlist library if the playlist is in this playlist library
+     * Remove playlist from this playlist library if tshe playlist is in this playlist library
      * @param id name of the playlist wanted to remove from
      * @return whether the playlist has been successfully removed.
      */
@@ -89,4 +90,3 @@ public class PlaylistLibrary implements Storable<Playlist> {
         return this.playlists;
     }
 }
-
