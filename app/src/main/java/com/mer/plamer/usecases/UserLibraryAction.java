@@ -1,5 +1,7 @@
 package com.mer.plamer.usecases;
 
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
 
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 public class UserLibraryAction {
 
     public static UserLibrary userLibrary = new UserLibrary();
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete user in the user library completely, only admin can perform this method.
@@ -68,4 +71,5 @@ public class UserLibraryAction {
         }
         return userLibrary.contain(userid);
     }
+
 }
