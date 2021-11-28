@@ -83,7 +83,7 @@ public class TrackLibraryAction {
             }
             i++;
         }
-        Track.changeId(current_id);
+        Track.changeId(current_id + 1);
         recursiveSongSearch(dir);
     }
 

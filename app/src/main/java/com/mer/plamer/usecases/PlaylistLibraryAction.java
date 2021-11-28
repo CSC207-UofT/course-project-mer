@@ -70,6 +70,6 @@ public class PlaylistLibraryAction {
             }
             i++;
         }
-        Playlist.changeId(current_id);
+        Playlist.changeId(current_id + 1);
     }
 }
