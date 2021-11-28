@@ -14,7 +14,7 @@ public class UserActionTest {
     public void testSetuser() {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
-        ua.SetUser(u);
+        ua.setUser(u);
         assertFalse(ua.IsNull());
     }
 
@@ -28,7 +28,7 @@ public class UserActionTest {
     public void testChangeName() {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
-        ua.SetUser(u);
+        ua.setUser(u);
         assertTrue(ua.changeName("testnew"));
         assertEquals("testnew", u.getUsername());
     }
@@ -37,7 +37,7 @@ public class UserActionTest {
     public void testCreatePlaylist() {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
-        ua.SetUser(u);
+        ua.setUser(u);
 //        assertTrue(ua.createPlaylist("playlist1"));
         // playlistLibrary not initialized in constructor
     }
@@ -46,7 +46,7 @@ public class UserActionTest {
     public void testuploadTrack() {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
-        ua.SetUser(u);
+        ua.setUser(u);
         Track t = new Track("Jcole", "amari", "420", "hiphop","1");
         assertTrue(ua.uploadTrack(t));
         assertFalse(ua.uploadTrack(t));
@@ -56,7 +56,7 @@ public class UserActionTest {
     public void testChangePassword() {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
-        ua.SetUser(u);
+        ua.setUser(u);
         assertTrue(ua.changePwd("test1233"));
         assertFalse(ua.changePwd("test1233"));
     }

@@ -18,9 +18,9 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void  testGetID(){
         Playlist pl = new Playlist("test");
-        assertEquals("5", pl.getId());
+        assertEquals("2", pl.getId());
         Playlist pl1 = new Playlist("test1");
-        assertEquals("6", pl1.getId());
+        assertEquals("3", pl1.getId());
     }
 
     @Test(timeout = 50)

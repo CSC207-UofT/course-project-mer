@@ -52,11 +52,11 @@ public class UserLibraryTest {
         ul.add(u);
         ArrayList<User> testlist = new ArrayList<>();
         testlist.add(u);
-        assertArrayEquals(testlist.toArray(), ul.getusersList().toArray());
+        assertArrayEquals(testlist.toArray(), ul.getUsersList().toArray());
         User u2 = new User("steve", "balmer");
         ul.add(u2);
         testlist.add(u2);
-        assertArrayEquals(testlist.toArray(), ul.getusersList().toArray());
+        assertArrayEquals(testlist.toArray(), ul.getUsersList().toArray());
     }
 
 }
