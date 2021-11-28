@@ -81,23 +81,23 @@ public class TrackLibraryAction {
             i++;
         }
         Track.changeId(current_id);
-//        recursiveSongSearch(dir);
-//    }
-//
-//    private static void recursiveSongSearch(File dir) {
-//        if (!dir.isDirectory()) {
-//            if (dir.getName().endsWith(".mp3")) {
-//                if (!trackLibrary.getTrackPathList().contains(dir.getAbsolutePath())) {
-//                    add(dir.getAbsolutePath());
-//                }
-//            }
-//        }
-//        File[] files = dir.listFiles();
-//        if (files != null) {
-//            for (File file : files) {
-//                recursiveSongSearch(file);
-//            }
-//        }
+        recursiveSongSearch(dir);
+    }
+
+    private static void recursiveSongSearch(File dir) {
+        if (!dir.isDirectory()) {
+            if (dir.getName().endsWith(".mp3")) {
+                if (!trackLibrary.getTrackPathList().contains(dir.getAbsolutePath())) {
+                    add(dir.getAbsolutePath());
+                }
+            }
+        }
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                recursiveSongSearch(file);
+            }
+        }
 
     }
 }
