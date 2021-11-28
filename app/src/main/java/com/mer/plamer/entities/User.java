@@ -77,4 +77,10 @@ public class User {
      * @return the Id of this User.
      */
     public String getId() { return this.user_id; }
+
+    /**
+     * Change static id to saved id.
+     * @param saved_id the saved id.
+     */
+    public static void changeId(int saved_id) { id = saved_id; }
 }
