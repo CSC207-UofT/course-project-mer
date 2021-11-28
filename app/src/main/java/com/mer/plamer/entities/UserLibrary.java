@@ -18,14 +18,19 @@ public class UserLibrary implements Storable<User> {
         this.usersList.add(new_user);
     }
 
+    public User create(String username, String password) {
+        return new User(username,password);
+    }
+
     /**
      * Permanently delete a specific user by their username
      * @param username the name of the user
      */
     @Override
     public boolean remove(String username) {
-        if (this.contain(username) != null) {
-            this.usersList.remove(this.contain(username));
+        User target = this.contain(username);
+        if (target != null) {
+            this.usersList.remove(target);
             return true;
         } else {
             return false;
@@ -69,9 +74,10 @@ public class UserLibrary implements Storable<User> {
         }
         return false;
     }
+
     /**
      * Get the list of users in the library
      * @return ArrayList<User>
      */
-    public ArrayList<User> getusersList() { return this.usersList; }
+    public ArrayList<User> getUsersList() { return this.usersList; }
 }
