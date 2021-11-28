@@ -15,7 +15,7 @@ public class Playlist {
     private String status;
     private final ArrayList<Track> tracks;
     private final String playlist_id;
-    private static int id = 0;
+    private static int id = 1;
 
     /**
      * Constructor for Playlist. The initial status for the playlist is REPEAT.
@@ -77,6 +77,12 @@ public class Playlist {
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Set the static id of the Playlist to its saved value on every launch.
+     * @param saved_id the saved static id of the Playlist class.
+     */
+    public static void changeId(int saved_id) { id = saved_id; }
 
     /**
      * Add new track to the playlist if the track is not already in the playlist.
