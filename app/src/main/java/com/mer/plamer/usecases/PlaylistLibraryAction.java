@@ -64,7 +64,7 @@ public class PlaylistLibraryAction {
     public static void scanLocal() {
         int i = 0;
         int current_id = tinydb.getInt("playlist_static_id");
-        while ( i < current_id) {
+        while ( i <= current_id) {
             if (tinydb.objectExists(String.valueOf(i)+"p")) {
                 playlistLibrary.add(tinydb.getObject(String.valueOf(i) + "p", Playlist.class));
             }

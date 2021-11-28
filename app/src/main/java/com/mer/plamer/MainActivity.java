@@ -9,7 +9,9 @@ import android.widget.ImageButton;
 
 
 import com.mer.plamer.usecases.PlayAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 /**
  * Startup activity and view of Plamer
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.homepage_layout);
         TrackLibraryAction.scanLocal();
+        PlaylistLibraryAction.scanLocal();
+        UserLibraryAction.scanLocal();
         PlayAction.prepare();
 
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
