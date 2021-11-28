@@ -20,7 +20,7 @@ public class UserAction {
         this.user = null;
     }
 
-    public void SetUser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

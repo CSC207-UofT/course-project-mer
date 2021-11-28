@@ -35,31 +35,33 @@ public class UserLibraryAction implements LibraryAction<User> {
         return searchUser;
     }
 
-    @Override
-    public void add(String name) {
+    /**
+     * add a user to the user library.
+     * @param name the username of the user we want to add.
+     * @param password the password of the user we want to add.
+     */
 
+    public void add(String name ,String password) {
+        userLibrary.add(userLibrary.create(name, password));
     }
 
     public UserLibrary getUserLibrary() {
         return userLibrary;
     }
 
-    /**
-     * add a user to the user library.
-     * @param user the user we want to add.
-     */
-
-    public void add(User user) {
-       userLibrary.add(user);
+    public User find(String username) {
+        return this.getUserLibrary().contain(username);
     }
 
-    public User userRegister(String userid, String password) {
-        if (userLibrary.contain(userid) != null) {
+    public User userRegister(String username, String password) {
+        if (userLibrary.contain(username) != null) {
             return null;
         }
-        User new_user = new User(userid, password);
-        this.add(new_user);
-        return new_user;
+        else if (username.equals("")) {
+            return null;
+        }
+        this.add(username, password);
+        return userLibrary.contain(username);
     }
 
     public User User_login(String userid, String password) {

@@ -16,10 +16,13 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
 
+        String username = getIntent().getStringExtra("curr_user");
+
 
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, SettingActivity.class);
+            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
@@ -48,10 +51,10 @@ public class MainPage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ImageButton playButton = (ImageButton) findViewById(R.id.main_play);
+        ImageButton playButton = findViewById(R.id.main_play);
         playButton.setOnClickListener(v -> PlayAction.playPause());
 
-        ImageButton repeatButton = (ImageButton) findViewById(R.id.main_repeat_list);
+        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
 
     }

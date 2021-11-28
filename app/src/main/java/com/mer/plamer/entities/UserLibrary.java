@@ -18,6 +18,10 @@ public class UserLibrary implements Storable<User> {
         this.usersList.add(new_user);
     }
 
+    public User create(String username, String password) {
+        return new User(username,password);
+    }
+
     /**
      * Permanently delete a specific user by their username
      * @param username the name of the user
@@ -70,6 +74,7 @@ public class UserLibrary implements Storable<User> {
         }
         return false;
     }
+
     /**
      * Get the list of users in the library
      * @return ArrayList<User>

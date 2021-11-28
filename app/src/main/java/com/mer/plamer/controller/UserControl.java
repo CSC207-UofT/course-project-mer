@@ -6,7 +6,7 @@ import com.mer.plamer.usecases.UserLibraryAction;
 
 public class UserControl {
 
-    UserAction userAction;
+    public UserAction userAction;
     public static UserLibraryAction userLibraryAction = new UserLibraryAction();
 
     public UserControl() {
@@ -15,7 +15,7 @@ public class UserControl {
 
     public boolean registration(String username, String password) {
         if (userLibraryAction.userRegister(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.getUserLibrary().contain(username));
+            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
@@ -23,14 +23,21 @@ public class UserControl {
 
     public boolean login_check(String username, String password) {
         if (userLibraryAction.User_login(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.getUserLibrary().contain(username));
+            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
     }
 
     public String getAccountInfo() {
+        if (this.userAction.getUser() == null) {
+            return "there is no user.";
+        }
         return this.userAction.getUser().getUsername();
+    }
+
+    public UserLibraryAction getUserLibraryAction() {
+        return userLibraryAction;
     }
 
     // TODO: Implement userDeletion
