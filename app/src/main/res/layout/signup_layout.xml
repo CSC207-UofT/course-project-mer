@@ -17,7 +17,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.17"
+        tools:ignore="ContentDescription"/>
 
     <EditText
         android:id="@+id/signup_password"
@@ -38,7 +39,8 @@
         android:lines="1"
         android:maxLength="20"
         android:inputType="text"
-        />
+        tools:ignore="TextFields"
+        android:autofillHints="password"/>
 
     <EditText
         android:id="@+id/signup_username"
@@ -58,7 +60,8 @@
         app:layout_constraintVertical_bias="0.218"
         android:lines="1"
         android:maxLength="20"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:autofillHints="username"/>
 
     <ImageButton
         android:id="@+id/signup_go"
@@ -73,7 +76,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_password"
         app:layout_constraintVertical_bias="0.841"
-        app:srcCompat="@drawable/go" />
+        app:srcCompat="@drawable/go"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/signup_back"
@@ -87,7 +91,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.963"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/back"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
