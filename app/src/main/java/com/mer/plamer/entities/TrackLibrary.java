@@ -34,6 +34,9 @@ public class TrackLibrary implements Storable<Track> {
      */
     public Track create(String path) {
         Track new_track = new Track(path);
+        if (tinydb.getInt("track_static_id") != 0) {
+            tinydb.remove("track_static_id");
+        }
         tinydb.putInt("track_static_id", Integer.parseInt(new_track.getId()));
         return new_track;
     }
