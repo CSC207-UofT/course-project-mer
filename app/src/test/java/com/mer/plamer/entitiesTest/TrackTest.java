@@ -11,18 +11,17 @@ public class TrackTest {
 
     @Before
     public void setUp() {
-        t = new Track("InternalStorage/Music/sample.mp3");
+        t = new Track("Jcole", "amari", "420", "hiphop","1");
     }
 
     @Test(timeout = 50)
     public void testTrackConstructor() {
-        assertEquals("sampleartist",t.getArtist());
-        assertEquals("sampleLength", t.getLength());
-        assertEquals("sampleGenre", t.getGenre());
-        assertEquals("sample", t.getTitle());
-        assertEquals("ID", t.getId());
-        assertEquals("InternalStorage/Music/sample.mp3", t.getPath());
-
+        assertEquals("Jcole",t.getArtist());
+        assertEquals("420", t.getLength());
+        assertEquals("hiphop", t.getGenre());
+        assertEquals("amari", t.getTitle());
+        assertEquals("1", t.getId());
+        assertEquals("", t.getPath());
     }
 
 }
