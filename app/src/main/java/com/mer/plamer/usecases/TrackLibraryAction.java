@@ -69,6 +69,9 @@ public class TrackLibraryAction {
 //
 //    }
 
+    /**
+     * Scan the local music on every launch (or when the user want to).
+     */
     public static void scanLocal() {
         trackLibrary.emptyTheLibrary();
         File dir = Environment.getExternalStorageDirectory();
@@ -84,6 +87,10 @@ public class TrackLibraryAction {
         recursiveSongSearch(dir);
     }
 
+    /**
+     * Helper method to recursively search for songs in the storage.
+     * @param dir The directory to search.
+     */
     private static void recursiveSongSearch(File dir) {
         if (!dir.isDirectory()) {
             if (dir.getName().endsWith(".mp3")) {

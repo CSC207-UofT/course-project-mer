@@ -9,6 +9,9 @@ public class UserLibrary implements Storable<User> {
     private final ArrayList<User> usersList;
     private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
+    /**
+     * Constructor for UserLibrary.
+     */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
     }
@@ -23,6 +26,12 @@ public class UserLibrary implements Storable<User> {
         this.usersList.add(new_user);
     }
 
+    /**
+     * Create a new User.
+     * @param username The Username of the new user.
+     * @param password The password of the new user.
+     * @return The user created.
+     */
     public User create(String username, String password) {
         User new_user = new User(username,password);
         if (tinydb.getInt("user_static_id") != 0) {

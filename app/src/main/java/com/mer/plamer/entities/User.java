@@ -72,5 +72,9 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Get the Id of this User.
+     * @return the Id of this User.
+     */
     public String getId() { return this.user_id; }
 }

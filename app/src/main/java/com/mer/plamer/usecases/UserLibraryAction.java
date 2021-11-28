@@ -50,6 +50,10 @@ public class UserLibraryAction {
         userLibrary.add(userLibrary.create(name, password));
     }
 
+    /**
+     * Get the user library.
+     * @return the user library.
+     */
     public static UserLibrary getUserLibrary() {
         return userLibrary;
     }
@@ -76,6 +80,9 @@ public class UserLibraryAction {
         return userLibrary.contain(userid);
     }
 
+    /**
+     * Scan the local created users on every launch.
+     */
     public static void scanLocal() {
         int i = 0;
         int current_id = tinydb.getInt("user_static_id");
