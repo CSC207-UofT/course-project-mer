@@ -4,16 +4,13 @@ import static org.junit.Assert.*;
 
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
-import com.mer.plamer.entities.User;
-import com.mer.plamer.entities.UserLibrary;
 
 import org.junit.Before;
-import org.junit.Test;
 import java.util.List;
 
 public class PlaylistLibraryTest {
 
-    @Test(timeout = 50)
+    @Test
     public void testAdd(){
         PlaylistLibrary pl = new PlaylistLibrary();
         Playlist p = new Playlist("test");
@@ -26,7 +23,29 @@ public class PlaylistLibraryTest {
         PlaylistLibrary pl = new PlaylistLibrary();
         Playlist p = new Playlist("test");
         pl.add(p);
-        pl.remove("1");
+        assertTrue(pl.remove(p.getId()));
+        assertFalse(pl.remove("asd"));
+    }
+
+    @Test(timeout = 50)
+    public void testCreate(){
+        PlaylistLibrary pl = new PlaylistLibrary();
+        pl.create("test");
+        assertEquals("test", pl.getPlaylists().get(0).getName());
+    }
+
+    @Test(timeout = 50)
+    public void testIsempty(){
+        PlaylistLibrary pl = new PlaylistLibrary();
         assertTrue(pl.isEmpty());
+    }
+
+    @Test(timeout = 50)
+    public void testContain(){
+        PlaylistLibrary pl = new PlaylistLibrary();
+        Playlist plist = new Playlist("test");
+        String testid = plist.getId();
+        pl.add(plist);
+        assertEquals("test", pl.contain(testid).getName());
     }
 }

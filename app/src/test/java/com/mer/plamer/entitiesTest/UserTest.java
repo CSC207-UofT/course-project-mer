@@ -3,10 +3,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import com.mer.plamer.entities.Track;
+import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
+import com.mer.plamer.entities.Track;
 
 public class UserTest {
     User u;
@@ -32,5 +35,17 @@ public class UserTest {
     public void testSetPassword() {
         u.setPassword("testing123");
         assertEquals("testing123", u.getPassword());
+    }
+
+    @Test(timeout = 50)
+    public void testGetPlayLists() {
+        ArrayList<Playlist> al = new ArrayList<>();
+        assertArrayEquals(al.toArray(), u.getPlaylists().toArray());
+    }
+
+    @Test(timeout = 50)
+    public void testUploadedTracks() {
+        ArrayList<Track> tracklist = new ArrayList<>();
+        assertArrayEquals(tracklist.toArray(), u.getUploadedTracks().toArray());
     }
 }
