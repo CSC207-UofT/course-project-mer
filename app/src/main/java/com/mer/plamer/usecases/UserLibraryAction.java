@@ -92,6 +92,6 @@ public class UserLibraryAction {
             }
             i++;
         }
-        User.changeId(current_id);
+        User.changeId(current_id + 1);
     }
 }
