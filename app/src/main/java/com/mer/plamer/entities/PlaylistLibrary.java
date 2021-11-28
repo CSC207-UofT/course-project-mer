@@ -46,7 +46,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
     }
 
     /**
-     * Remove playlist from this playlist library if tshe playlist is in this playlist library
+     * Remove playlist from this playlist library if the playlist is in this playlist library
      * @param id name of the playlist wanted to remove from
      * @return whether the playlist has been successfully removed.
      */
