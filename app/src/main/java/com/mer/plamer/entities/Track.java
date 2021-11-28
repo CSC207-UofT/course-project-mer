@@ -14,7 +14,7 @@ public class Track {
     private final ArrayList<String> comments;
     private final String path;
     private final String track_id;
-    private static int id = 0;
+    private static int id = 1;
 
     /**
      * Constructor of a track.

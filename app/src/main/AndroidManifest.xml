@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plamer">
         <activity
+            android:name=".UniverseUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlaylistActivity"
             android:exported="false" />
         <activity

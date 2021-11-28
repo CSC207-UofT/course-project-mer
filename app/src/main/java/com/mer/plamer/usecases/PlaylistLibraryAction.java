@@ -10,7 +10,7 @@ import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 
-public class PlaylistLibraryAction implements LibraryAction<Playlist> {
+public class PlaylistLibraryAction {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();
     @SuppressLint("StaticFieldLeak")
@@ -22,7 +22,7 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist> {
      * @param playlist_id the id of the playlist.
      * @return Whether the playlist is successfully removed or not.
      */
-    public boolean delete(String playlist_id) {
+    public static boolean delete(String playlist_id) {
         return playlistLibrary.remove(playlist_id);
     }
 
@@ -31,7 +31,7 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist> {
      * @param keyword the provided keyword by the user
      * @return the required playlists.
      */
-    public ArrayList<Playlist> search(String keyword) {
+    public static ArrayList<Playlist> search(String keyword) {
         ArrayList<Playlist> searchPlaylist = new ArrayList<>();
         for (Playlist p : playlistLibrary.getPlaylists()){
             if (p.getName().contains(keyword)){
@@ -52,7 +52,7 @@ public class PlaylistLibraryAction implements LibraryAction<Playlist> {
      *
      * @param name the playlist we want to add.
      */
-    public void add(String name) {
+    public static void add(String name) {
         playlistLibrary.add(playlistLibrary.create(name));
 
 

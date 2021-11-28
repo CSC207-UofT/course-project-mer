@@ -19,7 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.421"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/back"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/image_setting"
@@ -31,14 +32,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.118"
-        app:srcCompat="@drawable/setting" />
+        app:srcCompat="@drawable/setting"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/setting_current_username"
         android:layout_width="200dp"
         android:layout_height="30dp"
         android:fontFamily="@font/aldrich"
-        android:text="@string/username"
+        android:text=""
         android:textColor="@color/pink"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/setting_username"
@@ -65,7 +67,8 @@
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintVertical_bias="0.394"
+        android:autofillHints="username"/>
 
     <EditText
         android:id="@+id/setting_password"
@@ -83,7 +86,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields"
+        android:autofillHints="password"/>
 
     <ImageButton
         android:id="@+id/setting_go"
@@ -98,7 +103,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.503"
-        app:srcCompat="@drawable/go" />
+        app:srcCompat="@drawable/go"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/log_out"

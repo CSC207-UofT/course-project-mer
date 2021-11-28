@@ -37,6 +37,9 @@ public class PlaylistLibrary implements Storable<Playlist> {
      */
     public Playlist create(String name) {
         Playlist new_playlist = new Playlist(name);
+        if (tinydb.getInt("playlist_static_id") != 0) {
+            tinydb.remove("playlist_static_id");
+        }
         tinydb.putInt("playlist_static_id", Integer.parseInt(new_playlist.getId()));
         this.add(new_playlist); // newly created playlist should be added to the library
         return new_playlist;
