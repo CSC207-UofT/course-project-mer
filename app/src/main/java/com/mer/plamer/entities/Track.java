@@ -34,6 +34,23 @@ public class Track {
     }
 
     /**
+     * Alternative constructor of a track.
+     * @param artist the artist.
+     * @param title the title.
+     * @param length the length.
+     * @param genre the genre.
+     */
+    public Track(String artist, String title, String length, String genre, String tid){
+        this.artist = artist;
+        this.title = title;
+        this.length = length;
+        this.genre = genre;
+        this.path = "";
+        this.comments = new ArrayList<>();
+        this.track_id = tid;
+    }
+
+    /**
      * get the artist of this track.
      * @return the name of the artist.
      */
