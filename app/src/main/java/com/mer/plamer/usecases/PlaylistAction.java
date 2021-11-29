@@ -66,6 +66,7 @@ public class PlaylistAction {
      */
     public void sortByRandom() {
         this.playlist.sort((o1, o2) -> {
+            if (o1 == o2) return 0;
             Random rnd = ThreadLocalRandom.current();
             if (rnd.nextInt(2) == 0) return -1;
             return 1;
@@ -75,9 +76,8 @@ public class PlaylistAction {
     /**
      * Set the status of Playlist if it is a valid status.
      * @param status The status that the playlist wanted to change to.
-     * @return whether the playlist has been successfully to this status.
      */
-    public boolean setStatus(String status) {
-        return this.playlist.setStatus(status);
+    public void setStatus(String status) {
+        this.playlist.setStatus(status);
     }
 }
