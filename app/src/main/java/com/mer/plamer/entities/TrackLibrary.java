@@ -23,7 +23,7 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public void add(Track track) {
-        tinydb.putObject(track.getId() + "t", track);
+        tinydb.putObject(track.getID() + "t", track);
         tracksList.add(track);
     }
 
@@ -37,7 +37,7 @@ public class TrackLibrary implements Storable<Track> {
         if (tinydb.getInt("track_static_id") != 0) {
             tinydb.remove("track_static_id");
         }
-        tinydb.putInt("track_static_id", Integer.parseInt(new_track.getId()));
+        tinydb.putInt("track_static_id", Integer.parseInt(new_track.getID()));
         return new_track;
     }
 
@@ -82,7 +82,7 @@ public class TrackLibrary implements Storable<Track> {
     @Override
     public Track contain(String id) {
         for (int i = 0; i < tracksList.size(); i++) {
-            if (tracksList.get(i).getId().equals(id)) {
+            if (tracksList.get(i).getID().equals(id)) {
                 return tracksList.get(i);
             }
         }

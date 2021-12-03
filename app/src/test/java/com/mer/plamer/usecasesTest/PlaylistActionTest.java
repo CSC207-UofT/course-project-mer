@@ -17,9 +17,9 @@ public class PlaylistActionTest {
 
     @Before
     public void setUp() {
-        t1 = new Track("Jcole", "Amari", "420", "hiphop","1");
-        t2 = new Track("KDot", "GOD", "520", "hiphop","2");
-        t3 = new Track("Drake", "ChicagoFS", "320", "hiphop","3");
+        t1 = new Track("Jcole");
+        t2 = new Track("KDot");
+        t3 = new Track("Drake");
         pl = new Playlist("test");
         pla = new PlaylistAction(pl);
         pla.addTrack(t1);
@@ -68,7 +68,7 @@ public class PlaylistActionTest {
     public void testAddDelete() {
         Playlist plist = new Playlist("test");
         PlaylistAction pla = new PlaylistAction(plist);
-        Track t = new Track("Jcole", "amari", "420", "hiphop","1");
+        Track t = new Track("Jcole");
         assertTrue(pla.addTrack(t));
         assertTrue(pla.delTrack(t));
     }

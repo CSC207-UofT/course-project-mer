@@ -47,7 +47,7 @@ public class UserActionTest {
         UserAction ua = new UserAction();
         User u = new User("test", "test123");
         ua.setUser(u);
-        Track t = new Track("Jcole", "amari", "420", "hiphop","1");
+        Track t = new Track("Jcole");
         assertTrue(ua.uploadTrack(t));
         assertFalse(ua.uploadTrack(t));
     }

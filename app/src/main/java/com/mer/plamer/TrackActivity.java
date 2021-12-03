@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mer.plamer.controller.PlayerActivity;
+import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.usecases.PlayAction;
 
 public class TrackActivity extends AppCompatActivity {
@@ -28,7 +28,7 @@ public class TrackActivity extends AppCompatActivity {
         });
 
         ImageButton playButton = (ImageButton) findViewById(R.id.track_play);
-        playButton.setOnClickListener(v -> PlayAction.playPause());
+        playButton.setOnClickListener(v -> PlayControl.playPause());
 
         ImageButton repeatButton = (ImageButton) findViewById(R.id.track_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());

@@ -1,10 +1,9 @@
 package com.mer.plamer.usecases;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Environment;
+import android.media.MediaMetadataRetriever;
 
-import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 import com.mer.plamer.MyApp;
@@ -12,8 +11,6 @@ import com.mer.plamer.TinyDB;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class TrackLibraryAction {
 
@@ -51,23 +48,15 @@ public class TrackLibraryAction {
      * @param path the path of the track we want to add.
      */
     public static void add(String path) {
-        trackLibrary.add(trackLibrary.create(path));
+        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+        mmr.setDataSource(path);
+        Track track = trackLibrary.create(path);
+        track.setArtist(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+        track.setTitle(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE));
+        track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
+        track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+        trackLibrary.add(track);
     }
-
-    /**
-     * scan the local file to add every track exists when the app restarts.
-     */
-//    public static void scanLocal() {
-//        File musicFolder = new File(Environment.getExternalStorageDirectory(), "Music");
-//        File[] files = musicFolder.listFiles();
-//
-//        for(int i = 0; i < Objects.requireNonNull(files).length; i++){
-//            if(files[i].getName().contains(".mp3")){
-//                trackLibrary.add(new Track(files[i].getAbsolutePath()));
-//            }
-//        }
-//
-//    }
 
     /**
      * Scan the local music on every launch (or when the user want to).
@@ -78,12 +67,12 @@ public class TrackLibraryAction {
         int i = 0;
         int current_id = tinydb.getInt("track_static_id");
         while ( i <= current_id) {
-            if (tinydb.objectExists(String.valueOf(i)+"t")) {
-                trackLibrary.add(tinydb.getObject(String.valueOf(i) + "t", Track.class));
+            if (tinydb.objectExists(i +"t")) {
+                trackLibrary.add(tinydb.getObject(i + "t", Track.class));
             }
             i++;
         }
-        Track.changeId(current_id + 1);
+        Track.setID(current_id + 1);
         recursiveSongSearch(dir);
     }
 
