@@ -1,10 +1,17 @@
 package com.mer.plamer.entities;
 
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
+
 import java.util.ArrayList;
 
 public class UserLibrary implements Storable<User> {
     private final ArrayList<User> usersList;
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
+    /**
+     * Constructor for UserLibrary.
+     */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
     }
@@ -15,7 +22,23 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public void add(User new_user) {
+        tinydb.putObject(new_user.getId() + "u", new_user);
         this.usersList.add(new_user);
+    }
+
+    /**
+     * Create a new User.
+     * @param username The Username of the new user.
+     * @param password The password of the new user.
+     * @return The user created.
+     */
+    public User create(String username, String password) {
+        User new_user = new User(username,password);
+        if (tinydb.getInt("user_static_id") != 0) {
+            tinydb.remove("user_static_id");
+        }
+        tinydb.putInt("user_static_id", Integer.parseInt(new_user.getId()));
+        return new_user;
     }
 
     /**
@@ -24,8 +47,10 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public boolean remove(String username) {
-        if (this.contain(username) != null) {
-            this.usersList.remove(this.contain(username));
+        User target = this.contain(username);
+        if (target != null) {
+            this.usersList.remove(target);
+            tinydb.remove(target.getId() + "u");
             return true;
         } else {
             return false;
@@ -69,9 +94,10 @@ public class UserLibrary implements Storable<User> {
         }
         return false;
     }
+
     /**
      * Get the list of users in the library
      * @return ArrayList<User>
      */
-    public ArrayList<User> getusersList() { return this.usersList; }
+    public ArrayList<User> getUsersList() { return this.usersList; }
 }

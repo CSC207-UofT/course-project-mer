@@ -11,6 +11,8 @@ public class User {
     private String password;
     private final ArrayList<Playlist> playlists;
     private final ArrayList<Track> uploadedTracks;
+    private final String user_id;
+    private static int id = 1;
 
     /**
      * Constructor for User. The playlists and uploadedTracks will be empty at the begining.
@@ -22,6 +24,8 @@ public class User {
         this.password = password;
         this.playlists = new ArrayList<>();
         this.uploadedTracks = new ArrayList<>();
+        this.user_id = String.valueOf(id);
+        id++;
     }
 
     /**
@@ -67,4 +71,16 @@ public class User {
     public void setPassword(String password){
         this.password = password;
     }
+
+    /**
+     * Get the Id of this User.
+     * @return the Id of this User.
+     */
+    public String getId() { return this.user_id; }
+
+    /**
+     * Change static id to saved id.
+     * @param saved_id the saved id.
+     */
+    public static void changeId(int saved_id) { id = saved_id; }
 }

@@ -1,10 +1,14 @@
 package com.mer.plamer.entities;
 
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for TrackLibrary.
@@ -19,17 +23,24 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public void add(Track track) {
+        tinydb.putObject(track.getID() + "t", track);
         tracksList.add(track);
     }
 
     /**
      * create a new track.
-     * @param name the name of the track.
+     * @param path the path of the track.
      * @return the created track.
      */
-    public Track create(String name) {
-        return new Track(name);
+    public Track create(String path) {
+        Track new_track = new Track(path);
+        if (tinydb.getInt("track_static_id") != 0) {
+            tinydb.remove("track_static_id");
+        }
+        tinydb.putInt("track_static_id", Integer.parseInt(new_track.getID()));
+        return new_track;
     }
+
     /**
      * Get the track at index Int.
      * @param Int the index of the track we want to get.
@@ -48,6 +59,7 @@ public class TrackLibrary implements Storable<Track> {
     public boolean remove(String id) {
         if (this.contain(id) != null) {
             this.tracksList.remove(this.contain(id));
+            tinydb.remove(id+"t");
             return true;
         } else {
             return false;
@@ -70,7 +82,7 @@ public class TrackLibrary implements Storable<Track> {
     @Override
     public Track contain(String id) {
         for (int i = 0; i < tracksList.size(); i++) {
-            if (tracksList.get(i).getId().equals(id)) {
+            if (tracksList.get(i).getID().equals(id)) {
                 return tracksList.get(i);
             }
         }
@@ -78,8 +90,27 @@ public class TrackLibrary implements Storable<Track> {
     }
 
     /**
-     * Get the list of track in the library
+     * Get the list of track in the library.
      * @return ArrayList<Track>
      */
     public ArrayList<Track> getTrackList() { return this.tracksList; }
+
+    /**
+     * Get the list of all ids of tracks currently in the library.
+     * @return The list of ids.
+     */
+    public List<String> getTrackPathList() {
+        List<String> list = new ArrayList<>();
+        for (Track track : tracksList) {
+            list.add(track.getPath());
+        }
+        return list;
+    }
+
+    /**
+     * Empty the Track Library.
+     */
+    public void emptyTheLibrary() {
+        tracksList.clear();
+    }
 }

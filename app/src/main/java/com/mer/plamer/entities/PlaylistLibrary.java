@@ -1,6 +1,11 @@
 package com.mer.plamer.entities;
 
 import java.util.ArrayList;
+import android.content.Context;
+
+import com.mer.plamer.PlaylistActivity;
+import com.mer.plamer.TinyDB;
+import com.mer.plamer.MyApp;
 
 /**
  * Library of playlists.
@@ -8,11 +13,12 @@ import java.util.ArrayList;
 public class PlaylistLibrary implements Storable<Playlist> {
 
     private final ArrayList<Playlist> playlists;
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for PlaylistLibrary.
      */
-    public PlaylistLibrary() {playlists = new ArrayList<>();}
+    public PlaylistLibrary() { playlists = new ArrayList<>(); }
 
     /**
      * Add playlist to this playlist library.
@@ -20,6 +26,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      */
     @Override
     public void add(Playlist playlist) {
+        tinydb.putObject(playlist.getId()+"p", playlist);
         this.playlists.add(playlist);
     }
 
@@ -29,7 +36,12 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the created playlist.
      */
     public Playlist create(String name) {
-        return new Playlist(name);
+        Playlist new_playlist = new Playlist(name);
+        if (tinydb.getInt("playlist_static_id") != 0) {
+            tinydb.remove("playlist_static_id");
+        }
+        tinydb.putInt("playlist_static_id", Integer.parseInt(new_playlist.getId()));
+        return new_playlist;
     }
 
     /**
@@ -41,6 +53,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
     public boolean remove(String id) {
         if (this.contain(id) != null) {
             this.playlists.remove(this.contain(id));
+            tinydb.remove(id+"p");
             return true;
         } else {
             return false;
@@ -79,4 +92,3 @@ public class PlaylistLibrary implements Storable<Playlist> {
         return this.playlists;
     }
 }
-

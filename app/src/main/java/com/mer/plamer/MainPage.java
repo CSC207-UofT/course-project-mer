@@ -6,7 +6,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mer.plamer.controller.PlayerActivity;
+import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.usecases.PlayAction;
 
 public class MainPage extends AppCompatActivity {
 
@@ -15,9 +16,13 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
 
+        String username = getIntent().getStringExtra("curr_user");
+
+
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, SettingActivity.class);
+            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
@@ -40,10 +45,17 @@ public class MainPage extends AppCompatActivity {
         });
 
         ImageButton playing = findViewById(R.id.main_playing);
+
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, PlayerActivity.class);
             startActivity(intent);
         });
+
+        ImageButton playButton = findViewById(R.id.main_play);
+        playButton.setOnClickListener(v -> PlayControl.playPause());
+
+        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
 
     }
 }

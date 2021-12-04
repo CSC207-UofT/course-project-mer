@@ -2,8 +2,6 @@ package com.mer.plamer.usecases;
 
 import android.media.MediaPlayer;
 
-import com.mer.plamer.entities.Track;
-
 /**
  * Class to manipulate the music player's state.
  */
@@ -16,9 +14,11 @@ public class PlayAction {
      */
     public static void prepare() {
         try{
-            mediaPlayer.setDataSource(TrackLibraryAction.trackLibrary.get(0).getPath());
-            currentTrackID = TrackLibraryAction.trackLibrary.get(0).getId();
-            mediaPlayer.prepare();
+            if(!TrackLibraryAction.trackLibrary.isEmpty()){
+                mediaPlayer.setDataSource(TrackLibraryAction.trackLibrary.get(0).getPath());
+                currentTrackID = TrackLibraryAction.trackLibrary.get(0).getID();
+                mediaPlayer.prepare();
+            }
         }
         catch(Exception ignored){
             // To be implemented later
@@ -34,15 +34,17 @@ public class PlayAction {
     }
 
     /**
-     * Starts/Resumes the music player if it is not playing, otherwise pauses it.
+     * Starts/Resumes the music player if it is not playing.
      */
-    public static void playPause() {
-        if (!isPlaying()) {
+    public static void play() {
             mediaPlayer.start();
-        }
-        else {
+    }
+
+    /**
+     * Pauses the music player if it is playing
+     */
+    public static void pause() {
             mediaPlayer.pause();
-        }
     }
 
     /**
