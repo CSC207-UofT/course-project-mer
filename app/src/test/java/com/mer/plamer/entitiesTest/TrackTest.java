@@ -2,8 +2,7 @@ package com.mer.plamer.entitiesTest;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.Test;
-import java.util.List;
+
 import com.mer.plamer.entities.Track;
 
 public class TrackTest {
@@ -11,17 +10,35 @@ public class TrackTest {
 
     @Before
     public void setUp() {
-        t = new Track("Jcole", "amari", "420", "hiphop","1");
+        t = new Track("path");
     }
 
     @Test(timeout = 50)
     public void testTrackConstructor() {
-        assertEquals("Jcole",t.getArtist());
-        assertEquals("420", t.getLength());
-        assertEquals("hiphop", t.getGenre());
-        assertEquals("amari", t.getTitle());
-        assertEquals("1", t.getId());
-        assertEquals("", t.getPath());
+        assertEquals("path", t.getPath());
     }
 
+    @Test(timeout = 50)
+    public void testArtistMethods(){
+        t.setArtist("Jcole");
+        assertEquals("Jcole", t.getArtist());
+    }
+
+    @Test(timeout = 50)
+    public void testLengthMethods(){
+        t.setLength("420");
+        assertEquals("420", t.getLength());
+    }
+
+    @Test(timeout = 50)
+    public void testGenreMethods(){
+        t.setGenre("hiphop");
+        assertEquals("hiphop", t.getGenre());
+    }
+
+    @Test(timeout = 50)
+    public void testTitleMethods(){
+        t.setTitle("amari");
+        assertEquals("amari", t.getTitle());
+    }
 }

@@ -1,53 +1,70 @@
 package com.mer.plamer.entities;
-import java.util.ArrayList;
-import android.media.MediaMetadataRetriever;
 
-// TODO: Implement features around comments
 /**
  * Track class stores information of a music track
  */
 public class Track {
-    private final String artist;
-    private final String title;
-    private final String length;
-    private final String genre;
-    private final ArrayList<String> comments;
+    private String artist;
+    private String title;
+    private String length;
+    private String genre;
     private final String path;
     private final String track_id;
-    private static int id = 1;
+    private static int ID = 1;
 
-    /**
-     * Constructor of a track.
-     * @param path the directory path to this track.
-     */
-    public Track(String path){
-        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-        mmr.setDataSource(path);
-        this.artist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-        this.title = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-        this.length = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-        this.genre = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
-        this.comments = new ArrayList<>();
-        this.path = path;
-        this.track_id = String.valueOf(id);
-        id ++;
-    }
 
     /**
      * Alternative constructor of a track.
-     * @param artist the artist.
-     * @param title the title.
-     * @param length the length.
-     * @param genre the genre.
+     * @param path the path to the file of such track
      */
-    public Track(String artist, String title, String length, String genre, String tid){
-        this.artist = artist;
-        this.title = title;
-        this.length = length;
-        this.genre = genre;
-        this.path = "";
-        this.comments = new ArrayList<>();
-        this.track_id = tid;
+    public Track(String path){
+        this.path = path;
+        this.track_id = String.valueOf(ID);
+        this.artist = "";
+        this.title = "";
+        this.length = "";
+        this.genre = "";
+        ID++;
+    }
+
+    /**
+     * Give a track its artist attribute
+     * @param artist the artist of this track
+     */
+    public void setArtist(String artist){
+        if(artist != null){
+            this.artist = artist;
+        }
+    }
+
+    /**
+     * Give a track its title attribute
+     * @param title the title of this track
+     */
+    public void setTitle(String title){
+        if(title != null){
+            this.title = title;
+        }
+    }
+
+    /**
+     * Give a track its length attribute
+     * @param length the length of this track
+     */
+    public void setLength(String length){
+        if(length != null){
+            this.length = length;
+        }
+    }
+
+    /**
+     * Give a track its genre attribute
+     * @param genre the genre of this track
+     */
+    public void setGenre(String genre){
+        if(genre != null){
+            this.genre = genre;
+        }
     }
 
     /**
@@ -89,14 +106,14 @@ public class Track {
     public String getPath() { return this.path; }
 
     /**
-     * get the id of this track.
-     * @return the id as a string.
+     * get the ID of this track.
+     * @return the ID as a string.
      */
-    public String getId() { return this.track_id;}
+    public String getID() { return this.track_id;}
 
     /**
-     * Set the static id of the Track class to its saved value on every launch.
-     * @param saved_id the saved static id of the Track class.
+     * Set the static ID of the Track class to its saved value on every launch.
+     * @param saved_id the saved static ID of the Track class.
      */
-    public static void changeId(int saved_id) { id = saved_id; }
+    public static void setID(int saved_id) { ID = saved_id; }
 }

@@ -36,9 +36,8 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.PlayerActivity"
+            android:name=".PlayerActivity"
             android:exported="true" />
-        <activity android:name=".controller.PlayControl" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

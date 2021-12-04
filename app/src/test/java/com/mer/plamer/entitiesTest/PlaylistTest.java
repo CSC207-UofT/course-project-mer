@@ -26,8 +26,8 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void testGetLength(){
         Playlist pl = new Playlist("test");
-        Track t = new Track("Jcole", "amari", "420", "hiphop","1");
-        Track t1 = new Track("KDot", "GOD", "520", "hiphop","2");
+        Track t = new Track("test");
+        Track t1 = new Track("test");
         assertEquals(0, pl.getLength());
         pl.addTrack(t);
         assertEquals(1, pl.getLength());
@@ -64,8 +64,8 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void testAddTrack(){
         Playlist pl = new Playlist("test");
-        Track t1 = new Track("Jcole", "amari", "420", "hiphop","1");
-        Track t2 = new Track("KDot", "GOD", "520", "hiphop","2");
+        Track t1 = new Track("test");
+        Track t2 = new Track("KDot");
         assertTrue(pl.addTrack(t1));
         assertTrue(pl.addTrack(t2));
         assertFalse(pl.addTrack(t1));
@@ -74,9 +74,9 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void testDelTrack(){
         Playlist pl = new Playlist("test");
-        Track t1 = new Track("Jcole", "amari", "420", "hiphop","1");
-        Track t2 = new Track("KDot", "GOD", "520", "hiphop","2");
-        Track t3 = new Track("Drake", "ChicagoFS", "320", "hiphop","3");
+        Track t1 = new Track("Jcole");
+        Track t2 = new Track("KDot");
+        Track t3 = new Track("Drake");
         pl.addTrack(t1);
         pl.addTrack(t2);
         assertTrue(pl.delTrack(t1));
@@ -88,7 +88,7 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void testGettracks() {
         Playlist pl = new Playlist("test");
-        Track t1 = new Track("Drake", "ChicagoFS", "320", "hiphop","3");
+        Track t1 = new Track("Drake");
         pl.addTrack(t1);
         ArrayList<Track> testlist = new ArrayList<>();
         testlist.add(t1);
@@ -104,9 +104,9 @@ public class PlaylistTest {
                 return a.getTitle().compareTo(b.getTitle());
             }
         }
-        Track t1 = new Track("Jcole", "Amari", "420", "hiphop","1");
-        Track t2 = new Track("KDot", "GOD", "520", "hiphop","2");
-        Track t3 = new Track("Drake", "ChicagoFS", "320", "hiphop","3");
+        Track t1 = new Track("Jcole");
+        Track t2 = new Track("KDot");
+        Track t3 = new Track("Drake");
         pl.addTrack(t2);
         pl.addTrack(t3);
         pl.addTrack(t1);

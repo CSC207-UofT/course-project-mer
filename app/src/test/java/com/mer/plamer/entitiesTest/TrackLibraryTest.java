@@ -19,9 +19,9 @@ public class TrackLibraryTest {
 
     @Before
     public void setUp() {
-        t1 = new Track("Jcole", "amari", "420", "hiphop","1");
-        t2 = new Track("KDot", "GOD", "520", "hiphop","2");
-        t3 = new Track("Drake", "ChicagoFS", "320", "hiphop","3");
+        t1 = new Track("Jcole");
+        t2 = new Track("KDot");
+        t3 = new Track("Drake");
     }
 
     @Test(timeout = 50)
