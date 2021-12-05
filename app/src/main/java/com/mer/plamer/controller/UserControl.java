@@ -1,37 +1,50 @@
 package com.mer.plamer.controller;
 
+
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 
 
 public class UserControl {
 
-    UserAction userAction;
-    public static UserLibraryAction userLibraryAction = new UserLibraryAction();
+    public UserAction userAction;
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     public UserControl() {
         this.userAction = new UserAction();
     }
 
     public boolean registration(String username, String password) {
-        if (userLibraryAction.userRegister(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.userRegister(username, password));
+        if ( UserLibraryAction.userRegister(username, password) != null) {
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
+            tinydb.putObject("UserLibrary", UserLibraryAction.getUserLibrary());
             return true;
         }
         return false;
     }
 
     public boolean login_check(String username, String password) {
-        if (userLibraryAction.User_login(username, password) != null) {
-            this.userAction.SetUser(userLibraryAction.User_login(username, password));
+        if (UserLibraryAction.User_login(username, password) != null) {
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
     }
 
-    // TODO: Implement getAccountInfo
-    public void getAccountInfo() {
+    public String getAccountInfo() {
+        if (this.userAction.getUser() == null) {
+            return "there is no user.";
+        }
+        return this.userAction.getUser().getUsername();
+    }
 
+    public void scanLocal() {
+        if (tinydb.objectExists("UserLibrary")) {
+            UserLibraryAction.assignLibrary(tinydb.getObject("UserLibrary",
+                    UserLibraryAction.userLibrary.getClass()));
+        }
     }
 
     // TODO: Implement userDeletion

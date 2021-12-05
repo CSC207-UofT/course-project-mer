@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class UserLibrary implements Storable<User> {
     private final ArrayList<User> usersList;
 
+    /**
+     * Constructor for UserLibrary.
+     */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
     }
@@ -19,13 +22,24 @@ public class UserLibrary implements Storable<User> {
     }
 
     /**
+     * Create a new User.
+     * @param username The Username of the new user.
+     * @param password The password of the new user.
+     * @return The user created.
+     */
+    public User create(String username, String password) {
+        return new User(username,password);
+    }
+
+    /**
      * Permanently delete a specific user by their username
      * @param username the name of the user
      */
     @Override
     public boolean remove(String username) {
-        if (this.contain(username) != null) {
-            this.usersList.remove(this.contain(username));
+        User target = this.contain(username);
+        if (target != null) {
+            this.usersList.remove(target);
             return true;
         } else {
             return false;
@@ -69,9 +83,10 @@ public class UserLibrary implements Storable<User> {
         }
         return false;
     }
+
     /**
      * Get the list of users in the library
      * @return ArrayList<User>
      */
-    public ArrayList<User> getusersList() { return this.usersList; }
+    public ArrayList<User> getUsersList() { return this.usersList; }
 }

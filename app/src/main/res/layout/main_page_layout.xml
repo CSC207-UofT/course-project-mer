@@ -12,13 +12,14 @@
         android:layout_height="40dp"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/main_tracks"
         app:layout_constraintBottom_toTopOf="@+id/main_bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.391" />
+        app:layout_constraintVertical_bias="0.391"
+        app:srcCompat="@drawable/main_tracks"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/main_playlist"
@@ -32,7 +33,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338"
-        app:srcCompat="@drawable/main_playlist" />
+        app:srcCompat="@drawable/main_playlist"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/main_users"
@@ -46,7 +48,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.535"
-        app:srcCompat="@drawable/main_users" />
+        app:srcCompat="@drawable/main_users"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/main_settings"
@@ -60,7 +63,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724"
-        app:srcCompat="@drawable/main_setting" />
+        app:srcCompat="@drawable/main_setting"
+        tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <RelativeLayout
         android:id="@+id/main_bottom_bar"
@@ -90,7 +94,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/playing" />
+            app:srcCompat="@drawable/playing"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/main_repeat_list"
@@ -107,7 +112,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/repeat_list" />
+            app:srcCompat="@drawable/repeat_list"
+            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/main_next"
@@ -124,7 +130,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/next" />
+            app:srcCompat="@drawable/next"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/main_prev"
@@ -141,7 +148,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/prev" />
+            app:srcCompat="@drawable/prev"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/main_play"
@@ -158,7 +166,8 @@
             android:adjustViewBounds="false"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/play" />
+            app:srcCompat="@drawable/play"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
     </RelativeLayout>

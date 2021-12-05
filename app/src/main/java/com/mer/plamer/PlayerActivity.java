@@ -1,15 +1,14 @@
-package com.mer.plamer.controller;
+package com.mer.plamer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.mer.plamer.controller.PlayControl;
 
-import com.mer.plamer.R;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
@@ -28,6 +27,7 @@ public class PlayerActivity extends AppCompatActivity {
     TextView mCurrentTrackDuration;
     private Handler mSeekBarHandler;
     private Runnable updateSeekBarPosition;
+    private final int DELAY = 1000;
 
     /**
      * Constructs view and defines actions of the music player UI.
@@ -36,13 +36,12 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.player_layout);
         initializeViews();
         defineActions();
     }
 
-    @SuppressLint("SetTextI18n")
     private void initializeViews(){
+        setContentView(R.layout.player_layout);
         mPlayPauseButton = findViewById(R.id.playlist_play);
         mPreviousButton = findViewById(R.id.playlist_prev);
         mNextButton = findViewById(R.id.playlist_next);
@@ -53,23 +52,22 @@ public class PlayerActivity extends AppCompatActivity {
         mCurrentTrackArtist = findViewById(R.id.artist_name);
         mCurrentTrackPosition = findViewById(R.id.current_time);
         mCurrentTrackDuration = findViewById(R.id.total_length);
-        mSeekBarHandler = new Handler();
-        mSeekBar.setMax(PlayAction.getTrackLength()/1000);
+        mSeekBar.setMax(PlayControl.toSeconds(PlayAction.getTrackLength()));
         mCurrentTrackName.setText(PlayAction.getTitle());
         mCurrentTrackArtist.setText(PlayAction.getArtist());
-        int duration = PlayAction.getTrackLength();
-        mCurrentTrackDuration.setText((duration / 1000) / 60 +":"+ (duration / 1000) % 60);
+        mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
         updateSeekBarPosition = () -> {
-            int currentPosition = PlayAction.getCurrentPosition()/1000;
-            mSeekBar.setProgress(currentPosition);
-            mCurrentTrackPosition.setText(currentPosition / 60+":"+currentPosition % 60);
-            mSeekBarHandler.postDelayed(updateSeekBarPosition, 1000);
+            mSeekBarHandler = new Handler();
+            int currentPosition = PlayAction.getCurrentPosition();
+            mSeekBar.setProgress(PlayControl.toSeconds(currentPosition));
+            mCurrentTrackPosition.setText(PlayControl.toMinuteSeconds(currentPosition));
+            mSeekBarHandler.postDelayed(updateSeekBarPosition, DELAY);
         };
         this.runOnUiThread(updateSeekBarPosition);
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> PlayAction.playPause());
+        mPlayPauseButton.setOnClickListener(v -> PlayControl.playPause());
 
         mBackButton.setOnClickListener(v -> finish());
 
@@ -91,6 +89,7 @@ public class PlayerActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
+
         });
     }
 }

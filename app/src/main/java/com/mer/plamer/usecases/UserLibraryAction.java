@@ -1,67 +1,84 @@
 package com.mer.plamer.usecases;
 
+import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
 
 import java.util.ArrayList;
 
-public class UserLibraryAction implements LibraryAction<User> {
+public class UserLibraryAction {
 
     public static UserLibrary userLibrary = new UserLibrary();
 
     /**
      * Delete user in the user library completely, only admin can perform this method.
+     *
      * @param username the username of the user that will be deleted.
      * @return Whether the user is successfully removed or not.
      */
-   @Override
-   public boolean delete(String username) {
-       return userLibrary.remove(username);
-   }
+    public static boolean delete(String username) {
+        return userLibrary.remove(username);
+    }
 
     /**
      * Search the required user.
+     *
      * @param keyword provided by the user.
      * @return the required user or null if no result found.
      */
-    @Override
-    public ArrayList<User> search(String keyword) {
+    public static ArrayList<User> search(String keyword) {
         ArrayList<User> searchUser = new ArrayList<>();
-        for (User u : userLibrary.getusersList()){
-            if (u.getUsername().contains(keyword)){
+        for (User u : userLibrary.getUsersList()) {
+            if (u.getUsername().contains(keyword)) {
                 searchUser.add(u);
             }
         }
         return searchUser;
     }
 
-    @Override
-    public void add(String name) {
+    /**
+     * add a user to the user library.
+     *
+     * @param name     the username of the user we want to add.
+     * @param password the password of the user we want to add.
+     */
 
+    public static void add(String name, String password) {
+        userLibrary.add(userLibrary.create(name, password));
     }
 
     /**
-     * add a user to the user library.
-     * @param user the user we want to add.
+     * Get the user library.
+     *
+     * @return the user library.
      */
-
-    public void add(User user) {
-       userLibrary.add(user);
+    public static UserLibrary getUserLibrary() {
+        return userLibrary;
     }
 
-    public User userRegister(String userid, String password) {
-        if (userLibrary.contain(userid) != null) {
+    public static User find(String username) {
+        return getUserLibrary().contain(username);
+    }
+
+    public static User userRegister(String username, String password) {
+        if (userLibrary.contain(username) != null) {
+            return null;
+        } else if (username.equals("")) {
             return null;
         }
-        User new_user = new User(userid, password);
-        this.add(new_user);
-        return new_user;
+        add(username, password);
+        return userLibrary.contain(username);
     }
 
-    public User User_login(String userid, String password) {
+    public static User User_login(String userid, String password) {
         if (!userLibrary.check_login(userid, password)) {
             return null;
         }
         return userLibrary.contain(userid);
     }
+
+    public static void assignLibrary(UserLibrary library) {
+        userLibrary = library;
+    }
+
 }

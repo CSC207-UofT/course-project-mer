@@ -16,7 +16,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.17"
+        tools:ignore="ContentDescription"/>
 
     <EditText
         android:id="@+id/login_password"
@@ -36,7 +37,8 @@
         app:layout_constraintVertical_bias="0.353"
         android:inputType="textPassword"
         android:lines="1"
-        android:maxLength="20"/>
+        android:maxLength="20"
+        android:autofillHints="password" />
 
     <EditText
         android:id="@+id/login_username"
@@ -56,13 +58,13 @@
         app:layout_constraintVertical_bias="0.218"
         android:lines="1"
         android:maxLength="20"
+        android:autofillHints="username"
         android:inputType="text"/>
 
     <ImageButton
         android:id="@+id/login_go"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/go"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +72,9 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password"
-        app:layout_constraintVertical_bias="0.345" />
+        app:layout_constraintVertical_bias="0.345"
+        app:srcCompat="@drawable/go"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/login_back"
@@ -84,6 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.963"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/back"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

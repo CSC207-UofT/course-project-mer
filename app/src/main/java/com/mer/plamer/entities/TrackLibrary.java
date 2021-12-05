@@ -1,6 +1,8 @@
 package com.mer.plamer.entities;
 
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
@@ -23,12 +25,13 @@ public class TrackLibrary implements Storable<Track> {
 
     /**
      * create a new track.
-     * @param name the name of the track.
+     * @param path the path of the track.
      * @return the created track.
      */
-    public Track create(String name) {
-        return new Track(name);
+    public Track create(String path) {
+        return new Track(path);
     }
+
     /**
      * Get the track at index Int.
      * @param Int the index of the track we want to get.
@@ -69,7 +72,7 @@ public class TrackLibrary implements Storable<Track> {
     @Override
     public Track contain(String id) {
         for (int i = 0; i < tracksList.size(); i++) {
-            if (tracksList.get(i).getId().equals(id)) {
+            if (tracksList.get(i).getID().equals(id)) {
                 return tracksList.get(i);
             }
         }
@@ -77,8 +80,27 @@ public class TrackLibrary implements Storable<Track> {
     }
 
     /**
-     * Get the list of track in the library
+     * Get the list of track in the library.
      * @return ArrayList<Track>
      */
     public ArrayList<Track> getTrackList() { return this.tracksList; }
+
+    /**
+     * Get the list of all ids of tracks currently in the library.
+     * @return The list of ids.
+     */
+    public List<String> getTrackPathList() {
+        List<String> list = new ArrayList<>();
+        for (Track track : tracksList) {
+            list.add(track.getPath());
+        }
+        return list;
+    }
+
+    /**
+     * Empty the Track Library.
+     */
+    public void emptyTheLibrary() {
+        tracksList.clear();
+    }
 }
