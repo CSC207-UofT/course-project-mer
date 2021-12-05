@@ -32,20 +32,32 @@ public class PlaylistAction {
 
     /**
      * Add new track to the playlist if the track is not already in the playlist.
-     * @param track the track that we wanted to add to the playlist
+     * @param track_id the track id that we wanted to add to the playlist
      * @return whether the track has been successfully added
      */
-    public boolean addTrack(Track track) {
-        return this.playlist.addTrack(track);
+    public boolean addTrack(String track_id) {
+        Track result = TrackLibraryAction.trackLibrary.contain(track_id);
+        if (result != null) {
+            this.playlist.addTrack(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * Delete track from the playlist if the track is in the playlist.
-     * @param track the track that we wanted to delete from the playlist
+     * @param track_id the track id that we wanted to delete from the playlist
      * @return whether the track has been successfully deleted or not
      */
-    public boolean delTrack(Track track) {
-        return this.playlist.delTrack(track);
+    public boolean delTrack(String track_id) {
+        Track result = TrackLibraryAction.trackLibrary.contain(track_id);
+        if (result != null) {
+            this.playlist.delTrack(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -69,7 +81,6 @@ public class PlaylistAction {
         this.playlist.sort(Comparator.comparing(Track::getLength));
     }
 
-    // TODO: Reimplement sortByRandom to solve code warning
     /**
      * Sort the playlist randomly.
      */
