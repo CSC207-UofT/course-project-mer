@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 
+import com.mer.plamer.controller.PlaylistControl;
+import com.mer.plamer.controller.TrackLibraryControl;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
@@ -26,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        UserControl userControl = new UserControl();
+        TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
+        PlaylistControl playlistControl = new PlaylistControl();
         setContentView(R.layout.homepage_layout);
-        TrackLibraryAction.scanLocal();
-        PlaylistLibraryAction.scanLocal();
-        UserLibraryAction.scanLocal();
+        trackLibraryControl.scanLocal();
+        playlistControl.scanLocal();
+        userControl.scanLocal();
         PlayAction.prepare();
 
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);
