@@ -22,15 +22,6 @@ public class PlaylistControl {
     }
 
     /**
-     * Create a new playlist.
-     * @param name the name of the playlist.
-     * @return the playlist that's been created
-     */
-    public Playlist CreateNewPlaylist(String name) {
-        return PlaylistAction.CreatePlaylist(name);
-    }
-
-    /**
      * Set playlist action to plAction.
      * @param plAction the playlist action that we wanted to set playlistAction to.
      */
