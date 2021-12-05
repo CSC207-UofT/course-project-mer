@@ -1,8 +1,8 @@
+
 package com.mer.plamer.controller;
 
 import com.mer.plamer.MyApp;
 import com.mer.plamer.TinyDB;
-import com.mer.plamer.entities.Track;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserLibraryAction;
@@ -12,13 +12,20 @@ import com.mer.plamer.usecases.UserLibraryAction;
  */
 public class PlaylistControl {
     PlaylistAction playlistAction;
-    TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for Playlist Control, initially playlistAction is null.
      */
     public PlaylistControl() {
         this.playlistAction = null;
+    }
+
+    /**
+     * Create a new playlist.
+     * @param playlist_name the name of the playlist.
+     */
+    public void createAddPlaylist(String playlist_name) {
+        PlaylistLibraryAction.playlistLibrary.add(PlaylistAction.createPlaylist(playlist_name));
     }
 
     /**
@@ -31,20 +38,20 @@ public class PlaylistControl {
 
     /**
      * Remove a track from playlist.
-     * @param track the track that we wanted to be removed from the playlist.
+     * @param track_id the track id that we wanted to be removed from the playlist.
      * @return true if the track has been successfully removed.
      */
-    public boolean trackRemove(Track track) {
-        return this.playlistAction.delTrack(track);
+    public boolean trackRemove(String track_id) {
+        return this.playlistAction.delTrack(track_id);
     }
 
     /**
      * Add a track from the playlist
-     * @param track the track that we wanted to add to the playlist.
+     * @param track_id the track id that we wanted to add to the playlist.
      * @return true if the track has been successfully removed.
      */
-    public boolean trackAdd(Track track) {
-        return this.playlistAction.addTrack(track);
+    public boolean trackAdd(String track_id) {
+        return this.playlistAction.addTrack(track_id);
     }
 
     /**
@@ -90,6 +97,7 @@ public class PlaylistControl {
                     PlaylistLibraryAction.playlistLibrary.getClass()));
         }
     }
+
     /**
      * Set the status of the playlist to status.
      * @param status the status of the playlist that we want to set to.
