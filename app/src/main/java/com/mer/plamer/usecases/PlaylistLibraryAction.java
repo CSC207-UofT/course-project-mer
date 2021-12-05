@@ -13,8 +13,6 @@ import java.util.ArrayList;
 public class PlaylistLibraryAction {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();
-    @SuppressLint("StaticFieldLeak")
-    private static final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete the playlist in the playlist library.
