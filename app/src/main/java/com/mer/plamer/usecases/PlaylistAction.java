@@ -22,6 +22,15 @@ public class PlaylistAction {
     }
 
     /**
+     * Create a new playlist.
+     * @param name the name of the playlist.
+     * @return the playlist that's been created.
+     */
+    public static Playlist CreatePlaylist(String name) {
+        return new Playlist(name);
+    }
+
+    /**
      * Add new track to the playlist if the track is not already in the playlist.
      * @param track the track that we wanted to add to the playlist
      * @return whether the track has been successfully added

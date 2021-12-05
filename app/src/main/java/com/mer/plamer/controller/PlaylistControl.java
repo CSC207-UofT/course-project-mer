@@ -2,6 +2,7 @@ package com.mer.plamer.controller;
 
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.usecases.PlaylistAction;
+import com.mer.plamer.entities.Playlist;
 
 /**
  * The controller class for playlist.
@@ -14,6 +15,15 @@ public class PlaylistControl {
      */
     public PlaylistControl() {
         this.playlistAction = null;
+    }
+
+    /**
+     * Create a new playlist.
+     * @param name the name of the playlist.
+     * @return the playlist that's been created
+     */
+    public Playlist CreateNewPlaylist(String name) {
+        return PlaylistAction.CreatePlaylist(name);
     }
 
     /**
