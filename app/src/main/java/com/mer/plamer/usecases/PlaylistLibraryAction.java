@@ -1,12 +1,9 @@
 package com.mer.plamer.usecases;
 
-import android.annotation.SuppressLint;
 
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 

@@ -1,22 +1,16 @@
 package com.mer.plamer.usecases;
 
-import android.annotation.SuppressLint;
-import android.os.Environment;
 import android.media.MediaMetadataRetriever;
 
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 
-import java.io.File;
+
 import java.util.ArrayList;
 
 public class TrackLibraryAction {
 
     public static TrackLibrary trackLibrary = new TrackLibrary();
-    @SuppressLint("StaticFieldLeak")
-    private static final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete the track in the track library.

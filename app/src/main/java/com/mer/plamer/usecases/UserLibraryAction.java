@@ -1,9 +1,5 @@
 package com.mer.plamer.usecases;
 
-import android.annotation.SuppressLint;
-
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;

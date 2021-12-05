@@ -1,9 +1,7 @@
 package com.mer.plamer.entities;
 
 import java.util.ArrayList;
-import android.content.Context;
 
-import com.mer.plamer.PlaylistActivity;
 import com.mer.plamer.TinyDB;
 import com.mer.plamer.MyApp;
 

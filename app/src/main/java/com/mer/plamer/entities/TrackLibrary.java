@@ -1,7 +1,5 @@
 package com.mer.plamer.entities;
 
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 import java.util.List;
