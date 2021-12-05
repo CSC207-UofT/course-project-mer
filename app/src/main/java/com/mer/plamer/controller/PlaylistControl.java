@@ -1,8 +1,10 @@
 package com.mer.plamer.controller;
 
+import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.entities.Playlist;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 /**
  * The controller class for playlist.
@@ -19,11 +21,13 @@ public class PlaylistControl {
 
     /**
      * Create a new playlist.
-     * @param name the name of the playlist.
-     * @return the playlist that's been created
+     * @param playlist_name the name of the playlist.
      */
-    public Playlist CreateNewPlaylist(String name) {
-        return PlaylistAction.CreatePlaylist(name);
+    public void CreateAddPlaylist(String playlist_name, PlaylistLibrary playlist_library) {
+        Playlist new_playlist = PlaylistAction.CreatePlaylist(playlist_name);
+        PlaylistLibraryAction pl_library_action = new PlaylistLibraryAction();
+        PlaylistLibraryAction.playlistLibrary = playlist_library;
+        pl_library_action.add(new_playlist.getName());
     }
 
     /**
@@ -75,6 +79,7 @@ public class PlaylistControl {
                 return false;
         }
     }
+
 
     /**
      * Set the status of the playlist to status.
