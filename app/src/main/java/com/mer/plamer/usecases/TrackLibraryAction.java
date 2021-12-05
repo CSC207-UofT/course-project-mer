@@ -47,7 +47,7 @@ public class TrackLibraryAction {
      * add a track to the track library.
      * @param path the path of the track we want to add.
      */
-    public static void add(String path) {
+    public static Track add(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
         Track track = trackLibrary.create(path);
@@ -56,44 +56,15 @@ public class TrackLibraryAction {
         track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
         track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         trackLibrary.add(track);
+        return track;
     }
 
-    /**
-     * Scan the local music on every launch (or when the user want to).
-     */
-    public static void scanLocal() {
+    public static void assignLibrary(TrackLibrary library) {
+        trackLibrary = library;
+    }
+
+    public static void emptyTheLibrary() {
         trackLibrary.emptyTheLibrary();
-        File dir = Environment.getExternalStorageDirectory();
-        int i = 0;
-        int current_id = tinydb.getInt("track_static_id");
-        while ( i <= current_id) {
-            if (tinydb.objectExists(i +"t")) {
-                trackLibrary.add(tinydb.getObject(i + "t", Track.class));
-            }
-            i++;
-        }
-        Track.setID(current_id + 1);
-        recursiveSongSearch(dir);
     }
 
-    /**
-     * Helper method to recursively search for songs in the storage.
-     * @param dir The directory to search.
-     */
-    private static void recursiveSongSearch(File dir) {
-        if (!dir.isDirectory()) {
-            if (dir.getName().endsWith(".mp3")) {
-                if (!trackLibrary.getTrackPathList().contains(dir.getAbsolutePath())) {
-                    add(dir.getAbsolutePath());
-                }
-            }
-        }
-        File[] files = dir.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                recursiveSongSearch(file);
-            }
-        }
-
-    }
 }

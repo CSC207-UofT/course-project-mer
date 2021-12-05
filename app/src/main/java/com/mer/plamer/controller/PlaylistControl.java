@@ -1,13 +1,18 @@
 package com.mer.plamer.controller;
 
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.usecases.PlaylistAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 /**
  * The controller class for playlist.
  */
 public class PlaylistControl {
     PlaylistAction playlistAction;
+    TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for Playlist Control, initially playlistAction is null.
@@ -66,6 +71,25 @@ public class PlaylistControl {
         }
     }
 
+    public void add(String name) {
+        PlaylistLibraryAction.add(name);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+    }
+
+    public void remove(String name) {
+        PlaylistLibraryAction.delete(name);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+    }
+
+    /**
+     * Scan and add the local playlists on every launch.
+     */
+    public void scanLocal() {
+        if (tinydb.objectExists("PlaylistLibrary")) {
+            PlaylistLibraryAction.assignLibrary(tinydb.getObject("PlaylistLibrary",
+                    PlaylistLibraryAction.playlistLibrary.getClass()));
+        }
+    }
     /**
      * Set the status of the playlist to status.
      * @param status the status of the playlist that we want to set to.

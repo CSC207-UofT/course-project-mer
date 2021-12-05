@@ -1,29 +1,33 @@
 package com.mer.plamer.controller;
 
+
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 
 
 public class UserControl {
 
     public UserAction userAction;
-    public static UserLibraryAction userLibraryAction = new UserLibraryAction();
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     public UserControl() {
         this.userAction = new UserAction();
     }
 
     public boolean registration(String username, String password) {
-        if (userLibraryAction.userRegister(username, password) != null) {
-            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
+        if ( UserLibraryAction.userRegister(username, password) != null) {
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
+            tinydb.putObject("UserLibrary", UserLibraryAction.getUserLibrary());
             return true;
         }
         return false;
     }
 
     public boolean login_check(String username, String password) {
-        if (userLibraryAction.User_login(username, password) != null) {
-            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
+        if (UserLibraryAction.User_login(username, password) != null) {
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
             return true;
         }
         return false;
@@ -36,8 +40,11 @@ public class UserControl {
         return this.userAction.getUser().getUsername();
     }
 
-    public UserLibraryAction getUserLibraryAction() {
-        return userLibraryAction;
+    public void scanLocal() {
+        if (tinydb.objectExists("UserLibrary")) {
+            UserLibraryAction.assignLibrary(tinydb.getObject("UserLibrary",
+                    UserLibraryAction.userLibrary.getClass()));
+        }
     }
 
     // TODO: Implement userDeletion

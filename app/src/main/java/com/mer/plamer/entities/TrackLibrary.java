@@ -8,7 +8,6 @@ import java.util.List;
 
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for TrackLibrary.
@@ -23,7 +22,6 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public void add(Track track) {
-        tinydb.putObject(track.getID() + "t", track);
         tracksList.add(track);
     }
 
@@ -33,12 +31,7 @@ public class TrackLibrary implements Storable<Track> {
      * @return the created track.
      */
     public Track create(String path) {
-        Track new_track = new Track(path);
-        if (tinydb.getInt("track_static_id") != 0) {
-            tinydb.remove("track_static_id");
-        }
-        tinydb.putInt("track_static_id", Integer.parseInt(new_track.getID()));
-        return new_track;
+        return new Track(path);
     }
 
     /**
@@ -59,7 +52,6 @@ public class TrackLibrary implements Storable<Track> {
     public boolean remove(String id) {
         if (this.contain(id) != null) {
             this.tracksList.remove(this.contain(id));
-            tinydb.remove(id+"t");
             return true;
         } else {
             return false;

@@ -26,7 +26,6 @@ public class PlaylistLibrary implements Storable<Playlist> {
      */
     @Override
     public void add(Playlist playlist) {
-        tinydb.putObject(playlist.getId()+"p", playlist);
         this.playlists.add(playlist);
     }
 
@@ -36,12 +35,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the created playlist.
      */
     public Playlist create(String name) {
-        Playlist new_playlist = new Playlist(name);
-        if (tinydb.getInt("playlist_static_id") != 0) {
-            tinydb.remove("playlist_static_id");
-        }
-        tinydb.putInt("playlist_static_id", Integer.parseInt(new_playlist.getId()));
-        return new_playlist;
+        return new Playlist(name);
     }
 
     /**
@@ -53,7 +47,6 @@ public class PlaylistLibrary implements Storable<Playlist> {
     public boolean remove(String id) {
         if (this.contain(id) != null) {
             this.playlists.remove(this.contain(id));
-            tinydb.remove(id+"p");
             return true;
         } else {
             return false;

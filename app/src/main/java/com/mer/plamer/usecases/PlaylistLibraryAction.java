@@ -28,18 +28,19 @@ public class PlaylistLibraryAction {
 
     /**
      * Search the required playlists.
+     *
      * @param keyword the provided keyword by the user
      * @return the required playlists.
      */
     public static ArrayList<Playlist> search(String keyword) {
         ArrayList<Playlist> searchPlaylist = new ArrayList<>();
-        for (Playlist p : playlistLibrary.getPlaylists()){
-            if (p.getName().contains(keyword)){
+        for (Playlist p : playlistLibrary.getPlaylists()) {
+            if (p.getName().contains(keyword)) {
                 searchPlaylist.add(p);
             }
-            for (Track t : p.getTracks()){
+            for (Track t : p.getTracks()) {
                 if ((t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
-                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p))){
+                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p))) {
                     searchPlaylist.add(p);
                 } else
                     break;
@@ -47,6 +48,7 @@ public class PlaylistLibraryAction {
         }
         return searchPlaylist;
     }
+
     /**
      * add a playlist to the playlist library.
      *
@@ -58,18 +60,7 @@ public class PlaylistLibraryAction {
 
     }
 
-    /**
-     * Scan and add the local playlists on every launch.
-     */
-    public static void scanLocal() {
-        int i = 0;
-        int current_id = tinydb.getInt("playlist_static_id");
-        while ( i <= current_id) {
-            if (tinydb.objectExists(String.valueOf(i)+"p")) {
-                playlistLibrary.add(tinydb.getObject(String.valueOf(i) + "p", Playlist.class));
-            }
-            i++;
-        }
-        Playlist.changeId(current_id + 1);
+    public static void assignLibrary(PlaylistLibrary library) {
+        playlistLibrary = library;
     }
 }
