@@ -96,4 +96,28 @@ public class PlaylistLibrary implements Storable<Playlist> {
         }
         return null;
     }
+
+    /**
+     * Get a list of integers containing the size of every playlist.
+     * @return the list of all playlist size.
+     */
+    public ArrayList<Integer> getListofPlaylistSize() {
+        ArrayList<Integer> list_of_size = new ArrayList<Integer>();
+        for (Playlist playlist : playlists) {
+            list_of_size.add(playlist.getLength());
+        }
+        return list_of_size;
+    }
+
+    /**
+     * Get a list of String containing the name of every playlist.
+     * @return the list of all playlist name.
+     */
+    public ArrayList<String> getListofPlaylistName() {
+        ArrayList<String> list_of_name = new ArrayList<String>();
+        for (Playlist playlist : playlists) {
+            list_of_name.add(playlist.getName());
+        }
+        return list_of_name;
+    }
 }
