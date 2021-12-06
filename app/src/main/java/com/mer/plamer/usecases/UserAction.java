@@ -94,17 +94,16 @@ public class UserAction {
     }
 
     /**
-     * Create a new and empty playlist that belongs to this user.
-     * @param PL_name the name of the new play list.
-     * @return true if the playlist is created, false otherwise.
+     * Add the newest playlist to this user's list of playlist.
+     * @return true if the playlist is successfully added, false otherwise.
      */
-    public boolean createPlaylist(String PL_name) {
+    public boolean addPlaylist() {
         if (this.isNull()) {
             return false;
         }
-        Playlist new_pl = new Playlist(PL_name);
-        this.user.getPlaylists().add(new_pl);
-        PlaylistLibraryAction.playlistLibrary.add(new_pl);
+        int index = PlaylistLibraryAction.playlistLibrary.getPlaylists().size() - 1;
+        Playlist new_list = PlaylistLibraryAction.playlistLibrary.getPlaylists().get(index);
+        this.user.getPlaylists().add(new_list);
         return true;
     }
 
