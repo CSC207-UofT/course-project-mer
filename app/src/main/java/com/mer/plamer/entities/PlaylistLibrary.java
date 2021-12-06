@@ -43,8 +43,8 @@ public class PlaylistLibrary implements Storable<Playlist> {
      */
     @Override
     public boolean remove(String id) {
-        if (this.contain(id) != null) {
-            this.playlists.remove(this.contain(id));
+        if (this.get(id) != null) {
+            this.playlists.remove(this.get(id));
             return true;
         } else {
             return false;
@@ -66,7 +66,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the playlist with name name.
      */
     @Override
-    public Playlist contain(String id) {
+    public Playlist get(String id) {
         for (int i = 0; i < playlists.size(); i++) {
             if (playlists.get(i).getId().equals(id)) {
                 return playlists.get(i);
@@ -81,5 +81,19 @@ public class PlaylistLibrary implements Storable<Playlist> {
      */
     public ArrayList<Playlist> getPlaylists() {
         return this.playlists;
+    }
+
+    /**
+     * Returns the playlist matching such input id, null if no such playlist exists
+     * @param id the id of a playlist
+     * @return the playlist matching such id
+     */
+    public Playlist getPlaylist(String id) {
+        for(Playlist p:playlists){
+            if(p.getId().equals(id)){
+                return p;
+            }
+        }
+        return null;
     }
 }

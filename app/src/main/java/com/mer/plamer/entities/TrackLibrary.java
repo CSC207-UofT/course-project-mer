@@ -37,8 +37,23 @@ public class TrackLibrary implements Storable<Track> {
      * @param Int the index of the track we want to get.
      * @return the track at the index.
      */
-    public Track get(int Int) {
+    public Track getByIndex(int Int) {
         return tracksList.get(Int);
+    }
+
+    /**
+     * Returns the track with given id. Return null if such track does not exist
+     * @param id the id of a track needed
+     * @return the track with such id
+     */
+    @Override
+    public Track get(String id){
+        for(Track t:tracksList){
+            if(t.getID().equals(id)){
+                return t;
+            }
+        }
+        return this.getByIndex(0);
     }
 
     /**
@@ -48,8 +63,8 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public boolean remove(String id) {
-        if (this.contain(id) != null) {
-            this.tracksList.remove(this.contain(id));
+        if (this.get(id) != null) {
+            this.tracksList.remove(this.get(id));
             return true;
         } else {
             return false;
@@ -67,17 +82,17 @@ public class TrackLibrary implements Storable<Track> {
     /**
      * Check if the track library contains certain tracks.
      * @param id the name of the track we wanted to check
-     * @return the track that corresponds to the id.
+     * @return true if track is in the library, false otherwise
      */
-    @Override
-    public Track contain(String id) {
-        for (int i = 0; i < tracksList.size(); i++) {
-            if (tracksList.get(i).getID().equals(id)) {
-                return tracksList.get(i);
+    public boolean contains(String id){
+        for(Track t:tracksList){
+            if(t.getID().equals(id)){
+                return true;
             }
         }
-        return null;
+        return false;
     }
+
 
     /**
      * Get the list of track in the library.

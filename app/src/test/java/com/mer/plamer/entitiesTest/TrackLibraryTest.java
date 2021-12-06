@@ -6,10 +6,8 @@ import com.mer.plamer.entities.TrackLibrary;
 import com.mer.plamer.entities.Track;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrackLibraryTest {
     Track t1;
@@ -31,11 +29,11 @@ public class TrackLibraryTest {
         tl.add(t1);
         assertFalse(tl.isEmpty());
         tl.add(t2);
-        assertEquals(t1, tl.get(0));
+        assertEquals(t1, tl.getByIndex(0));
         assertTrue(tl.remove("2"));
         assertFalse(tl.remove("3"));
-        assertEquals(t1, tl.contain("1"));
-        assertNull(tl.contain("123"));
+        assertEquals(t1, tl.get("1"));
+        assertNull(tl.get("123"));
         ArrayList<Track> testlist = new ArrayList<>();
         testlist.add(t1);
         assertArrayEquals(testlist.toArray(), tl.getTrackList().toArray());

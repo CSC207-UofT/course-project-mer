@@ -1,6 +1,5 @@
 package com.mer.plamer.usecases;
 
-import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
 
@@ -57,24 +56,24 @@ public class UserLibraryAction {
     }
 
     public static User find(String username) {
-        return getUserLibrary().contain(username);
+        return getUserLibrary().get(username);
     }
 
     public static User userRegister(String username, String password) {
-        if (userLibrary.contain(username) != null) {
+        if (userLibrary.get(username) != null) {
             return null;
         } else if (username.equals("")) {
             return null;
         }
         add(username, password);
-        return userLibrary.contain(username);
+        return userLibrary.get(username);
     }
 
     public static User User_login(String userid, String password) {
         if (!userLibrary.check_login(userid, password)) {
             return null;
         }
-        return userLibrary.contain(userid);
+        return userLibrary.get(userid);
     }
 
     public static void assignLibrary(UserLibrary library) {
