@@ -1,19 +1,24 @@
 package com.mer.plamer;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistAdapter;
+import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
@@ -33,6 +38,8 @@ public class PlaylistActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("curr_user");
         UserControl userControl = new UserControl();
         userControl.userAction.setUser(username);
+
+        PlaylistControl playlistControl = new PlaylistControl();
 
         // back to the last page
         ImageButton back = findViewById(R.id.playlist_back_last_page);
@@ -61,6 +68,8 @@ public class PlaylistActivity extends AppCompatActivity {
                 // add new playlist into library
                 String pll_name = playlist_name.getText().toString();
                 if (userControl.createPlaylist(pll_name)){
+                    Toast.makeText(PlaylistActivity.this,
+                            "You have created a playlist.", Toast.LENGTH_LONG).show();
                     popupwindow.dismiss();
                 } else {
                     Toast.makeText(PlaylistActivity.this,
@@ -70,11 +79,51 @@ public class PlaylistActivity extends AppCompatActivity {
 
         });
 
-        // show the list of all tracks
+        // show the list of all playlists
         ArrayList<String> playListID = PlaylistLibraryAction.getListOfPlaylistId();
         ListView play_list_view;
         play_list_view = findViewById(R.id.playlist_list);
         play_list_view.setAdapter(new PlaylistAdapter(getApplicationContext(), playListID));
+
+        // click playlist to open it
+        play_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String id = playListID.get(i);
+                Intent intent = new Intent(PlaylistActivity.this, OwnPlaylistActivity.class);
+                intent.putExtra("play_list_id", id);
+                startActivity(intent);
+            }
+        });
+
+        // delete the playlist
+        play_list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PlaylistActivity.this);
+                builder.setMessage("Do you want to delete this playlist?");
+                String list_id = playListID.get(position);
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        playlistControl.remove(list_id);
+                        Toast.makeText(PlaylistActivity.this,
+                                "You have deleted a playlist.", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.create().show();
+                return false;
+            }
+        });
 
         // play music
         ImageButton playing = findViewById(R.id.playlist_playing);

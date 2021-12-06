@@ -44,7 +44,7 @@ public class PlaylistAdapter extends BaseAdapter {
         return 0;
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
@@ -53,7 +53,7 @@ public class PlaylistAdapter extends BaseAdapter {
         playListSize = PlaylistLibraryAction.getListOfPlaylistSize();
         int i = playListID.indexOf(id);
         if (convertView == null) {
-            convertView = testLayoutInflater.inflate(R.layout.track_item,null);
+            convertView = testLayoutInflater.inflate(R.layout.playlist_item,null);
             viewHolder = new ViewHolder();
             viewHolder.playListName = convertView.findViewById(R.id.playlist_item_name);
             viewHolder.playListLength = convertView.findViewById(R.id.playlist_item_length);
@@ -62,7 +62,7 @@ public class PlaylistAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.playListName.setText(playListName.get(i));
-        viewHolder.playListLength.setText(playListSize.get(i));
+        viewHolder.playListLength.setText(playListSize.get(i).toString());
         return convertView;
     }
 

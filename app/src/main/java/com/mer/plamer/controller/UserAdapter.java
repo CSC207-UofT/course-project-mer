@@ -47,7 +47,7 @@ public class UserAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         String name = userList.get(position);
         if (convertView == null) {
-            convertView = testLayoutInflater.inflate(R.layout.track_item,null);
+            convertView = testLayoutInflater.inflate(R.layout.universe_user_item,null);
             viewHolder = new ViewHolder();
             viewHolder.userName = convertView.findViewById(R.id.universe_user_username);
             convertView.setTag(viewHolder);
