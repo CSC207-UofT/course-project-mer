@@ -55,10 +55,21 @@ public class UserLibraryAction {
         return userLibrary;
     }
 
+    /**
+     * Find if a user is in the library and return if it exits.
+     * @param username the username of the user if exists.
+     * @return the User if exists.
+     */
     public static User find(String username) {
         return getUserLibrary().get(username);
     }
 
+    /**
+     * Register a new user.
+     * @param username The username of the new user.
+     * @param password The password of the new user.
+     * @return The new created user.
+     */
     public static User userRegister(String username, String password) {
         if (userLibrary.get(username) != null) {
             return null;
@@ -69,6 +80,12 @@ public class UserLibraryAction {
         return userLibrary.get(username);
     }
 
+    /**
+     * Attempt to login to a user account if userid and password matches.
+     * @param userid the userid which the user entered.
+     * @param password the password which the user entered.
+     * @return the User that was logged in.
+     */
     public static User User_login(String userid, String password) {
         if (!userLibrary.check_login(userid, password)) {
             return null;
@@ -76,6 +93,10 @@ public class UserLibraryAction {
         return userLibrary.get(userid);
     }
 
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the previously stored library.
+     */
     public static void assignLibrary(UserLibrary library) {
         userLibrary = library;
     }

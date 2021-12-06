@@ -22,14 +22,6 @@ public class PlaylistControl {
     }
 
     /**
-     * Create a new playlist.
-     * @param playlist_name the name of the playlist.
-     */
-    public void createAddPlaylist(String playlist_name) {
-        PlaylistLibraryAction.playlistLibrary.add(PlaylistAction.createPlaylist(playlist_name));
-    }
-
-    /**
      * Set playlist action to plAction.
      * @param plAction the playlist action that we wanted to set playlistAction to.
      */
@@ -79,11 +71,19 @@ public class PlaylistControl {
         }
     }
 
+    /**
+     * Create a new playlist.
+     * @param name the name of the playlist.
+     */
     public void add(String name) {
         PlaylistLibraryAction.add(name);
         tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
     }
 
+    /**
+     * Remove a playlist.
+     * @param name the name of the playlist to remove.
+     */
     public void remove(String name) {
         PlaylistLibraryAction.delete(name);
         tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
