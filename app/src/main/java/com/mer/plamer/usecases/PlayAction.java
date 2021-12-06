@@ -62,7 +62,6 @@ public class PlayAction {
             mediaPlayer.setOnCompletionListener(mp -> {
                 PlayAction.end();
                 PlayAction.next();
-                PlayAction.play();
             });
         }
     }
@@ -162,6 +161,7 @@ public class PlayAction {
                 currentTrackID = playlist.get(0).getID();
             }
             PlayAction.prepare();
+            PlayAction.play();
         }
     }
 
@@ -192,6 +192,7 @@ public class PlayAction {
                 currentTrackID = playlist.get(playlist.size()-1).getID();
             }
             PlayAction.prepare();
+            PlayAction.play();
         }
     }
 
