@@ -25,14 +25,16 @@ public class TrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.track_layout);
 
-
+        // back to the last page
         ImageButton back = findViewById(R.id.track_back_last_page);
         back.setOnClickListener(v -> finish());
 
+        // show the list of all tracks
         ArrayList<String> track_id_list = TrackLibraryAction.fetchAllTrackIDs();
         ListView track_list_view;
         track_list_view = findViewById(R.id.track_list);
         track_list_view.setAdapter(new TrackAdapter(getApplicationContext(), track_id_list));
+        // play track when click on the track in the list
         track_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -40,7 +40,7 @@
         tools:text="playlist name" />
 
     <TextView
-        android:id="@+id/playlist_length"
+        android:id="@+id/playlist_item_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"

@@ -81,5 +81,16 @@ public class UserControl {
         this.userAction.changePwd(new_pass);
         return true;
     }
+
+    public boolean createPlaylist(String name){
+        if (name == null){
+            return false;
+        } else {
+            PlaylistControl playlistControl = new PlaylistControl();
+            playlistControl.add(name);
+            return true;
+        }
+
+    }
 }
 

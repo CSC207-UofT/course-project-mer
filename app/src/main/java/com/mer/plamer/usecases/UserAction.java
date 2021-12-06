@@ -86,20 +86,7 @@ public class UserAction {
         return true;
     }
 
-    /**
-     * Create a new and empty playlist that belongs to this user.
-     *
-     * @param PL_name the name of the new play list.
-     * @return true if the playlist is created, false otherwise.
-     */
-    public boolean createPlaylist(String PL_name) {
-        if (this.isNull()) {
-            return false;
-        }
-        Playlist new_pl = new Playlist(PL_name);
-        this.user.getPlaylists().add(new_pl);
-        PlaylistLibraryAction.playlistLibrary.add(new_pl);
-        return true;
-    }
+    public void addPlaylist(Playlist playList){
 
+    }
 }

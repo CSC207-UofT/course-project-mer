@@ -4,17 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
+import com.mer.plamer.usecases.UserAction;
 
 import java.util.ArrayList;
 
@@ -46,12 +51,25 @@ public class PlaylistActivity extends AppCompatActivity {
             // confirm the name
             ImageButton new_go = pop.findViewById(R.id.new_playlist_go);
             new_go.setOnClickListener(v1 -> {
+                // the input of name
+                EditText playlist_name = findViewById(R.id.new_playlist_name);
                 // add new playlist into library
-                // back to the last page
-                popupwindow.dismiss();
+                String pll_name = playlist_name.getText().toString();
+                if (userControl.createPlaylist(pll_name)){
+                    popupwindow.dismiss();
+                } else {
+                    Toast.makeText(PlaylistActivity.this,
+                            "You didn't input the name of your playlist.", Toast.LENGTH_LONG).show();
+                }
             });
 
         });
+
+        // show the list of all tracks
+        ArrayList<String> playListID = PlaylistLibraryAction.getListOfPlaylistId();
+        ListView play_list_view;
+        play_list_view = findViewById(R.id.playlist_list);
+        play_list_view.setAdapter(new PlaylistAdapter(getApplicationContext(), playListID));
 
         // play music
         ImageButton playing = findViewById(R.id.playlist_playing);
