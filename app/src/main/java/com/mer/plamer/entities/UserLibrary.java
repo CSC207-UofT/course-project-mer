@@ -37,7 +37,7 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public boolean remove(String username) {
-        User target = this.contain(username);
+        User target = this.get(username);
         if (target != null) {
             this.usersList.remove(target);
             return true;
@@ -61,7 +61,7 @@ public class UserLibrary implements Storable<User> {
      * @return username of user
      */
     @Override
-    public User contain(String id) {
+    public User get(String id) {
         for (User user : this.usersList) {
             if (user.getUsername().equals(id)) {
                 return user;
@@ -77,7 +77,7 @@ public class UserLibrary implements Storable<User> {
      * @return true if username matches password and false otherwise
      */
     public boolean check_login(String id, String pass) {
-        User target = this.contain(id);
+        User target = this.get(id);
         if (target != null) {
             return target.getPassword().equals(pass);
         }

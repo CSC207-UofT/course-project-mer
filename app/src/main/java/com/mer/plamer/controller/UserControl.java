@@ -18,7 +18,7 @@ public class UserControl {
 
     public boolean registration(String username, String password) {
         if ( UserLibraryAction.userRegister(username, password) != null) {
-            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().get(username));
             tinydb.putObject("UserLibrary", UserLibraryAction.getUserLibrary());
             return true;
         }
@@ -27,7 +27,7 @@ public class UserControl {
 
     public boolean login_check(String username, String password) {
         if (UserLibraryAction.User_login(username, password) != null) {
-            this.userAction.setUser(UserLibraryAction.getUserLibrary().contain(username));
+            this.userAction.setUser(UserLibraryAction.getUserLibrary().get(username));
             return true;
         }
         return false;

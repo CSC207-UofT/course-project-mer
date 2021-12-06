@@ -5,5 +5,5 @@ public interface Storable<T> {
     void add(T name);
     boolean remove(String id);
     boolean isEmpty();
-    T contain(String id);
+    T get(String id);
 }
