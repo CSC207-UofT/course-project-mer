@@ -47,50 +47,34 @@ public class UserLibraryAction {
     }
 
     /**
-     * Get the user library.
-     *
-     * @return the user library.
-     */
-    public static UserLibrary getUserLibrary() {
-        return userLibrary;
-    }
-
-    /**
-     * Find if a user is in the library and return if it exits.
-     * @param username the username of the user if exists.
-     * @return the User if exists.
-     */
-    public static User find(String username) {
-        return getUserLibrary().get(username);
-    }
-
-    /**
      * Register a new user.
      * @param username The username of the new user.
      * @param password The password of the new user.
      * @return The new created user.
      */
-    public static User userRegister(String username, String password) {
+    public static boolean userRegister(String username, String password) {
         if (userLibrary.get(username) != null) {
-            return null;
-        } else if (username.equals("")) {
-            return null;
+            return false;
         }
-        add(username, password);
-        return userLibrary.get(username);
+        else if (username.equals("")) {
+            return false;
+        }
+        userLibrary.add(userLibrary.create(username, password));
+        return true;
     }
 
     /**
      * Attempt to login to a user account if userid and password matches.
-     * @param userid the userid which the user entered.
+     * @param username the userid which the user entered.
      * @param password the password which the user entered.
      * @return the User that was logged in.
      */
-    public static User User_login(String userid, String password) {
-        if (!userLibrary.check_login(userid, password)) {
-            return null;
+    public static boolean userLogin(String username, String password) {
+        User target = userLibrary.get(username);
+        if (target != null) {
+            return target.getPassword().equals(password);
         }
-        return userLibrary.get(userid);
+        return false;
     }
 
     /**

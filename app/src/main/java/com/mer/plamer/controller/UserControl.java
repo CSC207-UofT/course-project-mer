@@ -26,9 +26,9 @@ public class UserControl {
      * @return whether if the new user is successfully created.
      */
     public boolean registration(String username, String password) {
-        if ( UserLibraryAction.userRegister(username, password) != null) {
-            this.userAction.setUser(UserLibraryAction.getUserLibrary().get(username));
-            tinydb.putObject("UserLibrary", UserLibraryAction.getUserLibrary());
+        if (UserLibraryAction.userRegister(username, password)) {
+            this.userAction.setUser(username);
+            tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
             return true;
         }
         return false;
@@ -41,8 +41,8 @@ public class UserControl {
      * @return whether the login was successful.
      */
     public boolean login_check(String username, String password) {
-        if (UserLibraryAction.User_login(username, password) != null) {
-            this.userAction.setUser(UserLibraryAction.getUserLibrary().get(username));
+        if (UserLibraryAction.userLogin(username, password)) {
+            this.userAction.setUser(username);
             return true;
         }
         return false;
@@ -53,10 +53,10 @@ public class UserControl {
      * @return the name of the user.
      */
     public String getAccountInfo() {
-        if (this.userAction.getUser() == null) {
-            return "there is no user.";
+        if (this.userAction.isNull()) {
+            return "No user founded.";
         }
-        return this.userAction.getUser().getUsername();
+        return this.userAction.getCurrentName();
     }
 
     /**
@@ -74,9 +74,12 @@ public class UserControl {
 
     }
 
-    // TODO: modifyUserInformation
-    public void modifyUserInformation() {
+    public boolean modifyUserPassword(String new_pass) {
+        if (new_pass.equals(this.userAction.getCurrentPassword())) {
+            return false;
+        }
+        this.userAction.changePwd(new_pass);
+        return true;
     }
-
 }
 
