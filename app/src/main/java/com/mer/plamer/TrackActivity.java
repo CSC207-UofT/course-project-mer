@@ -39,7 +39,7 @@ public class TrackActivity extends AppCompatActivity {
                 Toast.makeText(TrackActivity.this,
                         TrackLibraryAction.fetchMetadata(track_id_list.get(i)).get(0) +
                                 " will be played.",Toast.LENGTH_SHORT).show();
-
+                PlayControl.setMedia("NONE", track_id_list.get(i));
             }
         });
 
@@ -50,10 +50,10 @@ public class TrackActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ImageButton playButton = (ImageButton) findViewById(R.id.track_play);
+        ImageButton playButton = findViewById(R.id.track_play);
         playButton.setOnClickListener(v -> PlayControl.playPause());
 
-        ImageButton repeatButton = (ImageButton) findViewById(R.id.track_repeat_list);
+        ImageButton repeatButton = findViewById(R.id.track_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
     }
 }
