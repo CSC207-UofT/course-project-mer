@@ -41,7 +41,6 @@ public class UserLibraryAction {
      * @param name     the username of the user we want to add.
      * @param password the password of the user we want to add.
      */
-
     public static void add(String name, String password) {
         userLibrary.add(userLibrary.create(name, password));
     }
@@ -77,6 +76,11 @@ public class UserLibraryAction {
         return false;
     }
 
+    /**
+     * Return an arraylist of all the username of users that had previously registered on this
+     * device.
+     * @return The arraylist of all the username of the users.
+     */
     public static ArrayList<String> getAllUserName() {
         ArrayList<User> UserList = userLibrary.getUsersList();
         ArrayList<String> name_list = new ArrayList<>();
