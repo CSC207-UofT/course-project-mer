@@ -28,7 +28,7 @@ public class SettingActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("curr_user");
 
         UserControl userControl = new UserControl();
-        userControl.userAction.setUser(UserLibraryAction.find(username));
+        userControl.userAction.setUser(username);
 
         TextView setting_current_username = findViewById(R.id.setting_current_username);
         String current_username = userControl.getAccountInfo();
