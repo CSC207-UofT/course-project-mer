@@ -2,8 +2,12 @@ package com.mer.plamer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +20,6 @@ import java.util.ArrayList;
 
 public class TrackActivity extends AppCompatActivity {
 
-    ArrayList<String> track_id_list = TrackLibraryAction.fetchAllTrackIDs();
-    ListView track_list_view;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,19 @@ public class TrackActivity extends AppCompatActivity {
         ImageButton back = findViewById(R.id.track_back_last_page);
         back.setOnClickListener(v -> finish());
 
+        ArrayList<String> track_id_list = TrackLibraryAction.fetchAllTrackIDs();
+        ListView track_list_view;
         track_list_view = findViewById(R.id.track_list);
         track_list_view.setAdapter(new TrackAdapter(getApplicationContext(), track_id_list));
+        track_list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(TrackActivity.this,
+                        TrackLibraryAction.fetchMetadata(track_id_list.get(i)).get(0) +
+                                " will be played.",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         ImageButton playing = findViewById(R.id.track_playing);
 

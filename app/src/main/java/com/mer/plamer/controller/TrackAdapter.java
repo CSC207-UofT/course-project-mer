@@ -46,6 +46,7 @@ public class TrackAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         String id = trackListID.get(position);
         ArrayList<String> information = TrackLibraryAction.fetchMetadata(id);
+        int length = Integer.parseInt(information.get(2));
         if (convertView == null) {
             convertView = testLayoutInflater.inflate(R.layout.track_item,null);
             viewHolder = new ViewHolder();
@@ -58,7 +59,7 @@ public class TrackAdapter extends BaseAdapter {
         }
         viewHolder.trackTittle.setText(information.get(0));
         viewHolder.trackArtist.setText(information.get(1));
-        viewHolder.trackLength.setText(information.get(2));
+        viewHolder.trackLength.setText(PlayControl.toMinuteSeconds(length));
         return convertView;
     }
 
