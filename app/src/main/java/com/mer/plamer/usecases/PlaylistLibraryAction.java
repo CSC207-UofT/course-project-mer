@@ -55,6 +55,10 @@ public class PlaylistLibraryAction {
 
     }
 
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the stored library.
+     */
     public static void assignLibrary(PlaylistLibrary library) {
         playlistLibrary = library;
     }

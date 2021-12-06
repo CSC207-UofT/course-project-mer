@@ -55,10 +55,17 @@ public class TrackLibraryAction {
     }
 
 
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the previously stored library.
+     */
     public static void assignLibrary(TrackLibrary library) {
         trackLibrary = library;
     }
 
+    /**
+     * Make the library empty.
+     */
     public static void emptyTheLibrary() {
         trackLibrary.emptyTheLibrary();
     }

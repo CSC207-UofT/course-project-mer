@@ -1,5 +1,7 @@
 package com.mer.plamer;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +23,13 @@ import com.mer.plamer.usecases.UserLibraryAction;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
+                    trackLibraryControl.scanLocal();
+                }
+            });
     /**
      * Constructs view and defines actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
@@ -32,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         UserControl userControl = new UserControl();
         TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
         PlaylistControl playlistControl = new PlaylistControl();
+        requestPermissionLauncher.launch("android.permission.READ_EXTERNAL_STORAGE");;
         setContentView(R.layout.homepage_layout);
         trackLibraryControl.scanLocal();
         playlistControl.scanLocal();

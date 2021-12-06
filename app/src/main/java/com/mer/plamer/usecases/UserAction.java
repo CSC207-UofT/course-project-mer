@@ -20,14 +20,26 @@ public class UserAction {
         this.user = null;
     }
 
+    /**
+     * Set the user this UserAction is dealing with.
+     * @param user the user in interest.
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Return the user this UserAction is dealing with.
+     * @return The user this UserAction is dealing with.
+     */
     public User getUser() {
         return this.user;
     }
 
+    /**
+     * Check if this UserAction is no user assign.
+     * @return Whether there is a user assigned.
+     */
     public boolean IsNull() {
         return this.user == null;
     }
@@ -73,6 +85,11 @@ public class UserAction {
         return true;
     }
 
+    /**
+     * Upload a track by a user.
+     * @param track the track uploaded.
+     * @return Whether the track is successfully uploaded.
+     */
     public boolean uploadTrack(Track track) {
         if (this.IsNull() || this.user.getUploadedTracks().contains(track)) {
             return false;
