@@ -41,10 +41,22 @@ public class SettingActivity extends AppCompatActivity {
 
             EditText new_password = findViewById(R.id.setting_password);
             String n_password = new_password.getText().toString();
-            userControl.userAction.changePwd(n_password);
 
-            Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
-            startActivity(intent);
+            if (userControl.modifyUserPassword(n_password)) {
+                userControl.modifyUserPassword(n_password);
+                Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+
+            else if (n_password.equals("")) {
+                Toast.makeText(SettingActivity.this, "Can not have empty password.",
+                        Toast.LENGTH_LONG).show();
+            }
+
+            else {
+                Toast.makeText(SettingActivity.this, "This is the old password.",
+                        Toast.LENGTH_LONG).show();
+            }
 
         });
 

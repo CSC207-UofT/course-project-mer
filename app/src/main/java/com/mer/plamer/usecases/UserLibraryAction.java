@@ -77,6 +77,10 @@ public class UserLibraryAction {
         return false;
     }
 
+    public static ArrayList<User> getAllUser() {
+        return userLibrary.getUsersList();
+    }
+
     /**
      * Assign a previously stored library as the new library.
      * @param library the previously stored library.
