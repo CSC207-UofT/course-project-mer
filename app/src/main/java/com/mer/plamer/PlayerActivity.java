@@ -7,8 +7,11 @@ import android.os.Handler;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.mer.plamer.controller.PlayControl;
 
+import com.mer.plamer.databinding.PlayerLayoutBinding;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
@@ -71,7 +74,14 @@ public class PlayerActivity extends AppCompatActivity {
 
         mBackButton.setOnClickListener(v -> finish());
 
-        mLoopButton.setOnClickListener(v -> PlayAction.loop());
+        mLoopButton.setOnClickListener(v -> {
+            Toast.makeText(PlayerActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+        });
+
+        mNextButton.setOnClickListener(v -> PlayControl.next());
+
+        mPreviousButton.setOnClickListener(v -> PlayControl.prev());
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
