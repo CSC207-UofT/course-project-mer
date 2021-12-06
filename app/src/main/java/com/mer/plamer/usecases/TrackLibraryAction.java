@@ -6,6 +6,7 @@ import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class TrackLibraryAction {
@@ -60,6 +61,41 @@ public class TrackLibraryAction {
 
     public static void emptyTheLibrary() {
         trackLibrary.emptyTheLibrary();
+    }
+
+    /**
+     * Returns the title, artist, and length of a track
+     * @param id the id of a track
+     * @return the metadata of such track
+     */
+    public static ArrayList<String> fetchMetadata(String id){
+        ArrayList<String> metadata = new ArrayList<>();
+        Track t = TrackLibraryAction.trackLibrary.get(id);
+        metadata.add(t.getTitle());
+        metadata.add(t.getArtist());
+        metadata.add(t.getLength());
+        return metadata;
+    }
+
+    /**
+     * Returns the size of track library
+     * @return the number of tracks in the track library
+     */
+    public static int getLibrarySize(){
+        return trackLibrary.getTrackList().size();
+    }
+
+    /**
+     * Returns all tracks' IDs in a list
+     * @return all tracks' IDs in a list
+     */
+    public static ArrayList<String> fetchAllTrackIDs(){
+        ArrayList<Track> tracklist = trackLibrary.getTrackList();
+        ArrayList<String> IDList = new ArrayList<>();
+        for(Track t:tracklist){
+            IDList.add(t.getID());
+        }
+        return IDList;
     }
 
 }
