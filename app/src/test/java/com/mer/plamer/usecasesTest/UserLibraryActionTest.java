@@ -39,7 +39,7 @@ public class UserLibraryActionTest {
         UserLibraryAction ula = new UserLibraryAction();
         User u = new User("test", "test123");
         ula.add("test", "test123");
-        assertNotNull(ula.User_login("test", "test123"));
-        assertNull(ula.User_login("123", "321"));
+        assertTrue(ula.userLogin("test", "test123"));
+        assertFalse(ula.userLogin("123", "321"));
     }
 }
