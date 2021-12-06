@@ -1,14 +1,14 @@
 
-Phase 2 Progress Report
+# Phase 2 Progress Report
 
-Nov 24th:
+## Nov 24th:
 
 
 
 * Distributed work throughout the group
 * Plans are to fulfill the original specification, as phase 1 was a rush
 
-Nov 25th:
+## Nov 25th:
 
 
 
@@ -17,21 +17,21 @@ Nov 25th:
 * Began implementation of PlaylistControl
 * Updated SearchControl with more methods
 
-Nov 26th:
+## Nov 26th:
 
 
 
 * Discussed about details on serialization (TinyDB) and began its implementation
 * Serialization prototype proved to work: User account information was able to be written to and read from local storage
 
-Nov 27th:
+## Nov 27th:
 
 
 
 * Discussed and decided that LibraryAction classes do not have inheritance, since each Action classes have rather different responsibilities
 * Deleted LibraryAction (The interface formerly implemented by LibraryAction classes)
 
-Nov 28th:
+## Nov 28th:
 
 
 
@@ -39,7 +39,7 @@ Nov 28th:
 * Finished serialization for User
 * Track violated clean architecture, plans to fix were proposed
 
-Nov 29th:
+## Nov 29th:
 
 
 
@@ -49,7 +49,7 @@ Nov 29th:
 * Asked about packaging strategy for TinyDB (external package)
 * Decided that we would build and hand in an APK file instead of a video demo at the end of this project
 
-Dec 3rd:
+## Dec 3rd:
 
 
 
@@ -57,7 +57,7 @@ Dec 3rd:
 * Found other classes that violated clean architecture and discussed possible solutions.
 * Finished implementation on serialization (all entities)
 
-Dec 5th:
+## Dec 5th:
 
 
 
@@ -186,34 +186,3 @@ Reason: This pull request restructured and re implemented many methods in user r
    </td>
   </tr>
 </table>
-
-
-Major Design Decisions:
-
-
-
-* Every basic entity is represented by a string representation. In particular, playlists and tracks are represented by a string of integers. This is because we want to allow tracks and playlists of the same names to exist. This can also help us to follow the clean architecture as controllers can just pass those representations to the use cases when searching for an entity.
-* Decide to use tinyBD as our serialization strategy. Serialization by basic file creating and appending methods were proven to cause a lot of problems, and can easily mess up our database. Thus an outside file storage manager is the best option to use here. After some struggling, and a failed method because of not following clean architecture, we came up with a clean method of serialization. 
-* We ended up having a lot of user interfaces to implement, thus we divide them up as different activities, and then connect them together. This makes the whole user interface implementation much easier.
-
-#Clean Architecture: 
-
-In our project, we try to keep the dependency between every layer very clean. However, during the implementation, there are constantly small errors being made that mistakenly introduce dependencies between controllers and entities. They are often noticed only after a while, and affect a lot of other codes that are connected to it. Luckily most of them are fixed in the end.
-
-In most cases, string representation of entities really came to rescue. We set up our program such that it can easily reference entities using their string representations, which makes the controller implementation much easier.
-
-A big clean architecture problem we ran into was serialization. Since TinyDB is on the gateway level, it becomes a problem for how it should gain access to entities that we want to store. We eventually came up with a way. Instead of saving each track/playlist/user to a local file, we found a way to store the whole library class to the local file, and update it on every entity creation. This happens at the controller level so it perfectly follows clean architecture, and it is easy to keep track of.
-
-#SOLID Principle:
-
-SOLID Principle is being followed as much as possible during the code design. For example, each of our classes is only responsible for one of the entities. Sometimes there are multiple classes for one entity just to divide work up. 
-
-#Packaging Strategy:
-
-The packaging strategy we chose since phase 0, which hasn't changed until now, is to package by layer. This is because we have classes with similar names in every layer. Such as the class playlist(entity), the class playlistaction(use cases), and the class playlistcontrol(controller). This is almost the same for every function we have. Thus it is to our interest to put every layer in their own folder, so anyone who has a chance to read our code can navigate to the right class they want without having to actually read those classes.
-
-#Design Patterns:
-
-One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary.  The builder design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
-
-#Details and descriptions about unit tests (To be done by nigel):
