@@ -39,20 +39,25 @@ public class PlaylistActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
 
         // create new playlist by pressing "+"
+        View pop = getLayoutInflater().inflate(R.layout.new_playlist_popup_layout, null);
+
+        // show the pop up window
+        PopupWindow popupwindow = new PopupWindow(pop, ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
         ImageButton add = findViewById(R.id.playlist_add);
+        ImageButton new_go = pop.findViewById(R.id.new_playlist_go);
+
+
         add.setOnClickListener(v -> {
-            View pop = getLayoutInflater().inflate(R.layout.new_playlist_popup_layout, null);
 
-            // show the pop up window
-            PopupWindow popupwindow = new PopupWindow(pop, ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
             popupwindow.showAsDropDown(add);
-
+            EditText playlist_name = pop.findViewById(R.id.new_playlist_name);
             // confirm the name
-            ImageButton new_go = pop.findViewById(R.id.new_playlist_go);
+
             new_go.setOnClickListener(v1 -> {
                 // the input of name
-                EditText playlist_name = findViewById(R.id.new_playlist_name);
+
                 // add new playlist into library
                 String pll_name = playlist_name.getText().toString();
                 if (userControl.createPlaylist(pll_name)){

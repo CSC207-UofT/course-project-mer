@@ -74,6 +74,12 @@ public class UserControl {
 
     }
 
+    /**
+     * Change the password of the currently registered user.
+     * @param new_pass The desired new password that the user wants to change to.
+     * @return True if password change is successful, false if the new password is the same as the
+     * old one or is the empty string.
+     */
     public boolean modifyUserPassword(String new_pass) {
         if (new_pass.equals(this.userAction.getCurrentPassword()) || new_pass.equals("")) {
             return false;

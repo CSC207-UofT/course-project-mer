@@ -18,9 +18,9 @@ public class UserAdapter extends BaseAdapter {
 
     private Context testContext;
     private LayoutInflater testLayoutInflater;
-    private ArrayList<User> userList;
+    private ArrayList<String> userList;
 
-    public UserAdapter(Context testContext, ArrayList<User> userList){
+    public UserAdapter(Context testContext, ArrayList<String> userList){
         this.testContext = testContext;
         this.testLayoutInflater = LayoutInflater.from(testContext);
         this.userList = userList;
@@ -45,7 +45,7 @@ public class UserAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        User user = userList.get(position);
+        String name = userList.get(position);
         if (convertView == null) {
             convertView = testLayoutInflater.inflate(R.layout.track_item,null);
             viewHolder = new ViewHolder();
@@ -54,7 +54,7 @@ public class UserAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.userName.setText(user.getUsername());
+        viewHolder.userName.setText(name);
         return convertView;
     }
 

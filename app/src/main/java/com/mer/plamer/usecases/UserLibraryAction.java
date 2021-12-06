@@ -25,11 +25,11 @@ public class UserLibraryAction {
      * @param keyword provided by the user.
      * @return the required user or null if no result found.
      */
-    public static ArrayList<User> search(String keyword) {
-        ArrayList<User> searchUser = new ArrayList<>();
+    public static ArrayList<String> search(String keyword) {
+        ArrayList<String> searchUser = new ArrayList<>();
         for (User u : userLibrary.getUsersList()) {
             if (u.getUsername().contains(keyword)) {
-                searchUser.add(u);
+                searchUser.add(u.getUsername());
             }
         }
         return searchUser;
@@ -41,7 +41,6 @@ public class UserLibraryAction {
      * @param name     the username of the user we want to add.
      * @param password the password of the user we want to add.
      */
-
     public static void add(String name, String password) {
         userLibrary.add(userLibrary.create(name, password));
     }
@@ -77,8 +76,19 @@ public class UserLibraryAction {
         return false;
     }
 
-    public static ArrayList<User> getAllUser() {
-        return userLibrary.getUsersList();
+    /**
+     * Return an arraylist of all the username of users that had previously registered on this
+     * device.
+     * @return The arraylist of all the username of the users.
+     */
+    public static ArrayList<String> getAllUserName() {
+        ArrayList<User> UserList = userLibrary.getUsersList();
+        ArrayList<String> name_list = new ArrayList<>();
+        for (User user : UserList) {
+            String username = user.getUsername();
+            name_list.add(username);
+        }
+        return name_list;
     }
 
     /**

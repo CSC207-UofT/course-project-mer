@@ -11,6 +11,7 @@ import com.mer.plamer.controller.UserAdapter;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.UserLibrary;
 import com.mer.plamer.usecases.TrackLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 import java.util.ArrayList;
 
@@ -25,9 +26,9 @@ public class UniverseUserActivity extends AppCompatActivity {
         ImageButton back = findViewById(R.id.universe_user_back_last_page);
         back.setOnClickListener(v -> finish());
 
-        ArrayList<User> user_list = new ArrayList<>();
+        ArrayList<String> nameList = UserLibraryAction.getAllUserName();
         ListView UserListView;
         UserListView = findViewById(R.id.universe_user_list);
-        UserListView.setAdapter(new UserAdapter(getApplicationContext(), user_list));
+        UserListView.setAdapter(new UserAdapter(getApplicationContext(), nameList));
     }
 }
