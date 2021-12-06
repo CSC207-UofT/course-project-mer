@@ -75,7 +75,7 @@ public class UserControl {
     }
 
     public boolean modifyUserPassword(String new_pass) {
-        if (new_pass.equals(this.userAction.getCurrentPassword())) {
+        if (new_pass.equals(this.userAction.getCurrentPassword()) || new_pass.equals("")) {
             return false;
         }
         this.userAction.changePwd(new_pass);
