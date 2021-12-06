@@ -25,11 +25,11 @@ public class UserLibraryAction {
      * @param keyword provided by the user.
      * @return the required user or null if no result found.
      */
-    public static ArrayList<User> search(String keyword) {
-        ArrayList<User> searchUser = new ArrayList<>();
+    public static ArrayList<String> search(String keyword) {
+        ArrayList<String> searchUser = new ArrayList<>();
         for (User u : userLibrary.getUsersList()) {
             if (u.getUsername().contains(keyword)) {
-                searchUser.add(u);
+                searchUser.add(u.getUsername());
             }
         }
         return searchUser;

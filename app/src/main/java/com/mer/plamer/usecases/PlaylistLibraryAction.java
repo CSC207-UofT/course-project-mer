@@ -22,26 +22,42 @@ public class PlaylistLibraryAction {
     }
 
     /**
-     * Search the required playlists.
+     * Search for the required playlists.
      *
      * @param keyword the provided keyword by the user
-     * @return the required playlists.
+     * @return the ID of required playlists.
      */
-    public static ArrayList<Playlist> search(String keyword) {
-        ArrayList<Playlist> searchPlaylist = new ArrayList<>();
+    public static ArrayList<String> search(String keyword) {
+        ArrayList<String> searchPlaylist = new ArrayList<>();
         for (Playlist p : playlistLibrary.getPlaylists()) {
             if (p.getName().contains(keyword)) {
-                searchPlaylist.add(p);
+                searchPlaylist.add(p.getId());
             }
             for (Track t : p.getTracks()) {
                 if ((t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
-                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p))) {
-                    searchPlaylist.add(p);
+                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p.getId())))
+                {
+                    searchPlaylist.add(p.getId());
                 } else
                     break;
             }
         }
         return searchPlaylist;
+    }
+
+    /**
+     * Search the required playlists.
+     *
+     * @param id ID from search results
+     * @return the required playlists.
+     */
+    public String searchGetName(String id) {
+        for (Playlist p : playlistLibrary.getPlaylists()) {
+            if (p.getId().equals(id)) {
+                return p.getName();
+            }
+        }
+        return null;
     }
 
     /**

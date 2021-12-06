@@ -23,16 +23,16 @@ public class TrackLibraryAction {
     }
 
     /**
-     * Search the required track.
+     * Search for required tracks.
      * @param keyword user provided keyword.
-     * @return a arrayelist the required tracks.
+     * @return a array list of the IDs of required tracks.
      */
-    public static ArrayList<Track> search(String keyword) {
-        ArrayList<Track> searchTrack = new ArrayList<>();
+    public static ArrayList<String> search(String keyword) {
+        ArrayList<String> searchTrack = new ArrayList<>();
         for (Track t : trackLibrary.getTrackList()){
             if (t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
                     || t.getGenre().contains(keyword)){
-                searchTrack.add(t);
+                searchTrack.add(t.getID());
             }
         }
         return searchTrack;

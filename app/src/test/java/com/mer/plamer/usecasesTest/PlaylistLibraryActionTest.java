@@ -23,7 +23,7 @@ public class PlaylistLibraryActionTest {
         PlaylistLibraryAction pla = new PlaylistLibraryAction();
         pla.add("test");
         assertNotNull(pla.search("test"));
-        ArrayList<Playlist> pl = pla.search("test");
+        ArrayList<Track> pl = pla.search("test");
         assertEquals("test", pl.get(0).getName());
     }
 }
