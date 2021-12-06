@@ -55,6 +55,27 @@ public class PlaylistLibraryAction {
 
     }
 
+    /**
+     * Get a list of integers containing the size of every playlist.
+     * @return the list of all playlist size.
+     */
+    public ArrayList<Integer> getListofPlaylistSize() {
+        return playlistLibrary.getListofPlaylistSize();
+    }
+
+
+    /**
+     * Get a list of String containing the name of every playlist.
+     * @return the list of all playlist name.
+     */
+    public ArrayList<String> getListofPlaylistName() {
+        return playlistLibrary.getListofPlaylistName();
+    }
+
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the stored library.
+     */
     public static void assignLibrary(PlaylistLibrary library) {
         playlistLibrary = library;
     }

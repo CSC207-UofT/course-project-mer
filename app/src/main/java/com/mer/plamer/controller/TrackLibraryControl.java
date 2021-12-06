@@ -12,13 +12,24 @@ public class TrackLibraryControl {
 
     private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
+    /**
+     * Constructor of TrackLibraryControl.
+     */
     public TrackLibraryControl() {};
 
+    /**
+     * Add a new Track to tracklibrary as well as the local persistent file.
+     * @param path the path of the new track.
+     */
     public void add(String path) {
         TrackLibraryAction.add(path);
         tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
     }
 
+    /**
+     * Remove a track of track_id from tracklibrary as well as the local persisten file.
+     * @param track_id of the track we want to remove.
+     */
     public void remove(String track_id) {
         TrackLibraryAction.delete(track_id);
         tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
