@@ -17,9 +17,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
+        // back to the last page
         ImageButton back = findViewById(R.id.login_back);
         back.setOnClickListener(v -> finish());
 
+        // confirm the input of username and password
         ImageButton login_go = findViewById(R.id.login_go);
         login_go.setOnClickListener(v -> {
 
@@ -32,12 +34,14 @@ public class LoginActivity extends AppCompatActivity {
 
             UserControl userControl = new UserControl();
 
+            // if password match the username, then log in
             if (userControl.login_check(l_name, l_password)) {
                 Intent intent = new Intent(LoginActivity.this, MainPage.class);
                 intent.putExtra("curr_user", userControl.userAction.getUser().getUsername());
                 startActivity(intent);
             }
-
+            // if password doesn't match the username, then show "Incorrect username or password"
+            // on the screen
             else {
 
                 Toast.makeText(LoginActivity.this,
