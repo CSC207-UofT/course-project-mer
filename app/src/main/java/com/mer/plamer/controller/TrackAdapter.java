@@ -1,5 +1,6 @@
 package com.mer.plamer.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ public class TrackAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return trackListID.size();
     }
 
     @Override
@@ -39,6 +40,7 @@ public class TrackAdapter extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
