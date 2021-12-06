@@ -58,7 +58,7 @@
         tools:text="artist" />
 
     <TextView
-        android:id="@+id/track_duration"
+        android:id="@+id/track_item_length"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"

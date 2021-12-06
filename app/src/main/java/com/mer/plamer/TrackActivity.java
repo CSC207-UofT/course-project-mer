@@ -3,13 +3,21 @@ package com.mer.plamer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.usecases.PlayAction;
+import com.mer.plamer.usecases.TrackLibraryAction;
+
+import java.util.ArrayList;
 
 public class TrackActivity extends AppCompatActivity {
+
+    ArrayList<String> track_id_list = TrackLibraryAction.fetchAllTrackIDs();
+    ListView track_list_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +27,9 @@ public class TrackActivity extends AppCompatActivity {
 
         ImageButton back = findViewById(R.id.track_back_last_page);
         back.setOnClickListener(v -> finish());
+
+        track_list_view = findViewById(R.id.track_list);
+        track_list_view.setAdapter(new TrackAdapter(getApplicationContext(), track_id_list));
 
         ImageButton playing = findViewById(R.id.track_playing);
 
