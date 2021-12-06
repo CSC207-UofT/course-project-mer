@@ -21,6 +21,7 @@ public class UserAction {
 
     /**
      * Set the user this UserAction is dealing with.
+     *
      * @param username the username of the user in interest.
      */
     public void setUser(String username) {
@@ -29,6 +30,7 @@ public class UserAction {
 
     /**
      * Return the user this UserAction is dealing with.
+     *
      * @return The user this UserAction is dealing with.
      */
     public User getUser() {
@@ -37,6 +39,7 @@ public class UserAction {
 
     /**
      * Check if this UserAction is no user assign.
+     *
      * @return Whether there is a user assigned.
      */
     public boolean isNull() {
@@ -57,6 +60,7 @@ public class UserAction {
 
     /**
      * Change the password of a user.
+     *
      * @param new_pass The desired password that this user want to change to.
      * @return true if the password is changed, false if did not or is the same as the old one.
      */
@@ -70,6 +74,7 @@ public class UserAction {
 
     /**
      * Change the username of a user.
+     *
      * @param new_name The desired username that this user want to change to.
      * @return true if the username is changed, false if did not or is the same as the old one.
      */
@@ -83,6 +88,7 @@ public class UserAction {
 
     /**
      * Create a new and empty playlist that belongs to this user.
+     *
      * @param PL_name the name of the new play list.
      * @return true if the playlist is created, false otherwise.
      */
@@ -96,16 +102,4 @@ public class UserAction {
         return true;
     }
 
-    /**
-     * Upload a track by a user.
-     * @param track the track uploaded.
-     * @return Whether the track is successfully uploaded.
-     */
-    public boolean uploadTrack(Track track) {
-        if (this.isNull() || this.user.getUploadedTracks().contains(track)) {
-            return false;
-        }
-        this.user.getUploadedTracks().add(track);
-        return true;
-    }
 }

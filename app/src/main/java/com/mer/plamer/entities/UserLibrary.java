@@ -71,20 +71,6 @@ public class UserLibrary implements Storable<User> {
     }
 
     /**
-     * Check the log in username and password
-     * @param id the id of the user
-     * @param pass the password of ths user
-     * @return true if username matches password and false otherwise
-     */
-    public boolean check_login(String id, String pass) {
-        User target = this.get(id);
-        if (target != null) {
-            return target.getPassword().equals(pass);
-        }
-        return false;
-    }
-
-    /**
      * Get the list of users in the library
      * @return ArrayList<User>
      */

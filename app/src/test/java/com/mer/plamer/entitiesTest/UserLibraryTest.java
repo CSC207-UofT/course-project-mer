@@ -36,15 +36,6 @@ public class UserLibraryTest {
     }
 
     @Test(timeout = 50)
-    public void testChecklogin() {
-        UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
-        ul.add(u);
-        assertTrue(ul.check_login("test", "test123"));
-        assertFalse(ul.check_login("test", "test1233"));
-    }
-
-    @Test(timeout = 50)
     public void testGetuserslist(){
         UserLibrary ul = new UserLibrary();
         User u = new User("test", "test123");
