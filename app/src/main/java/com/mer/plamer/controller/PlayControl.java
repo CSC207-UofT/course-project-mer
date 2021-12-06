@@ -67,6 +67,9 @@ public class PlayControl {
             PlayAction.setCurrentPlaylist(playlistID);
         }
         PlayAction.setCurrentTrack(trackID);
+        PlayAction.end();
+        PlayAction.prepare();
+        PlayAction.play();
     }
 
 
