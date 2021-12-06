@@ -46,12 +46,12 @@ public class PlaylistLibraryAction {
     }
 
     /**
-     * Search the required playlists.
+     * Get the name of search result from its id.
      *
-     * @param id ID from search results
-     * @return the required playlists.
+     * @param id ID from search result
+     * @return the name of the required playlist.
      */
-    public String searchGetName(String id) {
+    public static String searchGetName(String id) {
         for (Playlist p : playlistLibrary.getPlaylists()) {
             if (p.getId().equals(id)) {
                 return p.getName();
