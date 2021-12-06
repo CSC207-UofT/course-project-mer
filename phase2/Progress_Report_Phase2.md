@@ -67,86 +67,75 @@
 * Finish implementing the user interface
 
 
-
+<table>
+  <tr>
    <td colspan="2" >Significant pull requests
-
    </td>
+  </tr>
+  <tr>
    <td>Name
-
    </td>
    <td>Link to PR
-
    </td>
+  </tr>
   <tr>
    <td>Michael
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/43](https://github.com/CSC207-UofT/course-project-mer/pull/43)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/43">https://github.com/CSC207-UofT/course-project-mer/pull/43</a>
+<p>
 Reasons: Aside from firsting enabling the app to play something, this pull request marks full implementation of playback features such as skip/prev and play mode change, making the app a functional one.
-
    </td>
   </tr>
   <tr>
    <td>Victor
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/41](https://github.com/CSC207-UofT/course-project-mer/pull/41)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/41">https://github.com/CSC207-UofT/course-project-mer/pull/41</a>
+<p>
 Reasons: Playlist is one of the most important features of a music player, and without this controller class our music player would not be able to manipulate playlists or have the playlist function. The newest version of this class completely follows the clean architecture issue so that any change of the music player in future would not affect this class much.
-
    </td>
   </tr>
   <tr>
    <td>Joseph
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/21](https://github.com/CSC207-UofT/course-project-mer/pull/21)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/21">https://github.com/CSC207-UofT/course-project-mer/pull/21</a>
+<p>
 Reason: This pull request implemented the core method of search, after that, my other commits generally revolve around implementing helper methods and modifying certain methods to better support the search function.
-
    </td>
   </tr>
   <tr>
    <td>Alex
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/38](https://github.com/CSC207-UofT/course-project-mer/pull/38)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/38">https://github.com/CSC207-UofT/course-project-mer/pull/38</a>
+<p>
 Reason: The newest version of Serialization is not only smaller in size, but also follows the clean architecture completely. This version of serialization is harder to cause error, and ultimately makes many-times saving and loading durable.
-
    </td>
   </tr>
   <tr>
    <td>Kaibo
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/45](https://github.com/CSC207-UofT/course-project-mer/pull/45)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/45">https://github.com/CSC207-UofT/course-project-mer/pull/45</a>
+<p>
 Reason: This pull request created an adapter to read information from the database and present it on the listview layout. This pull resolved many problems of UI interaction.
-
    </td>
   </tr>
   <tr>
    <td>Jaden
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/48](https://github.com/CSC207-UofT/course-project-mer/pull/48)
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/48">https://github.com/CSC207-UofT/course-project-mer/pull/48</a>
+<p>
 Reason: This pull request restructured and re implemented many methods in user related class. Before the PL, there were many obvious violations to clean architecture in user control and some other classes. This PL fixed all of them without breaking the functionality of the program.
-
    </td>
   </tr>
   <tr>
    <td>Nigel
-
    </td>
-   <td>[https://github.com/CSC207-UofT/course-project-mer/pull/31](https://github.com/CSC207-UofT/course-project-mer/pull/31) 
-
+   <td><a href="https://github.com/CSC207-UofT/course-project-mer/pull/31">https://github.com/CSC207-UofT/course-project-mer/pull/31</a> 
+<p>
 Reason: This pull request demonstrates significant improvements from phase 1 in regards to test coverage. It also points out problems towards the previous use of TinyDB which was a direct violation of clean architecture. It also simplifies testing by overloading the track constructor. 
-
    </td>
   </tr>
+</table>
+
 
 <table>
   <tr>
