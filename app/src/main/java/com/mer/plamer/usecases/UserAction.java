@@ -21,6 +21,7 @@ public class UserAction {
 
     /**
      * Set the user this UserAction is dealing with.
+     *
      * @param username the username of the user in interest.
      */
     public void setUser(String username) {
@@ -29,6 +30,7 @@ public class UserAction {
 
     /**
      * Return the user this UserAction is dealing with.
+     *
      * @return The user this UserAction is dealing with.
      */
     public User getUser() {
@@ -37,38 +39,28 @@ public class UserAction {
 
     /**
      * Check if this UserAction is no user assign.
+     *
      * @return Whether there is a user assigned.
      */
     public boolean isNull() {
         return this.user == null;
     }
 
-    /**
-     * Check if the current user is a administrator.
-     * @return True if the user is an administrator, false if it is not.
-     */
     public boolean isAdmin() {
         return this.getUser() instanceof Admin;
     }
 
-    /**
-     * Get the username of the current user of this userAction.
-     * @return The username of the current user.
-     */
     public String getCurrentName() {
         return this.getUser().getUsername();
     }
 
-    /**
-     * Get the password of the current user of this userAction.
-     * @return The password of the current user.
-     */
     public String getCurrentPassword() {
         return this.getUser().getPassword();
     }
 
     /**
      * Change the password of a user.
+     *
      * @param new_pass The desired password that this user want to change to.
      * @return true if the password is changed, false if did not or is the same as the old one.
      */
@@ -82,6 +74,7 @@ public class UserAction {
 
     /**
      * Change the username of a user.
+     *
      * @param new_name The desired username that this user want to change to.
      * @return true if the username is changed, false if did not or is the same as the old one.
      */
@@ -94,16 +87,18 @@ public class UserAction {
     }
 
     /**
-     * Add the newest playlist to this user's list of playlist.
-     * @return true if the playlist is successfully added, false otherwise.
+     * Create a new and empty playlist that belongs to this user.
+     *
+     * @param PL_name the name of the new play list.
+     * @return true if the playlist is created, false otherwise.
      */
-    public boolean addPlaylist() {
+    public boolean createPlaylist(String PL_name) {
         if (this.isNull()) {
             return false;
         }
-        int index = PlaylistLibraryAction.playlistLibrary.getPlaylists().size() - 1;
-        Playlist new_list = PlaylistLibraryAction.playlistLibrary.getPlaylists().get(index);
-        this.user.getPlaylists().add(new_list);
+        Playlist new_pl = new Playlist(PL_name);
+        this.user.getPlaylists().add(new_pl);
+        PlaylistLibraryAction.playlistLibrary.add(new_pl);
         return true;
     }
 

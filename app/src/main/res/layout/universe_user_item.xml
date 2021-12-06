@@ -37,6 +37,6 @@
         app:layout_constraintTop_toTopOf="@+id/universe_user_item_background"
         app:layout_constraintVertical_bias="0.574"
         tools:ignore="TextContrastCheck"
-        tools:text="Username" />
+        tools:text="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

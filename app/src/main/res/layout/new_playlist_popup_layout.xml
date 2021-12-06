@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         android:autofillHints="password"
         android:fontFamily="@font/aldrich"
-        android:hint="Playlist name..."
+        android:hint="@string/playlist_name"
         android:inputType="text"
         android:lines="1"
         android:maxLength="20"

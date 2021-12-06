@@ -2,17 +2,12 @@ package com.mer.plamer.entities;
 
 import java.util.ArrayList;
 
-import com.mer.plamer.TinyDB;
-import com.mer.plamer.MyApp;
-
 /**
  * Library of playlists.
  */
 public class PlaylistLibrary implements Storable<Playlist> {
 
     private final ArrayList<Playlist> playlists;
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
-
     /**
      * Constructor for PlaylistLibrary.
      */

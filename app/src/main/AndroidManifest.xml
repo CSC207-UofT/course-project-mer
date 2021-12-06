@@ -7,13 +7,19 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.mer.plamer.MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Plamer">
+        <activity
+            android:name=".AddTrackToPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnPlaylistActivity"
+            android:exported="false" />
         <activity
             android:name=".UniverseUserActivity"
             android:exported="false" />
