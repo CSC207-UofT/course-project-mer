@@ -73,6 +73,14 @@ public class PlaylistLibraryAction {
     }
 
     /**
+     * Get a list of String containing the id of every playlist.
+     * @return the list of all playlist id.
+     */
+    public static ArrayList<String> getListOfPlaylistId() {
+        return playlistLibrary.getListOfPlaylistId();
+    }
+
+    /**
      * Assign a previously stored library as the new library.
      * @param library the stored library.
      */

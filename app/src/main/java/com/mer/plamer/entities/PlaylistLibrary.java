@@ -120,4 +120,17 @@ public class PlaylistLibrary implements Storable<Playlist> {
         }
         return list_of_name;
     }
+
+    /**
+     * Get a list of String containing the id of every playlist.
+     * @return the list of all playlist id.
+     */
+    public ArrayList<String> getListOfPlaylistId() {
+        ArrayList<String> list_of_id = new ArrayList<String>();
+        for (Playlist playlist : playlists) {
+            list_of_id.add(playlist.getId());
+        }
+        return list_of_id;
+    }
+
 }
