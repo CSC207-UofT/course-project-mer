@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.UserControl;
-import com.mer.plamer.usecases.UserLibraryAction;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -37,13 +36,15 @@ public class SettingActivity extends AppCompatActivity {
         setting_current_username.setText(current_username);
 
         // set new password
-        ImageButton setting_go = (ImageButton) findViewById(R.id.setting_go);
+        ImageButton setting_go = findViewById(R.id.setting_go);
         setting_go.setOnClickListener(v -> {
 
             EditText new_password = findViewById(R.id.setting_password);
             String n_password = new_password.getText().toString();
+            userControl.userAction.changePwd(n_password);
 
             Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
+            startActivity(intent);
 
         });
 

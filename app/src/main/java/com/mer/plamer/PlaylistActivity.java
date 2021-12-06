@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.TrackAdapter;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
@@ -23,6 +24,10 @@ public class PlaylistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist_layout);
+
+        String username = getIntent().getStringExtra("curr_user");
+        UserControl userControl = new UserControl();
+        userControl.userAction.setUser(username);
 
         // back to the last page
         ImageButton back = findViewById(R.id.playlist_back_last_page);
@@ -58,10 +63,10 @@ public class PlaylistActivity extends AppCompatActivity {
         });
 
 
-        ImageButton playButton = (ImageButton) findViewById(R.id.playlist_play);
+        ImageButton playButton = findViewById(R.id.playlist_play);
         playButton.setOnClickListener(v -> PlayControl.playPause());
 
-        ImageButton repeatButton = (ImageButton) findViewById(R.id.playlist_repeat_list);
+        ImageButton repeatButton = findViewById(R.id.playlist_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
     }
 }

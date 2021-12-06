@@ -10,7 +10,6 @@ public class User {
     private String username;
     private String password;
     private final ArrayList<Playlist> playlists;
-    private final ArrayList<Track> uploadedTracks;
     private final String user_id;
     private static int id = 1;
 
@@ -23,7 +22,6 @@ public class User {
         this.username = name;
         this.password = password;
         this.playlists = new ArrayList<>();
-        this.uploadedTracks = new ArrayList<>();
         this.user_id = String.valueOf(id);
         id++;
     }
@@ -47,13 +45,6 @@ public class User {
      */
     public ArrayList<Playlist> getPlaylists() {
         return this.playlists;
-    }
-
-    /**
-     * @return the list of tracks a User uploaded.
-     */
-    public ArrayList<Track> getUploadedTracks() {
-        return this.uploadedTracks;
     }
 
     /**
