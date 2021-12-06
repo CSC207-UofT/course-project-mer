@@ -77,8 +77,14 @@ public class UserLibraryAction {
         return false;
     }
 
-    public static ArrayList<User> getAllUser() {
-        return userLibrary.getUsersList();
+    public static ArrayList<String> getAllUserName() {
+        ArrayList<User> UserList = userLibrary.getUsersList();
+        ArrayList<String> name_list = new ArrayList<>();
+        for (User user : UserList) {
+            String username = user.getUsername();
+            name_list.add(username);
+        }
+        return name_list;
     }
 
     /**
