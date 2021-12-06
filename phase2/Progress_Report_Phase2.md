@@ -147,69 +147,58 @@ Reason: This pull request demonstrates significant improvements from phase 1 in 
 
    </td>
   </tr>
+
+<table>
+  <tr>
    <td colspan="2" >Work done per individual
-
    </td>
+  </tr>
+  <tr>
    <td>Name
-
    </td>
    <td>Effort
-
    </td>
+  </tr>
   <tr>
    <td>Michael
-
    </td>
    <td>Fixed a few Clean Architecture violations; Implemented the rest of playback features; 
-
    </td>
   </tr>
   <tr>
    <td>Victor
-
    </td>
    <td>Implemented entity class Playlist, use case class PlaylistAction, controller class PlaylistController, Edited CRC cards for Playlist, PlaylistAction, PlaylistController, keep progress report updated.
-
    </td>
   </tr>
   <tr>
    <td>Joseph
-
    </td>
    <td>Implemented Controller class SearchControl, updated and added some methods for entity classes and the three library usecases classes. Wrote Accessibility Report.
-
    </td>
   </tr>
   <tr>
    <td>Alex
-
    </td>
    <td>Finished the serialization of the project, built a first version, then figured out a cleaner one.
-
    </td>
   </tr>
   <tr>
    <td>Kaibo
-
    </td>
    <td>Finished the UI design and UI adapter, which are in the level of controller and presenter.
-
    </td>
   </tr>
   <tr>
    <td>Jaden
-
    </td>
    <td>Fixed Clean Architecture violations in user related classes; Implement admin and link all method and feature in user to UI.
-
    </td>
   </tr>
   <tr>
    <td>Nigel
-
    </td>
    <td>Finishes test cases covering entities, use cases, and controllers. Identified clean architecture violations. 
-
    </td>
   </tr>
 </table>
