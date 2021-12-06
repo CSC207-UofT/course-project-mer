@@ -23,7 +23,7 @@ public class PlayControl {
      * Changes the current play mode and return the mode
      * @return a String of the output message
      */
-    public static String playMode(){
+    public static String changePlayMode(){
         if(PlayAction.order == PlayAction.PlayOrder.LIST){
             PlayAction.order = PlayAction.PlayOrder.REPEAT;
             PlayAction.loop();
