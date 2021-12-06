@@ -59,7 +59,7 @@ public class PlaylistLibraryAction {
      * Get a list of integers containing the size of every playlist.
      * @return the list of all playlist size.
      */
-    public static ArrayList<Integer> getListofPlaylistSize() {
+    public static ArrayList<Integer> getListOfPlaylistSize() {
         return playlistLibrary.getListofPlaylistSize();
     }
 
@@ -68,8 +68,16 @@ public class PlaylistLibraryAction {
      * Get a list of String containing the name of every playlist.
      * @return the list of all playlist name.
      */
-    public static ArrayList<String> getListofPlaylistName() {
+    public static ArrayList<String> getListOfPlaylistName() {
         return playlistLibrary.getListofPlaylistName();
+    }
+
+    /**
+     * Get a list of String containing the id of every playlist.
+     * @return the list of all playlist id.
+     */
+    public static ArrayList<String> getListOfPlaylistId() {
+        return playlistLibrary.getListOfPlaylistId();
     }
 
     /**

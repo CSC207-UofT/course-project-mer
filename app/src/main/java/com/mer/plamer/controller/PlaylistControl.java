@@ -82,10 +82,10 @@ public class PlaylistControl {
 
     /**
      * Remove a playlist.
-     * @param name the name of the playlist to remove.
+     * @param playlist_id the name of the playlist to remove.
      */
-    public void remove(String name) {
-        PlaylistLibraryAction.delete(name);
+    public void remove(String playlist_id) {
+        PlaylistLibraryAction.delete(playlist_id);
         tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
     }
 
