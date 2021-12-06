@@ -46,7 +46,7 @@ public class Playlist {
     /**
      * @return the id of the playlist.
      */
-    public String getId() { return this.playlist_id;}
+    public String getId() { return this.playlist_id; }
 
     /**
      * @return the status of the playlist.

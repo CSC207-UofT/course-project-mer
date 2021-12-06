@@ -1,29 +1,24 @@
+
 package com.mer.plamer.controller;
 
-import com.mer.plamer.entities.Track;
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 import com.mer.plamer.usecases.PlaylistAction;
-import com.mer.plamer.entities.Playlist;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 /**
  * The controller class for playlist.
  */
 public class PlaylistControl {
     PlaylistAction playlistAction;
+    TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for Playlist Control, initially playlistAction is null.
      */
     public PlaylistControl() {
         this.playlistAction = null;
-    }
-
-    /**
-     * Create a new playlist.
-     * @param name the name of the playlist.
-     * @return the playlist that's been created
-     */
-    public Playlist CreateNewPlaylist(String name) {
-        return PlaylistAction.CreatePlaylist(name);
     }
 
     /**
@@ -36,20 +31,20 @@ public class PlaylistControl {
 
     /**
      * Remove a track from playlist.
-     * @param track the track that we wanted to be removed from the playlist.
+     * @param track_id the track id that we wanted to be removed from the playlist.
      * @return true if the track has been successfully removed.
      */
-    public boolean trackRemove(Track track) {
-        return this.playlistAction.delTrack(track);
+    public boolean trackRemove(String track_id) {
+        return this.playlistAction.delTrack(track_id);
     }
 
     /**
      * Add a track from the playlist
-     * @param track the track that we wanted to add to the playlist.
+     * @param track_id the track id that we wanted to add to the playlist.
      * @return true if the track has been successfully removed.
      */
-    public boolean trackAdd(Track track) {
-        return this.playlistAction.addTrack(track);
+    public boolean trackAdd(String track_id) {
+        return this.playlistAction.addTrack(track_id);
     }
 
     /**
@@ -73,6 +68,34 @@ public class PlaylistControl {
                 return true;
             default:
                 return false;
+        }
+    }
+
+    /**
+     * Create a new playlist.
+     * @param name the name of the playlist.
+     */
+    public void add(String name) {
+        PlaylistLibraryAction.add(name);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+    }
+
+    /**
+     * Remove a playlist.
+     * @param name the name of the playlist to remove.
+     */
+    public void remove(String name) {
+        PlaylistLibraryAction.delete(name);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+    }
+
+    /**
+     * Scan and add the local playlists on every launch.
+     */
+    public void scanLocal() {
+        if (tinydb.objectExists("PlaylistLibrary")) {
+            PlaylistLibraryAction.assignLibrary(tinydb.getObject("PlaylistLibrary",
+                    PlaylistLibraryAction.playlistLibrary.getClass()));
         }
     }
 

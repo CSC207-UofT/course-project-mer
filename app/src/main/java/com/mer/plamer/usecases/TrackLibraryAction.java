@@ -1,22 +1,17 @@
 package com.mer.plamer.usecases;
 
-import android.annotation.SuppressLint;
-import android.os.Environment;
 import android.media.MediaMetadataRetriever;
 
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 
-import java.io.File;
+
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class TrackLibraryAction {
 
     public static TrackLibrary trackLibrary = new TrackLibrary();
-    @SuppressLint("StaticFieldLeak")
-    private static final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Delete the track in the track library.
@@ -47,7 +42,7 @@ public class TrackLibraryAction {
      * add a track to the track library.
      * @param path the path of the track we want to add.
      */
-    public static void add(String path) {
+    public static Track add(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
         Track track = trackLibrary.create(path);
@@ -56,44 +51,58 @@ public class TrackLibraryAction {
         track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
         track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         trackLibrary.add(track);
+        return track;
+    }
+
+
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the previously stored library.
+     */
+    public static void assignLibrary(TrackLibrary library) {
+        trackLibrary = library;
     }
 
     /**
-     * Scan the local music on every launch (or when the user want to).
+     * Make the library empty.
      */
-    public static void scanLocal() {
+    public static void emptyTheLibrary() {
         trackLibrary.emptyTheLibrary();
-        File dir = Environment.getExternalStorageDirectory();
-        int i = 0;
-        int current_id = tinydb.getInt("track_static_id");
-        while ( i <= current_id) {
-            if (tinydb.objectExists(i +"t")) {
-                trackLibrary.add(tinydb.getObject(i + "t", Track.class));
-            }
-            i++;
-        }
-        Track.setID(current_id + 1);
-        recursiveSongSearch(dir);
     }
 
     /**
-     * Helper method to recursively search for songs in the storage.
-     * @param dir The directory to search.
+     * Returns the title, artist, and length of a track
+     * @param id the id of a track
+     * @return the metadata of such track
      */
-    private static void recursiveSongSearch(File dir) {
-        if (!dir.isDirectory()) {
-            if (dir.getName().endsWith(".mp3")) {
-                if (!trackLibrary.getTrackPathList().contains(dir.getAbsolutePath())) {
-                    add(dir.getAbsolutePath());
-                }
-            }
-        }
-        File[] files = dir.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                recursiveSongSearch(file);
-            }
-        }
-
+    public static ArrayList<String> fetchMetadata(String id){
+        ArrayList<String> metadata = new ArrayList<>();
+        Track t = TrackLibraryAction.trackLibrary.get(id);
+        metadata.add(t.getTitle());
+        metadata.add(t.getArtist());
+        metadata.add(t.getLength());
+        return metadata;
     }
+
+    /**
+     * Returns the size of track library
+     * @return the number of tracks in the track library
+     */
+    public static int getLibrarySize(){
+        return trackLibrary.getTrackList().size();
+    }
+
+    /**
+     * Returns all tracks' IDs in a list
+     * @return all tracks' IDs in a list
+     */
+    public static ArrayList<String> fetchAllTrackIDs(){
+        ArrayList<Track> tracklist = trackLibrary.getTrackList();
+        ArrayList<String> IDList = new ArrayList<>();
+        for(Track t:tracklist){
+            IDList.add(t.getID());
+        }
+        return IDList;
+    }
+
 }

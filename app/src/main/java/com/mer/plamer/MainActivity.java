@@ -1,5 +1,7 @@
 package com.mer.plamer;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +10,9 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 
+import com.mer.plamer.controller.PlaylistControl;
+import com.mer.plamer.controller.TrackLibraryControl;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
@@ -18,6 +23,13 @@ import com.mer.plamer.usecases.UserLibraryAction;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
+                    trackLibraryControl.scanLocal();
+                }
+            });
     /**
      * Constructs view and defines actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
@@ -26,10 +38,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        UserControl userControl = new UserControl();
+        TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
+        PlaylistControl playlistControl = new PlaylistControl();
+        requestPermissionLauncher.launch("android.permission.READ_EXTERNAL_STORAGE");;
         setContentView(R.layout.homepage_layout);
-        TrackLibraryAction.scanLocal();
-        PlaylistLibraryAction.scanLocal();
-        UserLibraryAction.scanLocal();
+        trackLibraryControl.scanLocal();
+        playlistControl.scanLocal();
+        userControl.scanLocal();
         PlayAction.prepare();
 
         ImageButton log_in = (ImageButton) findViewById(R.id.home_login);

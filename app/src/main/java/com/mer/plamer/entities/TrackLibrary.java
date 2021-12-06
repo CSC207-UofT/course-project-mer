@@ -1,14 +1,11 @@
 package com.mer.plamer.entities;
 
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for TrackLibrary.
@@ -23,7 +20,6 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public void add(Track track) {
-        tinydb.putObject(track.getID() + "t", track);
         tracksList.add(track);
     }
 
@@ -33,12 +29,7 @@ public class TrackLibrary implements Storable<Track> {
      * @return the created track.
      */
     public Track create(String path) {
-        Track new_track = new Track(path);
-        if (tinydb.getInt("track_static_id") != 0) {
-            tinydb.remove("track_static_id");
-        }
-        tinydb.putInt("track_static_id", Integer.parseInt(new_track.getID()));
-        return new_track;
+        return new Track(path);
     }
 
     /**
@@ -46,8 +37,23 @@ public class TrackLibrary implements Storable<Track> {
      * @param Int the index of the track we want to get.
      * @return the track at the index.
      */
-    public Track get(int Int) {
+    public Track getByIndex(int Int) {
         return tracksList.get(Int);
+    }
+
+    /**
+     * Returns the track with given id. Return null if such track does not exist
+     * @param id the id of a track needed
+     * @return the track with such id
+     */
+    @Override
+    public Track get(String id){
+        for(Track t:tracksList){
+            if(t.getID().equals(id)){
+                return t;
+            }
+        }
+        return this.getByIndex(0);
     }
 
     /**
@@ -57,9 +63,8 @@ public class TrackLibrary implements Storable<Track> {
      */
     @Override
     public boolean remove(String id) {
-        if (this.contain(id) != null) {
-            this.tracksList.remove(this.contain(id));
-            tinydb.remove(id+"t");
+        if (this.get(id) != null) {
+            this.tracksList.remove(this.get(id));
             return true;
         } else {
             return false;
@@ -77,17 +82,17 @@ public class TrackLibrary implements Storable<Track> {
     /**
      * Check if the track library contains certain tracks.
      * @param id the name of the track we wanted to check
-     * @return the track that corresponds to the id.
+     * @return true if track is in the library, false otherwise
      */
-    @Override
-    public Track contain(String id) {
-        for (int i = 0; i < tracksList.size(); i++) {
-            if (tracksList.get(i).getID().equals(id)) {
-                return tracksList.get(i);
+    public boolean contains(String id){
+        for(Track t:tracksList){
+            if(t.getID().equals(id)){
+                return true;
             }
         }
-        return null;
+        return false;
     }
+
 
     /**
      * Get the list of track in the library.

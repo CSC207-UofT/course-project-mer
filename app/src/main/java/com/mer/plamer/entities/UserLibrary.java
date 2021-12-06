@@ -1,13 +1,9 @@
 package com.mer.plamer.entities;
 
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
-
 import java.util.ArrayList;
 
 public class UserLibrary implements Storable<User> {
     private final ArrayList<User> usersList;
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
     /**
      * Constructor for UserLibrary.
@@ -22,7 +18,6 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public void add(User new_user) {
-        tinydb.putObject(new_user.getId() + "u", new_user);
         this.usersList.add(new_user);
     }
 
@@ -33,12 +28,7 @@ public class UserLibrary implements Storable<User> {
      * @return The user created.
      */
     public User create(String username, String password) {
-        User new_user = new User(username,password);
-        if (tinydb.getInt("user_static_id") != 0) {
-            tinydb.remove("user_static_id");
-        }
-        tinydb.putInt("user_static_id", Integer.parseInt(new_user.getId()));
-        return new_user;
+        return new User(username,password);
     }
 
     /**
@@ -47,10 +37,9 @@ public class UserLibrary implements Storable<User> {
      */
     @Override
     public boolean remove(String username) {
-        User target = this.contain(username);
+        User target = this.get(username);
         if (target != null) {
             this.usersList.remove(target);
-            tinydb.remove(target.getId() + "u");
             return true;
         } else {
             return false;
@@ -72,7 +61,7 @@ public class UserLibrary implements Storable<User> {
      * @return username of user
      */
     @Override
-    public User contain(String id) {
+    public User get(String id) {
         for (User user : this.usersList) {
             if (user.getUsername().equals(id)) {
                 return user;
@@ -88,7 +77,7 @@ public class UserLibrary implements Storable<User> {
      * @return true if username matches password and false otherwise
      */
     public boolean check_login(String id, String pass) {
-        User target = this.contain(id);
+        User target = this.get(id);
         if (target != null) {
             return target.getPassword().equals(pass);
         }

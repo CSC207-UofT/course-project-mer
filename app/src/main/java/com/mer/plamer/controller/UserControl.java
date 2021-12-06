@@ -1,43 +1,72 @@
 package com.mer.plamer.controller;
 
+
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
+import com.mer.plamer.MyApp;
+import com.mer.plamer.TinyDB;
 
 
 public class UserControl {
 
     public UserAction userAction;
-    public static UserLibraryAction userLibraryAction = new UserLibraryAction();
+    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
 
+    /**
+     * Constructor of UserControl.
+     */
     public UserControl() {
         this.userAction = new UserAction();
     }
 
+    /**
+     * Register a new user and add it to userlibrary as well as the local persistent file.
+     * @param username the username of the new user.
+     * @param password the password of the new user.
+     * @return whether if the new user is successfully created.
+     */
     public boolean registration(String username, String password) {
-        if (userLibraryAction.userRegister(username, password) != null) {
-            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
+        if (UserLibraryAction.userRegister(username, password)) {
+            this.userAction.setUser(username);
+            tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
             return true;
         }
         return false;
     }
 
+    /**
+     * Check if a user can login.
+     * @param username the username that user entered.
+     * @param password the password that user entered.
+     * @return whether the login was successful.
+     */
     public boolean login_check(String username, String password) {
-        if (userLibraryAction.User_login(username, password) != null) {
-            this.userAction.setUser(userLibraryAction.getUserLibrary().contain(username));
+        if (UserLibraryAction.userLogin(username, password)) {
+            this.userAction.setUser(username);
             return true;
         }
         return false;
     }
 
+    /**
+     * Get the name of a user.
+     * @return the name of the user.
+     */
     public String getAccountInfo() {
-        if (this.userAction.getUser() == null) {
-            return "there is no user.";
+        if (this.userAction.isNull()) {
+            return "No user founded.";
         }
-        return this.userAction.getUser().getUsername();
+        return this.userAction.getCurrentName();
     }
 
-    public UserLibraryAction getUserLibraryAction() {
-        return userLibraryAction;
+    /**
+     * Scan the local file to gather every previously registered user on every launch.
+     */
+    public void scanLocal() {
+        if (tinydb.objectExists("UserLibrary")) {
+            UserLibraryAction.assignLibrary(tinydb.getObject("UserLibrary",
+                    UserLibraryAction.userLibrary.getClass()));
+        }
     }
 
     // TODO: Implement userDeletion
@@ -45,9 +74,12 @@ public class UserControl {
 
     }
 
-    // TODO: modifyUserInformation
-    public void modifyUserInformation() {
+    public boolean modifyUserPassword(String new_pass) {
+        if (new_pass.equals(this.userAction.getCurrentPassword())) {
+            return false;
+        }
+        this.userAction.changePwd(new_pass);
+        return true;
     }
-
 }
 
