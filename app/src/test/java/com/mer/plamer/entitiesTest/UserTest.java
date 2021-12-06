@@ -48,4 +48,10 @@ public class UserTest {
         ArrayList<Track> tracklist = new ArrayList<>();
         assertArrayEquals(tracklist.toArray(), u.getUploadedTracks().toArray());
     }
+
+    @Test(timeout = 50)
+    public void testGetID() {
+        String userid = u.getId();
+        assertEquals(userid, u.getId());
+    }
 }

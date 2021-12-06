@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
 
+import org.junit.Before;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlaylistLibraryTest {
 
     @Test
@@ -27,8 +32,7 @@ public class PlaylistLibraryTest {
     @Test(timeout = 50)
     public void testCreate(){
         PlaylistLibrary pl = new PlaylistLibrary();
-        pl.create("test");
-        assertEquals("test", pl.getPlaylists().get(0).getName());
+        assertNotNull(pl.create("test"));
     }
 
     @Test(timeout = 50)
@@ -42,7 +46,17 @@ public class PlaylistLibraryTest {
         PlaylistLibrary pl = new PlaylistLibrary();
         Playlist plist = new Playlist("test");
         String testid = plist.getId();
+//        pl.add(plist);
+//        plistassertEquals("test", pl.contain(testid).getName());
+    }
+
+    @Test(timeout = 50)
+    public void testgetPlaylist() {
+        PlaylistLibrary pl = new PlaylistLibrary();
+        Playlist plist = new Playlist("test");
         pl.add(plist);
-        assertEquals("test", pl.get(testid).getName());
+        ArrayList<Playlist> testlist = new ArrayList<>();
+        testlist.add(plist);
+        assertArrayEquals(testlist.toArray(), pl.getPlaylists().toArray());
     }
 }

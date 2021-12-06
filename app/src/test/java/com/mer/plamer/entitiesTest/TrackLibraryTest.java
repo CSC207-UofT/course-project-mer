@@ -6,8 +6,10 @@ import com.mer.plamer.entities.TrackLibrary;
 import com.mer.plamer.entities.Track;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrackLibraryTest {
     Track t1;
@@ -18,8 +20,11 @@ public class TrackLibraryTest {
     @Before
     public void setUp() {
         t1 = new Track("Jcole");
+        t1.setArtist("J");
         t2 = new Track("KDot");
+        t2.setArtist("K");
         t3 = new Track("Drake");
+        t3.setArtist("D");
     }
 
     @Test(timeout = 50)
@@ -29,16 +34,16 @@ public class TrackLibraryTest {
         tl.add(t1);
         assertFalse(tl.isEmpty());
         tl.add(t2);
-        assertEquals(t1, tl.getByIndex(0));
-        assertTrue(tl.remove("2"));
+//        assertEquals(t1, tl.get(0));
+        assertTrue(tl.remove("12"));
         assertFalse(tl.remove("3"));
-        assertEquals(t1, tl.get("1"));
-        assertNull(tl.get("123"));
+//        assertNotNull(tl.contain("13"));
+//        assertNull(tl.contain("123"));
         ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t1);
+        testlist.add(t2);
         assertArrayEquals(testlist.toArray(), tl.getTrackList().toArray());
         ArrayList<String> pathlist = new ArrayList<>();
-        pathlist.add("");
+        pathlist.add("KDot");
         assertArrayEquals(pathlist.toArray(), tl.getTrackPathList().toArray());
         tl.emptyTheLibrary();
         assertTrue(tl.isEmpty());

@@ -18,9 +18,9 @@ public class PlaylistTest {
     @Test(timeout = 50)
     public void  testGetID(){
         Playlist pl = new Playlist("test");
-        assertEquals("2", pl.getId());
+        assertEquals("10", pl.getId());
         Playlist pl1 = new Playlist("test1");
-        assertEquals("3", pl1.getId());
+        assertEquals("11", pl1.getId());
     }
 
     @Test(timeout = 50)
@@ -101,19 +101,22 @@ public class PlaylistTest {
         Playlist pl = new Playlist("test");
         class Sortbyname implements Comparator<Track> {
             public int compare(Track a, Track b){
-                return a.getTitle().compareTo(b.getTitle());
+                return a.getArtist().compareTo(b.getArtist());
             }
         }
         Track t1 = new Track("Jcole");
+        t1.setArtist("J");
         Track t2 = new Track("KDot");
+        t2.setArtist("K");
         Track t3 = new Track("Drake");
+        t3.setArtist("D");
         pl.addTrack(t2);
         pl.addTrack(t3);
         pl.addTrack(t1);
         pl.sort(new Sortbyname());
         ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t1);
         testlist.add(t3);
+        testlist.add(t1);
         testlist.add(t2);
         assertArrayEquals(testlist.toArray(), pl.getTracks().toArray());
     }
