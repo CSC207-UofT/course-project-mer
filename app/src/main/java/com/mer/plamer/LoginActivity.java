@@ -39,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainPage.class);
                 intent.putExtra("curr_user", userControl.userAction.getUser().getUsername());
                 startActivity(intent);
+                login_username.setText("");
+                login_password.setText("");
             }
             // if password doesn't match the username, then show "Incorrect username or password"
             // on the screen

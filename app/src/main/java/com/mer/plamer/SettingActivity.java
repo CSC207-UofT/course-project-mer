@@ -46,6 +46,7 @@ public class SettingActivity extends AppCompatActivity {
                 userControl.modifyUserPassword(n_password);
                 Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
                 startActivity(intent);
+                new_password.setText("");
             }
 
             else if (n_password.equals("")) {
