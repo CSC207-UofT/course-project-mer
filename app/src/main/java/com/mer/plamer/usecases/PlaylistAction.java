@@ -2,6 +2,8 @@ package com.mer.plamer.usecases;
 
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.Track;
+
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,14 +13,18 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class PlaylistAction {
 
-    private final Playlist playlist;
+    private Playlist playlist;
 
     /**
      * Constructor for PlaylistAction.
      * @param playlist The playlist we want to perform action on.
      */
-    public PlaylistAction(Playlist playlist) {
-        this.playlist = playlist;
+    public PlaylistAction() {
+        this.playlist = null;
+    }
+
+    public void setPlaylist(String playlist_id) {
+        this.playlist = PlaylistLibraryAction.playlistLibrary.contain(playlist_id);
     }
 
     /**
@@ -98,5 +104,22 @@ public class PlaylistAction {
      */
     public void setStatus(String status) {
         this.playlist.setStatus(status);
+    }
+
+    /**
+     * Get all track's id in an given playlist.
+     * @param playlist_id the id of the playlist that we want.
+     * @return all track's id in the playlist.
+     */
+    public static ArrayList<String> getAllTrackId(String playlist_id) {
+        ArrayList<String> ids = new ArrayList<String>();
+        Playlist result = PlaylistLibraryAction.playlistLibrary.contain(playlist_id);
+        if (result != null) {
+            ArrayList<Track> tracks = result.getTracks();
+            for (Track track : tracks) {
+                ids.add(track.getID());
+            }
+        }
+        return ids;
     }
 }
