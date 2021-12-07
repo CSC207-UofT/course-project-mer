@@ -118,6 +118,11 @@ public class PlayAction {
      */
     public static void setCurrentPlaylist(String id){
         currentPlaylist = PlaylistLibraryAction.playlistLibrary.getPlaylist(id);
+        if(order == PlayOrder.SHUFFLE){
+            shuffleList = new ArrayList<>();
+            shuffleList.addAll(currentPlaylist.getTracks());
+            Collections.shuffle(shuffleList);
+        }
     }
 
     /**
@@ -160,9 +165,9 @@ public class PlayAction {
                 }
                 currentTrackID = playlist.get(0).getID();
             }
-            PlayAction.prepare();
-            PlayAction.play();
         }
+        PlayAction.prepare();
+        PlayAction.play();
     }
 
     /**
@@ -191,9 +196,9 @@ public class PlayAction {
             else{
                 currentTrackID = playlist.get(playlist.size()-1).getID();
             }
-            PlayAction.prepare();
-            PlayAction.play();
         }
+        PlayAction.prepare();
+        PlayAction.play();
     }
 
     /**
@@ -212,8 +217,11 @@ public class PlayAction {
     }
 
     public static void shuffle(){
-        shuffleList = currentPlaylist.getTracks();
-        Collections.shuffle(shuffleList);
+        if(currentPlaylist != null){
+            shuffleList = new ArrayList<>();
+            shuffleList.addAll(currentPlaylist.getTracks());
+            Collections.shuffle(shuffleList);
+        }
     }
 
     /**

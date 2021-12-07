@@ -20,9 +20,6 @@ public class SearchControl {
         return TrackLibraryAction.search(keyword);
     }
 
-    public void trackOnclick(){
-    }
-
     /**
      * Search for all playlist that satisfies the condition.
      * @param keyword provided by the user.

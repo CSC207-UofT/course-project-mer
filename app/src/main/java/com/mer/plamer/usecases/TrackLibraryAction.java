@@ -2,6 +2,7 @@ package com.mer.plamer.usecases;
 
 import android.media.MediaMetadataRetriever;
 
+import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 
@@ -36,6 +37,21 @@ public class TrackLibraryAction {
             }
         }
         return searchTrack;
+    }
+
+    /**
+     * Get the name of search result from its id.
+     *
+     * @param id ID from search result
+     * @return the title of the required track.
+     */
+    public static String searchGetName(String id) {
+        for (Track t : trackLibrary.getTrackList()) {
+            if (t.getID().equals(id)) {
+                return t.getTitle();
+            }
+        }
+        return null;
     }
 
     /**
