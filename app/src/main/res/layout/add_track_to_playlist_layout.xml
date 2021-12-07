@@ -18,7 +18,7 @@
         android:adjustViewBounds="false"
         android:background="#00FFFFFF"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/track_list"
+        app:layout_constraintBottom_toTopOf="@+id/trackList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/track_list"
+        app:layout_constraintTop_toBottomOf="@+id/trackList"
         app:layout_constraintVertical_bias="0.597"
         app:srcCompat="@drawable/go"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />

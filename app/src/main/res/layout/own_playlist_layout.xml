@@ -69,16 +69,17 @@
 
         <TextView
             android:id="@+id/own_playlist_name"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="51dp"
+            android:layout_marginStart="54dp"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="147dp"
+            android:layout_marginEnd="39dp"
             android:layout_marginBottom="14dp"
             android:fontFamily="@font/aldrich"
+            android:lines="1"
             android:text=""
             android:textColor="@color/pink"
             android:textSize="20sp"
@@ -98,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlist_track_list"
+        app:layout_constraintTop_toBottomOf="@+id/own_playlist_track_list"
         app:layout_constraintVertical_bias="0.529">
 
         <ImageButton

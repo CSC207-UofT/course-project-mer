@@ -13,41 +13,27 @@ package com.mer.plamer.controller;
         import com.mer.plamer.usecases.TrackLibraryAction;
 
         import java.util.ArrayList;
-        import java.util.HashMap;
 
 public class AddAdapter extends BaseAdapter {
 
-    private ArrayList<String> trackID;
-    private static HashMap<Integer, Boolean> isSelected;
+    private ArrayList<AddDataHolder> lst;
     private Context context;
-    private LayoutInflater inflater = null;
+    private LayoutInflater inflater;
 
-    private Boolean isShow = false;
-
-    public AddAdapter(ArrayList<String> trackID, Context context, Boolean isShow){
+    public AddAdapter(Context context, ArrayList<AddDataHolder> l){
         this.context = context;
-        this.trackID = trackID;
+        this.lst = l;
         inflater = LayoutInflater.from(context);
-        isSelected = new HashMap<Integer, Boolean>();
-        this.isShow = isShow;
-
-        initData();
-    }
-
-    private void initData() {
-        for(int i = 0; i < trackID.size(); i++){
-            getIsSelected().put(i, false);
-        }
     }
 
     @Override
     public int getCount() {
-        return trackID.size();
+        return lst.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return trackID.get(position);
+        return lst.get(position);
     }
 
     @Override
@@ -59,42 +45,45 @@ public class AddAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        String id = trackID.get(position);
-        ArrayList<String> information = TrackLibraryAction.fetchMetadata(id);
-        int length = Integer.parseInt(information.get(2));
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.add_item,null);
             holder = new ViewHolder();
-            if (isShow) {
-                holder.cb.setVisibility(View.VISIBLE);
-            } else {
-                holder.cb.setVisibility(View.GONE);
-            }
+            convertView = inflater.inflate(R.layout.add_item,null);
             holder.trackTittle = convertView.findViewById(R.id.add_item_name);
             holder.trackArtist = convertView.findViewById(R.id.add_item_artist);
             holder.trackLength = convertView.findViewById(R.id.add_item_length);
+            holder.cb = convertView.findViewById(R.id.check_box);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.trackTittle.setText(information.get(0));
-        holder.trackArtist.setText(information.get(1));
-        holder.trackLength.setText(PlayControl.toMinuteSeconds(length));
+        holder.trackTittle.setText((String)lst.get(position).tittle);
+        holder.trackArtist.setText((String)lst.get(position).artist);
+        holder.trackLength.setText((String)lst.get(position).duration);
+        holder.cb.setChecked(lst.get(position).checked);
         return convertView;
     }
 
-    public static HashMap<Integer, Boolean> getIsSelected() {
-        return isSelected;
-    }
-
-    public static void setIsSelected(HashMap<Integer, Boolean> isSelected) {
-        AddAdapter.isSelected = isSelected;
-    }
-
     public static class ViewHolder{
-        public TextView trackTittle;
-        public TextView trackArtist;
-        public TextView trackLength;
-        public CheckBox cb;
+        TextView trackTittle;
+        TextView trackArtist;
+        TextView trackLength;
+        CheckBox cb;
+    }
+
+    public static class AddDataHolder {
+        public String tittle;
+        public String artist;
+        public String duration;
+        public String id;
+        public boolean checked;
+
+        public AddDataHolder(String i, boolean c){
+            ArrayList<String> info = TrackLibraryAction.fetchMetadata(i);
+            id = i;
+            tittle = info.get(0);
+            artist = info.get(1);
+            duration = PlayControl.toMinuteSeconds(Integer.parseInt(info.get(2)));
+            checked = c;
+        }
     }
 }

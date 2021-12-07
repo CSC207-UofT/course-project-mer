@@ -15,51 +15,48 @@ import java.util.ArrayList;
 
 public class TrackAdapter extends BaseAdapter {
 
-    private Context testContext;
-    private LayoutInflater testLayoutInflater;
-    private ArrayList<String> trackListID;
+    private Context context;
+    private LayoutInflater inflater;
+    private ArrayList<TrackDataHolder> lst;
 
-    public TrackAdapter(Context testContext, ArrayList<String> trackListID){
-        this.testContext = testContext;
-        this.testLayoutInflater = LayoutInflater.from(testContext);
-        this.trackListID = trackListID;
+    public TrackAdapter(Context context, ArrayList<TrackDataHolder> l){
+        this.context = context;
+        inflater = LayoutInflater.from(context);
+        this.lst = l;
     }
 
     @Override
     public int getCount() {
-        return trackListID.size();
+        return lst.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return lst.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        String id = trackListID.get(position);
-        ArrayList<String> information = TrackLibraryAction.fetchMetadata(id);
-        int length = Integer.parseInt(information.get(2));
+        ViewHolder holder = null;
         if (convertView == null) {
-            convertView = testLayoutInflater.inflate(R.layout.track_item,null);
-            viewHolder = new ViewHolder();
-            viewHolder.trackTittle = convertView.findViewById(R.id.track_item_name);
-            viewHolder.trackArtist = convertView.findViewById(R.id.track_item_artist);
-            viewHolder.trackLength = convertView.findViewById(R.id.track_item_length);
-            convertView.setTag(viewHolder);
+            convertView = inflater.inflate(R.layout.track_item,null);
+            holder = new ViewHolder();
+            holder.trackTittle = convertView.findViewById(R.id.track_item_name);
+            holder.trackArtist = convertView.findViewById(R.id.track_item_artist);
+            holder.trackLength = convertView.findViewById(R.id.track_item_length);
+            convertView.setTag(holder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.trackTittle.setText(information.get(0));
-        viewHolder.trackArtist.setText(information.get(1));
-        viewHolder.trackLength.setText(PlayControl.toMinuteSeconds(length));
+        holder.trackTittle.setText((String)lst.get(position).tittle);
+        holder.trackArtist.setText((String)lst.get(position).artist);
+        holder.trackLength.setText((String)lst.get(position).duration);
         return convertView;
     }
 
@@ -67,5 +64,20 @@ public class TrackAdapter extends BaseAdapter {
         TextView trackTittle;
         TextView trackArtist;
         TextView trackLength;
+    }
+
+    public static class TrackDataHolder {
+        public String tittle;
+        public String artist;
+        public String duration;
+        public String id;
+
+        public TrackDataHolder(String i){
+            ArrayList<String> info = TrackLibraryAction.fetchMetadata(i);
+            id = i;
+            tittle = info.get(0);
+            artist = info.get(1);
+            duration = PlayControl.toMinuteSeconds(Integer.parseInt(info.get(2)));
+        }
     }
 }

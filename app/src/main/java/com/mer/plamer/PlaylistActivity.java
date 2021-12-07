@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mer.plamer.controller.AddAdapter;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.PlaylistControl;
@@ -43,7 +44,7 @@ public class PlaylistActivity extends AppCompatActivity {
         userControl.userAction.setUser(username);
 
         playListID = PlaylistLibraryAction.getListOfPlaylistId();
-        plAdapter = new PlaylistAdapter(getApplicationContext(), playListID);
+        plAdapter = new PlaylistAdapter(PlaylistActivity.this, playListID);
         lv = findViewById(R.id.playlist_list);
 
         // show the list of all playlists
