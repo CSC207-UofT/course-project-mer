@@ -12,8 +12,7 @@
 ## Nov 25th:
 
 
-* TODO are used in our code this time to avoid missing important code segments.
-https://github.com/CSC207-UofT/course-project-mer/blob/f6e04d634f1acc7d76c0b1a243007faea31543b3/app/src/main/java/com/mer/plamer/controller/UserControl.java#L50-L57
+* [TODO](https://github.com/CSC207-UofT/course-project-mer/blob/f6e04d634f1acc7d76c0b1a243007faea31543b3/app/src/main/java/com/mer/plamer/controller/UserControl.java#L50-L57) are used in our code this time to avoid missing important code segments.
 * Discussed about separating Presenter and Controller responsibilities
 * Discussed about various methods violating Clean Architecture in phase 1
 * Began implementation of PlaylistControl
