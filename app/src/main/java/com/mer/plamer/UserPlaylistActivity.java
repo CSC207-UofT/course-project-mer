@@ -37,6 +37,10 @@ public class UserPlaylistActivity extends AppCompatActivity {
     private PlaylistAdapter plAdapter;
     private ArrayList<String> playListID;
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,8 @@ public class UserPlaylistActivity extends AppCompatActivity {
         // click playlist to open it
         AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
             String id = playListID.get(position);
-            Intent intent = new Intent(UserPlaylistActivity.this, OwnPlaylistActivity.class);
+            Intent intent = new Intent(UserPlaylistActivity.this,
+                    OwnPlaylistActivity.class);
             intent.putExtra("play_list_id", id);
             startActivity(intent);
         };
@@ -74,6 +79,7 @@ public class UserPlaylistActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
 
         // create new playlist by pressing "+"
+        @SuppressLint("InflateParams")
         View pop = getLayoutInflater().inflate(R.layout.new_playlist_popup_layout, null);
 
         // set the pop up window

@@ -49,22 +49,42 @@ public class UserAction {
         return user == null;
     }
 
+    /**
+     * Check if the user has Admin privilege
+     * @return true if the user is an instance of Admin, false otherwise
+     */
     public boolean isAdmin() {
         return this.getUser() instanceof Admin;
     }
 
+    /**
+     * Return the current user's username
+     * @return the username of the user who's using the app
+     */
     public String getCurrentName() {
         return this.getUser().getUsername();
     }
 
+    /**
+     * Return the current user's password
+     * @return the password of the user who's using the app
+     */
     public String getCurrentPassword() {
         return this.getUser().getPassword();
     }
 
+    /**
+     * Return the current user's playlist IDs
+     * @return all the current user's playlist IDs in an arraylist
+     */
     public ArrayList<String> getCurrentPlaylists() {
         return this.getUser().getPlaylists();
     }
 
+    /**
+     * Return the current user's playlists
+     * @return all the current user's playlists in an arraylist
+     */
     public ArrayList<Playlist> ToPlaylist() {
         ArrayList<Playlist> PL_list = new ArrayList<>();
         for (String id : this.getCurrentPlaylists()) {
@@ -74,9 +94,13 @@ public class UserAction {
         return PL_list;
     }
 
+    /**
+     * Return the current user's playlists' names
+     * @return all the names of playlists the current user has
+     */
     public ArrayList<String> Playlistname() {
         ArrayList<Playlist> PL_list = this.ToPlaylist();
-        ArrayList<String> name_list = new ArrayList<String>();
+        ArrayList<String> name_list = new ArrayList<>();
         for (Playlist PL : PL_list) {
             String name = PL.getName();
             name_list.add(name);
@@ -84,9 +108,13 @@ public class UserAction {
         return name_list;
     }
 
+    /**
+     * Return the number of current user's playlists
+     * @return the number of playlists of the current user
+     */
     public ArrayList<Integer> Playlistsize() {
         ArrayList<Playlist> PL_list = this.ToPlaylist();
-        ArrayList<Integer> size_list = new ArrayList<Integer>();
+        ArrayList<Integer> size_list = new ArrayList<>();
         for (Playlist PL : PL_list) {
             Integer size = PL.getLength();
             size_list.add(size);

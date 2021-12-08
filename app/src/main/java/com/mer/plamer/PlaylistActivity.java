@@ -35,6 +35,10 @@ public class PlaylistActivity extends AppCompatActivity {
     private PlaylistAdapter plAdapter;
     private ArrayList<String> playListID;
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

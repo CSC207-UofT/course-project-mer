@@ -44,6 +44,7 @@ public class PlayerActivity extends AppCompatActivity {
         defineActions();
     }
 
+    // Initialize view elements
     private void initializeViews(){
         setContentView(R.layout.player_layout);
         mPlayPauseButton = findViewById(R.id.playlist_play);
@@ -68,6 +69,7 @@ public class PlayerActivity extends AppCompatActivity {
         setButton(mPlayPauseButton, mLoopButton);
     }
 
+    // Associate view elements to corresponding actions
     private void defineActions(){
         mPlayPauseButton.setOnClickListener(v -> {
             PlayControl.playPause();

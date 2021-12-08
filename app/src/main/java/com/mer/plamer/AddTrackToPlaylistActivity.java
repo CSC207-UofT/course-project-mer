@@ -25,6 +25,11 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
 
     private ArrayList<String> addedID;
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -43,19 +48,16 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
         final AddAdapter adapter = new AddAdapter(AddTrackToPlaylistActivity.this, dataList);
         final ListView lv = findViewById(R.id.add_list);
         lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                boolean checked = dataList.get(position).checked;
-                if(!checked){
-                    dataList.get(position).checked = true;
-                    addedID.add(dataList.get(position).id);
-                }else {
-                    dataList.get(position).checked = false;
-                    addedID.remove(dataList.get(position).id);
-                }
-                adapter.notifyDataSetChanged();
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            boolean checked = dataList.get(position).checked;
+            if(!checked){
+                dataList.get(position).checked = true;
+                addedID.add(dataList.get(position).id);
+            }else {
+                dataList.get(position).checked = false;
+                addedID.remove(dataList.get(position).id);
             }
+            adapter.notifyDataSetChanged();
         });
 
         // back to the last page
@@ -76,7 +78,8 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
             }
             Toast.makeText(AddTrackToPlaylistActivity.this,
                     "You have added " + addedID.size() + " tracks.", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(AddTrackToPlaylistActivity.this, OwnPlaylistActivity.class);
+            Intent intent = new Intent(AddTrackToPlaylistActivity.this,
+                    OwnPlaylistActivity.class);
             intent.putExtra("play_list_id", pllID);
             startActivity(intent);
 

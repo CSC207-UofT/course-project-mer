@@ -41,7 +41,7 @@ public class User {
     }
 
     /**
-     * @return the list of playlists a User has.
+     * @return the list of playlist IDs a User has.
      */
     public ArrayList<String> getPlaylists() {
         return this.playlists_id;

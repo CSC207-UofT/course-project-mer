@@ -10,7 +10,9 @@ import com.mer.plamer.TinyDB;
 
 import java.util.ArrayList;
 
-
+/**
+ * Controller for user manipulations
+ */
 public class UserControl {
 
     public UserAction userAction;
@@ -73,6 +75,11 @@ public class UserControl {
         }
     }
 
+    /**
+     * Delete a user
+     * @param username the username of the user to delete
+     * @return true if deleted, false otherwise
+     */
     public boolean userDeletion(String username) {
         if (!this.userAction.isAdmin()) {
             return false;
@@ -89,7 +96,7 @@ public class UserControl {
     /**
      * Change the password of the currently registered user.
      * @param new_pass The desired new password that the user wants to change to.
-     * @return True if password change is successful, false if the new password is the same as the
+     * @return true if password change is successful, false if the new password is the same as the
      * old one or is the empty string.
      */
     public boolean modifyUserPassword(String new_pass) {
@@ -101,6 +108,10 @@ public class UserControl {
         return true;
     }
 
+    /**
+     * Create a playlist for user
+     * @param name the name of the intended playlist
+     */
     public void createPlaylist(String name){
         PlaylistControl playlistControl = new PlaylistControl();
         playlistControl.add(name);
@@ -110,6 +121,10 @@ public class UserControl {
         tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
     }
 
+    /**
+     * Remove a playlist for user
+     * @param id the id of such playlist
+     */
     public void removePlaylist(String id) {
         this.userAction.getCurrentPlaylists().remove(id);
         tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
