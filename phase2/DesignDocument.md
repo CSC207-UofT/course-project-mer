@@ -56,5 +56,11 @@ The packaging strategy we chose since phase 0, which hasn't changed until now, i
 
 One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary.  The builder design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
 
-## Details and descriptions about unit tests:
+## Refactoring Strategy:
+
+All programmers make mistakes. So, as a group we did not expect everyone to write perfect code. Sometimes we encounter codes from members that violate Clean Architectures, do not follow naming conventions, have code smells, or even without documentations. When one of us see any of these happening, we remind each other on potential issues there are with his/her code, give them suggestions and keep track of what's happening in different classes. This is a good strategy to keep us actively seeking issues in our code, and keep track of what is happening in each class.  
+
+Lastly, we've dedicated one member on the team for a final check on the codes (but not the function/features) for the end of each phase to ensure again the codes are issue-free.
+
+## Details and Descriptions about Unit Tests:
 Unit tests were constructed to test most of the methods for entities, use cases, and controllers. These tests were constructed to ensure that each method performs as it should. The difficulty to create these unit tests were also clear indicators to violations of clean architecture, SOLID principle, or the presence of code smells as violations would drastically increase the difficulty to create said tests. Without these violations, most unit tests no longer required the ability to mock an android environment as they were used to test the relationship with each other (controllers with use cases, use cases with entities). 
