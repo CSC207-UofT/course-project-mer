@@ -13,22 +13,14 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class PlaylistAction {
 
-    private Playlist playlist;
+    private final Playlist playlist;
 
     /**
      * Constructor for PlaylistAction.
      * @param playlist The playlist we want to perform action on.
      */
-    public PlaylistAction() {
-        this.playlist = null;
-    }
-
-    /**
-     * Set the playlist we want to act on
-     * @param playlist_id the id of the playlist we want to act on
-     */
-    public void setPlaylist(String playlist_id) {
-        this.playlist = PlaylistLibraryAction.playlistLibrary.contain(playlist_id);
+    public PlaylistAction(Playlist playlist) {
+        this.playlist = playlist;
     }
 
     /**

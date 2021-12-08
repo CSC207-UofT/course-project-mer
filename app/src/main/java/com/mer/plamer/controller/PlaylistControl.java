@@ -1,9 +1,11 @@
+
 package com.mer.plamer.controller;
 
 import com.mer.plamer.MyApp;
 import com.mer.plamer.TinyDB;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 /**
  * The controller class for playlist.
@@ -38,7 +40,7 @@ public class PlaylistControl {
 
     /**
      * Add a track from the playlist
-     * @param track_id the track that we wanted to add to the playlist.
+     * @param track_id the track id that we wanted to add to the playlist.
      * @return true if the track has been successfully removed.
      */
     public boolean trackAdd(String track_id) {
@@ -96,6 +98,7 @@ public class PlaylistControl {
                     PlaylistLibraryAction.playlistLibrary.getClass()));
         }
     }
+
     /**
      * Set the status of the playlist to status.
      * @param status the status of the playlist that we want to set to.
