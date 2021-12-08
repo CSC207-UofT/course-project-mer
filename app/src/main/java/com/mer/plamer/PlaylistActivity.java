@@ -40,7 +40,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
         UserControl userControl = new UserControl();
 
-        playListID = PlaylistLibraryAction.getListOfPlaylistId();
+        playListID = userControl.userAction.getCurrentPlaylists();
         plAdapter = new PlaylistAdapter(PlaylistActivity.this, playListID);
         lv = findViewById(R.id.playlist_list);
 
@@ -73,6 +73,7 @@ public class PlaylistActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         playlistControl.remove(list_id);
                         playListID.remove(position);
+                        userControl.removePlaylist(list_id);
                         plAdapter.notifyDataSetChanged();
                         Toast.makeText(PlaylistActivity.this,
                                 "You have deleted a playlist.", Toast.LENGTH_LONG).show();
@@ -117,18 +118,14 @@ public class PlaylistActivity extends AppCompatActivity {
             new_go.setOnClickListener(v1 -> {
                 // add new playlist into library
                 String pll_name = playlist_name.getText().toString();
-                PlaylistControl playlistControl = new PlaylistControl();
-                playlistControl.add(pll_name);
-                ArrayList<String> lst = PlaylistLibraryAction.getListOfPlaylistId();
-                int i = PlaylistLibraryAction.getListOfPlaylistId().size() - 1;
-                playListID.add(lst.get(i));
+                userControl.createPlaylist(pll_name);
+                playListID = userControl.userAction.getCurrentPlaylists();
                 plAdapter.notifyDataSetChanged();
                 Toast.makeText(PlaylistActivity.this,
                         "You have created a playlist.", Toast.LENGTH_LONG).show();
                 playlist_name.setText("");
                 popupwindow.dismiss();
             });
-
         });
 
         // play music

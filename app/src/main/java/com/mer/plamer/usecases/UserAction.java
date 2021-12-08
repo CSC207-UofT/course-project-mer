@@ -1,9 +1,13 @@
 package com.mer.plamer.usecases;
 
+import android.content.Intent;
+
 import com.mer.plamer.entities.Admin;
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.Track;
+
+import java.util.ArrayList;
 
 /**
  * Actions that a user can perform
@@ -57,6 +61,39 @@ public class UserAction {
         return this.getUser().getPassword();
     }
 
+    public ArrayList<String> getCurrentPlaylists() {
+        return this.getUser().getPlaylists();
+    }
+
+    public ArrayList<Playlist> ToPlaylist() {
+        ArrayList<Playlist> PL_list = new ArrayList<>();
+        for (String id : this.getCurrentPlaylists()) {
+            Playlist PL = PlaylistLibraryAction.playlistLibrary.get(id);
+            PL_list.add(PL);
+        }
+        return PL_list;
+    }
+
+    public ArrayList<String> Playlistname() {
+        ArrayList<Playlist> PL_list = this.ToPlaylist();
+        ArrayList<String> name_list = new ArrayList<String>();
+        for (Playlist PL : PL_list) {
+            String name = PL.getName();
+            name_list.add(name);
+        }
+        return name_list;
+    }
+
+    public ArrayList<Integer> Playlistsize() {
+        ArrayList<Playlist> PL_list = this.ToPlaylist();
+        ArrayList<Integer> size_list = new ArrayList<Integer>();
+        for (Playlist PL : PL_list) {
+            Integer size = PL.getLength();
+            size_list.add(size);
+        }
+        return size_list;
+    }
+
     /**
      * Change the password of a user.
      *
@@ -86,21 +123,12 @@ public class UserAction {
     }
 
     /**
-     * Create a new and empty playlist that belongs to this user.
+     * Add the id of a new and empty playlist that belongs to this user to user's playlists id list.
      *
-     * @param playlist_id the new play list.
-     * @return true if the playlist is added to the user, false otherwise.
+     * @param playlist_id the id of the new playlist.
      */
-    public boolean addPlaylist(String playlist_id) {
-        if (this.isNull()) {
-            return false;
-        }
-        Playlist target = PlaylistLibraryAction.playlistLibrary.get(playlist_id);
-        if (target != null) {
-            user.getPlaylists().add(target);
-            return true;
-        }
-        return false;
+    public void addPlaylist(String playlist_id) {
+            user.getPlaylists().add(playlist_id);
     }
 
 }

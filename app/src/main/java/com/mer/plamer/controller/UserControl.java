@@ -75,7 +75,13 @@ public class UserControl {
         if (!this.userAction.isAdmin()) {
             return false;
         }
-        return UserLibraryAction.delete(username);
+        else if (UserLibraryAction.delete(username)) {
+            tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -93,16 +99,20 @@ public class UserControl {
         return true;
     }
 
-    public boolean createPlaylist(String name){
-        if (name == null){
-            return false;
-        } else {
-            PlaylistControl playlistControl = new PlaylistControl();
-            playlistControl.add(name);
-            String PL_id = PlaylistLibraryAction.getListOfPlaylistId().get(-1);
-            this.userAction.addPlaylist(PL_id);
-            return true;
-        }
+    public void createPlaylist(String name){
+        PlaylistControl playlistControl = new PlaylistControl();
+        playlistControl.add(name);
+        int length = PlaylistLibraryAction.getListOfPlaylistId().size();
+        String PL_id = PlaylistLibraryAction.getListOfPlaylistId().get(length - 1);
+        this.userAction.addPlaylist(PL_id);
+        tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
     }
+
+    public void removePlaylist(String id) {
+        this.userAction.getCurrentPlaylists().remove(id);
+        tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
+    }
+
+
 }
 
