@@ -18,36 +18,36 @@ public class MainPageActivity extends AppCompatActivity {
 
 
         // open the setting page
-        ImageButton main_setting = findViewById(R.id.main_settings);
-        main_setting.setOnClickListener(v -> {
+        ImageButton setting = findViewById(R.id.main_settings);
+        setting.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, SettingActivity.class);
             startActivity(intent);
         });
 
         // open the track library
-        ImageButton main_track = findViewById(R.id.main_track_list);
-        main_track.setOnClickListener(v -> {
+        ImageButton track = findViewById(R.id.main_track_list);
+        track.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, TrackActivity.class);
             startActivity(intent);
         });
 
         // open the playlist
-        ImageButton main_playlist = findViewById(R.id.main_playlist);
-        main_playlist.setOnClickListener(v -> {
+        ImageButton playList = findViewById(R.id.main_playlist);
+        playList.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlaylistActivity.class);
             startActivity(intent);
         });
 
         // open the search page
-        ImageButton main_search = findViewById(R.id.main_search);
-        main_search.setOnClickListener(v -> {
+        ImageButton search = findViewById(R.id.main_search);
+        search.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, SearchActivity.class);
             startActivity(intent);
         });
 
         // open the user library
-        ImageButton universe_users = findViewById(R.id.main_users);
-        universe_users.setOnClickListener(v -> {
+        ImageButton users = findViewById(R.id.main_users);
+        users.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, UniverseUserActivity.class);
             startActivity(intent);
         });
@@ -66,6 +66,18 @@ public class MainPageActivity extends AppCompatActivity {
         // change the loop style
         ImageButton repeatButton = findViewById(R.id.main_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
+
+        // previous music
+        ImageButton prevButton = findViewById(R.id.main_prev);
+        prevButton.setOnClickListener(v -> {
+            // TODO
+        });
+
+        // next music
+        ImageButton nextButton = findViewById(R.id.main_next);
+        nextButton.setOnClickListener(v -> {
+            // TODO
+        });
 
     }
 }

@@ -2,11 +2,9 @@ package com.mer.plamer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,8 +17,7 @@ import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.SearchControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.controller.UserAdapter;
-import com.mer.plamer.usecases.TrackLibraryAction;
-import com.mer.plamer.usecases.UserLibraryAction;
+import com.mer.plamer.usecases.PlayAction;
 
 import java.util.ArrayList;
 
@@ -80,18 +77,15 @@ public class SearchActivity extends AppCompatActivity {
             lv.setAdapter(adapter);
 
             // play the track when click
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(SearchActivity.this,
-                            dataList.get(i).tittle +
-                                    " will be played.",Toast.LENGTH_SHORT).show();
-                    PlayControl.setMedia("NONE", dataList.get(i).id);
-                }
+            lv.setOnItemClickListener((adapterView, view, i, l) -> {
+                Toast.makeText(SearchActivity.this,
+                        dataList.get(i).tittle +
+                                " will be played.",Toast.LENGTH_SHORT).show();
+                PlayControl.setMedia("NONE", dataList.get(i).id);
             });
 
         } else if (type.equals("Playlist")){
-            ArrayList<String> lst = new ArrayList<>();
+            ArrayList<String> lst;
             lst = SearchControl.searchPlaylist(input);
             // set adapter
             PlaylistAdapter adapter = new PlaylistAdapter(SearchActivity.this, lst);
@@ -100,24 +94,36 @@ public class SearchActivity extends AppCompatActivity {
 
             // open playlist when press
             ArrayList<String> finalLst = lst;
-            AdapterView.OnItemClickListener openList = new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                    String id = finalLst.get(position);
-                    Intent intent = new Intent(SearchActivity.this, OwnPlaylistActivity.class);
-                    intent.putExtra("play_list_id", id);
-                    startActivity(intent);
-                }
+            AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+                String id = finalLst.get(position);
+                Intent intent = new Intent(SearchActivity.this, OwnPlaylistActivity.class);
+                intent.putExtra("play_list_id", id);
+                startActivity(intent);
             };
             lv.setOnItemClickListener(openList);
 
         } else {
-            ArrayList<String> lst = new ArrayList<>();
+            ArrayList<String> lst;
             lst = SearchControl.searchUser(input);
             // set adapter
             UserAdapter adapter = new UserAdapter(SearchActivity.this, lst);
             ListView lv = findViewById(R.id.search_list);
             lv.setAdapter(adapter);
         }
+
+        // open the playing page
+        ImageButton playing = findViewById(R.id.search_playing);
+        playing.setOnClickListener(v -> {
+            Intent intent = new Intent(SearchActivity.this, PlayerActivity.class);
+            startActivity(intent);
+        });
+
+        // play/pause music
+        ImageButton playButton = findViewById(R.id.search_play);
+        playButton.setOnClickListener(v -> PlayControl.playPause());
+
+        // change the loop style
+        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
     }
 }

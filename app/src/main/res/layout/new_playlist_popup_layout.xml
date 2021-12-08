@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rec_background_black">
@@ -23,7 +24,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.411"
+        tools:ignore="TextContrastCheck" />
 
     <ImageButton
         android:id="@+id/new_playlist_go"
@@ -31,6 +33,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="36dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/string_confirm"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_playlist_name"
         app:layout_constraintVertical_bias="0.148"
-        app:srcCompat="@drawable/go"/>
+        app:srcCompat="@drawable/go"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
