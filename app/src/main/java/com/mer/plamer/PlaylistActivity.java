@@ -38,10 +38,7 @@ public class PlaylistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist_layout);
 
-        // get current user
-        String username = getIntent().getStringExtra("curr_user");
         UserControl userControl = new UserControl();
-        userControl.userAction.setUser(username);
 
         playListID = PlaylistLibraryAction.getListOfPlaylistId();
         plAdapter = new PlaylistAdapter(PlaylistActivity.this, playListID);

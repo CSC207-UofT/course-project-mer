@@ -16,13 +16,11 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
 
-        String username = getIntent().getStringExtra("curr_user");
 
         // open the setting page
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, SettingActivity.class);
-            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
@@ -37,7 +35,6 @@ public class MainPageActivity extends AppCompatActivity {
         ImageButton main_playlist = findViewById(R.id.main_playlist);
         main_playlist.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlaylistActivity.class);
-            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
@@ -45,7 +42,6 @@ public class MainPageActivity extends AppCompatActivity {
         ImageButton main_search = findViewById(R.id.main_search);
         main_search.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, SearchActivity.class);
-            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
@@ -53,7 +49,6 @@ public class MainPageActivity extends AppCompatActivity {
         ImageButton universe_users = findViewById(R.id.main_users);
         universe_users.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, UniverseUserActivity.class);
-            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 

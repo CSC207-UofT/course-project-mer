@@ -28,9 +28,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         // show the current username
-        String username = getIntent().getStringExtra("curr_user");
         UserControl userControl = new UserControl();
-        userControl.userAction.setUser(username);
         TextView setting_current_username = findViewById(R.id.setting_current_username);
         String current_username = userControl.getAccountInfo();
         setting_current_username.setText(current_username);
@@ -63,6 +61,7 @@ public class SettingActivity extends AppCompatActivity {
 
         // back to the last page
         ImageButton back = findViewById(R.id.setting_back);
+
 
         back.setOnClickListener(v -> finish());
     }

@@ -46,10 +46,7 @@ public class OwnPlaylistActivity extends AppCompatActivity {
 
         // back to the last page
         ImageButton back = findViewById(R.id.own_playlist_back_to_main);
-        back.setOnClickListener(v -> {
-            Intent intent = new Intent(OwnPlaylistActivity.this, MainPageActivity.class);
-            startActivity(intent);
-        });
+        back.setOnClickListener(v -> finish());
 
         // show the list of all tracks
         ArrayList<String> ownPlaylist = PlaylistAction.getAllTrackId(pllID);
