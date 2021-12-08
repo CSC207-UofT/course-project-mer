@@ -11,4 +11,4 @@ Can check if the user is an admin, get user's name, password, can change name, c
 and add playlists.
 
 ## Collaborators:
-User, Admin, UserLibrary, UserControl.
+User, Admin, UserLibrary, UserControl, PlaylistActivity
