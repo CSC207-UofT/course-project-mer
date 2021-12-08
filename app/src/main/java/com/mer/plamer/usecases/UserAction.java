@@ -1,7 +1,7 @@
 package com.mer.plamer.usecases;
 
+import com.mer.plamer.entities.Admin;
 import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.User;
 import com.mer.plamer.entities.Track;
 
@@ -10,74 +10,97 @@ import com.mer.plamer.entities.Track;
  */
 public class UserAction {
 
-    private User user;
-    public static PlaylistLibrary playlistLibrary;
+    public static User user;
 
     /**
      * Constructor for UserAction, it will have no user at the beginning.
      */
     public UserAction() {
-        this.user = null;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    /**
+     * Set the user this UserAction is dealing with.
+     *
+     * @param username the username of the user in interest.
+     */
+    public void setUser(String username) {
+        user = UserLibraryAction.userLibrary.get(username);
     }
 
+    /**
+     * Return the user this UserAction is dealing with.
+     *
+     * @return The user this UserAction is dealing with.
+     */
     public User getUser() {
-        return this.user;
+        return user;
     }
 
-    public boolean IsNull() {
-        return this.user == null;
+    /**
+     * Check if this UserAction is no user assign.
+     *
+     * @return Whether there is a user assigned.
+     */
+    public boolean isNull() {
+        return user == null;
+    }
+
+    public boolean isAdmin() {
+        return this.getUser() instanceof Admin;
+    }
+
+    public String getCurrentName() {
+        return this.getUser().getUsername();
+    }
+
+    public String getCurrentPassword() {
+        return this.getUser().getPassword();
     }
 
     /**
      * Change the password of a user.
+     *
      * @param new_pass The desired password that this user want to change to.
      * @return true if the password is changed, false if did not or is the same as the old one.
      */
     public boolean changePwd(String new_pass) {
-        if (this.IsNull() || new_pass.equals(this.user.getPassword())) {
+        if (this.isNull() || new_pass.equals(user.getPassword())) {
             return false;
         }
-        this.user.setPassword(new_pass);
+        user.setPassword(new_pass);
         return true;
     }
 
     /**
      * Change the username of a user.
+     *
      * @param new_name The desired username that this user want to change to.
      * @return true if the username is changed, false if did not or is the same as the old one.
      */
     public boolean changeName(String new_name) {
-        if (this.IsNull() || new_name.equals(this.user.getUsername())) {
+        if (this.isNull() || new_name.equals(user.getUsername())) {
             return false;
         }
-        this.user.setUsername(new_name);
+        user.setUsername(new_name);
         return true;
     }
 
     /**
      * Create a new and empty playlist that belongs to this user.
-     * @param PL_name the name of the new play list.
-     * @return true if the playlist is created, false otherwise.
+     *
+     * @param playlist_id the new play list.
+     * @return true if the playlist is added to the user, false otherwise.
      */
-    public boolean createPlaylist(String PL_name) {
-        if (this.IsNull()) {
+    public boolean addPlaylist(String playlist_id) {
+        if (this.isNull()) {
             return false;
         }
-        Playlist new_pl = new Playlist(PL_name);
-        this.user.getPlaylists().add(new_pl);
-        playlistLibrary.add(new_pl);
-        return true;
+        Playlist target = PlaylistLibraryAction.playlistLibrary.get(playlist_id);
+        if (target != null) {
+            user.getPlaylists().add(target);
+            return true;
+        }
+        return false;
     }
 
-    public boolean uploadTrack(Track track) {
-        if (this.IsNull() || this.user.getUploadedTracks().contains(track)) {
-            return false;
-        }
-        this.user.getUploadedTracks().add(track);
-        return true;
-    }
 }

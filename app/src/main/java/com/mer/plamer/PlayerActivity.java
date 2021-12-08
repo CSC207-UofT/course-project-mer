@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.mer.plamer.controller.PlayControl;
 
+import com.mer.plamer.databinding.PlayerLayoutBinding;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
@@ -52,11 +56,8 @@ public class PlayerActivity extends AppCompatActivity {
         mCurrentTrackArtist = findViewById(R.id.artist_name);
         mCurrentTrackPosition = findViewById(R.id.current_time);
         mCurrentTrackDuration = findViewById(R.id.total_length);
-        mSeekBar.setMax(PlayControl.toSeconds(PlayAction.getTrackLength()));
-        mCurrentTrackName.setText(PlayAction.getTitle());
-        mCurrentTrackArtist.setText(PlayAction.getArtist());
-        mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
         updateSeekBarPosition = () -> {
+            metadataUpdate();
             mSeekBarHandler = new Handler();
             int currentPosition = PlayAction.getCurrentPosition();
             mSeekBar.setProgress(PlayControl.toSeconds(currentPosition));
@@ -67,11 +68,32 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> PlayControl.playPause());
+        mPlayPauseButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
 
         mBackButton.setOnClickListener(v -> finish());
 
-        mLoopButton.setOnClickListener(v -> PlayAction.loop());
+        mLoopButton.setOnClickListener(v -> {
+            Toast.makeText(PlayerActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+        });
+
+        mNextButton.setOnClickListener(v -> {
+            PlayControl.next();
+            metadataUpdate();
+        });
+
+        mPreviousButton.setOnClickListener(v -> {
+            PlayControl.prev();
+            metadataUpdate();
+        });
+
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -79,17 +101,20 @@ public class PlayerActivity extends AppCompatActivity {
                     PlayAction.setPosition(progress);
                 }
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
-
         });
     }
+
+    private void metadataUpdate(){
+        mSeekBar.setMax(PlayControl.toSeconds(PlayAction.getTrackLength()));
+        mCurrentTrackName.setText(PlayAction.getTitle());
+        mCurrentTrackArtist.setText(PlayAction.getArtist());
+        mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
+    }
+
 }

@@ -7,7 +7,7 @@
     android:background="@drawable/background">
 
     <ListView
-        android:id="@+id/track_list"
+        android:id="@+id/trackList"
         android:layout_width="408dp"
         android:layout_height="494dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/playlist_top_bar"
         android:layout_width="398dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/track_list"
+        app:layout_constraintBottom_toTopOf="@+id/trackList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -46,46 +46,6 @@
             app:srcCompat="@drawable/back"
             tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-        <ImageButton
-            android:id="@+id/track_add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="368dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="5dp"
-            android:adjustViewBounds="false"
-            android:background="#00FFFFFF"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/add"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        <EditText
-            android:id="@+id/track_search_bar"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="98dp"
-            android:layout_marginBottom="5dp"
-            android:autofillHints="search track"
-            android:fontFamily="@font/aldrich"
-            android:hint="@string/search_your_track"
-            android:inputType="text"
-            android:textAlignment="viewStart"
-            android:textColor="@color/pink"
-            android:textColorHint="@color/half_pink"
-            android:textSize="20sp"
-            tools:ignore="ContentDescription,TextContrastCheck" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -96,11 +56,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/track_list"
+        app:layout_constraintTop_toBottomOf="@+id/trackList"
         app:layout_constraintVertical_bias="0.529">
 
         <ImageButton
-            android:id="@+id/track_playing"
+            android:id="@+id/trackPlaying"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"

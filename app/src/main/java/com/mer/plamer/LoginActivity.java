@@ -2,7 +2,6 @@ package com.mer.plamer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,9 +16,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
+        // back to the last page
         ImageButton back = findViewById(R.id.login_back);
         back.setOnClickListener(v -> finish());
 
+        // confirm the input of username and password
         ImageButton login_go = findViewById(R.id.login_go);
         login_go.setOnClickListener(v -> {
 
@@ -27,17 +28,19 @@ public class LoginActivity extends AppCompatActivity {
             String l_name = login_username.getText().toString();
 
             EditText login_password = findViewById(R.id.login_password);
-
             String l_password = login_password.getText().toString();
 
             UserControl userControl = new UserControl();
 
+            // if password match the username, then log in
             if (userControl.login_check(l_name, l_password)) {
-                Intent intent = new Intent(LoginActivity.this, MainPage.class);
-                intent.putExtra("curr_user", userControl.userAction.getUser().getUsername());
+                Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                 startActivity(intent);
+                login_username.setText("");
+                login_password.setText("");
             }
-
+            // if password doesn't match the username, then show "Incorrect username or password"
+            // on the screen
             else {
 
                 Toast.makeText(LoginActivity.this,

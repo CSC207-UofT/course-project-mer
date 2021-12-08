@@ -7,9 +7,12 @@ public class UserLibrary implements Storable<User> {
 
     /**
      * Constructor for UserLibrary.
+     * Construct a new user which is the admin of the app, who can delete user from the userlibrary.
      */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
+        Admin admin = new Admin("admin", "adminadmin");
+        this.usersList.add(admin);
     }
 
     /**
@@ -68,20 +71,6 @@ public class UserLibrary implements Storable<User> {
             }
         }
         return null;
-    }
-
-    /**
-     * Check the log in username and password
-     * @param id the id of the user
-     * @param pass the password of ths user
-     * @return true if username matches password and false otherwise
-     */
-    public boolean check_login(String id, String pass) {
-        User target = this.get(id);
-        if (target != null) {
-            return target.getPassword().equals(pass);
-        }
-        return false;
     }
 
     /**

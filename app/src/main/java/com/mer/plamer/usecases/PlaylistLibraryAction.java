@@ -22,26 +22,45 @@ public class PlaylistLibraryAction {
     }
 
     /**
-     * Search the required playlists.
+     * Search for the required playlists.
      *
      * @param keyword the provided keyword by the user
-     * @return the required playlists.
+     * @return the ID of required playlists.
      */
-    public static ArrayList<Playlist> search(String keyword) {
-        ArrayList<Playlist> searchPlaylist = new ArrayList<>();
+    public static ArrayList<String> search(String keyword) {
+        ArrayList<String> searchPlaylist = new ArrayList<>();
+        String lKeyword = keyword.toLowerCase();
         for (Playlist p : playlistLibrary.getPlaylists()) {
-            if (p.getName().contains(keyword)) {
-                searchPlaylist.add(p);
+            if (p.getName().toLowerCase().contains(lKeyword)) {
+                searchPlaylist.add(p.getId());
             }
             for (Track t : p.getTracks()) {
-                if ((t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
-                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p))) {
-                    searchPlaylist.add(p);
+                if ((t.getArtist().toLowerCase().contains(lKeyword)
+                        || t.getTitle().toLowerCase().contains(lKeyword)
+                        || t.getGenre().toLowerCase().contains(lKeyword))
+                        && !(searchPlaylist.contains(p.getId())))
+                {
+                    searchPlaylist.add(p.getId());
                 } else
                     break;
             }
         }
         return searchPlaylist;
+    }
+
+    /**
+     * Get the name of search result from its id.
+     *
+     * @param id ID from search result
+     * @return the name of the required playlist.
+     */
+    public static String searchGetName(String id) {
+        for (Playlist p : playlistLibrary.getPlaylists()) {
+            if (p.getId().equals(id)) {
+                return p.getName();
+            }
+        }
+        return null;
     }
 
     /**
@@ -55,6 +74,35 @@ public class PlaylistLibraryAction {
 
     }
 
+    /**
+     * Get a list of integers containing the size of every playlist.
+     * @return the list of all playlist size.
+     */
+    public static ArrayList<Integer> getListOfPlaylistSize() {
+        return playlistLibrary.getListofPlaylistSize();
+    }
+
+
+    /**
+     * Get a list of String containing the name of every playlist.
+     * @return the list of all playlist name.
+     */
+    public static ArrayList<String> getListOfPlaylistName() {
+        return playlistLibrary.getListofPlaylistName();
+    }
+
+    /**
+     * Get a list of String containing the id of every playlist.
+     * @return the list of all playlist id.
+     */
+    public static ArrayList<String> getListOfPlaylistId() {
+        return playlistLibrary.getListOfPlaylistId();
+    }
+
+    /**
+     * Assign a previously stored library as the new library.
+     * @param library the stored library.
+     */
     public static void assignLibrary(PlaylistLibrary library) {
         playlistLibrary = library;
     }

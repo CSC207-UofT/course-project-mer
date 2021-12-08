@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.mer.plamer.MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -15,26 +15,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plamer">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+        <activity
+            android:name=".AddTrackToPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnPlaylistActivity"
+            android:exported="false"/>
+        <activity
             android:name=".UniverseUserActivity"
             android:exported="false" />
         <activity
             android:name=".PlaylistActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
             android:name=".TrackActivity"
             android:exported="false" />
         <activity
             android:name=".SettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
-            android:name=".MainPage"
+            android:name=".MainPageActivity"
             android:exported="false" />
         <activity
             android:name=".SignupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
         <activity
             android:name=".PlayerActivity"
             android:exported="true" />

@@ -27,7 +27,6 @@ public class SignupActivity extends AppCompatActivity {
             String s_name = signup_username.getText().toString();
 
             EditText signup_password = findViewById(R.id.signup_password);
-
             String s_password = signup_password.getText().toString();
 
             UserControl userControl = new UserControl();
@@ -37,6 +36,13 @@ public class SignupActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignupActivity.this,
                         LoginActivity.class);startActivity(intent);
+                signup_username.setText("");
+                signup_password.setText("");
+            }
+            else if (!(!s_name.equals("") & !s_password.equals(""))) {
+                Toast.makeText(SignupActivity.this, "Username and Password cannot " +
+                                "be empty",
+                        Toast.LENGTH_LONG).show();
             }
             else {
                 Toast.makeText(SignupActivity.this, "This username has been taken.",
