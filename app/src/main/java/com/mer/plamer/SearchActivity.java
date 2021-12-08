@@ -109,6 +109,7 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             };
+            lv.setOnItemClickListener(openList);
 
         } else {
             ArrayList<String> lst = new ArrayList<>();
