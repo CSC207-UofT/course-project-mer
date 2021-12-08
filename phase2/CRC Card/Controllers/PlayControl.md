@@ -12,4 +12,4 @@ in the playlist, give PlayAction a track and playlist for upcoming playback, con
 the minute seconds representation of a time in miliseconds
 
 ## Collaborators:
-PlayAction, AddAdapter, TrackAdapter
+PlayAction, AddAdapter, TrackAdapter, MainPageActivity, OwnPlaylistActivity, PlayerActivity, PlaylistActivity, SearchActivity, TrackActivity, UniverseUserActivity, UserPlaylistActivity
