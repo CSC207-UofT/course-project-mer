@@ -16,11 +16,8 @@ public class SearchControl {
      * @param keyword provided by the user.
      * @return an array list of all the tracks that satisfies the condition
      */
-    public ArrayList<String> searchTrack(String keyword) {
+    public static ArrayList<String> searchTrack(String keyword) {
         return TrackLibraryAction.search(keyword);
-    }
-
-    public void trackOnclick(){
     }
 
     /**
@@ -28,7 +25,7 @@ public class SearchControl {
      * @param keyword provided by the user.
      * @return an array list of all the playlist that satisfies the condition
      */
-    public ArrayList<String> searchPlaylist(String keyword) {
+    public static ArrayList<String> searchPlaylist(String keyword) {
         return PlaylistLibraryAction.search(keyword);
     }
 
@@ -37,7 +34,7 @@ public class SearchControl {
      * @param keyword provided by the user.
      * @return an array list of all the users that satisfies the condition for display
      */
-    public ArrayList<String> searchUser(String keyword) {
+    public static ArrayList<String> searchUser(String keyword) {
         return UserLibraryAction.search(keyword);
     }
 }

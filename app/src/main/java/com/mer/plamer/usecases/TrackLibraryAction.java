@@ -9,6 +9,7 @@ import com.mer.plamer.entities.TrackLibrary;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class TrackLibraryAction {
 
@@ -30,9 +31,11 @@ public class TrackLibraryAction {
      */
     public static ArrayList<String> search(String keyword) {
         ArrayList<String> searchTrack = new ArrayList<>();
+        String lKeyword = keyword.toLowerCase();
         for (Track t : trackLibrary.getTrackList()){
-            if (t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
-                    || t.getGenre().contains(keyword)){
+            if (t.getArtist().toLowerCase().contains(lKeyword)
+                    || t.getTitle().toLowerCase().contains(lKeyword)
+                    || t.getGenre().toLowerCase().contains(lKeyword)){
                 searchTrack.add(t.getID());
             }
         }
