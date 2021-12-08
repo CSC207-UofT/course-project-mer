@@ -12,4 +12,5 @@ Can register a user, check if a user can login, get the user's name, create a ne
 and change their password.
 
 ## Collaborators:
-PlaylistControl, PlaylistAction, PlaylistLibraryAction, UserAction, UserLibraryAction (Admin Only)
+PlaylistControl, PlaylistAction, PlaylistLibraryAction, UserAction, UserLibraryAction (Admin Only), LoginActivity, MainActivity, PlaylistActivity, SettingActivity, SignupActivity
+, UserPlaylistActivity
