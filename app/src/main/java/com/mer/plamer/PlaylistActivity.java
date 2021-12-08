@@ -48,48 +48,37 @@ public class PlaylistActivity extends AppCompatActivity {
         lv.setAdapter(plAdapter);
 
         // click playlist to open it
-        AdapterView.OnItemClickListener openList = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                String id = playListID.get(position);
-                Intent intent = new Intent(PlaylistActivity.this, OwnPlaylistActivity.class);
-                intent.putExtra("play_list_id", id);
-                startActivity(intent);
-            }
+        AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+            String id = playListID.get(position);
+            Intent intent = new
+                    Intent(PlaylistActivity.this, OwnPlaylistActivity.class);
+            intent.putExtra("play_list_id", id);
+            startActivity(intent);
         };
 
         // delete the playlist
-        AdapterView.OnItemLongClickListener deleteList = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        AdapterView.OnItemLongClickListener deleteList = (parent, view, position, id) -> {
 
-                PlaylistControl playlistControl = new PlaylistControl();
-                AlertDialog.Builder builder = new AlertDialog.Builder(PlaylistActivity.this);
-                builder.setMessage("Do you want to delete this playlist?");
-                String list_id = playListID.get(position);
+            PlaylistControl playlistControl = new PlaylistControl();
+            AlertDialog.Builder builder = new AlertDialog.Builder(PlaylistActivity.this);
+            builder.setMessage("Do you want to delete this playlist?");
+            String list_id = playListID.get(position);
 
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        playlistControl.remove(list_id);
-                        playListID.remove(position);
-                        userControl.removePlaylist(list_id);
-                        plAdapter.notifyDataSetChanged();
-                        Toast.makeText(PlaylistActivity.this,
-                                "You have deleted a playlist.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                playlistControl.remove(list_id);
+                playListID.remove(position);
+                userControl.removePlaylist(list_id);
+                plAdapter.notifyDataSetChanged();
+                Toast.makeText(PlaylistActivity.this,
+                        "You have deleted a playlist.", Toast.LENGTH_LONG).show();
+            });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
 
-                    }
-                });
-                builder.create().show();
+            });
+            builder.create().show();
 
-                return true;
-            }
+            return true;
         };
 
         lv.setOnItemClickListener(openList);

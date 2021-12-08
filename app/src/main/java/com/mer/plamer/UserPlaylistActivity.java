@@ -20,9 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.PlaylistControl;
+import com.mer.plamer.controller.UniversalPlaylistAdapter;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.UserLibraryAction;
 
 import java.util.ArrayList;
 
@@ -38,66 +40,30 @@ public class UserPlaylistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist_layout);
 
+        String name = getIntent().getStringExtra("selected_user_name");
         UserControl userControl = new UserControl();
-        playListID = PlaylistLibraryAction.getListOfPlaylistId();
-        plAdapter = new PlaylistAdapter(UserPlaylistActivity.this, playListID);
+        playListID = UserLibraryAction.getUserPlaylist(name);
+        UniversalPlaylistAdapter universalplAdapter = new
+                UniversalPlaylistAdapter(UserPlaylistActivity.this, playListID);
         lv = findViewById(R.id.playlist_list);
 
         // show tittle
-        String name = getIntent().getStringExtra("selected_user_name");
         TextView tittle = findViewById(R.id.playlist_tittle);
         String t = name + "'s Playlists";
         tittle.setText(t);
 
         // show the list of all playlists
-        lv.setAdapter(plAdapter);
+        lv.setAdapter(universalplAdapter);
 
         // click playlist to open it
-        AdapterView.OnItemClickListener openList = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                String id = playListID.get(position);
-                Intent intent = new Intent(UserPlaylistActivity.this, OwnPlaylistActivity.class);
-                intent.putExtra("play_list_id", id);
-                startActivity(intent);
-            }
-        };
-
-        // delete the playlist
-        AdapterView.OnItemLongClickListener deleteList = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                PlaylistControl playlistControl = new PlaylistControl();
-                AlertDialog.Builder builder = new AlertDialog.Builder(UserPlaylistActivity.this);
-                builder.setMessage("Do you want to delete this playlist?");
-                String list_id = playListID.get(position);
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        playlistControl.remove(list_id);
-                        playListID.remove(position);
-                        plAdapter.notifyDataSetChanged();
-                        Toast.makeText(UserPlaylistActivity.this,
-                                "You have deleted a playlist.", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                builder.create().show();
-
-                return true;
-            }
+        AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+            String id = playListID.get(position);
+            Intent intent = new Intent(UserPlaylistActivity.this, OwnPlaylistActivity.class);
+            intent.putExtra("play_list_id", id);
+            startActivity(intent);
         };
 
         lv.setOnItemClickListener(openList);
-        lv.setOnItemLongClickListener(deleteList);
 
 
         // back to the last page
@@ -162,15 +128,11 @@ public class UserPlaylistActivity extends AppCompatActivity {
 
         // previous music
         ImageButton prevButton = findViewById(R.id.playlist_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
         ImageButton nextButton = findViewById(R.id.playlist_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
 
     }
 
