@@ -7,6 +7,7 @@
 
 * Distributed work throughout the group
 * Plans are to fulfill the original specification, as phase 1 was a rush
+![Capture1](https://user-images.githubusercontent.com/90644967/145302508-0669710f-85b5-4a5f-9a39-a83f138ea0cc.PNG)
 
 ## Nov 25th:
 
