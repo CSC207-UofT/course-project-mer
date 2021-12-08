@@ -78,7 +78,7 @@ public class OwnPlaylistActivity extends AppCompatActivity {
                 Toast.makeText(OwnPlaylistActivity.this,
                         dataList.get(i).tittle +
                                 " will be played.",Toast.LENGTH_SHORT).show();
-                PlayControl.setMedia("NONE", dataList.get(i).id);
+                PlayControl.setMedia(pllID, dataList.get(i).id);
             }
         });
 
