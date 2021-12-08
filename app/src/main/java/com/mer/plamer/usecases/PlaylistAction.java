@@ -45,7 +45,7 @@ public class PlaylistAction {
      * @return whether the track has been successfully added
      */
     public boolean addTrack(String track_id) {
-        Track result = TrackLibraryAction.trackLibrary.contain(track_id);
+        Track result = TrackLibraryAction.trackLibrary.get(track_id);
         if (result != null) {
             this.playlist.addTrack(result);
             return true;
@@ -60,7 +60,7 @@ public class PlaylistAction {
      * @return whether the track has been successfully deleted or not
      */
     public boolean delTrack(String track_id) {
-        Track result = TrackLibraryAction.trackLibrary.contain(track_id);
+        Track result = TrackLibraryAction.trackLibrary.get(track_id);
         if (result != null) {
             this.playlist.delTrack(result);
             return true;
@@ -116,8 +116,8 @@ public class PlaylistAction {
      * @return all track's id in the playlist.
      */
     public static ArrayList<String> getAllTrackId(String playlist_id) {
-        ArrayList<String> ids = new ArrayList<String>();
-        Playlist result = PlaylistLibraryAction.playlistLibrary.contain(playlist_id);
+        ArrayList<String> ids = new ArrayList<>();
+        Playlist result = PlaylistLibraryAction.playlistLibrary.get(playlist_id);
         if (result != null) {
             ArrayList<Track> tracks = result.getTracks();
             for (Track track : tracks) {

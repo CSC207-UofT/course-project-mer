@@ -1,17 +1,40 @@
 package com.mer.plamer.controller;
 
-// TODO: Implement SearchControl
+import com.mer.plamer.usecases.UserLibraryAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.TrackLibraryAction;
+
+import java.util.ArrayList;
+
 public class SearchControl {
+    TrackLibraryAction trackLibraryAction;
+    UserLibraryAction userLibraryAction;
+    PlaylistLibraryAction playlistLibraryAction;
 
-    public SearchControl() {
+    /**
+     * Search for all tracks that satisfies the condition.
+     * @param keyword provided by the user.
+     * @return an array list of all the tracks that satisfies the condition
+     */
+    public ArrayList<String> searchTrack(String keyword) {
+        return TrackLibraryAction.search(keyword);
     }
 
-    public void searchTrack() {
+    /**
+     * Search for all playlist that satisfies the condition.
+     * @param keyword provided by the user.
+     * @return an array list of all the playlist that satisfies the condition
+     */
+    public ArrayList<String> searchPlaylist(String keyword) {
+        return PlaylistLibraryAction.search(keyword);
     }
 
-    public void searchPlaylist() {
-    }
-
-    public void searchUser() {
+    /**
+     * Search for all users that satisfies the condition.
+     * @param keyword provided by the user.
+     * @return an array list of all the users that satisfies the condition for display
+     */
+    public ArrayList<String> searchUser(String keyword) {
+        return UserLibraryAction.search(keyword);
     }
 }

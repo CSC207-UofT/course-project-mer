@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 
 public class MainPage extends AppCompatActivity {
@@ -17,7 +18,6 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page_layout);
 
         String username = getIntent().getStringExtra("curr_user");
-
 
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
@@ -35,12 +35,14 @@ public class MainPage extends AppCompatActivity {
         ImageButton main_playlist = findViewById(R.id.main_playlist);
         main_playlist.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, PlaylistActivity.class);
+            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 
         ImageButton universe_users = findViewById(R.id.main_users);
         universe_users.setOnClickListener(v -> {
             Intent intent = new Intent(MainPage.this, UniverseUserActivity.class);
+            intent.putExtra("curr_user", username);
             startActivity(intent);
         });
 

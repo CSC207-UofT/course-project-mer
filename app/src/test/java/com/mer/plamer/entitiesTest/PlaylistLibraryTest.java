@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
 
-import org.junit.Before;
-import java.util.List;
-
 public class PlaylistLibraryTest {
 
     @Test
@@ -46,6 +43,6 @@ public class PlaylistLibraryTest {
         Playlist plist = new Playlist("test");
         String testid = plist.getId();
         pl.add(plist);
-        assertEquals("test", pl.contain(testid).getName());
+        assertEquals("test", pl.get(testid).getName());
     }
 }

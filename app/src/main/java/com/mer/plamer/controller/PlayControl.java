@@ -20,6 +20,60 @@ public class PlayControl {
     }
 
     /**
+     * Changes the current play mode and return the mode
+     * @return a String of the output message
+     */
+    public static String changePlayMode(){
+        if(PlayAction.order == PlayAction.PlayOrder.LIST){
+            PlayAction.order = PlayAction.PlayOrder.REPEAT;
+            PlayAction.loop();
+            return "Repeat ON";
+        }
+        else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+            PlayAction.order = PlayAction.PlayOrder.SHUFFLE;
+            PlayAction.shuffle();
+            PlayAction.loop();
+            return "Shuffle";
+        }
+        else{
+            PlayAction.order = PlayAction.PlayOrder.LIST;
+            return "Repeat OFF";
+        }
+    }
+
+    /**
+     * Play the next track in current playlist
+     */
+    public static void next(){
+        PlayAction.end();
+        PlayAction.next();
+    }
+
+    /**
+     * Play the last track in current playlist
+     */
+    public static void prev(){
+        PlayAction.end();
+        PlayAction.prev();
+    }
+
+    /**
+     * Give PlayAction a track and playlist for upcoming playback
+     * @param playlistID the ID of the intended playlist, use "NONE" if no playlist intended
+     * @param trackID the ID of the intended track
+     */
+    public static void setMedia(String playlistID, String trackID){
+        if(!playlistID.equals("NONE")){
+            PlayAction.setCurrentPlaylist(playlistID);
+        }
+        PlayAction.setCurrentTrack(trackID);
+        PlayAction.end();
+        PlayAction.prepare();
+        PlayAction.play();
+    }
+
+
+    /**
      * Returns the seconds representation of a time in miliseconds
      * @return An int of the time given, in unit of seconds
      */
