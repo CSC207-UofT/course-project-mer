@@ -34,7 +34,16 @@ A big clean architecture problem we ran into was serialization. Since TinyDB is 
 
 ## SOLID Principle:
 
-SOLID Principle is being followed as much as possible during the code design. For example, each of our classes is only responsible for one of the entities. Sometimes there are multiple classes for one entity just to divide work up. 
+SOLID Principle is being followed as much as possible during the code design. A few examples are noted below:  
+### Single Responsibility principle: 
+We made sure to have enough of different usecases distribute responsibilities instead of assigning responsibilities to only a few or single class  
+### Open/Closed principle: 
+We designed our entities such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
+### Liskov Substitution principle: 
+We constructed class User as the default user type of our program. In addition, a class Admin is also made to have not only all the features a User have, but also additional extended features (such as deleting a user) that don't require modifying or removing existing User features.  
+### Interface Segregation principle: 
+In our Storable interface, we did not put in redundant classes to be implemented, only keeping the minimum required for an object to be Storable (i.e. contains entities)
+
 
 ## Packaging Strategy:
 
