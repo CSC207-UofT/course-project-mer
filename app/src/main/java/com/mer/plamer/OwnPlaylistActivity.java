@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mer.plamer.controller.AddAdapter;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
@@ -17,17 +18,14 @@ import java.util.ArrayList;
 
 public class OwnPlaylistActivity extends AppCompatActivity {
 
-    private ArrayList<String> playListID;
-    private ArrayList<String> playListName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.own_playlist_layout);
 
         String id = getIntent().getStringExtra("play_list_id");
-        playListID = PlaylistLibraryAction.getListOfPlaylistId();
-        playListName = PlaylistLibraryAction.getListOfPlaylistName();
+        ArrayList<String> playListID = PlaylistLibraryAction.getListOfPlaylistId();
+        ArrayList<String> playListName = PlaylistLibraryAction.getListOfPlaylistName();
 
         int index = playListID.indexOf(id);
         String name = playListName.get(index);
@@ -42,10 +40,15 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
 
         // show the list of all tracks
-        ArrayList<String> own_playlist = PlaylistAction.getAllTrackId(id);
-        ListView own_playlist_view;
-        own_playlist_view = findViewById(R.id.own_playlist_track_list);
-        own_playlist_view.setAdapter(new TrackAdapter(getApplicationContext(), own_playlist));
+        ArrayList<String> ownPlaylist = PlaylistAction.getAllTrackId(id);
+        final ArrayList<TrackAdapter.TrackDataHolder> dataList = new ArrayList<>();
+        for (String i : ownPlaylist){
+            dataList.add(new TrackAdapter.TrackDataHolder(i));
+        }
+        ListView lv;
+        final TrackAdapter adapter = new TrackAdapter(OwnPlaylistActivity.this, dataList);
+        lv = findViewById(R.id.own_playlist_track_list);
+        lv.setAdapter(adapter);
 
         // add new track
         ImageButton add = findViewById(R.id.own_playlist_add);
@@ -54,6 +57,8 @@ public class OwnPlaylistActivity extends AppCompatActivity {
             intent.putExtra("play_list_id", id);
             startActivity(intent);
                 });
+
+        // delete a track
 
     }
 }

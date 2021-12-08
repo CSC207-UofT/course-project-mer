@@ -36,6 +36,8 @@ public class SignupActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignupActivity.this,
                         LoginActivity.class);startActivity(intent);
+                signup_username.setText("");
+                signup_password.setText("");
             }
             else if (!(!s_name.equals("") & !s_password.equals(""))) {
                 Toast.makeText(SignupActivity.this, "Username and Password cannot " +

@@ -9,23 +9,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
-import com.mer.plamer.entities.User;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
-import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
 public class PlaylistAdapter extends BaseAdapter {
 
-    private Context testContext;
-    private LayoutInflater testLayoutInflater;
+    private LayoutInflater inflater;
     private ArrayList<String> playListID;
     private ArrayList<String> playListName;
     private ArrayList<Integer> playListSize;
 
-    public PlaylistAdapter(Context testContext, ArrayList<String> playListID){
-        this.testContext = testContext;
-        this.testLayoutInflater = LayoutInflater.from(testContext);
+    public PlaylistAdapter(Context context, ArrayList<String> playListID){
+        this.inflater = LayoutInflater.from(context);
         this.playListID = playListID;
     }
 
@@ -53,7 +49,7 @@ public class PlaylistAdapter extends BaseAdapter {
         playListSize = PlaylistLibraryAction.getListOfPlaylistSize();
         int i = playListID.indexOf(id);
         if (convertView == null) {
-            convertView = testLayoutInflater.inflate(R.layout.playlist_item,null);
+            convertView = inflater.inflate(R.layout.playlist_item,null);
             viewHolder = new ViewHolder();
             viewHolder.playListName = convertView.findViewById(R.id.playlist_item_name);
             viewHolder.playListLength = convertView.findViewById(R.id.playlist_item_length);
