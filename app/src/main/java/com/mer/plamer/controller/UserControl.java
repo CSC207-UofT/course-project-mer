@@ -1,6 +1,8 @@
 package com.mer.plamer.controller;
 
 
+import com.mer.plamer.usecases.PlaylistAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
 import com.mer.plamer.MyApp;
@@ -69,9 +71,11 @@ public class UserControl {
         }
     }
 
-    // TODO: Implement userDeletion
-    public void userDeletion() {
-
+    public boolean userDeletion(String username) {
+        if (!this.userAction.isAdmin()) {
+            return false;
+        }
+        return UserLibraryAction.delete(username);
     }
 
     /**
@@ -94,9 +98,10 @@ public class UserControl {
         } else {
             PlaylistControl playlistControl = new PlaylistControl();
             playlistControl.add(name);
+            String PL_id = PlaylistLibraryAction.getListOfPlaylistId().get(-1);
+            this.userAction.addPlaylist(PL_id);
             return true;
         }
-
     }
 }
 

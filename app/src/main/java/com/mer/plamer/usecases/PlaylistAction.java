@@ -17,7 +17,7 @@ public class PlaylistAction {
 
     /**
      * Constructor for PlaylistAction.
-     * @param playlist The playlist we want to perform action on.
+     *
      */
     public PlaylistAction() {
         this.playlist = null;

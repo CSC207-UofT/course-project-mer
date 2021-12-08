@@ -10,13 +10,12 @@ import com.mer.plamer.entities.Track;
  */
 public class UserAction {
 
-    private User user;
+    public static User user;
 
     /**
      * Constructor for UserAction, it will have no user at the beginning.
      */
     public UserAction() {
-        this.user = null;
     }
 
     /**
@@ -25,7 +24,7 @@ public class UserAction {
      * @param username the username of the user in interest.
      */
     public void setUser(String username) {
-        this.user = UserLibraryAction.userLibrary.get(username);
+        user = UserLibraryAction.userLibrary.get(username);
     }
 
     /**
@@ -34,7 +33,7 @@ public class UserAction {
      * @return The user this UserAction is dealing with.
      */
     public User getUser() {
-        return this.user;
+        return user;
     }
 
     /**
@@ -43,7 +42,7 @@ public class UserAction {
      * @return Whether there is a user assigned.
      */
     public boolean isNull() {
-        return this.user == null;
+        return user == null;
     }
 
     public boolean isAdmin() {
@@ -65,10 +64,10 @@ public class UserAction {
      * @return true if the password is changed, false if did not or is the same as the old one.
      */
     public boolean changePwd(String new_pass) {
-        if (this.isNull() || new_pass.equals(this.user.getPassword())) {
+        if (this.isNull() || new_pass.equals(user.getPassword())) {
             return false;
         }
-        this.user.setPassword(new_pass);
+        user.setPassword(new_pass);
         return true;
     }
 
@@ -79,27 +78,29 @@ public class UserAction {
      * @return true if the username is changed, false if did not or is the same as the old one.
      */
     public boolean changeName(String new_name) {
-        if (this.isNull() || new_name.equals(this.user.getUsername())) {
+        if (this.isNull() || new_name.equals(user.getUsername())) {
             return false;
         }
-        this.user.setUsername(new_name);
+        user.setUsername(new_name);
         return true;
     }
 
     /**
      * Create a new and empty playlist that belongs to this user.
      *
-     * @param PL_name the name of the new play list.
-     * @return true if the playlist is created, false otherwise.
+     * @param playlist_id the new play list.
+     * @return true if the playlist is added to the user, false otherwise.
      */
-    public boolean createPlaylist(String PL_name) {
+    public boolean addPlaylist(String playlist_id) {
         if (this.isNull()) {
             return false;
         }
-        Playlist new_pl = new Playlist(PL_name);
-        this.user.getPlaylists().add(new_pl);
-        PlaylistLibraryAction.playlistLibrary.add(new_pl);
-        return true;
+        Playlist target = PlaylistLibraryAction.playlistLibrary.get(playlist_id);
+        if (target != null) {
+            user.getPlaylists().add(target);
+            return true;
+        }
+        return false;
     }
 
 }

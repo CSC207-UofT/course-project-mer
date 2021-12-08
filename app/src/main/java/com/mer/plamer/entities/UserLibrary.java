@@ -7,9 +7,12 @@ public class UserLibrary implements Storable<User> {
 
     /**
      * Constructor for UserLibrary.
+     * Construct a new user which is the admin of the app, who can delete user from the userlibrary.
      */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
+        Admin admin = new Admin("admin", "adminadmin");
+        this.usersList.add(admin);
     }
 
     /**
