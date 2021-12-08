@@ -1,7 +1,9 @@
 package com.mer.plamer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
@@ -25,11 +28,15 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.own_playlist_layout);
 
-        String id = getIntent().getStringExtra("play_list_id");
+        String pllID = getIntent().getStringExtra("play_list_id");
+        PlaylistAction pllA = new PlaylistAction();
+        pllA.setPlaylist(pllID);
+        PlaylistControl pllC = new PlaylistControl();
+        pllC.setPlaylistAction(pllA);
         ArrayList<String> playListID = PlaylistLibraryAction.getListOfPlaylistId();
         ArrayList<String> playListName = PlaylistLibraryAction.getListOfPlaylistName();
 
-        int index = playListID.indexOf(id);
+        int index = playListID.indexOf(pllID);
         String name = playListName.get(index);
 
 
@@ -45,7 +52,7 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         });
 
         // show the list of all tracks
-        ArrayList<String> ownPlaylist = PlaylistAction.getAllTrackId(id);
+        ArrayList<String> ownPlaylist = PlaylistAction.getAllTrackId(pllID);
         final ArrayList<TrackAdapter.TrackDataHolder> dataList = new ArrayList<>();
         for (String i : ownPlaylist){
             dataList.add(new TrackAdapter.TrackDataHolder(i));
@@ -59,12 +66,10 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         ImageButton add = findViewById(R.id.own_playlist_add);
         add.setOnClickListener(v -> {
             Intent intent = new Intent(OwnPlaylistActivity.this, AddTrackToPlaylistActivity.class);
-            intent.putExtra("play_list_id", id);
+            intent.putExtra("play_list_id", pllID);
             startActivity(intent);
             adapter.notifyDataSetChanged();
                 });
-
-        // delete a track
 
         // play track when click on the track in the list
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +81,40 @@ public class OwnPlaylistActivity extends AppCompatActivity {
                 PlayControl.setMedia("NONE", dataList.get(i).id);
             }
         });
+
+        // delete a track
+        AdapterView.OnItemLongClickListener deleteList = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                PlaylistControl playlistControl = new PlaylistControl();
+                AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
+                builder.setMessage("Do you want to delete this track?");
+                String trackID = dataList.get(position).id;
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pllC.trackRemove(trackID);
+                        dataList.remove(position);
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(OwnPlaylistActivity.this,
+                                "You have deleted a track.", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.create().show();
+
+                return true;
+            }
+        };
+        lv.setOnItemLongClickListener(deleteList);
 
     }
 }
