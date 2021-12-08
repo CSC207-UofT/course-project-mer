@@ -69,9 +69,7 @@ public class PlayControl {
      * @param trackID the ID of the intended track
      */
     public static void setMedia(String playlistID, String trackID){
-        if(!playlistID.equals("NONE")){
-            PlayAction.setCurrentPlaylist(playlistID);
-        }
+        PlayAction.setCurrentPlaylist(playlistID);
         PlayAction.setCurrentTrack(trackID);
         PlayAction.end();
         PlayAction.prepare();
