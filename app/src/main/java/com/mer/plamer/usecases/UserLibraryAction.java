@@ -27,8 +27,9 @@ public class UserLibraryAction {
      */
     public static ArrayList<String> search(String keyword) {
         ArrayList<String> searchUser = new ArrayList<>();
+        String lKeyword = keyword.toLowerCase();
         for (User u : userLibrary.getUsersList()) {
-            if (u.getUsername().contains(keyword)) {
+            if (u.getUsername().toLowerCase().contains(lKeyword)) {
                 searchUser.add(u.getUsername());
             }
         }

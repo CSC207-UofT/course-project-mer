@@ -58,10 +58,12 @@ public class PlayAction {
      */
     public static void play() {
         mediaPlayer.start();
-        if(currentPlaylist != null && order != PlayOrder.REPEAT){
+        if(currentPlaylist != null){
             mediaPlayer.setOnCompletionListener(mp -> {
-                PlayAction.end();
-                PlayAction.next();
+                if(order == PlayOrder.SHUFFLE || order == PlayOrder.LIST){
+                    PlayAction.end();
+                    PlayAction.next();
+                }
             });
         }
     }

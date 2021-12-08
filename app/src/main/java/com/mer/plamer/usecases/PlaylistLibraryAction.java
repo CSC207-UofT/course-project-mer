@@ -29,13 +29,16 @@ public class PlaylistLibraryAction {
      */
     public static ArrayList<String> search(String keyword) {
         ArrayList<String> searchPlaylist = new ArrayList<>();
+        String lKeyword = keyword.toLowerCase();
         for (Playlist p : playlistLibrary.getPlaylists()) {
-            if (p.getName().contains(keyword)) {
+            if (p.getName().toLowerCase().contains(lKeyword)) {
                 searchPlaylist.add(p.getId());
             }
             for (Track t : p.getTracks()) {
-                if ((t.getArtist().contains(keyword) || t.getTitle().contains(keyword)
-                        || t.getGenre().contains(keyword)) && !(searchPlaylist.contains(p.getId())))
+                if ((t.getArtist().toLowerCase().contains(lKeyword)
+                        || t.getTitle().toLowerCase().contains(lKeyword)
+                        || t.getGenre().toLowerCase().contains(lKeyword))
+                        && !(searchPlaylist.contains(p.getId())))
                 {
                     searchPlaylist.add(p.getId());
                 } else

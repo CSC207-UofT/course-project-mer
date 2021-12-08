@@ -89,6 +89,7 @@ public class UserControl {
             return false;
         }
         this.userAction.changePwd(new_pass);
+        tinydb.putObject("UserLibrary", UserLibraryAction.userLibrary);
         return true;
     }
 
