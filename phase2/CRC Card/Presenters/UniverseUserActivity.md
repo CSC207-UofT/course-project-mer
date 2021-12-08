@@ -10,4 +10,4 @@
 
 
 ## Collaborators:
-PlayerActivity, UserPlaylistActivity, PlayControl, UserAdapter, PlayAction, UserLibraryAction
+PlayerActivity, UserPlaylistActivity, PlayControl, UserAdapter, PlayAction, UserLibraryAction, MainPageActivity
