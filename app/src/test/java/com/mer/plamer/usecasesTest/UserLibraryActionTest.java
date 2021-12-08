@@ -1,45 +1,29 @@
 package com.mer.plamer.usecasesTest;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import java.util.ArrayList;
-import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.User;
-import com.mer.plamer.entities.Track;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import com.mer.plamer.entities.UserLibrary;
 import com.mer.plamer.usecases.UserLibraryAction;
+
+import org.junit.Test;
 
 public class UserLibraryActionTest {
 
     @Test(timeout = 50)
     public void testAdd() {
-        UserLibraryAction ula = new UserLibraryAction();
-        User u = new User("test", "test123");
-        ula.add("test", "test123");
-        assertEquals(u, ula.search("test").get(0));
+        UserLibraryAction.add("testuser", "123");
+        assertNotNull(UserLibraryAction.search("testuser"));
+        assertTrue(UserLibraryAction.userRegister("testuser2", "321"));
+        assertFalse(UserLibraryAction.userRegister("testuser2", "321"));
+        assertFalse(UserLibraryAction.userRegister("", "321"));
+        assertTrue(UserLibraryAction.userLogin("testuser2", "321"));
+        assertFalse(UserLibraryAction.userLogin("testuser2", "31"));
+        assertNotNull(UserLibraryAction.getAllUserName());
+        UserLibraryAction.delete("testuser");
+        UserLibrary nul = new UserLibrary();
+        UserLibraryAction.assignLibrary(nul);
     }
 
-    @Test(timeout = 50)
-    public void testDelete() {
-        UserLibraryAction ula = new UserLibraryAction();
-        ula.add("test", "test123");
-        ula.delete("test");
-    }
-
-    @Test(timeout = 50)
-    public void testUserRegister() {
-        UserLibraryAction ula = new UserLibraryAction();
-        User u = new User("test", "test123");
-        ula.add("test", "test123");
-        assertNull(ula.userRegister("test", "test123"));
-        assertNotNull(ula.userRegister("lebum", "james"));
-    }
-
-    @Test(timeout = 50)
-    public void testUserLogin() {
-        UserLibraryAction ula = new UserLibraryAction();
-        User u = new User("test", "test123");
-        ula.add("test", "test123");
-        assertTrue(ula.userLogin("test", "test123"));
-        assertFalse(ula.userLogin("123", "321"));
-    }
 }

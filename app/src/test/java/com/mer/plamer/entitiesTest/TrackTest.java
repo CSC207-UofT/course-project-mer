@@ -1,9 +1,11 @@
 package com.mer.plamer.entitiesTest;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Before;
+
+import static org.junit.Assert.assertEquals;
 
 import com.mer.plamer.entities.Track;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class TrackTest {
     Track t;

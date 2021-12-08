@@ -1,13 +1,14 @@
 package com.mer.plamer.entitiesTest;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
-import com.mer.plamer.entities.TrackLibrary;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import com.mer.plamer.entities.Track;
+import com.mer.plamer.entities.TrackLibrary;
 
 import org.junit.Before;
-
-import java.util.ArrayList;
+import org.junit.Test;
 
 public class TrackLibraryTest {
     Track t1;
@@ -18,8 +19,11 @@ public class TrackLibraryTest {
     @Before
     public void setUp() {
         t1 = new Track("Jcole");
+        t1.setArtist("J");
         t2 = new Track("KDot");
+        t2.setArtist("K");
         t3 = new Track("Drake");
+        t3.setArtist("D");
     }
 
     @Test(timeout = 50)
@@ -29,17 +33,14 @@ public class TrackLibraryTest {
         tl.add(t1);
         assertFalse(tl.isEmpty());
         tl.add(t2);
-        assertEquals(t1, tl.getByIndex(0));
-        assertTrue(tl.remove("2"));
-        assertFalse(tl.remove("3"));
-        assertEquals(t1, tl.get("1"));
-        assertNull(tl.get("123"));
-        ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t1);
-        assertArrayEquals(testlist.toArray(), tl.getTrackList().toArray());
-        ArrayList<String> pathlist = new ArrayList<>();
-        pathlist.add("");
-        assertArrayEquals(pathlist.toArray(), tl.getTrackPathList().toArray());
+        String t1id = t1.getID();
+        String t2id = t2.getID();
+        assertTrue(tl.remove(t1id));
+        assertNotNull(tl.create("asd"));
+        assertTrue(tl.contains(t2id));
+        assertFalse(tl.contains("asd"));
+        assertNotNull(tl.getTrackList());
+        assertNotNull(tl.getTrackPathList());
         tl.emptyTheLibrary();
         assertTrue(tl.isEmpty());
 
