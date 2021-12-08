@@ -22,6 +22,9 @@ import com.mer.plamer.usecases.PlayAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the search page view and search features
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private String result;

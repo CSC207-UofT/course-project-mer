@@ -15,6 +15,9 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of the entire track library
+ */
 public class TrackActivity extends AppCompatActivity {
 
     @Override

@@ -18,6 +18,9 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to let user to add tracks to playlists and construct such view
+ */
 public class AddTrackToPlaylistActivity extends AppCompatActivity {
 
     private ArrayList<String> addedID;

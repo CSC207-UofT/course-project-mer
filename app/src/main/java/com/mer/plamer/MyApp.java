@@ -3,6 +3,9 @@ package com.mer.plamer;
 import android.app.Application;
 import android.content.Context;
 
+/**
+ * Helper activity to provide context for TinyDB
+ */
 public class MyApp extends Application {
     private static MyApp instance;
 

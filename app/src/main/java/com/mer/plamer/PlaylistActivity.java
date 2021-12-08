@@ -26,6 +26,9 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of all playlists, and the feature to add/remove a playlist
+ */
 public class PlaylistActivity extends AppCompatActivity {
 
     private ListView lv;

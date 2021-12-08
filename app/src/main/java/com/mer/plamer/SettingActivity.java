@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.UserControl;
 
+/**
+ * Activity to provide the settings page and user modification features
+ */
 public class SettingActivity extends AppCompatActivity {
 
     @Override

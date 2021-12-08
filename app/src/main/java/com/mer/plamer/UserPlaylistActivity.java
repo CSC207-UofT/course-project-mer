@@ -26,6 +26,9 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of a user's playlists
+ */
 public class UserPlaylistActivity extends AppCompatActivity {
 
     private ListView lv;
