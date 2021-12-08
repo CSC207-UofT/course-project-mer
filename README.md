@@ -18,7 +18,7 @@
 
 - Store a user created playlist
 
-- Multiple play mods (repeat on/off, shuffle)
+- Multiple play modes (repeat on/off, shuffle)
 
 ## Build Instructions
 
