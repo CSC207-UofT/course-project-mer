@@ -18,6 +18,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         String username = getIntent().getStringExtra("curr_user");
 
+        // open the setting page
         ImageButton main_setting = findViewById(R.id.main_settings);
         main_setting.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, SettingActivity.class);
@@ -25,12 +26,14 @@ public class MainPageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // open the track library
         ImageButton main_track = findViewById(R.id.main_track_list);
         main_track.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, TrackActivity.class);
             startActivity(intent);
         });
 
+        // open the playlist
         ImageButton main_playlist = findViewById(R.id.main_playlist);
         main_playlist.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlaylistActivity.class);
@@ -38,6 +41,15 @@ public class MainPageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // open the search page
+        ImageButton main_search = findViewById(R.id.main_search);
+        main_search.setOnClickListener(v -> {
+            Intent intent = new Intent(MainPageActivity.this, SearchActivity.class);
+            intent.putExtra("curr_user", username);
+            startActivity(intent);
+        });
+
+        // open the user library
         ImageButton universe_users = findViewById(R.id.main_users);
         universe_users.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, UniverseUserActivity.class);
@@ -45,16 +57,18 @@ public class MainPageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // open the playing page
         ImageButton playing = findViewById(R.id.main_playing);
-
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
+        // play/pause music
         ImageButton playButton = findViewById(R.id.main_play);
         playButton.setOnClickListener(v -> PlayControl.playPause());
 
+        // change the loop style
         ImageButton repeatButton = findViewById(R.id.main_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
 

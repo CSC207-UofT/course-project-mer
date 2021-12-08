@@ -4,32 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".SearchActivity"
     android:background="@drawable/background">
 
     <ListView
-        android:id="@+id/trackList"
-        android:layout_width="408dp"
-        android:layout_height="494dp"
+        android:id="@+id/search_list"
+        android:layout_width="411dp"
+        android:layout_height="488dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.443"
-        tools:listitem="@layout/track_item" />
+        tools:listitem="@layout/playlist_item" />
 
     <RelativeLayout
-        android:id="@+id/playlist_top_bar"
+        android:id="@+id/search_top_bar"
         android:layout_width="398dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/trackList"
+        app:layout_constraintBottom_toTopOf="@+id/search_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageButton
-            android:id="@+id/track_back_last_page"
+            android:id="@+id/search_back_last_page"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
@@ -44,23 +45,80 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/back"
-            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ContentDescription" />
+
+        <Spinner
+            android:id="@+id/search_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="292dp"
+            android:layout_marginBottom="19dp"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/type"
+            android:gravity="center"
+            android:popupBackground="@drawable/rec_background_black"
+            android:spinnerMode="dropdown" />
+
+        <ImageButton
+            android:id="@+id/search_confirm"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="368dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="5dp"
+            android:adjustViewBounds="false"
+            android:background="#00FFFFFF"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/search"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="5dp"
+            android:autofillHints="search item"
+            android:fontFamily="@font/aldrich"
+            android:hint="@string/search_your_playlist"
+            android:inputType="text"
+            android:textAlignment="viewStart"
+            android:textColor="@color/pink"
+            android:textColorHint="@color/half_pink"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/track_bottom_bar"
+        android:id="@+id/playlist_bottom_bar"
         android:layout_width="398dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackList"
+        app:layout_constraintTop_toBottomOf="@+id/search_list"
         app:layout_constraintVertical_bias="0.529">
 
         <ImageButton
-            android:id="@+id/trackPlaying"
+            android:id="@+id/playlist_playing"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -75,10 +133,10 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/playing"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="ContentDescription" />
 
         <ImageButton
-            android:id="@+id/track_repeat_list"
+            android:id="@+id/playlist_repeat_list"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -93,10 +151,10 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/repeat_list"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="ContentDescription" />
 
         <ImageButton
-            android:id="@+id/track_next"
+            android:id="@+id/playlist_next"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -111,10 +169,10 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/next"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="ContentDescription" />
 
         <ImageButton
-            android:id="@+id/track_prev"
+            android:id="@+id/playlist_prev"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -129,10 +187,10 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/prev"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            tools:ignore="ContentDescription" />
 
         <ImageButton
-            android:id="@+id/track_play"
+            android:id="@+id/playlist_play"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
@@ -147,7 +205,7 @@
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/play"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 
