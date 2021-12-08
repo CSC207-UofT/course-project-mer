@@ -22,4 +22,5 @@
     <string name="track_item_background">track_item_background</string>
     <string name="playlist_name">Playlist name...</string>
     <string name="playlist_item_background">playlist_item_background</string>
+    <string name="select_type">" Select type..."</string>
 </resources>
