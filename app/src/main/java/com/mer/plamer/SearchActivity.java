@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mer.plamer.controller.PlayControl;
-import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.SearchControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.controller.UniversalPlaylistAdapter;
@@ -88,24 +87,20 @@ public class SearchActivity extends AppCompatActivity {
 
         // previous music
         ImageButton prevButton = findViewById(R.id.search_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
         ImageButton nextButton = findViewById(R.id.search_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
 
     }
 
     private void toSearch(String type, String input) {
 
-        if (type.equals("Track")){
+        if (type.equals("Track")) {
             ArrayList<TrackAdapter.TrackDataHolder> dataList = new ArrayList<>();
             ArrayList<String> lst = SearchControl.searchTrack(input);
-            for (String id : lst){
+            for (String id : lst) {
                 dataList.add(new TrackAdapter.TrackDataHolder(id));
             }
             // set adapter
@@ -118,11 +113,11 @@ public class SearchActivity extends AppCompatActivity {
             lv.setOnItemClickListener((adapterView, view, i, l) -> {
                 Toast.makeText(SearchActivity.this,
                         dataList.get(i).tittle +
-                                " will be played.",Toast.LENGTH_SHORT).show();
+                                " will be played.", Toast.LENGTH_SHORT).show();
                 PlayControl.setMedia("NONE", dataList.get(i).id);
             });
 
-        } else if (type.equals("Playlist")){
+        } else if (type.equals("Playlist")) {
             ArrayList<String> lst;
             lst = SearchControl.searchPlaylist(input);
             // set adapter
@@ -149,6 +144,16 @@ public class SearchActivity extends AppCompatActivity {
             UserAdapter adapter = new UserAdapter(SearchActivity.this, lst);
             ListView lv = findViewById(R.id.search_list);
             lv.setAdapter(adapter);
+
+            // open all the playlists this user has
+            AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+                String username = lst.get(position);
+                Intent intent = new
+                        Intent(SearchActivity.this, UserPlaylistActivity.class);
+                intent.putExtra("selected_user_name", username);
+                startActivity(intent);
+            };
+            lv.setOnItemClickListener(openList);
         }
     }
 }

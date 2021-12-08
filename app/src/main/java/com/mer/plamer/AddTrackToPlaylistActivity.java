@@ -43,26 +43,21 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
         final AddAdapter adapter = new AddAdapter(AddTrackToPlaylistActivity.this, dataList);
         final ListView lv = findViewById(R.id.add_list);
         lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                boolean checked = dataList.get(position).checked;
-                if(!checked){
-                    dataList.get(position).checked = true;
-                    addedID.add(dataList.get(position).id);
-                }else {
-                    dataList.get(position).checked = false;
-                    addedID.remove(dataList.get(position).id);
-                }
-                adapter.notifyDataSetChanged();
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            boolean checked = dataList.get(position).checked;
+            if(!checked){
+                dataList.get(position).checked = true;
+                addedID.add(dataList.get(position).id);
+            }else {
+                dataList.get(position).checked = false;
+                addedID.remove(dataList.get(position).id);
             }
+            adapter.notifyDataSetChanged();
         });
 
         // back to the last page
         ImageButton back = findViewById(R.id.add_back_last_page);
-        back.setOnClickListener(v -> {
-            finish();
-        });
+        back.setOnClickListener(v -> finish());
 
         // confirm adding
         ImageButton go = findViewById(R.id.add_go);
