@@ -30,7 +30,6 @@ import java.util.ArrayList;
  */
 public class UserPlaylistActivity extends AppCompatActivity {
 
-    private PlaylistAdapter plAdapter;
     private ArrayList<String> playListID;
 
     /**
@@ -105,7 +104,7 @@ public class UserPlaylistActivity extends AppCompatActivity {
                 ArrayList<String> lst = PlaylistLibraryAction.getListOfPlaylistId();
                 int i = PlaylistLibraryAction.getListOfPlaylistId().size() - 1;
                 playListID.add(lst.get(i));
-                plAdapter.notifyDataSetChanged();
+                universalAdapter.notifyDataSetChanged();
                 Toast.makeText(UserPlaylistActivity.this,
                         "You have created a playlist.", Toast.LENGTH_LONG).show();
                 playlist_name.setText("");
