@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.usecases.PlayAction;
 
+/**
+ * Activity to construct the home page view
+ */
 public class MainPageActivity extends AppCompatActivity {
 
     @Override

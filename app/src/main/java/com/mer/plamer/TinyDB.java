@@ -43,7 +43,6 @@ import android.util.Log;
 // This part of the code does not belong to our group. All rights of the code written here belong
 // to the original author.
 // Details can be found here:https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
-// Once we have finalized our serialization, we will try to move this outside of our package
 public class TinyDB {
 
     private Context context;

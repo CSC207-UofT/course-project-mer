@@ -18,6 +18,9 @@ import com.mer.plamer.usecases.UserLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to show the page of all users and provide features to remove users
+ */
 public class UniverseUserActivity extends AppCompatActivity {
 
     @Override

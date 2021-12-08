@@ -15,7 +15,7 @@ import com.mer.plamer.controller.TrackLibraryControl;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 /**
- * Startup activity and view of Plamer
+ * Startup activity of Plamer to initialize the app and construct the welcome screen
  */
 public class MainActivity extends AppCompatActivity {
 

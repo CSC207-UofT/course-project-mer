@@ -22,6 +22,9 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of a playlist, and to associate playing, adding/removing media
+ */
 public class OwnPlaylistActivity extends AppCompatActivity {
 
     @Override

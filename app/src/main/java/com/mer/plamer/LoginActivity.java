@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.UserControl;
 
+/**
+ * Activity to allow user to login and construct the login page view
+ */
 public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

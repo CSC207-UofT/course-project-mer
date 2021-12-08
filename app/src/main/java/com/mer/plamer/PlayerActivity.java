@@ -16,7 +16,7 @@ import com.mer.plamer.databinding.PlayerLayoutBinding;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
- * Activity and view of the music player UI.
+ * Activity to provide the view of the music player UI and player features.
  */
 public class PlayerActivity extends AppCompatActivity {
     ImageButton mPlayPauseButton;

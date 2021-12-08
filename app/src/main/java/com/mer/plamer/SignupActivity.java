@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.UserControl;
 
+/**
+ * Activity to provide the sign up view and features to allow account sign up
+ */
 public class SignupActivity extends AppCompatActivity {
 
     @Override
