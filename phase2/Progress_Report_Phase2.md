@@ -48,13 +48,15 @@
 * Asked about separating responsibilities of presenters and controllers
 * Asked about ways to resolve Clean Architecture violation when using TinyDB
 * Asked about packaging strategy for TinyDB (external package)
-* Decided that we would build and hand in an APK file instead of a video demo at the end of this project
+* Decided that we would hand in an a video demo at the end of this project
 
 ## Dec 3rd:
 
 
 
 * Sorted out unfinished classes.
+* Communicating with each others about code segments in discord. This makes the UI implementation easier.
+![Capture2](https://user-images.githubusercontent.com/90644967/145303038-353ed5b2-47cd-4b14-bd96-9698be9db40a.PNG)
 * Found other classes that violated clean architecture and discussed possible solutions.
 * Finished implementation on serialization (all entities)
 
