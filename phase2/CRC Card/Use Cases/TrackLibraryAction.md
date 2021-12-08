@@ -12,4 +12,4 @@ get the static id of Track class, change the static ID of the Track class, make 
 get the size of track library, and get all tracks' IDs.
 
 ## Collaborators:
-Playlist, Track, TrackLibrary, AddAdapter, SearchControl, TrackAdapter, TrackLibraryControl, UserAdapter
+Playlist, Track, TrackLibrary, AddAdapter, SearchControl, TrackAdapter, TrackLibraryControl, UserAdapter, AddTrackToPlaylistActivity, TrackActivity
