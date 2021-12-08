@@ -5,50 +5,50 @@
 
 
 
-* Distributed work throughout the group
-* Plans are to fulfill the original specification, as phase 1 was a rush
+* Distributed work throughout the group.
+* Plans are to fulfill the original specification, as phase 1 was a rush.
 ![Capture1](https://user-images.githubusercontent.com/90644967/145302508-0669710f-85b5-4a5f-9a39-a83f138ea0cc.PNG)
 
 ## Nov 25th:
 
 
 * [TODOs](https://github.com/CSC207-UofT/course-project-mer/blob/f6e04d634f1acc7d76c0b1a243007faea31543b3/app/src/main/java/com/mer/plamer/controller/UserControl.java#L50-L57) are used in our code this time to avoid missing important code segments.
-* Discussed about separating Presenter and Controller responsibilities
-* Discussed about various methods violating Clean Architecture in phase 1
-* Began implementation of PlaylistControl
-* Updated SearchControl with more methods
+* Discussed about separating Presenter and Controller responsibilities.
+* Discussed about various methods violating Clean Architecture in phase 1.
+* Began implementation of PlaylistControl.
+* Updated SearchControl with more methods.
 
 ## Nov 26th:
 
 
 
-* Discussed about details on serialization (TinyDB) and began its implementation
-* Serialization prototype proved to work: User account information was able to be written to and read from local storage
+* Discussed about details on serialization (TinyDB) and began its implementation.
+* Serialization prototype proved to work: User account information was able to be written to and read from local storage.
 
 ## Nov 27th:
 
 
 
-* Discussed and decided that LibraryAction classes do not have inheritance, since each Action classes have rather different responsibilities
-* Deleted LibraryAction (The interface formerly implemented by LibraryAction classes)
+* Discussed and decided that LibraryAction classes do not have inheritance, since each Action classes have rather different responsibilities.
+* Deleted [LibraryAction](https://github.com/CSC207-UofT/course-project-mer/commit/0cfbda87bb2fa75430dc4a476fd62e3d11d614a3) (The interface formerly implemented by LibraryAction classes).
 
 ## Nov 28th:
 
 
 
 * Finished part of the tests for completed classes.
-* Finished serialization for User
-* Track violated clean architecture, plans to fix were proposed
+* Finished serialization for User.
+* Track violated clean architecture, plans to [fix](https://github.com/CSC207-UofT/course-project-mer/blob/2ecfff0457caf4b9ba58ca381bd5a00e35c3053a/app/src/main/java/com/mer/plamer/usecases/TrackLibraryAction.java#L67-L77) were proposed.
 
 ## Nov 29th:
 
 
 
-* Met with TA during tutorial
-* Asked about separating responsibilities of presenters and controllers
-* Asked about ways to resolve Clean Architecture violation when using TinyDB
-* Asked about packaging strategy for TinyDB (external package)
-* Decided that we would hand in an a video demo at the end of this project
+* Met with TA during tutorial.
+* Asked about separating responsibilities of presenters and controllers.
+* Asked about ways to resolve Clean Architecture violation when using TinyDB.
+* Asked about packaging strategy for TinyDB (external package).
+* Decided that we would hand in an a video demo at the end of this project.
 
 ## Dec 3rd:
 
@@ -58,16 +58,16 @@
 * Communicating with each others about code segments in discord. This makes the UI implementation easier.
 ![Capture2](https://user-images.githubusercontent.com/90644967/145303038-353ed5b2-47cd-4b14-bd96-9698be9db40a.PNG)
 * Found other classes that violated clean architecture and discussed possible solutions.
-* Finished implementation on serialization (all entities)
+* Finished implementation on serialization (all entities).
 
 ## Dec 5th:
 
 
 
-* Discussed and concluded that parent class “LibraryControl” is no longer needed, as more detailed responsibilities were distributed among different controllers
-* Finished the rest of the classes
-* Solved clean architecture issue
-* Finish implementing the user interface
+* Discussed and concluded that parent class “LibraryControl” is no longer needed, as more detailed responsibilities were distributed among different controllers.
+* Finished the rest of the classes.
+* Solved clean architecture issue.
+* Finish implementing the user interface.
 
 
 <table>
