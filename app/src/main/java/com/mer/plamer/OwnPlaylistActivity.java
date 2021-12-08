@@ -4,15 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.mer.plamer.controller.AddAdapter;
+import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
-import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
@@ -36,8 +38,11 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         show_name.setText(name);
 
         // back to the last page
-        ImageButton back = findViewById(R.id.own_playlist_back_last_page);
-        back.setOnClickListener(v -> finish());
+        ImageButton back = findViewById(R.id.own_playlist_back_to_main);
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(OwnPlaylistActivity.this, MainPageActivity.class);
+            startActivity(intent);
+        });
 
         // show the list of all tracks
         ArrayList<String> ownPlaylist = PlaylistAction.getAllTrackId(id);
@@ -56,9 +61,21 @@ public class OwnPlaylistActivity extends AppCompatActivity {
             Intent intent = new Intent(OwnPlaylistActivity.this, AddTrackToPlaylistActivity.class);
             intent.putExtra("play_list_id", id);
             startActivity(intent);
+            adapter.notifyDataSetChanged();
                 });
 
         // delete a track
+
+        // play track when click on the track in the list
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(OwnPlaylistActivity.this,
+                        dataList.get(i).tittle +
+                                " will be played.",Toast.LENGTH_SHORT).show();
+                PlayControl.setMedia("NONE", dataList.get(i).id);
+            }
+        });
 
     }
 }

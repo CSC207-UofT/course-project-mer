@@ -2,6 +2,7 @@ package com.mer.plamer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mer.plamer.controller.AddAdapter;
+import com.mer.plamer.controller.PlaylistControl;
+import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
@@ -54,16 +57,25 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
 
         // back to the last page
         ImageButton back = findViewById(R.id.add_back_last_page);
-        back.setOnClickListener(v -> finish());
+        back.setOnClickListener(v -> {
+            finish();
+        });
 
         // confirm adding
         ImageButton go = findViewById(R.id.add_go);
         go.setOnClickListener(v -> {
+            PlaylistAction pllA = new PlaylistAction();
+            pllA.setPlaylist(pllID);
+            PlaylistControl pllC = new PlaylistControl();
+            pllC.setPlaylistAction(pllA);
             for (String id : addedID){
-                int i = 0;
+                pllC.trackAdd(id);
             }
             Toast.makeText(AddTrackToPlaylistActivity.this,
                     "You have added " + addedID.size() + " tracks.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(AddTrackToPlaylistActivity.this, OwnPlaylistActivity.class);
+            intent.putExtra("play_list_id", pllID);
+            startActivity(intent);
 
         });
 

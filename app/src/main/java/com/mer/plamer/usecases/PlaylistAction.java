@@ -28,7 +28,7 @@ public class PlaylistAction {
      * @param playlist_id the id of the playlist we want to act on
      */
     public void setPlaylist(String playlist_id) {
-        this.playlist = PlaylistLibraryAction.playlistLibrary.contain(playlist_id);
+        this.playlist = PlaylistLibraryAction.playlistLibrary.get(playlist_id);
     }
 
     /**

@@ -2,7 +2,6 @@ package com.mer.plamer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -36,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // if password match the username, then log in
             if (userControl.login_check(l_name, l_password)) {
-                Intent intent = new Intent(LoginActivity.this, MainPage.class);
+                Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                 intent.putExtra("curr_user", userControl.userAction.getUser().getUsername());
                 startActivity(intent);
                 login_username.setText("");
