@@ -13,3 +13,4 @@ get a list of String containing the name of every playlist, and get a list of St
 
 ## Collaborators:
 Playlist, PlaylistLibrary, Track, PlaylistAdapter, PlaylistControl, SearchControl, UniversalPlaylistAdapter, UserControl, PlayAction, PlaylistAction, UserAction
+OwnPlaylistActivity, PlaylistActivity, UserPlaylistActivity
