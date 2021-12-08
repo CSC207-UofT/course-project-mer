@@ -112,6 +112,12 @@ public class Track {
     public String getID() { return this.track_id;}
 
     /**
+     * Return the static id of Track class.
+     * @return the static id.
+     */
+    public static int getStaticId() { return ID;}
+
+    /**
      * Set the static ID of the Track class to its saved value on every launch.
      * @param saved_id the saved static ID of the Track class.
      */

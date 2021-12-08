@@ -49,6 +49,12 @@ public class Playlist {
     public String getId() { return this.playlist_id; }
 
     /**
+     * Return the static id of Playlist class.
+     * @return the static id.
+     */
+    public static int getStaticId() { return id;}
+
+    /**
      * @return the status of the playlist.
      */
     public String getStatus() {
