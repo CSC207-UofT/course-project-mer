@@ -20,12 +20,10 @@
     <string name="search_your_track">Search your track…</string>
     <string name="search_user">Search user…</string>
     <string name="track_item_background">track_item_background</string>
-    <string name="playlist_name">Playlist name...</string>
+    <string name="playlist_name">Playlist name…</string>
     <string name="playlist_item_background">playlist_item_background</string>
-    <string name="select_type">" Select type..."</string>
-    <string name="todo">TODO</string>
+    <string name="select_type">" Select type…"</string>
     <string name="todo">TODO</string>
     <string name="confirm">confirm</string>
     <string name="string_confirm" />
-    <string name="change_your_password">Change your password</string>
 </resources>
