@@ -33,7 +33,9 @@ public class PlaylistControl {
      * @return true if the track has been successfully removed.
      */
     public boolean trackRemove(String track_id) {
-        return this.playlistAction.delTrack(track_id);
+        boolean result = this.playlistAction.delTrack(track_id);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+        return result;
     }
 
     /**
@@ -42,7 +44,9 @@ public class PlaylistControl {
      * @return true if the track has been successfully removed.
      */
     public boolean trackAdd(String track_id) {
-        return this.playlistAction.addTrack(track_id);
+        boolean result = this.playlistAction.addTrack(track_id);
+        tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
+        return result;
     }
 
     /**
