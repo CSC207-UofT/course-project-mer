@@ -62,11 +62,12 @@ public class UniverseUserActivity extends AppCompatActivity {
 
         UserListView.setOnItemLongClickListener(deleteUser);
 
-        // open all the play list this user has
+        // open all the playlists this user has
         AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
-            String id = nameList.get(position);
-            Intent intent = new Intent(UniverseUserActivity.this, UserPlaylistActivity.class);
-            intent.putExtra("selected_user_name", id);
+            String username = nameList.get(position);
+            Intent intent = new
+                    Intent(UniverseUserActivity.this, UserPlaylistActivity.class);
+            intent.putExtra("selected_user_name", username);
             startActivity(intent);
         };
 
@@ -75,7 +76,8 @@ public class UniverseUserActivity extends AppCompatActivity {
         // open the playing page
         ImageButton playing = findViewById(R.id.universe_user_playing);
         playing.setOnClickListener(v -> {
-            Intent intent = new Intent(UniverseUserActivity.this, PlayerActivity.class);
+            Intent intent = new
+                    Intent(UniverseUserActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
@@ -96,14 +98,10 @@ public class UniverseUserActivity extends AppCompatActivity {
 
         // previous music
         ImageButton prevButton = findViewById(R.id.universe_user_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
         ImageButton nextButton = findViewById(R.id.universe_user_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
     }
 }

@@ -92,6 +92,10 @@ public class UserLibraryAction {
         return name_list;
     }
 
+    public static ArrayList<String> getUserPlaylist(String username) {
+        return UserLibraryAction.userLibrary.get(username).getPlaylists();
+    }
+
     /**
      * Assign a previously stored library as the new library.
      * @param library the previously stored library.
