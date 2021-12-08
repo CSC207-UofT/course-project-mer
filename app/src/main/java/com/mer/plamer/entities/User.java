@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String password;
-    private final ArrayList<Playlist> playlists;
+    private final ArrayList<String> playlists_id;
     private final String user_id;
     private static int id = 1;
 
@@ -21,7 +21,7 @@ public class User {
     public User(String name, String password){
         this.username = name;
         this.password = password;
-        this.playlists = new ArrayList<>();
+        this.playlists_id = new ArrayList<>();
         this.user_id = String.valueOf(id);
         id++;
     }
@@ -43,8 +43,8 @@ public class User {
     /**
      * @return the list of playlists a User has.
      */
-    public ArrayList<Playlist> getPlaylists() {
-        return this.playlists;
+    public ArrayList<String> getPlaylists() {
+        return this.playlists_id;
     }
 
     /**
