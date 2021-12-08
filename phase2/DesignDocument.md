@@ -1,8 +1,24 @@
 # Design Document
 
+## Specifications:
+
+Plamer will present a set of features of a music player:
+
+- Can import audio files and play them
+
+- Can pause/change tracks
+
+- Can seek/reverse to a position when playing a track
+
+- Can display a song’s metadata
+
+- Can store a user’s login information
+
+- Can store a user created playlist
+
+- Has multiple play mods (repeat on/off, shuffle)
+
 ## Major Design Decisions:
-
-
 
 * Every basic entity is represented by a string representation. In particular, playlists and tracks are represented by a string of integers. This is because we want to allow tracks and playlists of the same names to exist. This can also help us to follow the clean architecture as controllers can just pass those representations to the use cases when searching for an entity.
 * Decide to use tinyBD as our serialization strategy. Serialization by basic file creating and appending methods were proven to cause a lot of problems, and can easily mess up our database. Thus an outside file storage manager is the best option to use here. After some struggling, and a failed method because of not following clean architecture, we came up with a clean method of serialization. 
