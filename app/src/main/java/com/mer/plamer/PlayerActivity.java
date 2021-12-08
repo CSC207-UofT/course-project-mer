@@ -55,11 +55,8 @@ public class PlayerActivity extends AppCompatActivity {
         mCurrentTrackArtist = findViewById(R.id.artist_name);
         mCurrentTrackPosition = findViewById(R.id.current_time);
         mCurrentTrackDuration = findViewById(R.id.total_length);
-        mSeekBar.setMax(PlayControl.toSeconds(PlayAction.getTrackLength()));
-        mCurrentTrackName.setText(PlayAction.getTitle());
-        mCurrentTrackArtist.setText(PlayAction.getArtist());
-        mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
         updateSeekBarPosition = () -> {
+            metadataUpdate();
             mSeekBarHandler = new Handler();
             int currentPosition = PlayAction.getCurrentPosition();
             mSeekBar.setProgress(PlayControl.toSeconds(currentPosition));
@@ -79,9 +76,16 @@ public class PlayerActivity extends AppCompatActivity {
                     PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
         });
 
-        mNextButton.setOnClickListener(v -> PlayControl.next());
+        mNextButton.setOnClickListener(v -> {
+            PlayControl.next();
+            metadataUpdate();
+        });
 
-        mPreviousButton.setOnClickListener(v -> PlayControl.prev());
+        mPreviousButton.setOnClickListener(v -> {
+            PlayControl.prev();
+            metadataUpdate();
+        });
+
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -89,17 +93,20 @@ public class PlayerActivity extends AppCompatActivity {
                     PlayAction.setPosition(progress);
                 }
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
-
         });
     }
+
+    private void metadataUpdate(){
+        mSeekBar.setMax(PlayControl.toSeconds(PlayAction.getTrackLength()));
+        mCurrentTrackName.setText(PlayAction.getTitle());
+        mCurrentTrackArtist.setText(PlayAction.getArtist());
+        mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
+    }
+
 }
