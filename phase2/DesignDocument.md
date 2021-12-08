@@ -22,9 +22,8 @@ Plamer will present a set of features of a music player:
 
 * Every basic entity is represented by a string representation. In particular, playlists and tracks are represented by a string of integers. This is because we want to allow tracks and playlists of the same names to exist. This can also help us to follow the clean architecture as controllers can just pass those representations to the use cases when searching for an entity.
 * Decide to use tinyBD as our serialization strategy. Serialization by basic file creating and appending methods were proven to cause a lot of problems, and can easily mess up our database. Thus an outside file storage manager is the best option to use here. After some struggling, and a failed method because of not following clean architecture, we came up with a clean method of serialization. 
-* We decide to intentionally not store the sort/playback status of playlists. This is because after some serious discussions, we concluded that many of the major websites reset the order of their lists to default every time a user visits it, so it would be in our interest to follow that pattern. This decision did not only make our program easier to use, it also saved a lot of work on user interface implementation.
-* We decided instead of giving our users an option to register as an admin, we provide the user with a pre-registered admin account. This is inspired by the many other websites that have admin/admin as their default login identification. This is a decision that made our admin account look more professional, instead of just a subclass made for no purpose. So just for reference, our admin account is {username: admin, password: adminadmin}.
-
+* We ended up having a lot of user interfaces to implement, thus we divide them up as different activities, and then connect them together. This makes the whole user interface implementation much easier.
+* Decided to merge view and presenter responsibilities within one Activity class. This potentially violates Clean Architecture but since we are developing in an Android environment, we wanted to avoid passing around contexts as parameters between classes. Part of the nature of Android is that a lot of actions are defined along with Android elements (such as buttons), so it would make sense that, if we don't pass around application contexts, we cannot tell what a button to do or update view elements. Another reason is because of the number of Activity classes we have due to the nature of our program (a music player need many pages for our specifications). If we split each into a view class and a presenter class, this would potentially cause a bigger mess and make revisions harder to track.
 
 ## Clean Architecture: 
 
@@ -32,7 +31,9 @@ In our project, we try to keep the dependency between every layer very clean. Ho
 
 In most cases, string representation of entities really came to rescue. We set up our program such that it can easily reference entities using their string representations, which makes the controller implementation much easier.
 
-A big clean architecture problem we ran into was serialization. Since TinyDB is on the gateway level, it becomes a problem for how it should gain access to entities that we want to store. We eventually came up with a way. Instead of saving each track/playlist/user to a local file, we found a way to store the whole library class to the local file, and update it on every entity creation. This happens at the controller level so it perfectly follows clean architecture, and it is easy to keep track of.
+A big clean architecture problem we ran into was serialization. Since TinyDB is on the gateway level, it becomes a problem for how it should gain access to entities that we want to store. We eventually came up with a way. Instead of saving each track/playlist/user to a local file, we found a way to store the whole library class to the local file, and update it on every entity creation. This happens at the controller level so it perfectly follows clean architecture, and it is easy to keep track of.  
+
+For reasonings behind our implementation on the Activities, check the Major Design Decisions section.
 
 ## SOLID Principle:
 
