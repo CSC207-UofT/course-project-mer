@@ -59,4 +59,18 @@ public class PlaylistLibraryTest {
         testlist.add(plist);
         assertArrayEquals(testlist.toArray(), pl.getPlaylists().toArray());
     }
+
+    @Test(timeout = 50)
+    public void testgetPlaylist2() {
+        PlaylistLibrary pl = new PlaylistLibrary();
+        Playlist plist = new Playlist("test");
+        pl.add(plist);
+        String plid = plist.getId();
+        assertNotNull(pl.getPlaylist(plid));
+        assertNull(pl.getPlaylist("idk"));
+        assertNotNull(pl.getListofPlaylistSize());
+        assertNotNull(pl.getListofPlaylistName());
+        assertNotNull(pl.getListOfPlaylistId());
+    }
+
 }

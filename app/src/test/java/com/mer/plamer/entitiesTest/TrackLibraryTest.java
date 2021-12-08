@@ -34,17 +34,14 @@ public class TrackLibraryTest {
         tl.add(t1);
         assertFalse(tl.isEmpty());
         tl.add(t2);
-//        assertEquals(t1, tl.get(0));
-        assertTrue(tl.remove("12"));
-        assertFalse(tl.remove("3"));
-//        assertNotNull(tl.contain("13"));
-//        assertNull(tl.contain("123"));
-        ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t2);
-        assertArrayEquals(testlist.toArray(), tl.getTrackList().toArray());
-        ArrayList<String> pathlist = new ArrayList<>();
-        pathlist.add("KDot");
-        assertArrayEquals(pathlist.toArray(), tl.getTrackPathList().toArray());
+        String t1id = t1.getID();
+        String t2id = t2.getID();
+        assertTrue(tl.remove(t1id));
+        assertNotNull(tl.create("asd"));
+        assertTrue(tl.contains(t2id));
+        assertFalse(tl.contains("asd"));
+        assertNotNull(tl.getTrackList());
+        assertNotNull(tl.getTrackPathList());
         tl.emptyTheLibrary();
         assertTrue(tl.isEmpty());
 

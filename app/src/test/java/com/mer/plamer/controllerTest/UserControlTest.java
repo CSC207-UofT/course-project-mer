@@ -30,7 +30,7 @@ public class UserControlTest {
     public void setUp() {
         u = new User("test", "test123");
         ua = new UserAction();
-        ua.setUser(u);
+//        ua.setUser(u);
 //        uc = new UserControl(mockedTinydb);
     }
 
