@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mer.plamer.controller.PlayControl;
-import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.SearchControl;
 import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.controller.UniversalPlaylistAdapter;
@@ -34,6 +33,14 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_layout);
+
+        // set button
+        ImageButton playing = findViewById(R.id.search_playing);
+        ImageButton playButton = findViewById(R.id.search_play);
+        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
+        ImageButton prevButton = findViewById(R.id.search_prev);
+        ImageButton nextButton = findViewById(R.id.search_next);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         result = "Track";
         Spinner spinner = findViewById(R.id.search_type);
@@ -65,14 +72,12 @@ public class SearchActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
 
         // open the playing page
-        ImageButton playing = findViewById(R.id.search_playing);
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(SearchActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.search_play);
         playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
@@ -83,20 +88,24 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            if (PlayAction.order == PlayAction.PlayOrder.LIST){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+            }
+            else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+            }
+            else{
+                ((ImageButton)v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.search_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.search_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
+
 
     }
 
@@ -149,6 +158,16 @@ public class SearchActivity extends AppCompatActivity {
             UserAdapter adapter = new UserAdapter(SearchActivity.this, lst);
             ListView lv = findViewById(R.id.search_list);
             lv.setAdapter(adapter);
+
+            // open all the playlists this user has
+            AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+                String username = lst.get(position);
+                Intent intent = new
+                        Intent(SearchActivity.this, UserPlaylistActivity.class);
+                intent.putExtra("selected_user_name", username);
+                startActivity(intent);
+            };
+            lv.setOnItemClickListener(openList);
         }
     }
 }
