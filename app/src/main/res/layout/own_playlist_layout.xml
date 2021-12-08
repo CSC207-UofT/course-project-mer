@@ -23,7 +23,7 @@
         android:layout_width="398dp"
         android:layout_height="60dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/playlist_track_list"
+        app:layout_constraintBottom_toTopOf="@+id/own_playlist_track_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"

@@ -80,6 +80,13 @@ public class PlayerActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(v -> finish());
 
         mLoopButton.setOnClickListener(v -> {
+//            if (check status == List){
+//                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+//            }else if(check status == repeat 1){
+//                ((ImageButton)v).setImageResource(R.drawable.random);
+//            }else{
+//                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+//            }
             Toast.makeText(PlayerActivity.this,
                     PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
         });

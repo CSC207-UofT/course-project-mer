@@ -1,8 +1,8 @@
 package com.mer.plamer;
 
-import android.content.DialogInterface;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -11,12 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mer.plamer.controller.PlaylistControl;
-import com.mer.plamer.controller.TrackAdapter;
+import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.UserAdapter;
-import com.mer.plamer.entities.User;
-import com.mer.plamer.entities.UserLibrary;
-import com.mer.plamer.usecases.TrackLibraryAction;
+import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.UserLibraryAction;
 
 import java.util.ArrayList;
@@ -40,38 +37,51 @@ public class UniverseUserActivity extends AppCompatActivity {
         UserListView.setAdapter(adapter);
 
         // delete user
-        AdapterView.OnItemLongClickListener deleteUser = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        AdapterView.OnItemLongClickListener deleteUser = (parent, view, position, id) -> {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(UniverseUserActivity.this);
-                builder.setMessage("Do you want to delete this user?");
-                String name = nameList.get(position);
+            AlertDialog.Builder builder = new AlertDialog.Builder(UniverseUserActivity.this);
+            builder.setMessage("Do you want to delete this user?");
 
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Change here!!!
-                        nameList.remove(position);
-                        // ↑
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(UniverseUserActivity.this,
-                                "You have deleted a playlist.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                // TODO
+                adapter.notifyDataSetChanged();
+                Toast.makeText(UniverseUserActivity.this,
+                        "You have deleted a playlist.", Toast.LENGTH_LONG).show();
+            });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
 
-                    }
-                });
-                builder.create().show();
+            });
+            builder.create().show();
 
-                return true;
-            }
+            return true;
         };
 
         UserListView.setOnItemLongClickListener(deleteUser);
+
+        // open all the play list this user has
+        AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
+            String id = nameList.get(position);
+            Intent intent = new Intent(UniverseUserActivity.this, UserPlaylistActivity.class);
+            intent.putExtra("selected_user_name", id);
+            startActivity(intent);
+        };
+
+        UserListView.setOnItemClickListener(openList);
+
+        // open the playing page
+        ImageButton playing = findViewById(R.id.search_playing);
+        playing.setOnClickListener(v -> {
+            Intent intent = new Intent(UniverseUserActivity.this, PlayerActivity.class);
+            startActivity(intent);
+        });
+
+        // play/pause music
+        ImageButton playButton = findViewById(R.id.search_play);
+        playButton.setOnClickListener(v -> PlayControl.playPause());
+
+        // change the loop style
+        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
     }
 }

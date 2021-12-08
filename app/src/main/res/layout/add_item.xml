@@ -12,6 +12,7 @@
         android:layout_height="77dp"
         android:background="#00FFFFFF"
         android:baselineAlignBottom="false"
+        android:contentDescription="@string/track_item_background"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/list_item"
-        android:contentDescription="@string/track_item_background" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/add_item_name"
