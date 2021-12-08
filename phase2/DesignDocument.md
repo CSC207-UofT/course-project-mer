@@ -39,7 +39,7 @@ For reasonings behind our implementation on the Activities, check the Major Desi
 
 SOLID Principle is being followed as much as possible during the code design. A few examples are noted below:  
 ### Single Responsibility principle: 
-We made sure to have enough of different usecases distribute responsibilities instead of assigning responsibilities to only a few or single class  
+We made sure to have enough of different usecases distribute responsibilities instead of assigning responsibilities to only a few or single class. (For reasonings behind our Activities implementation, check the Major Design Decisions section)
 ### Open/Closed principle: 
 We designed our entities such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
 ### Liskov Substitution principle: 
