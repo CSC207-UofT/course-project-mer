@@ -1,7 +1,6 @@
 package com.mer.plamer;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,14 +13,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.UniversalPlaylistAdapter;
-import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserLibraryAction;
@@ -33,7 +30,6 @@ import java.util.ArrayList;
  */
 public class UserPlaylistActivity extends AppCompatActivity {
 
-    private ListView lv;
     private PlaylistAdapter plAdapter;
     private ArrayList<String> playListID;
 
@@ -43,12 +39,19 @@ public class UserPlaylistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist_layout);
 
+        // set button
+        ImageButton playing = findViewById(R.id.playlist_playing);
+        ImageButton playButton = findViewById(R.id.playlist_play);
+        ImageButton repeatButton = findViewById(R.id.playlist_repeat_list);
+        ImageButton prevButton = findViewById(R.id.playlist_prev);
+        ImageButton nextButton = findViewById(R.id.playlist_next);
+        PlayerActivity.setButton(playButton, repeatButton);
+
         String name = getIntent().getStringExtra("selected_user_name");
-        UserControl userControl = new UserControl();
         playListID = UserLibraryAction.getUserPlaylist(name);
-        UniversalPlaylistAdapter universalplAdapter = new
+        UniversalPlaylistAdapter universalAdapter = new
                 UniversalPlaylistAdapter(UserPlaylistActivity.this, playListID);
-        lv = findViewById(R.id.playlist_list);
+        ListView lv = findViewById(R.id.playlist_list);
 
         // show tittle
         TextView tittle = findViewById(R.id.playlist_tittle);
@@ -56,7 +59,7 @@ public class UserPlaylistActivity extends AppCompatActivity {
         tittle.setText(t);
 
         // show the list of all playlists
-        lv.setAdapter(universalplAdapter);
+        lv.setAdapter(universalAdapter);
 
         // click playlist to open it
         AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
@@ -105,39 +108,37 @@ public class UserPlaylistActivity extends AppCompatActivity {
 
         });
 
-        // play music
-        ImageButton playing = findViewById(R.id.playlist_playing);
-
+        // open the playing page
         playing.setOnClickListener(v -> {
-            Intent intent = new Intent(UserPlaylistActivity.this,
-                    PlayerActivity.class);
+            Intent intent = new Intent(UserPlaylistActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.playlist_play);
         playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
-                ((ImageButton)v).setImageResource(R.drawable.pause);
-            } else{
+                ((ImageButton) v).setImageResource(R.drawable.pause);
+            } else {
                 ((ImageButton) v).setImageResource(R.drawable.play);
             }
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.playlist_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            if (PlayAction.order == PlayAction.PlayOrder.LIST) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_list);
+            } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_one);
+            } else {
+                ((ImageButton) v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.playlist_prev);
         prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.playlist_next);
         nextButton.setOnClickListener(v -> PlayControl.next());
-
     }
-
-
 }

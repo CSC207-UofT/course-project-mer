@@ -146,5 +146,4 @@ public class PlayerActivity extends AppCompatActivity {
             repeatButton.setImageResource(R.drawable.random);
         }
     }
-
 }

@@ -19,6 +19,13 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
 
+        // set button
+        ImageButton playing = findViewById(R.id.main_playing);
+        ImageButton playButton = findViewById(R.id.main_play);
+        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
+        ImageButton prevButton = findViewById(R.id.main_prev);
+        ImageButton nextButton = findViewById(R.id.main_next);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         // open the setting page
         ImageButton setting = findViewById(R.id.main_settings);
@@ -56,38 +63,36 @@ public class MainPageActivity extends AppCompatActivity {
         });
 
         // open the playing page
-        ImageButton playing = findViewById(R.id.main_playing);
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.main_play);
         playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
-                ((ImageButton)v).setImageResource(R.drawable.pause);
-            } else{
+                ((ImageButton) v).setImageResource(R.drawable.pause);
+            } else {
                 ((ImageButton) v).setImageResource(R.drawable.play);
             }
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            if (PlayAction.order == PlayAction.PlayOrder.LIST) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_list);
+            } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_one);
+            } else {
+                ((ImageButton) v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.main_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.main_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
-
+        nextButton.setOnClickListener(v -> PlayControl.next());
     }
 }
