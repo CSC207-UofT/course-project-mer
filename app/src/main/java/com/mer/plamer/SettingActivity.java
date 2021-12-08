@@ -17,6 +17,10 @@ import com.mer.plamer.controller.UserControl;
  */
 public class SettingActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

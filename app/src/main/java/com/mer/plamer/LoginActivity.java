@@ -14,6 +14,10 @@ import com.mer.plamer.controller.UserControl;
  * Activity to allow user to login and construct the login page view
  */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

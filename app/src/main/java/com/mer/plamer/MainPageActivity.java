@@ -14,6 +14,10 @@ import com.mer.plamer.usecases.PlayAction;
  */
 public class MainPageActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,8 @@ public class MainPageActivity extends AppCompatActivity {
         // open the user library
         ImageButton users = findViewById(R.id.main_users);
         users.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPageActivity.this, UniverseUserActivity.class);
+            Intent intent = new Intent(MainPageActivity.this,
+                    UniverseUserActivity.class);
             startActivity(intent);
         });
 

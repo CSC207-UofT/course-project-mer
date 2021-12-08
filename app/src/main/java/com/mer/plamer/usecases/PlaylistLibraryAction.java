@@ -7,6 +7,9 @@ import com.mer.plamer.entities.Track;
 
 import java.util.ArrayList;
 
+/**
+ * Actions performed on the playlistLibrary
+ */
 public class PlaylistLibraryAction {
 
     public static PlaylistLibrary playlistLibrary = new PlaylistLibrary();

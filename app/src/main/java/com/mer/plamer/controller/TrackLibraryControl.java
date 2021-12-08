@@ -8,6 +8,9 @@ import com.mer.plamer.TinyDB;
 
 import java.io.File;
 
+/**
+ * Controller to manipulate actions on TrackLibrary
+ */
 public class TrackLibraryControl {
 
     private final TinyDB tinydb = new TinyDB(MyApp.getContext());

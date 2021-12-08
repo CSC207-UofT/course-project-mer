@@ -11,6 +11,9 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * Actions performed on a trackLibrary
+ */
 public class TrackLibraryAction {
 
     public static TrackLibrary trackLibrary = new TrackLibrary();

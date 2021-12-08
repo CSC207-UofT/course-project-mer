@@ -6,6 +6,9 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Controller for search features
+ */
 public class SearchControl {
     TrackLibraryAction trackLibraryAction;
     UserLibraryAction userLibraryAction;

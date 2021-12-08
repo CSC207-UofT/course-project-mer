@@ -20,14 +20,15 @@ import com.mer.plamer.usecases.PlayAction;
 public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
+            {
                 if (isGranted) {
                     TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
                     trackLibraryControl.scanLocal();
                 }
             });
     /**
-     * Constructs view and defines actions of the main view.
+     * Construct view and define actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
      */
     @Override

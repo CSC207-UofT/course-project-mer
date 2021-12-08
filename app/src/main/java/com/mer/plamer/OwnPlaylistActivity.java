@@ -27,6 +27,10 @@ import java.util.ArrayList;
  */
 public class OwnPlaylistActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,53 +78,42 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         // add new track
         ImageButton add = findViewById(R.id.own_playlist_add);
         add.setOnClickListener(v -> {
-            Intent intent = new Intent(OwnPlaylistActivity.this, AddTrackToPlaylistActivity.class);
+            Intent intent = new Intent(OwnPlaylistActivity.this,
+                    AddTrackToPlaylistActivity.class);
             intent.putExtra("play_list_id", pllID);
             startActivity(intent);
             adapter.notifyDataSetChanged();
                 });
 
         // play track when click on the track in the list
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(OwnPlaylistActivity.this,
-                        dataList.get(i).tittle +
-                                " will be played.",Toast.LENGTH_SHORT).show();
-                PlayControl.setMedia(pllID, dataList.get(i).id);
-            }
+        lv.setOnItemClickListener((adapterView, view, i, l) -> {
+            Toast.makeText(OwnPlaylistActivity.this,
+                    dataList.get(i).tittle +
+                            " will be played.",Toast.LENGTH_SHORT).show();
+            PlayControl.setMedia(pllID, dataList.get(i).id);
         });
 
         // delete a track
-        AdapterView.OnItemLongClickListener deleteList = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        AdapterView.OnItemLongClickListener deleteList = (parent, view, position, id) -> {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
-                builder.setMessage("Do you want to delete this track?");
-                String trackID = dataList.get(position).id;
+            AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
+            builder.setMessage("Do you want to delete this track?");
+            String trackID = dataList.get(position).id;
 
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pllC.trackRemove(trackID);
-                        dataList.remove(position);
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(OwnPlaylistActivity.this,
-                                "You have deleted a track.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                pllC.trackRemove(trackID);
+                dataList.remove(position);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(OwnPlaylistActivity.this,
+                        "You have deleted a track.", Toast.LENGTH_LONG).show();
+            });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
 
-                    }
-                });
-                builder.create().show();
+            });
+            builder.create().show();
 
-                return true;
-            }
+            return true;
         };
         lv.setOnItemLongClickListener(deleteList);
 

@@ -4,6 +4,9 @@ package com.mer.plamer.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Library of tracks
+ */
 public class TrackLibrary implements Storable<Track> {
     private final ArrayList<Track> tracksList;
 

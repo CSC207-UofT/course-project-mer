@@ -14,7 +14,7 @@ public class Track {
 
 
     /**
-     * Alternative constructor of a track.
+     * Constructor of a track.
      * @param path the path to the file of such track
      */
     public Track(String path){
