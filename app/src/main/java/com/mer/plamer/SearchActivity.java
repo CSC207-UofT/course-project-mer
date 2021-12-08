@@ -61,6 +61,40 @@ public class SearchActivity extends AppCompatActivity {
         ImageButton back = findViewById(R.id.search_back_last_page);
         back.setOnClickListener(v -> finish());
 
+        // open the playing page
+        ImageButton playing = findViewById(R.id.search_playing);
+        playing.setOnClickListener(v -> {
+            Intent intent = new Intent(SearchActivity.this, PlayerActivity.class);
+            startActivity(intent);
+        });
+
+        // play/pause music
+        ImageButton playButton = findViewById(R.id.search_play);
+        playButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
+
+        // change the loop style
+        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
+
+        // previous music
+        ImageButton prevButton = findViewById(R.id.search_prev);
+        prevButton.setOnClickListener(v -> {
+            PlayControl.prev();
+        });
+
+        // next music
+        ImageButton nextButton = findViewById(R.id.search_next);
+        nextButton.setOnClickListener(v -> {
+            PlayControl.next();
+        });
+
     }
 
     private void toSearch(String type, String input) {
@@ -113,20 +147,5 @@ public class SearchActivity extends AppCompatActivity {
             ListView lv = findViewById(R.id.search_list);
             lv.setAdapter(adapter);
         }
-
-        // open the playing page
-        ImageButton playing = findViewById(R.id.search_playing);
-        playing.setOnClickListener(v -> {
-            Intent intent = new Intent(SearchActivity.this, PlayerActivity.class);
-            startActivity(intent);
-        });
-
-        // play/pause music
-        ImageButton playButton = findViewById(R.id.search_play);
-        playButton.setOnClickListener(v -> PlayControl.playPause());
-
-        // change the loop style
-        ImageButton repeatButton = findViewById(R.id.search_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
     }
 }

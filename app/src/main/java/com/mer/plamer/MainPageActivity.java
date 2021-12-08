@@ -61,7 +61,14 @@ public class MainPageActivity extends AppCompatActivity {
 
         // play/pause music
         ImageButton playButton = findViewById(R.id.main_play);
-        playButton.setOnClickListener(v -> PlayControl.playPause());
+        playButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
 
         // change the loop style
         ImageButton repeatButton = findViewById(R.id.main_repeat_list);
@@ -70,13 +77,13 @@ public class MainPageActivity extends AppCompatActivity {
         // previous music
         ImageButton prevButton = findViewById(R.id.main_prev);
         prevButton.setOnClickListener(v -> {
-            // TODO
+            PlayControl.prev();
         });
 
         // next music
         ImageButton nextButton = findViewById(R.id.main_next);
         nextButton.setOnClickListener(v -> {
-            // TODO
+            PlayControl.next();
         });
 
     }
