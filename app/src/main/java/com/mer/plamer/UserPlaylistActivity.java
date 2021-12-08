@@ -145,12 +145,32 @@ public class UserPlaylistActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
+        // play/pause music
         ImageButton playButton = findViewById(R.id.playlist_play);
-        playButton.setOnClickListener(v -> PlayControl.playPause());
+        playButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
 
+        // change the loop style
         ImageButton repeatButton = findViewById(R.id.playlist_repeat_list);
         repeatButton.setOnClickListener(v -> PlayAction.loop());
+
+        // previous music
+        ImageButton prevButton = findViewById(R.id.playlist_prev);
+        prevButton.setOnClickListener(v -> {
+            PlayControl.prev();
+        });
+
+        // next music
+        ImageButton nextButton = findViewById(R.id.playlist_next);
+        nextButton.setOnClickListener(v -> {
+            PlayControl.next();
+        });
 
     }
 

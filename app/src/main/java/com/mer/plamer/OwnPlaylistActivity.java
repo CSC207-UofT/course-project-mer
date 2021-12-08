@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.TrackAdapter;
+import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 
@@ -84,7 +85,6 @@ public class OwnPlaylistActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                PlaylistControl playlistControl = new PlaylistControl();
                 AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
                 builder.setMessage("Do you want to delete this track?");
                 String trackID = dataList.get(position).id;
@@ -112,6 +112,40 @@ public class OwnPlaylistActivity extends AppCompatActivity {
             }
         };
         lv.setOnItemLongClickListener(deleteList);
+
+        // open the playing page
+        ImageButton playing = findViewById(R.id.opll_playing);
+        playing.setOnClickListener(v -> {
+            Intent intent = new Intent(OwnPlaylistActivity.this, PlayerActivity.class);
+            startActivity(intent);
+        });
+
+        // play/pause music
+        ImageButton playButton = findViewById(R.id.opll_play);
+        playButton.setOnClickListener(v ->{
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
+
+        // change the loop style
+        ImageButton repeatButton = findViewById(R.id.opll_repeat_list);
+        repeatButton.setOnClickListener(v -> PlayAction.loop());
+
+        // previous music
+        ImageButton prevButton = findViewById(R.id.opll_prev);
+        prevButton.setOnClickListener(v -> {
+            PlayControl.prev();
+        });
+
+        // next music
+        ImageButton nextButton = findViewById(R.id.opll_next);
+        nextButton.setOnClickListener(v -> {
+            PlayControl.next();
+        });
 
     }
 }
