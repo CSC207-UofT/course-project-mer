@@ -73,6 +73,17 @@ public class TrackLibraryAction {
         return track;
     }
 
+    /**
+     * Return the static id of Track class.
+     * @return the static id.
+     */
+    public static int getStaticId() { return Track.getStaticId();}
+
+    /**
+     * Set the static ID of the Track class to its saved value on every launch.
+     * @param saved_id the saved static ID of the Track class.
+     */
+    public static void setID(int saved_id) { Track.setID(saved_id); }
 
     /**
      * Assign a previously stored library as the new library.

@@ -23,6 +23,7 @@ public class TrackLibraryControl {
      */
     public void add(String path) {
         TrackLibraryAction.add(path);
+        tinydb.putInt("track_static_id", TrackLibraryAction.getStaticId());
         tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
     }
 
@@ -44,6 +45,7 @@ public class TrackLibraryControl {
         if (tinydb.objectExists("TrackLibrary")) {
             TrackLibraryAction.assignLibrary(tinydb.getObject("TrackLibrary",
                     TrackLibraryAction.trackLibrary.getClass()));
+            TrackLibraryAction.setID(tinydb.getInt("track_static_id"));
         }
         recursiveSongSearch(dir);
     }

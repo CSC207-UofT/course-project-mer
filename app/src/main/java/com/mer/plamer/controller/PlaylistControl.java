@@ -79,6 +79,7 @@ public class PlaylistControl {
      */
     public void add(String name) {
         PlaylistLibraryAction.add(name);
+        tinydb.putInt("playlist_static_id", PlaylistLibraryAction.getStaticId());
         tinydb.putObject("PlaylistLibrary", PlaylistLibraryAction.playlistLibrary);
     }
 
@@ -98,6 +99,7 @@ public class PlaylistControl {
         if (tinydb.objectExists("PlaylistLibrary")) {
             PlaylistLibraryAction.assignLibrary(tinydb.getObject("PlaylistLibrary",
                     PlaylistLibraryAction.playlistLibrary.getClass()));
+            PlaylistLibraryAction.changeId(tinydb.getInt("playlist_static_id"));
         }
     }
     /**

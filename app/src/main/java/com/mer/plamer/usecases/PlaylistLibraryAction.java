@@ -70,9 +70,19 @@ public class PlaylistLibraryAction {
      */
     public static void add(String name) {
         playlistLibrary.add(playlistLibrary.create(name));
-
-
     }
+
+    /**
+     * Return the static id of Playlist class.
+     * @return the static id.
+     */
+    public static int getStaticId() { return Playlist.getStaticId();}
+
+    /**
+     * Set the static id of the Playlist to its saved value on every launch.
+     * @param saved_id the saved static id of the Playlist class.
+     */
+    public static void changeId(int saved_id) { Playlist.changeId(saved_id); }
 
     /**
      * Get a list of integers containing the size of every playlist.
