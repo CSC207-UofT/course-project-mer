@@ -46,9 +46,11 @@ public class PlaylistAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         UserControl userControl = new UserControl();
         String id = playListID.get(position);
+
         playListName = userControl.userAction.Playlistname();
         playListSize = userControl.userAction.Playlistsize();
         int i = userControl.userAction.getCurrentPlaylists().indexOf(id);
+      
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.playlist_item,null);
             viewHolder = new ViewHolder();

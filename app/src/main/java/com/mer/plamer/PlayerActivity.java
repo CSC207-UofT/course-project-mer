@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,11 +68,25 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> PlayControl.playPause());
+        mPlayPauseButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
 
         mBackButton.setOnClickListener(v -> finish());
 
         mLoopButton.setOnClickListener(v -> {
+//            if (check status == List){
+//                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+//            }else if(check status == repeat 1){
+//                ((ImageButton)v).setImageResource(R.drawable.random);
+//            }else{
+//                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+//            }
             Toast.makeText(PlayerActivity.this,
                     PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
         });

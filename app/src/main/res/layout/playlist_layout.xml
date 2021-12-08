@@ -64,26 +64,27 @@
             app:srcCompat="@drawable/add"
             tools:ignore="ContentDescription"/>
 
-        <EditText
-            android:id="@+id/playlist_search_bar"
-            android:layout_width="250dp"
-            android:layout_height="30dp"
+        <TextView
+            android:id="@+id/playlist_tittle"
+            android:layout_width="283dp"
+            android:layout_height="29dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="98dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="16dp"
+
+            android:layout_marginEnd="74dp"
+            android:layout_marginBottom="15dp"
             android:fontFamily="@font/aldrich"
-            android:hint="@string/search_your_playlist"
+            android:lines="1"
             android:textAlignment="viewStart"
             android:textColor="@color/pink"
-            android:textColorHint="@color/half_pink"
-            android:textSize="20sp"
-            android:autofillHints="search item"
-            android:inputType="text"/>
+            android:textSize="18sp"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintVertical_bias="0.625"
+            tools:text="" />
 
     </RelativeLayout>
 
