@@ -29,6 +29,6 @@ public class UniverseUserActivity extends AppCompatActivity {
         ArrayList<String> nameList = UserLibraryAction.getAllUserName();
         ListView UserListView;
         UserListView = findViewById(R.id.universe_user_list);
-        UserListView.setAdapter(new UserAdapter(getApplicationContext(), nameList));
+        UserListView.setAdapter(new UserAdapter(UniverseUserActivity.this, nameList));
     }
 }

@@ -58,7 +58,7 @@
         android:autofillHints="password"
         android:background="@drawable/rec_background"
         android:fontFamily="@font/aldrich"
-        android:hint="@string/change_your_password"
+        android:hint="   Change your password"
         android:inputType="text"
         android:lines="1"
         android:maxLength="20"

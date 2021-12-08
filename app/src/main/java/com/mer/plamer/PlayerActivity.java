@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,7 +71,14 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void defineActions(){
-        mPlayPauseButton.setOnClickListener(v -> PlayControl.playPause());
+        mPlayPauseButton.setOnClickListener(v -> {
+            PlayControl.playPause();
+            if (PlayAction.isPlaying()) {
+                ((ImageButton)v).setImageResource(R.drawable.pause);
+            } else{
+                ((ImageButton) v).setImageResource(R.drawable.play);
+            }
+        });
 
         mBackButton.setOnClickListener(v -> finish());
 
