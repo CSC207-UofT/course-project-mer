@@ -16,6 +16,7 @@ import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.SearchControl;
 import com.mer.plamer.controller.TrackAdapter;
+import com.mer.plamer.controller.UniversalPlaylistAdapter;
 import com.mer.plamer.controller.UserAdapter;
 import com.mer.plamer.usecases.PlayAction;
 
@@ -88,7 +89,8 @@ public class SearchActivity extends AppCompatActivity {
             ArrayList<String> lst;
             lst = SearchControl.searchPlaylist(input);
             // set adapter
-            PlaylistAdapter adapter = new PlaylistAdapter(SearchActivity.this, lst);
+            UniversalPlaylistAdapter adapter =
+                    new UniversalPlaylistAdapter(SearchActivity.this, lst);
             ListView lv = findViewById(R.id.search_list);
             lv.setAdapter(adapter);
 
@@ -96,7 +98,8 @@ public class SearchActivity extends AppCompatActivity {
             ArrayList<String> finalLst = lst;
             AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
                 String id = finalLst.get(position);
-                Intent intent = new Intent(SearchActivity.this, OwnPlaylistActivity.class);
+                Intent intent = new
+                        Intent(SearchActivity.this, OwnPlaylistActivity.class);
                 intent.putExtra("play_list_id", id);
                 startActivity(intent);
             };
