@@ -22,7 +22,9 @@ Plamer will present a set of features of a music player:
 
 * Every basic entity is represented by a string representation. In particular, playlists and tracks are represented by a string of integers. This is because we want to allow tracks and playlists of the same names to exist. This can also help us to follow the clean architecture as controllers can just pass those representations to the use cases when searching for an entity.
 * Decide to use tinyBD as our serialization strategy. Serialization by basic file creating and appending methods were proven to cause a lot of problems, and can easily mess up our database. Thus an outside file storage manager is the best option to use here. After some struggling, and a failed method because of not following clean architecture, we came up with a clean method of serialization. 
-* We ended up having a lot of user interfaces to implement, thus we divide them up as different activities, and then connect them together. This makes the whole user interface implementation much easier.
+* We decide to intentionally not store the sort/playback status of playlists. This is because after some serious discussions, we concluded that many of the major websites reset the order of their lists to default every time a user visits it, so it would be in our interest to follow that pattern. This decision did not only make our program easier to use, it also saved a lot of work on user interface implementation.
+* We decided instead of giving our users an option to register as an admin, we provide the user with a pre-registered admin account. This is inspired by the many other websites that have admin/admin as their default login identification. This is a decision that made our admin account look more professional, instead of just a subclass made for no purpose. So just for reference, our admin account is {username: admin, password: adminadmin}.
+
 
 ## Clean Architecture: 
 
