@@ -61,17 +61,16 @@ public class UniverseUserActivity extends AppCompatActivity {
 
             builder.setPositiveButton("Yes", (dialog, which) -> {
 
-                ArrayList<String> user_list = UserLibraryAction.getAllUserName();
-
-                if (UserLibraryAction.checkAdmin(user_list.get(position))){
+                if (UserLibraryAction.checkAdmin(nameList.get(position))){
                     Toast.makeText(UniverseUserActivity.this,
                             "Admin cannot be deleted.",
                             Toast.LENGTH_LONG).show();
                 }
-                else if (userControl.userDeletion(user_list.get(position))) {
-                    adapter.notifyDataSetChanged();
+                else if (userControl.userDeletion(nameList.get(position))) {
                     Toast.makeText(UniverseUserActivity.this,
                             "User deleted.", Toast.LENGTH_LONG).show();
+                    nameList.remove(position);
+                    adapter.notifyDataSetChanged();
                 }
                 else {
                     Toast.makeText(UniverseUserActivity.this,
