@@ -7,14 +7,12 @@ import com.mer.plamer.usecases.UserLibraryAction;
 import com.mer.plamer.MyApp;
 import com.mer.plamer.TinyDB;
 
-import java.util.ArrayList;
-
 /**
  * Controller for user manipulations
  */
 public class UserControl {
 
-    public UserAction userAction;
+    public final UserAction userAction;
     private final TinyDB tinydb;
 
     /**

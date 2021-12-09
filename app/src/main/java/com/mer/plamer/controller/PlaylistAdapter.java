@@ -20,11 +20,21 @@ public class PlaylistAdapter extends BaseAdapter {
     private final LayoutInflater inflater;
     private final ArrayList<String> playListID;
 
+    /**
+     * Constructor for PlaylistAdapter
+     * @param context the context
+     * @param playListID the IDs of playlists fetching data from
+     */
     public PlaylistAdapter(Context context, ArrayList<String> playListID){
         this.inflater = LayoutInflater.from(context);
         this.playListID = playListID;
     }
 
+    /**
+     * Alternative constructor for PlaylistAdapter
+     * @param lif the layout inflator of selected xml file
+     * @param playListID the IDs of playlists fetching data from
+     */
     public PlaylistAdapter(LayoutInflater lif, ArrayList<String> playListID) {
         this.inflater = lif;
         this.playListID = playListID;

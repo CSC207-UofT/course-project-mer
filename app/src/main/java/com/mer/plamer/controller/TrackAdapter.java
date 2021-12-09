@@ -13,20 +13,34 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter that convert data to Listview of tracks.
+ */
 public class TrackAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
     private final ArrayList<TrackDataHolder> lst;
-    private final Context context;
+    private final ThreadLocal<Context> context = new ThreadLocal<>();
 
+    /**
+     * Constructor for TrackAdapter
+     * @param context the context
+     * @param l a list of track data to be converted
+     */
     public TrackAdapter(Context context, ArrayList<TrackDataHolder> l){
-        this.context = context;
+        this.context.set(context);
         inflater = LayoutInflater.from(context);
         this.lst = l;
     }
 
+    /**
+     * Alternative constructor for TrackAdapter
+     * @param context the context
+     * @param lif layout inflator of selected xml file
+     * @param l a list of track data to be converted
+     */
     public TrackAdapter(Context context, LayoutInflater lif, ArrayList<TrackDataHolder> l) {
-        this.context = context;
+        this.context.set(context);
         this.inflater = lif;
         this.lst = l;
     }
@@ -100,10 +114,10 @@ public class TrackAdapter extends BaseAdapter {
      * Hold data input.
      */
     public static class TrackDataHolder {
-        public String tittle;
-        public String artist;
-        public String duration;
-        public String id;
+        public final String tittle;
+        public final String artist;
+        public final String duration;
+        public final String id;
 
         public TrackDataHolder(String i){
             ArrayList<String> info = TrackLibraryAction.fetchMetadata(i);

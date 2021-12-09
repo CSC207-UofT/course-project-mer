@@ -10,7 +10,7 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
  */
 public class PlaylistControl {
     PlaylistAction playlistAction;
-    TinyDB tinydb;
+    final TinyDB tinydb;
 
     /**
      * Constructor for Playlist Control, initially playlistAction is null.
@@ -20,6 +20,10 @@ public class PlaylistControl {
         this.tinydb = new TinyDB(MyApp.getContext());
     }
 
+    /**
+     * Alternative constructor for PlaylistControl
+     * @param tinydb database for data
+     */
     public PlaylistControl(TinyDB tinydb) {
         this.playlistAction = null;
         this.tinydb = tinydb;

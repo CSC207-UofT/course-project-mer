@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mer.plamer.controller.PlayControl;
 
-import com.mer.plamer.databinding.PlayerLayoutBinding;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
