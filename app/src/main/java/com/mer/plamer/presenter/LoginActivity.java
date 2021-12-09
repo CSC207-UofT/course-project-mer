@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             UserControl userControl = new UserControl();
 
             // if password match the username, then log in
-            if (userControl.login_check(l_name, l_password)) {
+            if (userControl.loginCheck(l_name, l_password)) {
                 Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                 startActivity(intent);
                 login_username.setText("");

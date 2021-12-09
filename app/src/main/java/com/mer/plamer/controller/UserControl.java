@@ -49,7 +49,7 @@ public class UserControl {
      * @param password the password that user entered.
      * @return whether the login was successful.
      */
-    public boolean login_check(String username, String password) {
+    public boolean loginCheck(String username, String password) {
         if (UserLibraryAction.userLogin(username, password)) {
             this.userAction.setUser(username);
             return true;

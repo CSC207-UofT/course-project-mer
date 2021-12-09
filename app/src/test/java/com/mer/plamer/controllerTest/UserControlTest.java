@@ -18,8 +18,8 @@ public class UserControlTest {
         TinyDB tinyDB = mock(TinyDB.class);
         UserControl uc = new UserControl(tinyDB);
         assertTrue(uc.registration("test", "123"));
-        uc.login_check("test", "123");
-        assertFalse(uc.login_check("123", "321"));
+        uc.loginCheck("test", "123");
+        assertFalse(uc.loginCheck("123", "321"));
         assertNotNull(uc.getAccountInfo());
         uc.registration("asd", "asd");
         assertFalse(uc.userDeletion("asd"));
