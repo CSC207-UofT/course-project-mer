@@ -16,7 +16,7 @@ public class UserLibraryTest {
     @Test(timeout = 50)
     public void testAdd(){
         UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
+        User u = new User("test", "test123", false);
         ul.add(u);
         assertFalse(ul.isEmpty());
     }
@@ -24,7 +24,7 @@ public class UserLibraryTest {
     @Test(timeout = 50)
     public void testRemove(){
         UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
+        User u = new User("test", "test123", false);
         ul.add(u);
         assertTrue(ul.remove("test"));
         assertFalse(ul.remove("nonexistentuser"));
@@ -33,7 +33,7 @@ public class UserLibraryTest {
     @Test(timeout = 50)
     public void testContain() {
         UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
+        User u = new User("test", "test123", false);
         ul.add(u);
 //        assertEquals(u, ul.contain("test"));
 //        assertNull(ul.contain("neuser"));
@@ -42,12 +42,12 @@ public class UserLibraryTest {
     @Test(timeout = 50)
     public void testGetuserslist(){
         UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
+        User u = new User("test", "test123", false);
         ul.add(u);
         ArrayList<User> testlist = new ArrayList<>();
         testlist.add(u);
         assertEquals(2, ul.getUsersList().size());
-        User u2 = new User("steve", "balmer");
+        User u2 = new User("steve", "balmer", false);
         ul.add(u2);
         testlist.add(u2);
         assertEquals(3, ul.getUsersList().size());

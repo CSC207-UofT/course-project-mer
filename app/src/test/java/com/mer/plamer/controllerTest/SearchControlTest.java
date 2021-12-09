@@ -43,7 +43,7 @@ public class SearchControlTest {
 
     @Test
     public void testUserSearch() {
-        User u = new User("name", "pwd");
+        User u = new User("name", "pwd", false);
         UserLibrary ul = new UserLibrary();
         ul.add(u);
         UserLibraryAction.assignLibrary(ul);
