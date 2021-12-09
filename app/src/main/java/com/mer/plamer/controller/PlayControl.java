@@ -59,6 +59,7 @@ public class PlayControl {
         PlayAction.end();
         PlayAction.prev();
 
+
         if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
             PlayAction.loop();
 
