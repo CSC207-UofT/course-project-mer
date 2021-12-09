@@ -37,7 +37,7 @@ public class UniversalPlaylistAdapterTest {
     @Test
     public void testProperties() {
         assertEquals(2, upla.getCount());
-        assertNull(upla.getItem(0));
+        assertEquals("name", upla.getItem(0));
         assertEquals(0, upla.getItemId(0));
     }
 }
