@@ -2,21 +2,21 @@
 
 ## Specifications:
 
-Plamer presents:
+Plamer will present a set of features of a music player:
 
-- Import audio files and play them
+- Can import audio files and play them
 
-- Pause/change tracks
+- Can pause/change tracks
 
-- Seek/reverse to a position when playing a track
+- Can seek/reverse to a position when playing a track
 
-- Display a song’s metadata
+- Can display a song’s metadata
 
-- Store a user’s login information
+- Can store a user’s login information
 
-- Store a user created playlist
+- Can store a user created playlist
 
-- Multiple play mods (repeat on/off, shuffle)
+- Has multiple play mods (repeat on/off, shuffle)
 
 ## Major Design Decisions:
 
