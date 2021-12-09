@@ -25,6 +25,12 @@ public class TrackAdapter extends BaseAdapter {
         this.lst = l;
     }
 
+    public TrackAdapter(Context context, LayoutInflater lif, ArrayList<TrackDataHolder> l) {
+        this.context = context;
+        this.inflater = lif;
+        this.lst = l;
+    }
+
     @Override
     public int getCount() {
         return lst.size();

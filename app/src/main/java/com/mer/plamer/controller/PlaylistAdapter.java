@@ -25,6 +25,11 @@ public class PlaylistAdapter extends BaseAdapter {
         this.playListID = playListID;
     }
 
+    public PlaylistAdapter(LayoutInflater lif, ArrayList<String> playListID) {
+        this.inflater = lif;
+        this.playListID = playListID;
+    }
+
     @Override
     public int getCount() {
         return playListID.size();
