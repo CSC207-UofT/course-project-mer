@@ -24,12 +24,23 @@ public class AddAdapter extends BaseAdapter {
     private final LayoutInflater inflater;
     private final ThreadLocal<Context> context = new ThreadLocal<>();
 
+    /**
+     * Constructor for AddAdapter
+     * @param context the context
+     * @param l the data to be converted
+     */
     public AddAdapter(Context context, ArrayList<AddDataHolder> l){
         this.context.set(context);
         this.lst = l;
         inflater = LayoutInflater.from(context);
     }
 
+    /**
+     * Alternative constructor for AddAdapter
+     * @param context the context
+     * @param l the data to be converted
+     * @param lif layout inflator of selected xml file
+     */
     public AddAdapter(Context context, ArrayList<AddDataHolder> l, LayoutInflater lif) {
         this.context.set(context);
         this.lst = l;
