@@ -105,6 +105,15 @@ public class UserLibraryAction {
     }
 
     /**
+     * Return whether a user with specified username is admin or not.
+     * @param username the username of the user being investigated.
+     * @return true if it is, false otherwise.
+     */
+    public static boolean checkAdmin(String username) {
+        return userLibrary.get(username).getAdmin();
+    }
+
+    /**
      * Assign a previously stored library as the new library.
      * @param library the previously stored library.
      */

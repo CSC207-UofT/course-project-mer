@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.UserAdapter;
+import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.UserLibraryAction;
 
@@ -31,6 +32,7 @@ public class UniverseUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universe_user_layout);
+        UserControl userControl = new UserControl();
 
         // set button
         ImageButton playing = findViewById(R.id.universe_user_playing);
@@ -58,10 +60,24 @@ public class UniverseUserActivity extends AppCompatActivity {
             builder.setMessage("Do you want to delete this user?");
 
             builder.setPositiveButton("Yes", (dialog, which) -> {
-                // TODO
-                adapter.notifyDataSetChanged();
-                Toast.makeText(UniverseUserActivity.this,
-                        "You have deleted a playlist.", Toast.LENGTH_LONG).show();
+
+                ArrayList<String> user_list = UserLibraryAction.getAllUserName();
+
+                if (UserLibraryAction.checkAdmin(user_list.get(position))){
+                    Toast.makeText(UniverseUserActivity.this,
+                            "Admin cannot be deleted.",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if (userControl.userDeletion(user_list.get(position))) {
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(UniverseUserActivity.this,
+                            "User deleted.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(UniverseUserActivity.this,
+                            "Only Admin is allowed to delete other user.",
+                            Toast.LENGTH_LONG).show();
+                }
             });
 
             builder.setNegativeButton("Cancel", (dialog, which) -> {

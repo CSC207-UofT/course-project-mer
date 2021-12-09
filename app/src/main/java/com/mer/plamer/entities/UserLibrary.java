@@ -11,7 +11,7 @@ public class UserLibrary implements Storable<User> {
      */
     public UserLibrary() {
         this.usersList = new ArrayList<>();
-        Admin admin = new Admin("admin", "adminadmin");
+        Admin admin = new Admin("admin", "adminadmin", true);
         this.usersList.add(admin);
     }
 
@@ -31,7 +31,7 @@ public class UserLibrary implements Storable<User> {
      * @return The user created.
      */
     public User create(String username, String password) {
-        return new User(username,password);
+        return new User(username,password, false);
     }
 
     /**

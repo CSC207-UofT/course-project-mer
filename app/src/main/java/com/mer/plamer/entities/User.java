@@ -10,17 +10,20 @@ public class User {
     private String username;
     private String password;
     private final ArrayList<String> playlists_id;
+    private final boolean isAdmin;
     private final String user_id;
     private static int id = 1;
 
     /**
      * Constructor for User. The playlists and uploadedTracks will be empty at the begining.
-     * @param name the username of the user.
+     * @param name the username of the user
      * @param password the password of the user
+     * @param bool whether this user will be an admin class or not
      */
-    public User(String name, String password){
+    public User(String name, String password, boolean bool){
         this.username = name;
         this.password = password;
+        this.isAdmin = bool;
         this.playlists_id = new ArrayList<>();
         this.user_id = String.valueOf(id);
         id++;
@@ -46,6 +49,11 @@ public class User {
     public ArrayList<String> getPlaylists() {
         return this.playlists_id;
     }
+
+    /**
+     * @return true if this user is an admin.
+     */
+    public boolean getAdmin() { return this.isAdmin;}
 
     /**
      * Change the username of the User.

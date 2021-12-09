@@ -17,7 +17,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        u = new User("testUser", "testing");
+        u = new User("testUser", "testing", false);
     }
 
     @Test(timeout = 50)

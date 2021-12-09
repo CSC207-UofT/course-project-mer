@@ -54,7 +54,7 @@ public class UserAction {
      * @return true if the user is an instance of Admin, false otherwise
      */
     public boolean isAdmin() {
-        return this.getUser() instanceof Admin;
+        return this.getUser().getAdmin();
     }
 
     /**
