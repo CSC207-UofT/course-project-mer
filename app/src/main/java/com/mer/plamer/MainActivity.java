@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.mer.plamer.controller.PlaylistControl;
@@ -43,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         trackLibraryControl.scanLocal();
         playlistControl.scanLocal();
         userControl.scanLocal();
+
+        if(!trackLibraryControl.hasMedia()){
+            Toast.makeText(MainActivity.this,
+                    "No audio file detected. The program now exits.", Toast.LENGTH_LONG).show();
+            finish();
+        }
         PlayAction.prepare();
 
         ImageButton log_in = findViewById(R.id.home_login);

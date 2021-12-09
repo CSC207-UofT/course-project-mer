@@ -40,6 +40,14 @@ public class TrackLibraryControl {
     }
 
     /**
+     * Return true if the track library has at least one media file
+     * @return true if the track library is not empty, false otherwise
+     */
+    public boolean hasMedia(){
+        return !TrackLibraryAction.isEmpty();
+    }
+
+    /**
      * Scan the local music on every launch (or when the user want to).
      */
     public void scanLocal() {
