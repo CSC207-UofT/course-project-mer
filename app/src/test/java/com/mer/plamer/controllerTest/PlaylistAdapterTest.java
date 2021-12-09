@@ -34,7 +34,7 @@ public class PlaylistAdapterTest {
     @Test
     public void testProperties() {
         assertEquals(2, pla.getCount());
-        assertNull(pla.getItem(0));
+        assertEquals("id1", pla.getItem(0));
         assertEquals(0, pla.getItemId(0));
     }
 }

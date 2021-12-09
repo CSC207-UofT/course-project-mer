@@ -21,8 +21,10 @@ public class AddAdapter extends BaseAdapter {
 
     private final ArrayList<AddDataHolder> lst;
     private final LayoutInflater inflater;
+    private final Context context;
 
     public AddAdapter(Context context, ArrayList<AddDataHolder> l){
+        this.context = context;
         this.lst = l;
         inflater = LayoutInflater.from(context);
     }

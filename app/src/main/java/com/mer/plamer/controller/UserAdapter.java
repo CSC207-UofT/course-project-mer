@@ -15,14 +15,16 @@ public class UserAdapter extends BaseAdapter {
 
     private final LayoutInflater testLayoutInflater;
     private final ArrayList<String> userList;
+    private final Context context;
 
     public UserAdapter(Context testContext, ArrayList<String> userList){
+        this.context = testContext;
         this.testLayoutInflater = LayoutInflater.from(testContext);
         this.userList = userList;
     }
 
     public UserAdapter(Context testContext, ArrayList<String> userList, LayoutInflater lif){
-        this.testContext = testContext;
+        this.context = testContext;
         this.testLayoutInflater = lif;
         this.userList = userList;
     }

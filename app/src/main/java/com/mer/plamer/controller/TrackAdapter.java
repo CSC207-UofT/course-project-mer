@@ -17,8 +17,10 @@ public class TrackAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
     private final ArrayList<TrackDataHolder> lst;
+    private final Context context;
 
     public TrackAdapter(Context context, ArrayList<TrackDataHolder> l){
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.lst = l;
     }
