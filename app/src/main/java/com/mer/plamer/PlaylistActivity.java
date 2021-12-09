@@ -150,14 +150,14 @@ public class PlaylistActivity extends AppCompatActivity {
 
         // change the loop style
         repeatButton.setOnClickListener(v -> {
-            if (PlayAction.order == PlayAction.PlayOrder.LIST){
-                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
-            }
-            else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
-                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
-            }
-            else{
-                ((ImageButton)v).setImageResource(R.drawable.random);
+            Toast.makeText(PlaylistActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_list);
+            } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_one);
+            } else {
+                ((ImageButton) v).setImageResource(R.drawable.random);
             }
         });
 
