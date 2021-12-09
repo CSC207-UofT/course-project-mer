@@ -23,6 +23,11 @@ public class UniversalPlaylistAdapter extends BaseAdapter {
         this.playListID = playListID;
     }
 
+    public UniversalPlaylistAdapter(LayoutInflater lif, ArrayList<String> playListID){
+        this.inflater = lif;
+        this.playListID = playListID;
+    }
+
     /**
      * Return the total number of items in a Listview.
      * @return an int of the number of items in a Listview

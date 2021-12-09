@@ -13,10 +13,15 @@ import java.util.Collections;
  */
 public class PlayAction {
     private static String currentTrackID;
-    private static final MediaPlayer mediaPlayer = new MediaPlayer();
+    private static MediaPlayer mediaPlayer = new MediaPlayer();
     private static Playlist currentPlaylist;
     private static ArrayList<Track> shuffleList;
     public static PlayOrder order = PlayOrder.LIST;
+
+
+    public static void setMediaPlayer(MediaPlayer mp) {
+        mediaPlayer = mp;
+    }
 
     /**
      * Prepares the music player for playing.

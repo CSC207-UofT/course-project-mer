@@ -1,75 +1,48 @@
 package com.mer.plamer.usecasesTest;
-import org.junit.Test;
-import org.junit.Before;
-import static org.junit.Assert.*;
-import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.Track;
-import com.mer.plamer.usecases.PlaylistAction;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import com.mer.plamer.entities.Track;
+import com.mer.plamer.entities.TrackLibrary;
+import com.mer.plamer.usecases.PlaylistAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.TrackLibraryAction;
+
+import org.junit.Test;
 
 public class PlaylistActionTest {
-    Track t1;
-    Track t2;
-    Track t3;
-    Playlist pl;
-    PlaylistAction pla;
-
-    @Before
-    public void setUp() {
-        t1 = new Track("Jcole");
-        t2 = new Track("KDot");
-        t3 = new Track("Drake");
-        pl = new Playlist("test");
-        pla = new PlaylistAction(pl);
-        pla.addTrack(t1);
-        pla.addTrack(t2);
-        pla.addTrack(t3);
-    }
 
     @Test(timeout = 50)
-    public void testSortByLength() {
-        pla.sortByLength();
-        ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t3);
-        testlist.add(t1);
-        testlist.add(t2);
-        assertArrayEquals(testlist.toArray(), pl.getTracks().toArray());
-    }
-
-    @Test(timeout = 50)
-    public void testSortByTitle() {
-        pla.sortByTitle();
-        ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t1);
-        testlist.add(t3);
-        testlist.add(t2);
-        assertArrayEquals(testlist.toArray(), pl.getTracks().toArray());
-    }
-
-    @Test(timeout = 50)
-    public void testSortByArtist() {
-        pla.sortByArtist();
-        ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t3);
-        testlist.add(t1);
-        testlist.add(t2);
-        assertArrayEquals(testlist.toArray(), pl.getTracks().toArray());
-    }
-
-
-    @Test(timeout = 50)
-    public void testStatus() {
-        pla.setStatus("RANDOM");
-        assertEquals("RANDOM", pl.getStatus());
+    public void testConstructor(){
+        PlaylistAction pla = new PlaylistAction();
+        PlaylistLibraryAction.add("test");
+        String testplID = PlaylistLibraryAction.search("test").get(0);
+        pla.setPlaylist(testplID);
+        assertNotNull(PlaylistAction.createPlaylist("test2"));
     }
 
     @Test(timeout = 50)
     public void testAddDelete() {
-        Playlist plist = new Playlist("test");
-        PlaylistAction pla = new PlaylistAction(plist);
-        Track t = new Track("Jcole");
-        assertTrue(pla.addTrack(t));
-        assertTrue(pla.delTrack(t));
+        PlaylistAction pla = new PlaylistAction();
+        PlaylistLibraryAction.add("test");
+        String testplID = PlaylistLibraryAction.search("test").get(0);
+        pla.setPlaylist(testplID);
+        TrackLibrary tl = new TrackLibrary();
+        Track t1 = new Track("test");
+        t1.setArtist("Jcole");
+        t1.setTitle("MiddleChild");
+        t1.setLength("100");
+        String t1id = t1.getID();
+        tl.add(t1);
+        TrackLibraryAction.assignLibrary(tl);
+        assertTrue(pla.addTrack(t1id));
+        assertTrue(pla.delTrack(t1id));
+        pla.sortByRandom();
+        pla.sortByArtist();
+        pla.sortByTitle();
+        pla.sortByLength();
+        pla.setStatus("RANDOM");
+        assertNotNull(PlaylistAction.getAllTrackId(testplID));
     }
 }

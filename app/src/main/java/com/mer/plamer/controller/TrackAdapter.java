@@ -23,6 +23,12 @@ public class TrackAdapter extends BaseAdapter {
         this.lst = l;
     }
 
+    public TrackAdapter(Context context, LayoutInflater lif, ArrayList<TrackDataHolder> l) {
+        this.context = context;
+        this.inflater = lif;
+        this.lst = l;
+    }
+
     /**
      * Return the total number of items in a Listview.
      * @return an int of the number of items in a Listview

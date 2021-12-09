@@ -27,6 +27,12 @@ public class AddAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(context);
     }
 
+    public AddAdapter(Context context, ArrayList<AddDataHolder> l, LayoutInflater lif) {
+        this.context = context;
+        this.lst = l;
+        this.inflater = lif;
+    }
+
     /**
      * Return the total number of items in a Listview.
      * @return an int of the number of items in a Listview

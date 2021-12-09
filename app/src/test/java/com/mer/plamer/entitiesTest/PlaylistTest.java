@@ -1,26 +1,28 @@
 package com.mer.plamer.entitiesTest;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Before;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import com.mer.plamer.entities.Playlist;
+import com.mer.plamer.entities.Track;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
-import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.Track;
 
 public class PlaylistTest {
 
     @Test(timeout = 50)
     public void  testGetID(){
         Playlist pl = new Playlist("test");
-        assertEquals("2", pl.getId());
+        String plid = pl.getId();
+        assertEquals(plid, pl.getId());
         Playlist pl1 = new Playlist("test1");
-        assertEquals("3", pl1.getId());
+        String pl1id = pl1.getId();
+        assertEquals(pl1id, pl1.getId());
     }
 
     @Test(timeout = 50)
@@ -101,19 +103,22 @@ public class PlaylistTest {
         Playlist pl = new Playlist("test");
         class Sortbyname implements Comparator<Track> {
             public int compare(Track a, Track b){
-                return a.getTitle().compareTo(b.getTitle());
+                return a.getArtist().compareTo(b.getArtist());
             }
         }
         Track t1 = new Track("Jcole");
+        t1.setArtist("J");
         Track t2 = new Track("KDot");
+        t2.setArtist("K");
         Track t3 = new Track("Drake");
+        t3.setArtist("D");
         pl.addTrack(t2);
         pl.addTrack(t3);
         pl.addTrack(t1);
         pl.sort(new Sortbyname());
         ArrayList<Track> testlist = new ArrayList<>();
-        testlist.add(t1);
         testlist.add(t3);
+        testlist.add(t1);
         testlist.add(t2);
         assertArrayEquals(testlist.toArray(), pl.getTracks().toArray());
     }

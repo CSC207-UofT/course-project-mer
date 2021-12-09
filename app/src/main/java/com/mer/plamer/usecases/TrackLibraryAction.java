@@ -76,6 +76,17 @@ public class TrackLibraryAction {
         return track;
     }
 
+    public static Track add(String path, MediaMetadataRetriever mmr) {
+        mmr.setDataSource(path);
+        Track track = trackLibrary.create(path);
+        track.setArtist(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+        track.setTitle(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE));
+        track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
+        track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+        trackLibrary.add(track);
+        return track;
+    }
+
     /**
      * Return the static id of Track class.
      * @return the static id.

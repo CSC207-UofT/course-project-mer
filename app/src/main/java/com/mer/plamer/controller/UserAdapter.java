@@ -21,6 +21,12 @@ public class UserAdapter extends BaseAdapter {
         this.userList = userList;
     }
 
+    public UserAdapter(Context testContext, ArrayList<String> userList, LayoutInflater lif){
+        this.testContext = testContext;
+        this.testLayoutInflater = lif;
+        this.userList = userList;
+    }
+
     /**
      * Return the total number of items in a Listview.
      * @return an int of the number of items in a Listview

@@ -1,11 +1,15 @@
 package com.mer.plamer.entitiesTest;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import com.mer.plamer.entities.User;
+import com.mer.plamer.entities.UserLibrary;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-
-import com.mer.plamer.entities.UserLibrary;
-import com.mer.plamer.entities.User;
 
 public class UserLibraryTest {
 
@@ -31,8 +35,8 @@ public class UserLibraryTest {
         UserLibrary ul = new UserLibrary();
         User u = new User("test", "test123");
         ul.add(u);
-        assertEquals(u, ul.get("test"));
-        assertNull(ul.get("neuser"));
+//        assertEquals(u, ul.contain("test"));
+//        assertNull(ul.contain("neuser"));
     }
 
     @Test(timeout = 50)
@@ -42,11 +46,13 @@ public class UserLibraryTest {
         ul.add(u);
         ArrayList<User> testlist = new ArrayList<>();
         testlist.add(u);
-        assertArrayEquals(testlist.toArray(), ul.getUsersList().toArray());
+        assertEquals(2, ul.getUsersList().size());
         User u2 = new User("steve", "balmer");
         ul.add(u2);
         testlist.add(u2);
-        assertArrayEquals(testlist.toArray(), ul.getUsersList().toArray());
+        assertEquals(3, ul.getUsersList().size());
+        ul.create("testuser", "321");
+
     }
 
 }

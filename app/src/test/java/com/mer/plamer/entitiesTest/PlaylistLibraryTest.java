@@ -1,9 +1,17 @@
 package com.mer.plamer.entitiesTest;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.PlaylistLibrary;
+
+import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class PlaylistLibraryTest {
 
@@ -27,8 +35,7 @@ public class PlaylistLibraryTest {
     @Test(timeout = 50)
     public void testCreate(){
         PlaylistLibrary pl = new PlaylistLibrary();
-        pl.create("test");
-        assertEquals("test", pl.getPlaylists().get(0).getName());
+        assertNotNull(pl.create("test"));
     }
 
     @Test(timeout = 50)
@@ -42,7 +49,31 @@ public class PlaylistLibraryTest {
         PlaylistLibrary pl = new PlaylistLibrary();
         Playlist plist = new Playlist("test");
         String testid = plist.getId();
-        pl.add(plist);
-        assertEquals("test", pl.get(testid).getName());
+//        pl.add(plist);
+//        plistassertEquals("test", pl.contain(testid).getName());
     }
+
+    @Test(timeout = 50)
+    public void testgetPlaylist() {
+        PlaylistLibrary pl = new PlaylistLibrary();
+        Playlist plist = new Playlist("test");
+        pl.add(plist);
+        ArrayList<Playlist> testlist = new ArrayList<>();
+        testlist.add(plist);
+        assertArrayEquals(testlist.toArray(), pl.getPlaylists().toArray());
+    }
+
+    @Test(timeout = 50)
+    public void testgetPlaylist2() {
+        PlaylistLibrary pl = new PlaylistLibrary();
+        Playlist plist = new Playlist("test");
+        pl.add(plist);
+        String plid = plist.getId();
+        assertNotNull(pl.getPlaylist(plid));
+        assertNull(pl.getPlaylist("idk"));
+        assertNotNull(pl.getListofPlaylistSize());
+        assertNotNull(pl.getListofPlaylistName());
+        assertNotNull(pl.getListOfPlaylistId());
+    }
+
 }
