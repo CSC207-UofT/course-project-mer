@@ -3,6 +3,7 @@ package com.mer.plamer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -85,6 +86,8 @@ public class MainPageActivity extends AppCompatActivity {
 
         // change the loop style
         repeatButton.setOnClickListener(v -> {
+            Toast.makeText(MainPageActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
             if (PlayAction.order == PlayAction.PlayOrder.LIST) {
                 ((ImageButton) v).setImageResource(R.drawable.repeat_list);
             } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {

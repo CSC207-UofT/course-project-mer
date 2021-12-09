@@ -135,6 +135,8 @@ public class OwnPlaylistActivity extends AppCompatActivity {
 
         // change the loop style
         repeatButton.setOnClickListener(v -> {
+            Toast.makeText(OwnPlaylistActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
             if (PlayAction.order == PlayAction.PlayOrder.LIST){
                 ((ImageButton)v).setImageResource(R.drawable.repeat_list);
             }

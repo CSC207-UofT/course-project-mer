@@ -129,6 +129,11 @@ public class PlayerActivity extends AppCompatActivity {
         mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
     }
 
+    /**
+     * Manage views of play button and play mode button
+     * @param playButton the play button of a view
+     * @param repeatButton the repeat button of a view
+     */
     public static void setButton(ImageButton playButton, ImageButton repeatButton) {
         // set play/pause
         if (PlayAction.isPlaying()) {
