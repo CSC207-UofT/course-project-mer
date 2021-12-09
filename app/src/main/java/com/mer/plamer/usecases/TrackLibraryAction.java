@@ -138,4 +138,11 @@ public class TrackLibraryAction {
         return IDList;
     }
 
+    /**
+     * Returns true if the track library contains no media
+     * @return true if there's no media in the library, false otherwise
+     */
+    public static boolean isEmpty(){
+        return trackLibrary.isEmpty();
+    }
 }
