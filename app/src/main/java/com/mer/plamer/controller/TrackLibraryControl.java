@@ -1,5 +1,6 @@
 package com.mer.plamer.controller;
 
+import android.media.MediaMetadataRetriever;
 import android.os.Environment;
 
 import com.mer.plamer.usecases.TrackLibraryAction;
@@ -10,12 +11,18 @@ import java.io.File;
 
 public class TrackLibraryControl {
 
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
+    private final TinyDB tinydb;
 
     /**
      * Constructor of TrackLibraryControl.
      */
-    public TrackLibraryControl() {};
+    public TrackLibraryControl() {
+        this.tinydb = new TinyDB(MyApp.getContext());
+    }
+
+    public TrackLibraryControl(TinyDB tinydb) {
+        this.tinydb = tinydb;
+    }
 
     /**
      * Add a new Track to tracklibrary as well as the local persistent file.
@@ -23,6 +30,12 @@ public class TrackLibraryControl {
      */
     public void add(String path) {
         TrackLibraryAction.add(path);
+        tinydb.putInt("track_static_id", TrackLibraryAction.getStaticId());
+        tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
+    }
+
+    public void add(String path, MediaMetadataRetriever mmr) {
+        TrackLibraryAction.add(path, mmr);
         tinydb.putInt("track_static_id", TrackLibraryAction.getStaticId());
         tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
     }

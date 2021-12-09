@@ -33,8 +33,21 @@ public class UserActionTest {
         String plid = pl.getId();
         PlaylistLibraryAction.playlistLibrary.add(pl);
         ua.addPlaylist(plid);
+    }
 
-
+    @Test(timeout = 50)
+    public void testPlaylists() {
+        UserLibraryAction.add("testuser", "123");
+        UserAction ua = new UserAction();
+        ua.setUser("testuser");
+        Playlist pl = new Playlist("123");
+        String plid = pl.getId();
+        PlaylistLibraryAction.playlistLibrary.add(pl);
+        ua.addPlaylist(plid);
+        assertNotNull(ua.getCurrentPlaylists());
+        assertNotNull(ua.ToPlaylist());
+        assertNotNull(ua.Playlistname());
+        assertNotNull(ua.Playlistsize());
     }
 
 }

@@ -1,7 +1,6 @@
 package com.mer.plamer.controller;
 
 
-import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
@@ -12,13 +11,19 @@ import com.mer.plamer.TinyDB;
 public class UserControl {
 
     public UserAction userAction;
-    private final TinyDB tinydb = new TinyDB(MyApp.getContext());
+    private final TinyDB tinydb;
 
     /**
      * Constructor of UserControl.
      */
     public UserControl() {
         this.userAction = new UserAction();
+        this.tinydb = new TinyDB(MyApp.getContext());
+    }
+
+    public UserControl(TinyDB tinydb) {
+        this.userAction = new UserAction();
+        this.tinydb = tinydb;
     }
 
     /**

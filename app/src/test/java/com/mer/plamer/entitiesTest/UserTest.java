@@ -54,5 +54,6 @@ public class UserTest {
     public void testGetID() {
         String userid = u.getId();
         assertEquals(userid, u.getId());
+        User.changeId(39);
     }
 }

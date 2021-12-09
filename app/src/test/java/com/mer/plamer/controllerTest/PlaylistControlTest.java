@@ -1,54 +1,97 @@
-package com.mer.plamer.controllerTest;//package com.mer.plamer.controllerTest;
-//import org.junit.Test;
-//import static org.junit.Assert.*;
-//
-//import com.mer.plamer.controller.PlaylistControl;
-//import com.mer.plamer.entities.Playlist;
-//import com.mer.plamer.entities.PlaylistLibrary;
-//import com.mer.plamer.entities.Track;
-//import com.mer.plamer.usecases.PlaylistAction;
-//
-//import org.junit.Before;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//
-//public class PlaylistControlTest {
-//    public Playlist pl;
-//    public PlaylistAction pla;
-//    public PlaylistControl plc;
-//
-//
-//    @Before
-//    public void setUp() {
-//        pl = new Playlist("test");
-//        pla = new PlaylistAction(pl);
-//        plc = new PlaylistControl();
-//        plc.setPlaylistAction(pla);
-//    }
-//
-//    @Test(timeout = 50)
-//    public void testPlaylistAction() {
-//        Track t1 = new Track("test");
-//        String t1id = t1.getID();
-//        assertFalse(plc.trackAdd(t1id));
-//        assertFalse(plc.trackRemove(t1id));
-//    }
-//
-//    @Test(timeout = 50)
-//    public void testCreate() {
-//        plc.createAddPlaylist("test");
-//        assertEquals(0, pl.getLength());
-//        plc.setStatus("RANDOM");
-//    }
-//
-//    @Test(timeout = 50)
-//    public void testSort() {
-//        assertTrue(plc.sort("Title"));
-//        assertTrue(plc.sort("Artist"));
-//        assertTrue(plc.sort("Length"));
-//        assertTrue(plc.sort("Random"));
-//        assertFalse(plc.sort("IDK"));
-//    }
-//}
+package com.mer.plamer.controllerTest;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+import com.mer.plamer.TinyDB;
+
+import com.mer.plamer.controller.PlayControl;
+import com.mer.plamer.controller.PlaylistControl;
+import com.mer.plamer.entities.Playlist;
+import com.mer.plamer.entities.PlaylistLibrary;
+import com.mer.plamer.entities.Track;
+import com.mer.plamer.entities.TrackLibrary;
+import com.mer.plamer.usecases.PlaylistAction;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+import com.mer.plamer.usecases.TrackLibraryAction;
+
+@RunWith(MockitoJUnitRunner.class)
+public class PlaylistControlTest {
+
+    @Test
+    public void testPLC() {
+        TinyDB tinydb = mock(TinyDB.class);
+        PlaylistControl plc = new PlaylistControl(tinydb);
+
+        PlaylistAction pla = new PlaylistAction();
+        PlaylistLibraryAction.add("test");
+        String testplID = PlaylistLibraryAction.search("test").get(0);
+        pla.setPlaylist(testplID);
+
+        TrackLibrary tl = new TrackLibrary();
+        Track t1 = new Track("test");
+        t1.setArtist("Jcole");
+        t1.setTitle("MiddleChild");
+        t1.setLength("100");
+        String t1id = t1.getID();
+        tl.add(t1);
+
+        Track t2 = new Track("asd");
+        String t2id = t2.getID();
+        tl.add(t2);
+
+        TrackLibraryAction.assignLibrary(tl);
+
+        plc.setPlaylistAction(pla);
+
+        assertTrue(plc.trackRemove(t1id));
+
+        assertTrue(plc.trackAdd(t2id));
+    }
+
+    @Test
+    public void testSort() {
+        TinyDB tinydb = mock(TinyDB.class);
+        PlaylistControl plc = new PlaylistControl(tinydb);
+        PlaylistAction pla = new PlaylistAction();
+        PlaylistLibraryAction.add("test");
+        String testplID = PlaylistLibraryAction.search("test").get(0);
+        pla.setPlaylist(testplID);
+        PlaylistLibraryAction.add("asd");
+        plc.setPlaylistAction(pla);
+
+        TrackLibrary tl = new TrackLibrary();
+        Track t1 = new Track("test");
+        t1.setArtist("Jcole");
+        t1.setTitle("MiddleChild");
+        t1.setLength("100");
+        tl.add(t1);
+        TrackLibraryAction.assignLibrary(tl);
+
+        assertTrue(plc.sort("Title"));
+        assertTrue(plc.sort("Artist"));
+        assertTrue(plc.sort("Length"));
+        assertTrue(plc.sort("Random"));
+        assertFalse(plc.sort("FALSE"));
+    }
+
+    @Test
+    public void testAddDel() {
+        TinyDB tinydb = mock(TinyDB.class);
+        PlaylistControl plc = new PlaylistControl(tinydb);
+        PlaylistAction pla = new PlaylistAction();
+        PlaylistLibraryAction.add("test");
+        String testplID = PlaylistLibraryAction.search("test").get(0);
+        pla.setPlaylist(testplID);
+        PlaylistLibraryAction.add("asd");
+        plc.setPlaylistAction(pla);
+
+        plc.add("fdsa");
+        plc.remove(testplID);
+        plc.scanLocal();
+        plc.setStatus("RANDOM");
+
+    }
+}

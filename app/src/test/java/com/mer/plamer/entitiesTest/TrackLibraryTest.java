@@ -3,6 +3,8 @@ package com.mer.plamer.entitiesTest;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
@@ -43,7 +45,14 @@ public class TrackLibraryTest {
         assertNotNull(tl.getTrackPathList());
         tl.emptyTheLibrary();
         assertTrue(tl.isEmpty());
+    }
 
-
+    @Test
+    public void testProperties() {
+        TrackLibrary tl = new TrackLibrary();
+        tl.add(t1);
+        tl.add(t2);
+        tl.add(t3);
+        assertEquals(t3, tl.getByIndex(2));
     }
 }

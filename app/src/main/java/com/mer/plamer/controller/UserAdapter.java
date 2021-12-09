@@ -26,6 +26,12 @@ public class UserAdapter extends BaseAdapter {
         this.userList = userList;
     }
 
+    public UserAdapter(Context testContext, ArrayList<String> userList, LayoutInflater lif){
+        this.testContext = testContext;
+        this.testLayoutInflater = lif;
+        this.userList = userList;
+    }
+
     @Override
     public int getCount() {
         return userList.size();
