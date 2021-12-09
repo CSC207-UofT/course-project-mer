@@ -4,7 +4,6 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.User;
 
 import org.junit.Before;
@@ -40,14 +39,9 @@ public class UserTest {
 
     @Test(timeout = 50)
     public void testGetPlayLists() {
+        //noinspection MismatchedQueryAndUpdateOfCollection
         ArrayList<Playlist> al = new ArrayList<>();
         assertArrayEquals(al.toArray(), u.getPlaylists().toArray());
-    }
-
-    @Test(timeout = 50)
-    public void testUploadedTracks() {
-        ArrayList<Track> tracklist = new ArrayList<>();
-//        assertArrayEquals(tracklist.toArray(), u.getUploadedTracks().toArray());
     }
 
     @Test(timeout = 50)

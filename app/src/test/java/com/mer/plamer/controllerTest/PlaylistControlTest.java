@@ -5,12 +5,9 @@ import static org.mockito.Mockito.mock;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import com.mer.plamer.TinyDB;
+import com.mer.plamer.gateway.TinyDB;
 
-import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistControl;
-import com.mer.plamer.entities.Playlist;
-import com.mer.plamer.entities.PlaylistLibrary;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 import com.mer.plamer.usecases.PlaylistAction;

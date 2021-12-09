@@ -32,8 +32,6 @@ public class PlaylistLibraryActionTest {
     @Test(timeout = 50)
     public void testProperties() {
         PlaylistLibraryAction.add("test");
-        ArrayList<String> plID = PlaylistLibraryAction.search("test");
-        String playlistID = plID.get(0);
         PlaylistLibrary pl1 = new PlaylistLibrary();
         PlaylistLibraryAction.assignLibrary(pl1);
         PlaylistLibraryAction.changeId(19);
@@ -41,13 +39,4 @@ public class PlaylistLibraryActionTest {
         
 
     }
-
-//    @Test(timeout = 50)
-//    public void testSearch() {
-//        PlaylistLibraryAction pla = new PlaylistLibraryAction();
-//        pla.add("test");
-//        assertNotNull(pla.search("test"));
-//        ArrayList<Track> pl = pla.search("test");
-//        assertEquals("test", pl.get(0).getName());
-//    }
 }

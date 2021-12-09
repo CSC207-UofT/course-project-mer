@@ -44,14 +44,6 @@ public class PlaylistLibraryTest {
         assertTrue(pl.isEmpty());
     }
 
-    @Test(timeout = 50)
-    public void testContain(){
-        PlaylistLibrary pl = new PlaylistLibrary();
-        Playlist plist = new Playlist("test");
-        String testid = plist.getId();
-//        pl.add(plist);
-//        plistassertEquals("test", pl.contain(testid).getName());
-    }
 
     @Test(timeout = 50)
     public void testgetPlaylist() {

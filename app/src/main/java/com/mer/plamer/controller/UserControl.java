@@ -4,17 +4,15 @@ package com.mer.plamer.controller;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserAction;
 import com.mer.plamer.usecases.UserLibraryAction;
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
-
-import java.util.ArrayList;
+import com.mer.plamer.gateway.PlamerContext;
+import com.mer.plamer.gateway.TinyDB;
 
 /**
  * Controller for user manipulations
  */
 public class UserControl {
 
-    public UserAction userAction;
+    public final UserAction userAction;
     private final TinyDB tinydb;
 
     /**
@@ -22,7 +20,7 @@ public class UserControl {
      */
     public UserControl() {
         this.userAction = new UserAction();
-        this.tinydb = new TinyDB(MyApp.getContext());
+        this.tinydb = new TinyDB(PlamerContext.getContext());
     }
 
     public UserControl(TinyDB tinydb) {

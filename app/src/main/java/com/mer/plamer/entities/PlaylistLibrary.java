@@ -97,7 +97,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the list of all playlist size.
      */
     public ArrayList<Integer> getListofPlaylistSize() {
-        ArrayList<Integer> list_of_size = new ArrayList<Integer>();
+        ArrayList<Integer> list_of_size = new ArrayList<>();
         for (Playlist playlist : playlists) {
             list_of_size.add(playlist.getLength());
         }
@@ -109,7 +109,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the list of all playlist name.
      */
     public ArrayList<String> getListofPlaylistName() {
-        ArrayList<String> list_of_name = new ArrayList<String>();
+        ArrayList<String> list_of_name = new ArrayList<>();
         for (Playlist playlist : playlists) {
             list_of_name.add(playlist.getName());
         }
@@ -121,7 +121,7 @@ public class PlaylistLibrary implements Storable<Playlist> {
      * @return the list of all playlist id.
      */
     public ArrayList<String> getListOfPlaylistId() {
-        ArrayList<String> list_of_id = new ArrayList<String>();
+        ArrayList<String> list_of_id = new ArrayList<>();
         for (Playlist playlist : playlists) {
             list_of_id.add(playlist.getId());
         }

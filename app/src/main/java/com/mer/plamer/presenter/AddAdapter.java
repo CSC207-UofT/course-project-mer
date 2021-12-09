@@ -1,4 +1,4 @@
-package com.mer.plamer.controller;
+package com.mer.plamer.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,29 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
+import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
-public class TrackAdapter extends BaseAdapter {
+/**
+ * Adapter that convert data to Listview of add track into a playlist.
+ */
+public class AddAdapter extends BaseAdapter {
 
+    private final ArrayList<AddDataHolder> lst;
     private final LayoutInflater inflater;
-    private final ArrayList<TrackDataHolder> lst;
-    private final Context context;
+    private final ThreadLocal<Context> context = new ThreadLocal<>();
 
-    public TrackAdapter(Context context, ArrayList<TrackDataHolder> l){
-        this.context = context;
-        inflater = LayoutInflater.from(context);
+    public AddAdapter(Context context, ArrayList<AddDataHolder> l){
+        this.context.set(context);
         this.lst = l;
+        inflater = LayoutInflater.from(context);
     }
 
-    public TrackAdapter(Context context, LayoutInflater lif, ArrayList<TrackDataHolder> l) {
-        this.context = context;
-        this.inflater = lif;
+    public AddAdapter(Context context, ArrayList<AddDataHolder> l, LayoutInflater lif) {
+        this.context.set(context);
         this.lst = l;
+        this.inflater = lif;
     }
 
     /**
@@ -72,11 +77,12 @@ public class TrackAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.track_item,null);
             holder = new ViewHolder();
-            holder.trackTittle = convertView.findViewById(R.id.track_item_name);
-            holder.trackArtist = convertView.findViewById(R.id.track_item_artist);
-            holder.trackLength = convertView.findViewById(R.id.track_item_length);
+            convertView = inflater.inflate(R.layout.add_item,null);
+            holder.trackTittle = convertView.findViewById(R.id.add_item_name);
+            holder.trackArtist = convertView.findViewById(R.id.add_item_artist);
+            holder.trackLength = convertView.findViewById(R.id.add_item_length);
+            holder.cb = convertView.findViewById(R.id.check_box);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -84,33 +90,37 @@ public class TrackAdapter extends BaseAdapter {
         holder.trackTittle.setText(lst.get(position).tittle);
         holder.trackArtist.setText(lst.get(position).artist);
         holder.trackLength.setText(lst.get(position).duration);
+        holder.cb.setChecked(lst.get(position).checked);
         return convertView;
     }
 
     /**
      * Hold views an item view need to show.
      */
-    private static class ViewHolder{
+    public static class ViewHolder{
         TextView trackTittle;
         TextView trackArtist;
         TextView trackLength;
+        CheckBox cb;
     }
 
     /**
      * Hold data input.
      */
-    public static class TrackDataHolder {
-        public String tittle;
-        public String artist;
-        public String duration;
-        public String id;
+    public static class AddDataHolder {
+        public final String tittle;
+        public final String artist;
+        public final String duration;
+        public final String id;
+        public boolean checked;
 
-        public TrackDataHolder(String i){
+        public AddDataHolder(String i, boolean c){
             ArrayList<String> info = TrackLibraryAction.fetchMetadata(i);
             id = i;
             tittle = info.get(0);
             artist = info.get(1);
             duration = PlayControl.toMinuteSeconds(Integer.parseInt(info.get(2)));
+            checked = c;
         }
     }
 }

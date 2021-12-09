@@ -1,21 +1,19 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.PlaylistControl;
-import com.mer.plamer.controller.TrackAdapter;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;

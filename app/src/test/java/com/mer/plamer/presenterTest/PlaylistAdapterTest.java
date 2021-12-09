@@ -1,13 +1,11 @@
-package com.mer.plamer.controllerTest;
+package com.mer.plamer.presenterTest;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
-import android.content.Context;
-import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 
-import com.mer.plamer.controller.PlaylistAdapter;
+import com.mer.plamer.presenter.PlaylistAdapter;
 
 import org.junit.Before;
 import org.junit.Test;

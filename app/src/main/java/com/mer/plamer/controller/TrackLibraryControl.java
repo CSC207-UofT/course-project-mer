@@ -4,8 +4,8 @@ import android.media.MediaMetadataRetriever;
 import android.os.Environment;
 
 import com.mer.plamer.usecases.TrackLibraryAction;
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
+import com.mer.plamer.gateway.PlamerContext;
+import com.mer.plamer.gateway.TinyDB;
 
 import java.io.File;
 
@@ -20,7 +20,7 @@ public class TrackLibraryControl {
      * Constructor of TrackLibraryControl.
      */
     public TrackLibraryControl() {
-        this.tinydb = new TinyDB(MyApp.getContext());
+        this.tinydb = new TinyDB(PlamerContext.getContext());
     }
 
     public TrackLibraryControl(TinyDB tinydb) {

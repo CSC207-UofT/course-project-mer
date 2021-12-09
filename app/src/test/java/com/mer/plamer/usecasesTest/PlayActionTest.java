@@ -16,14 +16,12 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.robolectric.shadows.ShadowMediaPlayer;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayActionTest {
 
     @Test
     public void test1() {
-        ShadowMediaPlayer smp = new ShadowMediaPlayer();
         Track t1 = new Track("samplepath");
         String t1id = t1.getID();
         t1.setLength("100");

@@ -1,4 +1,4 @@
-package com.mer.plamer.controller;
+package com.mer.plamer.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
+import com.mer.plamer.controller.UserControl;
 
 import java.util.ArrayList;
 

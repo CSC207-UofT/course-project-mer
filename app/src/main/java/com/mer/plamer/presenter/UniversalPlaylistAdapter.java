@@ -1,4 +1,4 @@
-package com.mer.plamer.controller;
+package com.mer.plamer.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,24 +9,23 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
+import com.mer.plamer.usecases.PlaylistLibraryAction;
+
 import java.util.ArrayList;
 
-public class UserAdapter extends BaseAdapter {
+public class UniversalPlaylistAdapter extends BaseAdapter {
 
-    private final LayoutInflater testLayoutInflater;
-    private final ArrayList<String> userList;
-    private final Context context;
+    private final LayoutInflater inflater;
+    private final ArrayList<String> playListID;
 
-    public UserAdapter(Context testContext, ArrayList<String> userList){
-        this.context = testContext;
-        this.testLayoutInflater = LayoutInflater.from(testContext);
-        this.userList = userList;
+    public UniversalPlaylistAdapter(Context context, ArrayList<String> playListID){
+        this.inflater = LayoutInflater.from(context);
+        this.playListID = playListID;
     }
 
-    public UserAdapter(Context testContext, ArrayList<String> userList, LayoutInflater lif){
-        this.context = testContext;
-        this.testLayoutInflater = lif;
-        this.userList = userList;
+    public UniversalPlaylistAdapter(LayoutInflater lif, ArrayList<String> playListID){
+        this.inflater = lif;
+        this.playListID = playListID;
     }
 
     /**
@@ -35,7 +34,7 @@ public class UserAdapter extends BaseAdapter {
      */
     @Override
     public int getCount() {
-        return userList.size();
+        return playListID.size();
     }
 
     /**
@@ -45,7 +44,7 @@ public class UserAdapter extends BaseAdapter {
      */
     @Override
     public Object getItem(int position) {
-        return userList.get(position);
+        return playListID.get(position);
     }
 
     /**
@@ -65,20 +64,27 @@ public class UserAdapter extends BaseAdapter {
      * @param parent parent view
      * @return a view that holds the view created by this method
      */
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        String name = userList.get(position);
+        String id = playListID.get(position);
+
+        ArrayList<String> playListName = PlaylistLibraryAction.getListOfPlaylistName();
+        ArrayList<Integer> playListSize = PlaylistLibraryAction.getListOfPlaylistSize();
+        int i = PlaylistLibraryAction.getListOfPlaylistId().indexOf(id);
+
         if (convertView == null) {
-            convertView = testLayoutInflater.inflate(R.layout.universe_user_item,null);
+            convertView = inflater.inflate(R.layout.playlist_item,null);
             viewHolder = new ViewHolder();
-            viewHolder.userName = convertView.findViewById(R.id.universe_user_username);
+            viewHolder.playListName = convertView.findViewById(R.id.playlist_item_name);
+            viewHolder.playListLength = convertView.findViewById(R.id.playlist_item_length);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.userName.setText(name);
+        viewHolder.playListName.setText(playListName.get(i));
+        viewHolder.playListLength.setText(playListSize.get(i).toString());
         return convertView;
     }
 
@@ -86,6 +92,7 @@ public class UserAdapter extends BaseAdapter {
      * Hold views an item view need to show.
      */
     private static class ViewHolder{
-        TextView userName;
+        TextView playListName;
+        TextView playListLength;
     }
 }

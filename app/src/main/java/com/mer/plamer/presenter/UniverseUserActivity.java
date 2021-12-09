@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlayControl;
-import com.mer.plamer.controller.UserAdapter;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.UserLibraryAction;
 

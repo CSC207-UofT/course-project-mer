@@ -1,7 +1,6 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,13 +15,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mer.plamer.controller.AddAdapter;
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlayControl;
-import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
-import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
@@ -31,7 +28,6 @@ import java.util.ArrayList;
  */
 public class PlaylistActivity extends AppCompatActivity {
 
-    private ListView lv;
     private PlaylistAdapter plAdapter;
     private ArrayList<String> playListID;
 
@@ -57,7 +53,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
         playListID = userControl.userAction.getCurrentPlaylists();
         plAdapter = new PlaylistAdapter(PlaylistActivity.this, playListID);
-        lv = findViewById(R.id.playlist_list);
+        ListView lv = findViewById(R.id.playlist_list);
 
         // show the list of all playlists
         lv.setAdapter(plAdapter);
@@ -105,6 +101,7 @@ public class PlaylistActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
 
         // create new playlist by pressing "+"
+        @SuppressLint("InflateParams")
         View pop = getLayoutInflater().inflate(R.layout.new_playlist_popup_layout, null);
 
         // set the pop up window
