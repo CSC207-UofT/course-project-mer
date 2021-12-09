@@ -16,7 +16,7 @@ import com.mer.plamer.databinding.PlayerLayoutBinding;
 import com.mer.plamer.usecases.PlayAction;
 
 /**
- * Activity and view of the music player UI.
+ * Activity to provide the view of the music player UI and player features.
  */
 public class PlayerActivity extends AppCompatActivity {
     ImageButton mPlayPauseButton;
@@ -44,6 +44,7 @@ public class PlayerActivity extends AppCompatActivity {
         defineActions();
     }
 
+    // Initialize view elements
     private void initializeViews(){
         setContentView(R.layout.player_layout);
         mPlayPauseButton = findViewById(R.id.playlist_play);
@@ -65,8 +66,10 @@ public class PlayerActivity extends AppCompatActivity {
             mSeekBarHandler.postDelayed(updateSeekBarPosition, DELAY);
         };
         this.runOnUiThread(updateSeekBarPosition);
+        setButton(mPlayPauseButton, mLoopButton);
     }
 
+    // Associate view elements to corresponding actions
     private void defineActions(){
         mPlayPauseButton.setOnClickListener(v -> {
             PlayControl.playPause();
@@ -80,15 +83,17 @@ public class PlayerActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(v -> finish());
 
         mLoopButton.setOnClickListener(v -> {
-//            if (check status == List){
-//                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
-//            }else if(check status == repeat 1){
-//                ((ImageButton)v).setImageResource(R.drawable.random);
-//            }else{
-//                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
-//            }
             Toast.makeText(PlayerActivity.this,
                     PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+            }
+            else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+            }
+            else{
+                ((ImageButton)v).setImageResource(R.drawable.random);
+            }
         });
 
         mNextButton.setOnClickListener(v -> {
@@ -124,4 +129,28 @@ public class PlayerActivity extends AppCompatActivity {
         mCurrentTrackDuration.setText(PlayControl.toMinuteSeconds(PlayAction.getTrackLength()));
     }
 
+    /**
+     * Manage views of play button and play mode button
+     * @param playButton the play button of a view
+     * @param repeatButton the repeat button of a view
+     */
+    public static void setButton(ImageButton playButton, ImageButton repeatButton) {
+        // set play/pause
+        if (PlayAction.isPlaying()) {
+            playButton.setImageResource(R.drawable.pause);
+        } else{
+            playButton.setImageResource(R.drawable.play);
+        }
+
+        // set random/repeat
+        if (PlayAction.order == PlayAction.PlayOrder.LIST){
+            repeatButton.setImageResource(R.drawable.repeat_list);
+        }
+        else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+            repeatButton.setImageResource(R.drawable.repeat_one);
+        }
+        else{
+            repeatButton.setImageResource(R.drawable.random);
+        }
+    }
 }

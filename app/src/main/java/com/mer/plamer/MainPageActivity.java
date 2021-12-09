@@ -3,19 +3,34 @@ package com.mer.plamer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.usecases.PlayAction;
 
+/**
+ * Activity to construct the home page view
+ */
 public class MainPageActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_layout);
 
+        // set button
+        ImageButton playing = findViewById(R.id.main_playing);
+        ImageButton playButton = findViewById(R.id.main_play);
+        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
+        ImageButton prevButton = findViewById(R.id.main_prev);
+        ImageButton nextButton = findViewById(R.id.main_next);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         // open the setting page
         ImageButton setting = findViewById(R.id.main_settings);
@@ -48,43 +63,44 @@ public class MainPageActivity extends AppCompatActivity {
         // open the user library
         ImageButton users = findViewById(R.id.main_users);
         users.setOnClickListener(v -> {
-            Intent intent = new Intent(MainPageActivity.this, UniverseUserActivity.class);
+            Intent intent = new Intent(MainPageActivity.this,
+                    UniverseUserActivity.class);
             startActivity(intent);
         });
 
         // open the playing page
-        ImageButton playing = findViewById(R.id.main_playing);
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(MainPageActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.main_play);
         playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
-                ((ImageButton)v).setImageResource(R.drawable.pause);
-            } else{
+                ((ImageButton) v).setImageResource(R.drawable.pause);
+            } else {
                 ((ImageButton) v).setImageResource(R.drawable.play);
             }
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.main_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            Toast.makeText(MainPageActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_list);
+            } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_one);
+            } else {
+                ((ImageButton) v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.main_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.main_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
-
+        nextButton.setOnClickListener(v -> PlayControl.next());
     }
 }

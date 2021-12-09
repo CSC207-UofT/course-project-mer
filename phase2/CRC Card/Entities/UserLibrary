@@ -1,0 +1,13 @@
+# UserLibrary
+
+## Parent Class:
+Storable (Interface)
+
+## Subclasses:
+None
+
+## Responsibilities:
+A library of users.
+
+## Collaborators:
+Admin, Storable, User, UserAction, UserLibraryAction

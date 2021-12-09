@@ -15,10 +15,8 @@ import java.util.ArrayList;
 
 public class UniversalPlaylistAdapter extends BaseAdapter {
 
-    private LayoutInflater inflater;
-    private ArrayList<String> playListID;
-    private ArrayList<String> playListName;
-    private ArrayList<Integer> playListSize;
+    private final LayoutInflater inflater;
+    private final ArrayList<String> playListID;
 
     public UniversalPlaylistAdapter(Context context, ArrayList<String> playListID){
         this.inflater = LayoutInflater.from(context);
@@ -30,30 +28,50 @@ public class UniversalPlaylistAdapter extends BaseAdapter {
         this.playListID = playListID;
     }
 
+    /**
+     * Return the total number of items in a Listview.
+     * @return an int of the number of items in a Listview
+     */
     @Override
     public int getCount() {
         return playListID.size();
     }
 
+    /**
+     * Return an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an object which is indicated by the position
+     */
     @Override
     public Object getItem(int position) {
-        return null;
+        return playListID.get(position);
     }
 
+    /**
+     * Return id of an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an id of an item which is indicated by position.
+     */
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
+    /**
+     * Display the view by converting data input.
+     * @param position an int indicate where an item is
+     * @param convertView an view that holds the old view of item
+     * @param parent parent view
+     * @return a view that holds the view created by this method
+     */
     @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        UserControl userControl = new UserControl();
+        ViewHolder viewHolder;
         String id = playListID.get(position);
 
-        playListName = PlaylistLibraryAction.getListOfPlaylistName();
-        playListSize = PlaylistLibraryAction.getListOfPlaylistSize();
+        ArrayList<String> playListName = PlaylistLibraryAction.getListOfPlaylistName();
+        ArrayList<Integer> playListSize = PlaylistLibraryAction.getListOfPlaylistSize();
         int i = PlaylistLibraryAction.getListOfPlaylistId().indexOf(id);
 
         if (convertView == null) {
@@ -70,6 +88,9 @@ public class UniversalPlaylistAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Hold views an item view need to show.
+     */
     private static class ViewHolder{
         TextView playListName;
         TextView playListLength;

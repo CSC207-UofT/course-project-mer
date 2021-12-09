@@ -14,14 +14,15 @@ package com.mer.plamer.controller;
 
         import java.util.ArrayList;
 
+/**
+ * Adapter that convert data to Listview of add track into a playlist.
+ */
 public class AddAdapter extends BaseAdapter {
 
-    private ArrayList<AddDataHolder> lst;
-    private Context context;
-    private LayoutInflater inflater;
+    private final ArrayList<AddDataHolder> lst;
+    private final LayoutInflater inflater;
 
     public AddAdapter(Context context, ArrayList<AddDataHolder> l){
-        this.context = context;
         this.lst = l;
         inflater = LayoutInflater.from(context);
     }
@@ -32,25 +33,46 @@ public class AddAdapter extends BaseAdapter {
         this.inflater = lif;
     }
 
+    /**
+     * Return the total number of items in a Listview.
+     * @return an int of the number of items in a Listview
+     */
     @Override
     public int getCount() {
         return lst.size();
     }
 
+    /**
+     * Return an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an object which is indicated by the position
+     */
     @Override
     public Object getItem(int position) {
         return lst.get(position);
     }
 
+    /**
+     * Return id of an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an id of an item which is indicated by position.
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Display the view by converting data input.
+     * @param position an int indicate where an item is
+     * @param convertView an view that holds the old view of item
+     * @param parent parent view
+     * @return a view that holds the view created by this method
+     */
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.add_item,null);
@@ -62,13 +84,16 @@ public class AddAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.trackTittle.setText((String)lst.get(position).tittle);
-        holder.trackArtist.setText((String)lst.get(position).artist);
-        holder.trackLength.setText((String)lst.get(position).duration);
+        holder.trackTittle.setText(lst.get(position).tittle);
+        holder.trackArtist.setText(lst.get(position).artist);
+        holder.trackLength.setText(lst.get(position).duration);
         holder.cb.setChecked(lst.get(position).checked);
         return convertView;
     }
 
+    /**
+     * Hold views an item view need to show.
+     */
     public static class ViewHolder{
         TextView trackTittle;
         TextView trackArtist;
@@ -76,6 +101,9 @@ public class AddAdapter extends BaseAdapter {
         CheckBox cb;
     }
 
+    /**
+     * Hold data input.
+     */
     public static class AddDataHolder {
         public String tittle;
         public String artist;

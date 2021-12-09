@@ -9,19 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
-import com.mer.plamer.entities.User;
-import com.mer.plamer.usecases.TrackLibraryAction;
-
 import java.util.ArrayList;
 
 public class UserAdapter extends BaseAdapter {
 
-    private Context testContext;
-    private LayoutInflater testLayoutInflater;
-    private ArrayList<String> userList;
+    private final LayoutInflater testLayoutInflater;
+    private final ArrayList<String> userList;
 
     public UserAdapter(Context testContext, ArrayList<String> userList){
-        this.testContext = testContext;
         this.testLayoutInflater = LayoutInflater.from(testContext);
         this.userList = userList;
     }
@@ -32,25 +27,46 @@ public class UserAdapter extends BaseAdapter {
         this.userList = userList;
     }
 
+    /**
+     * Return the total number of items in a Listview.
+     * @return an int of the number of items in a Listview
+     */
     @Override
     public int getCount() {
         return userList.size();
     }
 
+    /**
+     * Return an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an object which is indicated by the position
+     */
     @Override
     public Object getItem(int position) {
-        return null;
+        return userList.get(position);
     }
 
+    /**
+     * Return id of an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an id of an item which is indicated by position.
+     */
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
+    /**
+     * Display the view by converting data input.
+     * @param position an int indicate where an item is
+     * @param convertView an view that holds the old view of item
+     * @param parent parent view
+     * @return a view that holds the view created by this method
+     */
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         String name = userList.get(position);
         if (convertView == null) {
             convertView = testLayoutInflater.inflate(R.layout.universe_user_item,null);
@@ -64,6 +80,9 @@ public class UserAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Hold views an item view need to show.
+     */
     private static class ViewHolder{
         TextView userName;
     }

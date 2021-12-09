@@ -15,12 +15,10 @@ import java.util.ArrayList;
 
 public class TrackAdapter extends BaseAdapter {
 
-    private Context context;
-    private LayoutInflater inflater;
-    private ArrayList<TrackDataHolder> lst;
+    private final LayoutInflater inflater;
+    private final ArrayList<TrackDataHolder> lst;
 
     public TrackAdapter(Context context, ArrayList<TrackDataHolder> l){
-        this.context = context;
         inflater = LayoutInflater.from(context);
         this.lst = l;
     }
@@ -31,25 +29,46 @@ public class TrackAdapter extends BaseAdapter {
         this.lst = l;
     }
 
+    /**
+     * Return the total number of items in a Listview.
+     * @return an int of the number of items in a Listview
+     */
     @Override
     public int getCount() {
         return lst.size();
     }
 
+    /**
+     * Return an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an object which is indicated by the position
+     */
     @Override
     public Object getItem(int position) {
         return lst.get(position);
     }
 
+    /**
+     * Return id of an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an id of an item which is indicated by position.
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Display the view by converting data input.
+     * @param position an int indicate where an item is
+     * @param convertView an view that holds the old view of item
+     * @param parent parent view
+     * @return a view that holds the view created by this method
+     */
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.track_item,null);
             holder = new ViewHolder();
@@ -60,18 +79,24 @@ public class TrackAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.trackTittle.setText((String)lst.get(position).tittle);
-        holder.trackArtist.setText((String)lst.get(position).artist);
-        holder.trackLength.setText((String)lst.get(position).duration);
+        holder.trackTittle.setText(lst.get(position).tittle);
+        holder.trackArtist.setText(lst.get(position).artist);
+        holder.trackLength.setText(lst.get(position).duration);
         return convertView;
     }
 
+    /**
+     * Hold views an item view need to show.
+     */
     private static class ViewHolder{
         TextView trackTittle;
         TextView trackArtist;
         TextView trackLength;
     }
 
+    /**
+     * Hold data input.
+     */
     public static class TrackDataHolder {
         public String tittle;
         public String artist;

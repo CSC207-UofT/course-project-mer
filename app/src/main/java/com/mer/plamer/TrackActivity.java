@@ -15,8 +15,15 @@ import com.mer.plamer.usecases.TrackLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of the entire track library
+ */
 public class TrackActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,7 @@ public class TrackActivity extends AppCompatActivity {
         ImageButton repeatButton = findViewById(R.id.track_repeat_list);
         ImageButton prevButton = findViewById(R.id.track_prev);
         ImageButton nextButton = findViewById(R.id.track_next);
-        setButton(playButton);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         // back to the last page
         ImageButton back = findViewById(R.id.track_back_last_page);
@@ -52,7 +59,7 @@ public class TrackActivity extends AppCompatActivity {
                     dataList.get(i).tittle +
                             " will be played.",Toast.LENGTH_SHORT).show();
             PlayControl.setMedia("NONE", dataList.get(i).id);
-            setButton(playButton);
+            PlayerActivity.setButton(playButton, repeatButton);
         });
 
         // open the playing page
@@ -72,25 +79,24 @@ public class TrackActivity extends AppCompatActivity {
         });
 
         // change the loop style
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            Toast.makeText(TrackActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+            }
+            else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+            }
+            else{
+                ((ImageButton)v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
-    }
-
-    public static void setButton(ImageButton playButton) {
-        // set play/pause
-        if (PlayAction.isPlaying()) {
-            playButton.setImageResource(R.drawable.pause);
-        } else{
-            playButton.setImageResource(R.drawable.play);
-        }
+        nextButton.setOnClickListener(v -> PlayControl.next());
     }
 }

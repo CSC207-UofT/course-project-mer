@@ -5,6 +5,9 @@ import com.mer.plamer.entities.UserLibrary;
 
 import java.util.ArrayList;
 
+/**
+ * Actions performed on the userLibrary
+ */
 public class UserLibraryAction {
 
     public static UserLibrary userLibrary = new UserLibrary();
@@ -90,6 +93,15 @@ public class UserLibraryAction {
             name_list.add(username);
         }
         return name_list;
+    }
+
+    /**
+     * Return all of the playlists of this user
+     * @param username the username whose playlists are wanted
+     * @return an arraylist of all playlists from such user
+     */
+    public static ArrayList<String> getUserPlaylist(String username) {
+        return UserLibraryAction.userLibrary.get(username).getPlaylists();
     }
 
     /**

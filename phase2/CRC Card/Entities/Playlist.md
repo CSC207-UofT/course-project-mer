@@ -7,7 +7,7 @@ None
 None
 
 ## Responsibilities:
-Store the ID of the playlist, Store the name of a Playlist, Status of a Playlist, Tracks.
+Store the ID of the playlist the name of the playlist, the status of the playlist, and the tracks of the playlist.
 
 ## Collaborators:
-Track, User, Admin, PlaylistActions, PlaylistLibrary, Search.
+Track, PlaylistLibrary, PlayAction, PlaylistAction, PlaylistLibraryAction, TrackLibraryAction, UserAction

@@ -12,8 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mer.plamer.controller.UserControl;
 
+/**
+ * Activity to provide the settings page and user modification features
+ */
 public class SettingActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

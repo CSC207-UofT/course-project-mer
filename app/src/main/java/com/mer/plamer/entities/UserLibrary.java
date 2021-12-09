@@ -60,13 +60,13 @@ public class UserLibrary implements Storable<User> {
 
     /**
      * Check if user is part of this UserLibrary
-     * @param id the id of the user
+     * @param name the username of the user
      * @return username of user
      */
     @Override
-    public User get(String id) {
+    public User get(String name) {
         for (User user : this.usersList) {
-            if (user.getUsername().equals(id)) {
+            if (user.getUsername().equals(name)) {
                 return user;
             }
         }

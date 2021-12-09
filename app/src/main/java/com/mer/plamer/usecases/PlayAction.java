@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Class to manipulate the music player's state.
+ * Actions a player can perform
  */
 public class PlayAction {
     private static String currentTrackID;

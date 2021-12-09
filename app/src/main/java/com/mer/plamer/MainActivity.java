@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 import com.mer.plamer.controller.PlaylistControl;
@@ -15,19 +16,20 @@ import com.mer.plamer.controller.TrackLibraryControl;
 import com.mer.plamer.controller.UserControl;
 import com.mer.plamer.usecases.PlayAction;
 /**
- * Startup activity and view of Plamer
+ * Startup activity of Plamer to initialize the app and construct the welcome screen
  */
 public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
+            {
                 if (isGranted) {
                     TrackLibraryControl trackLibraryControl = new TrackLibraryControl();
                     trackLibraryControl.scanLocal();
                 }
             });
     /**
-     * Constructs view and defines actions of the main view.
+     * Construct view and define actions of the main view.
      * @param savedInstanceState the previously saved state of this activity
      */
     @Override
@@ -42,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         trackLibraryControl.scanLocal();
         playlistControl.scanLocal();
         userControl.scanLocal();
+
+        if(!trackLibraryControl.hasMedia()){
+            Toast.makeText(MainActivity.this,
+                    "No audio file detected. The program now exits.", Toast.LENGTH_LONG).show();
+            finish();
+        }
         PlayAction.prepare();
 
         ImageButton log_in = findViewById(R.id.home_login);

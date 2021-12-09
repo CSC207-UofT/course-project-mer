@@ -18,12 +18,27 @@ import com.mer.plamer.usecases.UserLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to show the page of all users and provide features to remove users
+ */
 public class UniverseUserActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universe_user_layout);
+
+        // set button
+        ImageButton playing = findViewById(R.id.universe_user_playing);
+        ImageButton playButton = findViewById(R.id.universe_user_play);
+        ImageButton repeatButton = findViewById(R.id.universe_user_repeat_list);
+        ImageButton prevButton = findViewById(R.id.universe_user_prev);
+        ImageButton nextButton = findViewById(R.id.universe_user_next);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         // back to the last page
         ImageButton back = findViewById(R.id.universe_user_back_last_page);
@@ -59,48 +74,50 @@ public class UniverseUserActivity extends AppCompatActivity {
 
         UserListView.setOnItemLongClickListener(deleteUser);
 
-        // open all the play list this user has
+        // open all the playlists this user has
         AdapterView.OnItemClickListener openList = (parent, view, position, l) -> {
-            String id = nameList.get(position);
-            Intent intent = new Intent(UniverseUserActivity.this, UserPlaylistActivity.class);
-            intent.putExtra("selected_user_name", id);
+            String username = nameList.get(position);
+            Intent intent = new
+                    Intent(UniverseUserActivity.this, UserPlaylistActivity.class);
+            intent.putExtra("selected_user_name", username);
             startActivity(intent);
         };
 
         UserListView.setOnItemClickListener(openList);
 
         // open the playing page
-        ImageButton playing = findViewById(R.id.universe_user_playing);
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(UniverseUserActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.universe_user_play);
         playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
-                ((ImageButton)v).setImageResource(R.drawable.pause);
-            } else{
+                ((ImageButton) v).setImageResource(R.drawable.pause);
+            } else {
                 ((ImageButton) v).setImageResource(R.drawable.play);
             }
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.universe_user_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            Toast.makeText(UniverseUserActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_list);
+            } else if (PlayAction.order == PlayAction.PlayOrder.REPEAT) {
+                ((ImageButton) v).setImageResource(R.drawable.repeat_one);
+            } else {
+                ((ImageButton) v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.universe_user_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.universe_user_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
     }
 }

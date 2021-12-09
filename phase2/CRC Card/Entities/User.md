@@ -10,4 +10,4 @@ None
 Stores username, password, user's playlists, and user's id.
 
 ## Collaborators:
-Search, Track, Playlist, UserActions, Userlibrary.
+UserAdapter, Admin, UserLibrary, UserAction, UserLibraryAction

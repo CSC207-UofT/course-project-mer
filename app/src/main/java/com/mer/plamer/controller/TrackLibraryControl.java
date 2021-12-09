@@ -9,6 +9,9 @@ import com.mer.plamer.TinyDB;
 
 import java.io.File;
 
+/**
+ * Controller to manipulate actions on TrackLibrary
+ */
 public class TrackLibraryControl {
 
     private final TinyDB tinydb;
@@ -47,6 +50,14 @@ public class TrackLibraryControl {
     public void remove(String track_id) {
         TrackLibraryAction.delete(track_id);
         tinydb.putObject("TrackLibrary", TrackLibraryAction.trackLibrary);
+    }
+
+    /**
+     * Return true if the track library has at least one media file
+     * @return true if the track library is not empty, false otherwise
+     */
+    public boolean hasMedia(){
+        return !TrackLibraryAction.isEmpty();
     }
 
     /**

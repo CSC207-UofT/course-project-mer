@@ -22,12 +22,27 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to provide the view of a playlist, and to associate playing, adding/removing media
+ */
 public class OwnPlaylistActivity extends AppCompatActivity {
 
+    /**
+     * Construct view and define actions for each interactive elements
+     * @param savedInstanceState savedInstanceState the previously saved state of this activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.own_playlist_layout);
+
+        // set button
+        ImageButton playing = findViewById(R.id.opll_playing);
+        ImageButton playButton = findViewById(R.id.opll_play);
+        ImageButton repeatButton = findViewById(R.id.opll_repeat_list);
+        ImageButton prevButton = findViewById(R.id.opll_prev);
+        ImageButton nextButton = findViewById(R.id.opll_next);
+        PlayerActivity.setButton(playButton, repeatButton);
 
         String pllID = getIntent().getStringExtra("play_list_id");
         PlaylistAction pllA = new PlaylistAction();
@@ -63,66 +78,53 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         // add new track
         ImageButton add = findViewById(R.id.own_playlist_add);
         add.setOnClickListener(v -> {
-            Intent intent = new Intent(OwnPlaylistActivity.this, AddTrackToPlaylistActivity.class);
+            Intent intent = new Intent(OwnPlaylistActivity.this,
+                    AddTrackToPlaylistActivity.class);
             intent.putExtra("play_list_id", pllID);
             startActivity(intent);
             adapter.notifyDataSetChanged();
                 });
 
         // play track when click on the track in the list
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(OwnPlaylistActivity.this,
-                        dataList.get(i).tittle +
-                                " will be played.",Toast.LENGTH_SHORT).show();
-                PlayControl.setMedia(pllID, dataList.get(i).id);
-            }
+        lv.setOnItemClickListener((adapterView, view, i, l) -> {
+            Toast.makeText(OwnPlaylistActivity.this,
+                    dataList.get(i).tittle +
+                            " will be played.",Toast.LENGTH_SHORT).show();
+            PlayControl.setMedia(pllID, dataList.get(i).id);
         });
 
         // delete a track
-        AdapterView.OnItemLongClickListener deleteList = new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        AdapterView.OnItemLongClickListener deleteList = (parent, view, position, id) -> {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
-                builder.setMessage("Do you want to delete this track?");
-                String trackID = dataList.get(position).id;
+            AlertDialog.Builder builder = new AlertDialog.Builder(OwnPlaylistActivity.this);
+            builder.setMessage("Do you want to delete this track?");
+            String trackID = dataList.get(position).id;
 
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pllC.trackRemove(trackID);
-                        dataList.remove(position);
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(OwnPlaylistActivity.this,
-                                "You have deleted a track.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                pllC.trackRemove(trackID);
+                dataList.remove(position);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(OwnPlaylistActivity.this,
+                        "You have deleted a track.", Toast.LENGTH_LONG).show();
+            });
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
 
-                    }
-                });
-                builder.create().show();
+            });
+            builder.create().show();
 
-                return true;
-            }
+            return true;
         };
         lv.setOnItemLongClickListener(deleteList);
 
         // open the playing page
-        ImageButton playing = findViewById(R.id.opll_playing);
         playing.setOnClickListener(v -> {
             Intent intent = new Intent(OwnPlaylistActivity.this, PlayerActivity.class);
             startActivity(intent);
         });
 
         // play/pause music
-        ImageButton playButton = findViewById(R.id.opll_play);
-        playButton.setOnClickListener(v ->{
+        playButton.setOnClickListener(v -> {
             PlayControl.playPause();
             if (PlayAction.isPlaying()) {
                 ((ImageButton)v).setImageResource(R.drawable.pause);
@@ -132,20 +134,25 @@ public class OwnPlaylistActivity extends AppCompatActivity {
         });
 
         // change the loop style
-        ImageButton repeatButton = findViewById(R.id.opll_repeat_list);
-        repeatButton.setOnClickListener(v -> PlayAction.loop());
+        repeatButton.setOnClickListener(v -> {
+            Toast.makeText(OwnPlaylistActivity.this,
+                    PlayControl.changePlayMode(), Toast.LENGTH_SHORT).show();
+            if (PlayAction.order == PlayAction.PlayOrder.LIST){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_list);
+            }
+            else if(PlayAction.order == PlayAction.PlayOrder.REPEAT){
+                ((ImageButton)v).setImageResource(R.drawable.repeat_one);
+            }
+            else{
+                ((ImageButton)v).setImageResource(R.drawable.random);
+            }
+        });
 
         // previous music
-        ImageButton prevButton = findViewById(R.id.opll_prev);
-        prevButton.setOnClickListener(v -> {
-            PlayControl.prev();
-        });
+        prevButton.setOnClickListener(v -> PlayControl.prev());
 
         // next music
-        ImageButton nextButton = findViewById(R.id.opll_next);
-        nextButton.setOnClickListener(v -> {
-            PlayControl.next();
-        });
+        nextButton.setOnClickListener(v -> PlayControl.next());
 
     }
 }

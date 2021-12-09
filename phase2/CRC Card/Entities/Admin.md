@@ -10,5 +10,4 @@ None
 Has the same function as user.
 
 ## Collaborators:
-Search
-Track, Playlist, UserActions, UserLibrary.
+User, UserLibrary, UserAction

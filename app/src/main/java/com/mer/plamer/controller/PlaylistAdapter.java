@@ -9,16 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mer.plamer.R;
-import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter that convert data to Listview of playlist.
+ */
 public class PlaylistAdapter extends BaseAdapter {
 
-    private LayoutInflater inflater;
-    private ArrayList<String> playListID;
-    private ArrayList<String> playListName;
-    private ArrayList<Integer> playListSize;
+    private final LayoutInflater inflater;
+    private final ArrayList<String> playListID;
 
     public PlaylistAdapter(Context context, ArrayList<String> playListID){
         this.inflater = LayoutInflater.from(context);
@@ -30,30 +30,51 @@ public class PlaylistAdapter extends BaseAdapter {
         this.playListID = playListID;
     }
 
+    /**
+     * Return the total number of items in a Listview.
+     * @return an int of the number of items in a Listview
+     */
     @Override
     public int getCount() {
         return playListID.size();
     }
 
+    /**
+     * Return an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an object which is indicated by the position
+     */
     @Override
     public Object getItem(int position) {
-        return null;
+        return playListID.get(position);
     }
 
+    /**
+     * Return id of an item in a Listview that indicated by position.
+     * @param position an int that indicate where an item is
+     * @return an id of an item which is indicated by position.
+     */
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
+    /**
+     * Display the view by converting data input.
+     * @param position an int indicate where an item is
+     * @param convertView an view that holds the old view of item
+     * @param parent parent view
+     * @return a view that holds the view created by this method
+     */
     @SuppressLint({"InflateParams", "SetTextI18n"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         UserControl userControl = new UserControl();
         String id = playListID.get(position);
 
-        playListName = userControl.userAction.Playlistname();
-        playListSize = userControl.userAction.Playlistsize();
+        ArrayList<String> playListName = userControl.userAction.Playlistname();
+        ArrayList<Integer> playListSize = userControl.userAction.Playlistsize();
         int i = userControl.userAction.getCurrentPlaylists().indexOf(id);
       
         if (convertView == null) {
@@ -70,6 +91,9 @@ public class PlaylistAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * Hold views an item view need to show.
+     */
     private static class ViewHolder{
         TextView playListName;
         TextView playListLength;
