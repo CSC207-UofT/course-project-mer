@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mer.plamer">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".gateway.PlamerContext"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Plamer">
+        <activity
+            android:name=".presenter.UserPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".presenter.AddTrackToPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.OwnPlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.UniverseUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.PlaylistActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".presenter.TrackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.SettingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".presenter.HomepageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presenter.SignupActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".presenter.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".presenter.PlayerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presenter.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
