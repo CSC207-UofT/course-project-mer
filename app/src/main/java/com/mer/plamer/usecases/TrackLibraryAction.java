@@ -72,6 +72,11 @@ public class TrackLibraryAction {
         trackLibrary.add(track);
     }
 
+    /**
+     * Alternative add method for testing
+     * @param path the path of the track we want to add
+     * @param mmr android's MediaMetadataRetriever
+     */
     public static void add(String path, MediaMetadataRetriever mmr) {
         mmr.setDataSource(path);
         Track track = trackLibrary.create(path);

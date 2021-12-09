@@ -20,6 +20,10 @@ public class PlaylistControl {
         this.tinydb = new TinyDB(PlamerContext.getContext());
     }
 
+    /**
+     * Alternative constructor for PlaylistControl
+     * @param tinydb database for data
+     */
     public PlaylistControl(TinyDB tinydb) {
         this.playlistAction = null;
         this.tinydb = tinydb;

@@ -42,28 +42,37 @@ For reasonings behind our implementation on the Activities, check the Major Desi
 
 SOLID Principle is being followed as much as possible during the code design. A few examples are noted below:  
 ### Single Responsibility principle: 
-We made sure to have enough of different usecases distribute responsibilities instead of assigning responsibilities to only a few or single class. (For reasonings behind our Activities implementation, check the Major Design Decisions section)
+We made sure to have enough of different [usecases](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer/usecases) distribute responsibilities instead of assigning responsibilities to only a few or single class. (For reasonings behind our Activities implementation, check the Major Design Decisions section)
 ### Open/Closed principle: 
-We designed our entities such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
+We designed our [entities](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer/entities) such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
 ### Liskov Substitution principle: 
 We constructed class User as the default user type of our program. In addition, a class Admin is also made to have not only all the features a User have, but also additional extended features (such as deleting a user) that don't require modifying or removing existing User features.  
 ### Interface Segregation principle: 
-In our Storable interface, we did not put in redundant classes to be implemented, only keeping the minimum required for an object to be Storable (i.e. contains entities)
+In our [Storable](https://github.com/CSC207-UofT/course-project-mer/blob/main/app/src/main/java/com/mer/plamer/entities/Storable.java) interface, we did not put in redundant classes to be implemented, only keeping the minimum required for an object to be Storable (i.e. contains entities)
 
 
 ## Packaging Strategy:
 
-The packaging strategy we chose since phase 0, which hasn't changed until now, is to package by layer. This is because we have classes with similar names in every layer. Such as the class playlist(entity), the class playlistaction(use cases), and the class playlistcontrol(controller). This is almost the same for every function we have. Thus it is to our interest to put every layer in their own folder, so anyone who has a chance to read our code can navigate to the right class they want without having to actually read those classes.
+The packaging strategy we chose since phase 0, which hasn't changed until now, is to package [by layer](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer). This is because we have classes with similar names in every layer. Such as the class playlist(entity), the class playlistaction(use cases), and the class playlistcontrol(controller). This is almost the same for every function we have. Thus it is to our interest to put every layer in their own folder, so anyone who has a chance to read our code can navigate to the right class they want without having to actually read those classes.
 
 ## Design Patterns:
 
-One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary.  The builder design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
+One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary. The [Builder](https://github.com/CSC207-UofT/course-project-mer/blob/186c0864b8f75c4befc1ceff0404697313ffec7b/app/src/main/java/com/mer/plamer/usecases/TrackLibraryAction.java#L64) design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
 
 ## Refactoring Strategy:
 
-All programmers make mistakes. So, as a group we did not expect everyone to write perfect code. Sometimes we encounter codes from members that violate Clean Architectures, do not follow naming conventions, have code smells, or even without documentations. When one of us see any of these happening, we remind each other on potential issues there are with his/her code, give them suggestions and keep track of what's happening in different classes. This is a good strategy to keep us actively seeking issues in our code, and keep track of what is happening in each class.  
+All programmers make mistakes. So, as a group we did not expect everyone to write perfect code. Sometimes we encounter codes from members that violate Clean Architectures, do not follow naming conventions, have code smells, or even without documentations. When one of us see any of these happening, we remind each other on potential issues there are with his/her code, give them suggestions and keep track of what's happening in different classes. This is a good strategy to keep us actively seeking issues in our code, and keep track of what is happening in each class.
+
+Examples of refactoring in action: [1](https://github.com/CSC207-UofT/course-project-mer/pull/92), [2](https://github.com/CSC207-UofT/course-project-mer/pull/94) 
 
 Lastly, we've dedicated one member on the team for a final check on the codes (but not the function/features) for the end of each phase to ensure again the codes are issue-free.
 
 ## Details and Descriptions about Unit Tests:
-Unit tests were constructed to test most of the methods for entities, use cases, and controllers. These tests were constructed to ensure that each method performs as it should. The difficulty to create these unit tests were also clear indicators to violations of clean architecture, SOLID principle, or the presence of code smells as violations would drastically increase the difficulty to create said tests. Without these violations, most unit tests no longer required the ability to mock an android environment as they were used to test the relationship with each other (controllers with use cases, use cases with entities). 
+Compared to Phase 1, unit tests for mostly all of entities, use cases, and controllers were added. These tests were constructed to ensure that each method performs as it should. While constructing these tests, the difficulties that we came across with making them turned out to be clear violations of clean architecture and the SOLID principles. Through these tests, we were able to ensure that each method performs as intended. In addition, the use of mocks were incorporated in and only in controller unit tests. Since controllers deal with presenters and gateways, the use of mocks were crucial in producing functional unit tests. Also, the use of mocks only in controller unit tests and not entity/use case unit tests is a good indicator that clean architecture is being followed. The coverage of these unit tests can seen here: 
+
+<p>
+  <img src="https://github.com/CSC207-UofT/course-project-mer/blob/main/phase2/test_coverage.png" width=750>
+</p>
+
+We utilized private classes in various controller adapters which, as they are private, are impossible to test. Other than those classes, all controller classes were tested. 
+As for presenters, these components are heavily linked with the app itself, making it extremely difficult to unit test. Therefore, we required non-code tests that involved emulators to ensure that the presenters were doing their job. As seen in the demo, those classes function as intended.
