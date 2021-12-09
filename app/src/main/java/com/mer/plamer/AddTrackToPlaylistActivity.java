@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -62,9 +60,7 @@ public class AddTrackToPlaylistActivity extends AppCompatActivity {
 
         // back to the last page
         ImageButton back = findViewById(R.id.add_back_last_page);
-        back.setOnClickListener(v -> {
-            finish();
-        });
+        back.setOnClickListener(v -> finish());
 
         // confirm adding
         ImageButton go = findViewById(R.id.add_go);

@@ -15,6 +15,13 @@
  */
 
 /*
+ This part of the code does not belong to our group. All rights of the code written here belong
+ to the original author. No modifications including style edits were made on this file
+ Details can be found here:https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
+ */
+
+
+/*
  *  The "‚‗‚" character is not a comma, it is the SINGLE LOW-9 QUOTATION MARK unicode 201A
  *  and unicode 2017 that are used for separating the items in a list.
  */
@@ -39,14 +46,10 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
-
-// This part of the code does not belong to our group. All rights of the code written here belong
-// to the original author.
-// Details can be found here:https://github.com/kcochibili/TinyDB--Android-Shared-Preferences-Turbo
 public class TinyDB {
 
-    private Context context;
-    private SharedPreferences preferences;
+    private final Context context;
+    private final SharedPreferences preferences;
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
 

@@ -1,11 +1,9 @@
 package com.mer.plamer.usecases;
 
-import android.content.Intent;
 
 import com.mer.plamer.entities.Admin;
 import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.User;
-import com.mer.plamer.entities.Track;
 
 import java.util.ArrayList;
 

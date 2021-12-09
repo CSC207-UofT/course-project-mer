@@ -21,16 +21,27 @@ public class AddAdapter extends BaseAdapter {
 
     private final ArrayList<AddDataHolder> lst;
     private final LayoutInflater inflater;
-    private final Context context;
+    private final ThreadLocal<Context> context = new ThreadLocal<>();
 
+    /**
+     * Constructor for AddAdapter
+     * @param context the context
+     * @param l the data to be converted
+     */
     public AddAdapter(Context context, ArrayList<AddDataHolder> l){
-        this.context = context;
+        this.context.set(context);
         this.lst = l;
         inflater = LayoutInflater.from(context);
     }
 
+    /**
+     * Alternative constructor for AddAdapter
+     * @param context the context
+     * @param l the data to be converted
+     * @param lif layout inflator of selected xml file
+     */
     public AddAdapter(Context context, ArrayList<AddDataHolder> l, LayoutInflater lif) {
-        this.context = context;
+        this.context.set(context);
         this.lst = l;
         this.inflater = lif;
     }
@@ -107,10 +118,10 @@ public class AddAdapter extends BaseAdapter {
      * Hold data input.
      */
     public static class AddDataHolder {
-        public String tittle;
-        public String artist;
-        public String duration;
-        public String id;
+        public final String tittle;
+        public final String artist;
+        public final String duration;
+        public final String id;
         public boolean checked;
 
         public AddDataHolder(String i, boolean c){

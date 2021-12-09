@@ -13,16 +13,29 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter to convert data of all playlists to ListView
+ */
 public class UniversalPlaylistAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
     private final ArrayList<String> playListID;
 
+    /**
+     * Constructor for UniversalPlaylistAdapter
+     * @param context the context
+     * @param playListID the list of IDs of playlists
+     */
     public UniversalPlaylistAdapter(Context context, ArrayList<String> playListID){
         this.inflater = LayoutInflater.from(context);
         this.playListID = playListID;
     }
 
+    /**
+     * Alernative constructor for UniversalPlaylistAdapter
+     * @param lif the layout inflator for selected xml file
+     * @param playListID the list of IDs of playlists
+     */
     public UniversalPlaylistAdapter(LayoutInflater lif, ArrayList<String> playListID){
         this.inflater = lif;
         this.playListID = playListID;

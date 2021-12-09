@@ -11,20 +11,34 @@ import android.widget.TextView;
 import com.mer.plamer.R;
 import java.util.ArrayList;
 
+/**
+ * Adapter to convert User data to ListView
+ */
 public class UserAdapter extends BaseAdapter {
 
     private final LayoutInflater testLayoutInflater;
     private final ArrayList<String> userList;
-    private final Context context;
+    private final Context context; // For testing purposes, cannot be removed
 
-    public UserAdapter(Context testContext, ArrayList<String> userList){
-        this.context = testContext;
-        this.testLayoutInflater = LayoutInflater.from(testContext);
+    /**
+     * Constructor for UserAdapter
+     * @param context the context
+     * @param userList the list of usernames to be converted
+     */
+    public UserAdapter(Context context, ArrayList<String> userList){
+        this.context = context;
+        this.testLayoutInflater = LayoutInflater.from(context);
         this.userList = userList;
     }
 
-    public UserAdapter(Context testContext, ArrayList<String> userList, LayoutInflater lif){
-        this.context = testContext;
+    /**
+     * Alternative constructor for UserAdapter
+     * @param context the context
+     * @param userList the list of usernames to be converted
+     * @param lif the layout inflator of selected xml file
+     */
+    public UserAdapter(Context context, ArrayList<String> userList, LayoutInflater lif){
+        this.context = context;
         this.testLayoutInflater = lif;
         this.userList = userList;
     }
