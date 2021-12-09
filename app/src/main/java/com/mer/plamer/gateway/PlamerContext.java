@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.gateway;
 
 import android.app.Application;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.content.Context;
 /**
  * Helper activity to provide context for TinyDB
  */
-public class MyApp extends Application {
-    private static MyApp instance;
+public class PlamerContext extends Application {
+    private static PlamerContext instance;
 
     /**
      * Give requested body the context of this application

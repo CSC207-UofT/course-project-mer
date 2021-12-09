@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,10 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlayControl;
-import com.mer.plamer.controller.PlaylistAdapter;
 import com.mer.plamer.controller.PlaylistControl;
-import com.mer.plamer.controller.UniversalPlaylistAdapter;
 import com.mer.plamer.usecases.PlayAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 import com.mer.plamer.usecases.UserLibraryAction;

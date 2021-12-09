@@ -10,9 +10,6 @@ import java.util.ArrayList;
  * Controller for search features
  */
 public class SearchControl {
-    TrackLibraryAction trackLibraryAction;
-    UserLibraryAction userLibraryAction;
-    PlaylistLibraryAction playlistLibraryAction;
 
     /**
      * Search for all tracks that satisfies the condition.

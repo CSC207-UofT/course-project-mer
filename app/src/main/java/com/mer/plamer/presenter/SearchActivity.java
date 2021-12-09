@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +12,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlayControl;
 import com.mer.plamer.controller.SearchControl;
-import com.mer.plamer.controller.TrackAdapter;
-import com.mer.plamer.controller.UniversalPlaylistAdapter;
-import com.mer.plamer.controller.UserAdapter;
 import com.mer.plamer.usecases.PlayAction;
 
 import java.util.ArrayList;

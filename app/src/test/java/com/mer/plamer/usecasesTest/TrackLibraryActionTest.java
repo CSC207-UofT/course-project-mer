@@ -9,7 +9,6 @@ import static org.mockito.Mockito.mock;
 import android.media.MediaMetadataRetriever;
 
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.mer.plamer.entities.Track;

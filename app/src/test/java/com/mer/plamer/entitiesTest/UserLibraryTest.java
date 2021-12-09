@@ -30,20 +30,13 @@ public class UserLibraryTest {
         assertFalse(ul.remove("nonexistentuser"));
     }
 
-    @Test(timeout = 50)
-    public void testContain() {
-        UserLibrary ul = new UserLibrary();
-        User u = new User("test", "test123");
-        ul.add(u);
-//        assertEquals(u, ul.contain("test"));
-//        assertNull(ul.contain("neuser"));
-    }
 
     @Test(timeout = 50)
     public void testGetuserslist(){
         UserLibrary ul = new UserLibrary();
         User u = new User("test", "test123");
         ul.add(u);
+        //noinspection MismatchedQueryAndUpdateOfCollection
         ArrayList<User> testlist = new ArrayList<>();
         testlist.add(u);
         assertEquals(2, ul.getUsersList().size());

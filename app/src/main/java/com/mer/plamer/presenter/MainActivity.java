@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.PlaylistControl;
 import com.mer.plamer.controller.TrackLibraryControl;
 import com.mer.plamer.controller.UserControl;

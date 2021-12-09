@@ -1,17 +1,12 @@
-package com.mer.plamer.controllerTest;
+package com.mer.plamer.presenterTest;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.mer.plamer.TinyDB;
-import com.mer.plamer.controller.AddAdapter;
-import com.mer.plamer.controller.UserAdapter;
+import com.mer.plamer.presenter.UserAdapter;
 
 import org.junit.Before;
 import org.junit.Test;

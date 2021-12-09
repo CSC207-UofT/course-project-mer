@@ -1,4 +1,4 @@
-package com.mer.plamer;
+package com.mer.plamer.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mer.plamer.R;
 import com.mer.plamer.controller.UserControl;
 
 /**
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // if password match the username, then log in
             if (userControl.login_check(l_name, l_password)) {
-                Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
+                Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                 startActivity(intent);
                 login_username.setText("");
                 login_password.setText("");

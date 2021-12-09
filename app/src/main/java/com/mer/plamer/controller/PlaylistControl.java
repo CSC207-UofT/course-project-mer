@@ -1,7 +1,7 @@
 package com.mer.plamer.controller;
 
-import com.mer.plamer.MyApp;
-import com.mer.plamer.TinyDB;
+import com.mer.plamer.gateway.PlamerContext;
+import com.mer.plamer.gateway.TinyDB;
 import com.mer.plamer.usecases.PlaylistAction;
 import com.mer.plamer.usecases.PlaylistLibraryAction;
 
@@ -10,14 +10,14 @@ import com.mer.plamer.usecases.PlaylistLibraryAction;
  */
 public class PlaylistControl {
     PlaylistAction playlistAction;
-    TinyDB tinydb;
+    final TinyDB tinydb;
 
     /**
      * Constructor for Playlist Control, initially playlistAction is null.
      */
     public PlaylistControl() {
         this.playlistAction = null;
-        this.tinydb = new TinyDB(MyApp.getContext());
+        this.tinydb = new TinyDB(PlamerContext.getContext());
     }
 
     public PlaylistControl(TinyDB tinydb) {

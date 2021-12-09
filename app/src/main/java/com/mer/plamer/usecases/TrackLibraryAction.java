@@ -2,14 +2,11 @@ package com.mer.plamer.usecases;
 
 import android.media.MediaMetadataRetriever;
 
-import com.mer.plamer.entities.Playlist;
 import com.mer.plamer.entities.Track;
 import com.mer.plamer.entities.TrackLibrary;
 
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Actions performed on a trackLibrary
@@ -64,7 +61,7 @@ public class TrackLibraryAction {
      * add a track to the track library.
      * @param path the path of the track we want to add.
      */
-    public static Track add(String path) {
+    public static void add(String path) {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(path);
         Track track = trackLibrary.create(path);
@@ -73,10 +70,9 @@ public class TrackLibraryAction {
         track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
         track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         trackLibrary.add(track);
-        return track;
     }
 
-    public static Track add(String path, MediaMetadataRetriever mmr) {
+    public static void add(String path, MediaMetadataRetriever mmr) {
         mmr.setDataSource(path);
         Track track = trackLibrary.create(path);
         track.setArtist(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
@@ -84,7 +80,6 @@ public class TrackLibraryAction {
         track.setGenre(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE));
         track.setLength(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
         trackLibrary.add(track);
-        return track;
     }
 
     /**
