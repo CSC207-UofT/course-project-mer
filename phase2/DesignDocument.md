@@ -42,26 +42,28 @@ For reasonings behind our implementation on the Activities, check the Major Desi
 
 SOLID Principle is being followed as much as possible during the code design. A few examples are noted below:  
 ### Single Responsibility principle: 
-We made sure to have enough of different usecases distribute responsibilities instead of assigning responsibilities to only a few or single class. (For reasonings behind our Activities implementation, check the Major Design Decisions section)
+We made sure to have enough of different [usecases](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer/usecases) distribute responsibilities instead of assigning responsibilities to only a few or single class. (For reasonings behind our Activities implementation, check the Major Design Decisions section)
 ### Open/Closed principle: 
-We designed our entities such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
+We designed our [entities](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer/entities) such that they contain sufficient information (closed for modification) and we can add additional usecase classes to make use of those information combined to derive other features/information.  
 ### Liskov Substitution principle: 
 We constructed class User as the default user type of our program. In addition, a class Admin is also made to have not only all the features a User have, but also additional extended features (such as deleting a user) that don't require modifying or removing existing User features.  
 ### Interface Segregation principle: 
-In our Storable interface, we did not put in redundant classes to be implemented, only keeping the minimum required for an object to be Storable (i.e. contains entities)
+In our [Storable](https://github.com/CSC207-UofT/course-project-mer/blob/main/app/src/main/java/com/mer/plamer/entities/Storable.java) interface, we did not put in redundant classes to be implemented, only keeping the minimum required for an object to be Storable (i.e. contains entities)
 
 
 ## Packaging Strategy:
 
-The packaging strategy we chose since phase 0, which hasn't changed until now, is to package by layer. This is because we have classes with similar names in every layer. Such as the class playlist(entity), the class playlistaction(use cases), and the class playlistcontrol(controller). This is almost the same for every function we have. Thus it is to our interest to put every layer in their own folder, so anyone who has a chance to read our code can navigate to the right class they want without having to actually read those classes.
+The packaging strategy we chose since phase 0, which hasn't changed until now, is to package [by layer](https://github.com/CSC207-UofT/course-project-mer/tree/main/app/src/main/java/com/mer/plamer). This is because we have classes with similar names in every layer. Such as the class playlist(entity), the class playlistaction(use cases), and the class playlistcontrol(controller). This is almost the same for every function we have. Thus it is to our interest to put every layer in their own folder, so anyone who has a chance to read our code can navigate to the right class they want without having to actually read those classes.
 
 ## Design Patterns:
 
-One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary.  The builder design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
+One of the design patterns we have implemented so far is the observer design pattern. When the user is registering for an account, their input will become an observable object and be used by observers like userlibrary. The [Builder](https://github.com/CSC207-UofT/course-project-mer/blob/186c0864b8f75c4befc1ceff0404697313ffec7b/app/src/main/java/com/mer/plamer/usecases/TrackLibraryAction.java#L64) design pattern is also used. Since track is not merely an artificial class like playlist and user, it actually refers to an mp3 file, which, by nature has different metadata attributes (e.g. some doesn’t have genre information but some does). To accommodate such situation, we used Builder design pattern to give each Track object the metadata an mp3 has, which avoids assigning non-existent metadata to a Track object, and helps us follow the Clean Architecture since Track implemented this way will not need to fetch information from Android.
 
 ## Refactoring Strategy:
 
-All programmers make mistakes. So, as a group we did not expect everyone to write perfect code. Sometimes we encounter codes from members that violate Clean Architectures, do not follow naming conventions, have code smells, or even without documentations. When one of us see any of these happening, we remind each other on potential issues there are with his/her code, give them suggestions and keep track of what's happening in different classes. This is a good strategy to keep us actively seeking issues in our code, and keep track of what is happening in each class.  
+All programmers make mistakes. So, as a group we did not expect everyone to write perfect code. Sometimes we encounter codes from members that violate Clean Architectures, do not follow naming conventions, have code smells, or even without documentations. When one of us see any of these happening, we remind each other on potential issues there are with his/her code, give them suggestions and keep track of what's happening in different classes. This is a good strategy to keep us actively seeking issues in our code, and keep track of what is happening in each class.
+
+Examples of refactoring in action: [1](https://github.com/CSC207-UofT/course-project-mer/pull/92), [2](https://github.com/CSC207-UofT/course-project-mer/pull/94) 
 
 Lastly, we've dedicated one member on the team for a final check on the codes (but not the function/features) for the end of each phase to ensure again the codes are issue-free.
 
