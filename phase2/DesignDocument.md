@@ -68,4 +68,11 @@ Examples of refactoring in action: [1](https://github.com/CSC207-UofT/course-pro
 Lastly, we've dedicated one member on the team for a final check on the codes (but not the function/features) for the end of each phase to ensure again the codes are issue-free.
 
 ## Details and Descriptions about Unit Tests:
-Unit tests were constructed to test most of the methods for entities, use cases, and controllers. These tests were constructed to ensure that each method performs as it should. The difficulty to create these unit tests were also clear indicators to violations of clean architecture, SOLID principle, or the presence of code smells as violations would drastically increase the difficulty to create said tests. Without these violations, most unit tests no longer required the ability to mock an android environment as they were used to test the relationship with each other (controllers with use cases, use cases with entities). 
+Compared to Phase 1, unit tests for mostly all of entities, use cases, and controllers were added. These tests were constructed to ensure that each method performs as it should. While constructing these tests, the difficulties that we came across with making them turned out to be clear violations of clean architecture and the SOLID principles. Through these tests, we were able to ensure that each method performs as intended. In addition, the use of mocks were incorporated in and only in controller unit tests. Since controllers deal with presenters and gateways, the use of mocks were crucial in producing functional unit tests. Also, the use of mocks only in controller unit tests and not entity/use case unit tests is a good indicator that clean architecture is being followed. The coverage of these unit tests can seen here: 
+
+<p>
+  <img src="https://github.com/CSC207-UofT/course-project-mer/blob/main/phase2/test_coverage.png" width=750>
+</p>
+
+We utilized private classes in various controller adapters which, as they are private, are impossible to test. Other than those classes, all controller classes were tested. 
+As for presenters, these components are heavily linked with the app itself, making it extremely difficult to unit test. Therefore, we required non-code tests that involved emulators to ensure that the presenters were doing their job. As seen in the demo, those classes function as intended.
