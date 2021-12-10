@@ -20,6 +20,10 @@
 
 - Multiple play modes (repeat on/off, shuffle)
 
+## [Video Demonstration](https://drive.prius60.com/api/public/dl/tkuHX_jA?inline=true)
+
+
+
 ## Build Instructions
 
 This app can be built and run on a AVD (Android Virtual Device) in Android Studio. Compiling this app requires minimum version 24 of Android SDK and we also suggest JDK version 1.8.  
